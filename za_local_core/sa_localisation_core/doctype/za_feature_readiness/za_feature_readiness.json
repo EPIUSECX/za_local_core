@@ -1,0 +1,39 @@
+{
+ "actions": [],
+ "autoname": "field:readiness_key",
+ "creation": "2026-08-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["readiness_key", "company", "feature_code", "feature_name", "domain", "status", "source", "checked_on", "checked_by", "blocking_reason", "remediation_route"],
+ "fields": [
+  {"fieldname": "readiness_key", "fieldtype": "Data", "label": "Readiness Key", "read_only": 1, "unique": 1, "no_copy": 1},
+  {"fieldname": "company", "fieldtype": "Link", "label": "Company", "options": "Company", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "feature_code", "fieldtype": "Data", "label": "Feature Code", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "feature_name", "fieldtype": "Data", "label": "Feature Name", "reqd": 1},
+  {"fieldname": "domain", "fieldtype": "Select", "label": "Domain", "options": "Core\nVAT\nPayroll\nLabour\nEmployment Equity\nSkills Development\nCOIDA\nCIPC\nCorporate Tax", "reqd": 1},
+  {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Production\nControlled Manual\nPreview\nUnsupported\nBlocked", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "source", "fieldtype": "Link", "label": "Statutory Source", "options": "ZA Statutory Source"},
+  {"fieldname": "checked_on", "fieldtype": "Datetime", "label": "Checked On", "read_only": 1},
+  {"fieldname": "checked_by", "fieldtype": "Link", "label": "Checked By", "options": "User", "read_only": 1},
+  {"fieldname": "blocking_reason", "fieldtype": "Text", "label": "Blocking Reason or Limitations"},
+  {"fieldname": "remediation_route", "fieldtype": "Data", "label": "Remediation Route"}
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "SA Localisation Core",
+ "name": "ZA Feature Readiness",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {"role": "ZA Compliance User", "read": 1},
+  {"role": "ZA Compliance Reviewer", "read": 1},
+  {"role": "ZA Compliance Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1}
+ ],
+ "sort_field": "status",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

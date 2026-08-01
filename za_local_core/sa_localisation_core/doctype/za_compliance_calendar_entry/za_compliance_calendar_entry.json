@@ -1,0 +1,39 @@
+{
+ "actions": [],
+ "autoname": "field:calendar_key",
+ "creation": "2026-08-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["calendar_key", "company", "obligation", "period_start", "period_end", "due_date", "status", "assigned_to", "filing", "last_reminded_on", "notes"],
+ "fields": [
+  {"fieldname": "calendar_key", "fieldtype": "Data", "label": "Calendar Key", "read_only": 1, "unique": 1, "no_copy": 1},
+  {"fieldname": "company", "fieldtype": "Link", "label": "Company", "options": "Company", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "obligation", "fieldtype": "Link", "label": "Compliance Obligation", "options": "ZA Compliance Obligation", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "period_start", "fieldtype": "Date", "label": "Period Start", "reqd": 1},
+  {"fieldname": "period_end", "fieldtype": "Date", "label": "Period End", "reqd": 1},
+  {"fieldname": "due_date", "fieldtype": "Date", "label": "Due Date", "reqd": 1, "in_list_view": 1},
+  {"default": "Open", "fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Open\nIn Progress\nApproved\nFiled\nAccepted\nOverdue\nNot Applicable", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "assigned_to", "fieldtype": "Link", "label": "Assigned To", "options": "User"},
+  {"fieldname": "filing", "fieldtype": "Link", "label": "Filing", "options": "ZA Filing"},
+  {"fieldname": "last_reminded_on", "fieldtype": "Date", "label": "Last Reminded On", "read_only": 1},
+  {"fieldname": "notes", "fieldtype": "Small Text", "label": "Notes"}
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-08-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "SA Localisation Core",
+ "name": "ZA Compliance Calendar Entry",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {"role": "ZA Compliance User", "read": 1, "write": 1},
+  {"role": "ZA Compliance Reviewer", "read": 1, "write": 1, "create": 1},
+  {"role": "ZA Compliance Manager", "read": 1, "write": 1, "create": 1, "delete": 1},
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "delete": 1}
+ ],
+ "sort_field": "due_date",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}

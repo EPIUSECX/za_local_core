@@ -1,0 +1,28 @@
+{
+ "actions": [],
+ "creation": "2026-08-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": ["rule_key", "numeric_value", "text_value", "unit", "precision", "notes"],
+ "fields": [
+  {"fieldname": "rule_key", "fieldtype": "Data", "label": "Rule Key", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "numeric_value", "fieldtype": "Float", "label": "Numeric Value", "precision": "9", "in_list_view": 1},
+  {"fieldname": "text_value", "fieldtype": "Data", "label": "Text Value"},
+  {"fieldname": "unit", "fieldtype": "Select", "label": "Unit", "options": "Amount\nPercentage\nCount\nHours\nDays\nText", "reqd": 1, "in_list_view": 1},
+  {"default": "2", "fieldname": "precision", "fieldtype": "Int", "label": "Display Precision"},
+  {"fieldname": "notes", "fieldtype": "Small Text", "label": "Notes"}
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-08-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "SA Localisation Core",
+ "name": "ZA Statutory Rate Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

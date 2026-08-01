@@ -1,0 +1,3921 @@
+{
+  "artifact_count": 651,
+  "artifacts": [
+    {
+      "owner": "za_local_compatibility",
+      "path": ".editorconfig",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "166781bbf1b00bc87bcd6ceff068fcb83a97a1e98e3ec84dc5db311c676f6cb2"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": ".eslintrc",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "931fd0f726fbde9e06ab46c948424ab7ad2c28db35ff83d6a87f20be40348dcb"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": ".github/helper/install.sh",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "e01e3745cd00ae4408e22ea876376775a90424f4e8ae073909f07e3f5b488df4"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": ".github/helper/site_config.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "5340d358be734a2992b83ffeee332ebb4e67dc17481a56476923c4f68947ac32"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": ".github/workflows/ci.yml",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "282faa8ee7968d9cb9371dfca423891eb0f9cf88b5ccb6ae3d22b4f879829093"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": ".gitignore",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "344aca0ef8eb0e96d9bb03c8711e8ab97565e64b2a6edba4de809b54f0e41c3f"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": ".pre-commit-config.yaml",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "3554f557dd50c98cb0605bad7be8f4790363f8a305d4f6ac9c9cb19106bc3296"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "README.md",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "d378355cafadbab00211fc672586c5d5f7b0e8ea480b0649f9a342c97bb8b1b6"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "TESTING.md",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "c39ee157ff4e4b5175963b2e1aec43a347795582805c975aeddc7a6251236c54"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "docs/annual_statutory_rate_update.md",
+      "reason": "Shared practitioner content",
+      "sha256": "d6eaaa044ff868087bfeabe35b7f66f7b80afe5c1bcb0f047d9f010bb49a82eb"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "docs/practitioners_guide.md",
+      "reason": "Shared practitioner content",
+      "sha256": "b6a078fba06ea9f8e1ac6fa01c2397ebfbfcb15294a1a6725da9fd30c943f7d8"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "docs/sa_coida_configuration_and_testing.md",
+      "reason": "Workplace practitioner content",
+      "sha256": "2ee75fef3cce77a1d073671ac562f0f9f415a2d82c889f393e1ceded0bd47723"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "docs/sa_labour_configuration_and_testing.md",
+      "reason": "Workplace practitioner content",
+      "sha256": "51cc9f9898b49763c7e7334242382aa24d8074457cd1e34a97e79fb2bd5484b0"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "docs/sa_overview_setup_practitioner_guide.md",
+      "reason": "Shared practitioner content",
+      "sha256": "e57208cc13f2ebbde5bb5f367b1478c6db19cbf82ec43fcca27ca4e6f61b3e18"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "docs/sa_payroll_compliance_remediation_2026_27.md",
+      "reason": "Payroll practitioner content",
+      "sha256": "63bb1cd75e0fbf3f822b00f3db0730e4d7508ff874f55ea0afd71f115f35a8e7"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "docs/sa_payroll_configuration_and_testing.md",
+      "reason": "Payroll practitioner content",
+      "sha256": "e05d87cf02251fff050a2d8f884da2aeae0ebc6dd8d7f681f8cfb586e698ffb0"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "docs/sa_vat_configuration_and_testing.md",
+      "reason": "Finance practitioner content",
+      "sha256": "e60bfe92cbe9908e9f1f093086e611f7e951a177e8b9bb1996feab7972a4af0e"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "license.txt",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "pyproject.toml",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "00b990d9b5e527b1973bf40d91ba859a34ade9c615598ecec775cf8c7cf767b7"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/__init__.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "99e0be1541fd81306eb9e20def5c0faad4d279755b85ddce0cd86cbefc211e63"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/accounts/__init__.py",
+      "reason": "South African accounting setup",
+      "sha256": "c91e6d65b00f112e4dc7e623f2eff59e6bf50cde259a6a1da621164c330cefae"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/accounts/chart_of_accounts/__init__.py",
+      "reason": "South African accounting setup",
+      "sha256": "c38ea112b66844bf16aff577dc25d15a42e93314ccadc3398df78fde1100a550"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/accounts/chart_of_accounts/za_south_africa_chart_template.json",
+      "reason": "South African accounting setup",
+      "sha256": "9ec1846c089ea341cd30784ab2e87274a09c025149e6b66cce1a153935e47e57"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/accounts/setup_chart.py",
+      "reason": "South African accounting setup",
+      "sha256": "e9a2353f353c537b8c1a7d1eeeb5fe23b1b8dc4cc4179b902a2278ca32d88c01"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/api/__init__.py",
+      "reason": "Shared application APIs",
+      "sha256": "6a615cf518ed71b74c84a381872b52141f812c8d462c86db16703537ab28e229"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/config/__init__.py",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/config/sa_coida.py",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "117f9cd5ce9a71688909da71095e325454e6bf327edf0bc2e629cc361565d8ab"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/config/sa_labour.py",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "ddad579d821406b73ed5fb5ca19d4455d2002a6bb63ecd1e4232056235898bc2"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/config/sa_payroll.py",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "bb782e9fc2ff302c8fe0801aa1956b1a11d3224e6ebcc86b2ee3ba94355efc71"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/config/sa_setup.py",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "500d36662161281a5ac753fc062301a49781b67d1fe44acc6c8b9f4892dae3fc"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/config/sa_vat.py",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "7bcc70b2a5cd5d952502635c1101aa0a8f7ef9dddac4d5d7fbdf210b0ddc5b92"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/custom/__init__.py",
+      "reason": "Finance master and transaction extensions",
+      "sha256": "c8750e753c35588773cbc1be6305859c1a6475735704ac96d04791193d293f27"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/custom/customer.py",
+      "reason": "Finance master and transaction extensions",
+      "sha256": "38719ba79ed94c250113123dfffb5be1c1ba873979c4bdadfbce0caf84d71702"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/custom/purchase.py",
+      "reason": "Finance master and transaction extensions",
+      "sha256": "f32ee52eac6d3e75f1fc4fca1f8d8468bacecb88a7e7aa6f5484d0fecbe7caa1"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/custom/sales.py",
+      "reason": "Finance master and transaction extensions",
+      "sha256": "ebbd35555b23975eb21293dc4cf5a3675469075d3297fa0b9c760704caf90e97"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/data/bargaining_council_list.csv",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "877668e1af44b4c9380c225a07a6baab86974bc03680d1d5be8ec208b66bd99f"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/data/business_trip_region.csv",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "147417fc52c635bb0fd21c312fe467ee62d06bf233d06ebb072b4c13a5e592fc"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/data/seta_list.csv",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "dff145cd2fb98ea99fa36442c63ff535f50104a4d891a2144e1fd7469017b8f3"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/desktop_icon/sa_coida.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "f0bea5ca29cb7a21e51133b32dccbfe3fa4917e26d3ec72041ccc8b903f5b31d"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/desktop_icon/sa_labour.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "21f527b6c2dacb838e8cfc2c42d7b1bd043f0fd540ce105a4380887cef3ec078"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/desktop_icon/sa_localisation.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "030a0cf9358cb6b9b93000fed5e3ef45cd0159b4ff8aaecc9fa2eb3d8d2f2006"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/desktop_icon/sa_payroll.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "e36e268eb417b1eac78057079d06a7246dfeb615ba67b69111115fe8038dec18"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/desktop_icon/sa_vat.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "855fcfee90f7c4869f66d240507570cbbe9d34dad2357f02ffc38c61054e6e5d"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/hooks.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "24daf57e93fa4f167e7edefe9d7040a46f22a29d0646598dbf49b266f2ea10e0"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/legacy_standard_docs/README.md",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "9fbf120123f203e8671af7ab7a69fdbfe270d245b12db999e7f43c10d5355f3a"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/legacy_standard_docs/print_format/sa_credit_note.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "644e478e78eca540c3e5834d10c3716b42bcaa29bf2d004c5496c348118fb615"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/legacy_standard_docs/print_format/sa_debit_note.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "6507b694d51f5e2065dc3f729036cf0e065822e3c86db028dacd95a3b1d3f22a"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/legacy_standard_docs/print_format/sa_delivery_note.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "a98c89c0c1e1ebb00572f8991a0e853043125bf6d35ab05bf176153c5a5b0171"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/legacy_standard_docs/print_format/sa_payment_entry.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "61a529555bd592701f5a650a2bd28aad734114535f2fad9c6866c27eff24248e"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/legacy_standard_docs/print_format/sa_purchase_invoice.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "507b917f2a4323c1c294f8b212c3b0812ae04e4631c06108c383fc4b25af6372"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/legacy_standard_docs/print_format/sa_purchase_order.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "93726f1fd9478e1e937952fb7f2a8005063a6eb0a5f478b14ba16ef3f3e99a7b"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/legacy_standard_docs/print_format/sa_quotation.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "75d3f4fcff6658175c12b430bb2846abcebabf25e5dd865be2e018573d62b413"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/legacy_standard_docs/print_format/sa_sales_invoice.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "c2174dad7f8d83fd5e3af5e2bdcd583c8cb6b3b251f39fce59f1da05d158ae6d"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/legacy_standard_docs/print_format/sa_sales_order.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "f93a2cdb1038e9ab59094930658fb67961b3aaa0f9d80ec2f999398636bc2fe6"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/modules.txt",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "7a63ad38e2780ce33b72194d4479a4ce82d46f2b03b42b0faef304730f808436"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/overrides/__init__.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "41bd394da57ffbd2b45fc99fb93601c8b8e120ba46e80a0046f7eb1ecf7e29e8"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/overrides/additional_salary.py",
+      "reason": "Additional Salary extension",
+      "sha256": "1c8851d222a4ffaa628cc59cc88ec0c2943c0133d19e0b8acbd1cf10cb012adc"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/overrides/employee_separation.py",
+      "reason": "Termination entitlement",
+      "sha256": "4fb88ace7949ef0b3ad5367a9fbc02d7b2aee35ab2d0c4ebbf1cf211cc72e9a6"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/overrides/journal_entry.py",
+      "reason": "Payroll journal controls",
+      "sha256": "4237713b89ba1f6a517e64f4d18d88df8d0c6539be05d125302644225d16181b"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/overrides/leave_application.py",
+      "reason": "BCEA leave rules",
+      "sha256": "4ac3d10c336ea1e01177e7ede66da8e9e781fa967579a64d2353cb6e4dc94138"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/overrides/payroll_entry.py",
+      "reason": "Payroll Entry workflow",
+      "sha256": "65ff9dd1cea520bccdbc95400449be848bbe2473e316a29ec1d23350526042d4"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/overrides/salary_slip.py",
+      "reason": "Salary Slip calculation",
+      "sha256": "fdd6f2fb0cf8e48e4407a4fe2ec2346bbc208712894d164c13547279fef0f15f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/overrides/salary_structure_assignment.py",
+      "reason": "Salary Structure Assignment extension",
+      "sha256": "de190cc38403b8e8c66eb453e51680ccfd804245a81d2fa70174c3d083239071"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/overrides/vat_invoices.py",
+      "reason": "VAT transaction extension",
+      "sha256": "a84b02cd5d9adc3926f9367a68f30df472b3597a403906535590075afae026fd"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/patches.txt",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "31e8abcd983394549b09d09c5d58c7624afd392d63de35b1fa96fbedee1c4680"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/patches/__init__.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/patches/v1_1/__init__.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/patches/v1_1/backfill_emp201_submission_keys.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "100bb8dbfda72a259a0aedbfae2cb941dce12f2a1d00e7aa0293e11b905c82c6"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/patches/v1_1/ensure_statutory_tax_configuration.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "a2016380cc1a24fd3530ab175cc0ec40d064e0d4e821bc728085ab263ff37bb1"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/practitioner_guide/README.md",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "170cd7ac316459f045b2b31d87bc974a4bc54b37bb25038562d0086185bd541f"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/practitioner_guide/__init__.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "008e7fc72811421647fbb2b0cf9f587bbb3d241ea4c3ab1077a2add906ef859f"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/01_overview.md",
+      "reason": "Shared practitioner content",
+      "sha256": "f324db4ee2f563b2aae2e4f771113562c57f8ad03871ee41c873d7af40b0647d"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/02_prerequisites_installation.md",
+      "reason": "Shared practitioner content",
+      "sha256": "a8a8bfb8dd44b89dd19c5491c12383135f84a7f8b26cbe8033ae45c29112d2cc"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/03_choosing_your_track.md",
+      "reason": "Shared practitioner content",
+      "sha256": "4317581c6c6cc4f3034014188a6c7d9ace5040632610f98a0222326bfb072580"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/04_post_install_verification.md",
+      "reason": "Shared practitioner content",
+      "sha256": "5a980655ca4170d90cfcd578bc9dda5632c5992c3c468caff8919f2f696654f4"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/10_company_registration.md",
+      "reason": "Shared practitioner content",
+      "sha256": "eb9981779d9169073312073ceffca0b22b96117b9c1fc2625cc679993112e557"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/11_chart_of_accounts.md",
+      "reason": "Shared practitioner content",
+      "sha256": "472fbe5c854db91ecc3ba98840c4ff34b18fcfb5430f8c2da1be02a39a717007"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/12_za_local_setup.md",
+      "reason": "Shared practitioner content",
+      "sha256": "c89a2b6395f7761c9875d14dba8abbe5ffef136dc8c7e0fcf0a4b61954257ddf"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/practitioner_guide/content/20_vat_settings.md",
+      "reason": "Finance practitioner content",
+      "sha256": "62e8cd94d304cd4524d36a66ced0ac4f9710d850ddb04bbe550b2f3cb8b510fb"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/21_tax_templates_item_categories.md",
+      "reason": "Shared practitioner content",
+      "sha256": "88a633634e9bd4094135700a02b4edd01c7a99207e68aff0fa5e8b013e381356"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/practitioner_guide/content/22_customer_supplier_vat.md",
+      "reason": "Finance practitioner content",
+      "sha256": "81b4423705e4aaf69d2f8db0ff96539ec19dfdb6ce9ca06556a3133de870e71a"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/23_print_formats.md",
+      "reason": "Shared practitioner content",
+      "sha256": "53b2cdf4e3f5fe84430efb29adef3317499d47423e9d024bcbee623781b1aabd"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/practitioner_guide/content/24_vat201_return.md",
+      "reason": "Finance practitioner content",
+      "sha256": "e5eec34bbdbb9b98711229140d90d60481728a7997ebac297c38c48413af0db1"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/practitioner_guide/content/30_payroll_prerequisites_settings.md",
+      "reason": "Payroll practitioner content",
+      "sha256": "973394aa3f49ff6e4e0208a341f7a3056645bfd8ecd01fab14063c827cd43dab"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/31_statutory_rate_data.md",
+      "reason": "Shared practitioner content",
+      "sha256": "6724025a4932f95f6e347fe53fd74a2468c655a9ea64f261b7bf20cf7568f573"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/practitioner_guide/content/32_sars_payroll_codes.md",
+      "reason": "Payroll practitioner content",
+      "sha256": "b003695710bcedc5bccdc7dba4f2ca92adcab7a6ed66492dc12d5698b4d46571"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/33_salary_components.md",
+      "reason": "Shared practitioner content",
+      "sha256": "c753077b30e4578e19038e796fe189d12eeb2301722fe7602c5f27fd25d15b3c"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/34_salary_structures.md",
+      "reason": "Shared practitioner content",
+      "sha256": "89ff8fc65c2c184ec5094697bd5a09424530b2884e6f209524db58f9dffc7383"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/practitioner_guide/content/35_retirement_and_benefits.md",
+      "reason": "Payroll practitioner content",
+      "sha256": "bb9ca76173074fbb7ae19bfbf2da22b12600ac71f92ab1fce4c3e4110970be0f"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/40_employee_master.md",
+      "reason": "Shared practitioner content",
+      "sha256": "87330cd1a352e74a85a3d82ee72b245e079fa17e5844136752157345d55a1c00"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/practitioner_guide/content/50_payroll_entry.md",
+      "reason": "Payroll practitioner content",
+      "sha256": "e0b512a59a6c244c21546e0e4dc9a7d2a08888eed4abdda01244afee99d34233"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/51_understanding_salary_slip.md",
+      "reason": "Shared practitioner content",
+      "sha256": "79a0c37598fd563aaedf2d0b7bb09b084cac59ffa578e55308c416efe60a8735"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/52_review_submit_post.md",
+      "reason": "Shared practitioner content",
+      "sha256": "9c84f09ddb3f2f1c0a77bd688438b432928e5c8948aa1e40c8b8e9b209f35003"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/53_payments_and_reports.md",
+      "reason": "Shared practitioner content",
+      "sha256": "5aa3126d8b0dbc342b0ef9fd5a780b361e2e1895cdba121f401a2b7f587a4cdd"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/60_emp201.md",
+      "reason": "Shared practitioner content",
+      "sha256": "cbb389a3895aaf480d368ed4d9efd0cc1b0878219fc1fc77704dda98445834e1"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/practitioner_guide/content/61_irp5_it3.md",
+      "reason": "Payroll practitioner content",
+      "sha256": "1a8d70bd815e60aafadc139881456dba7c7638f5ae6a07248fb5f850459bdcb1"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/62_emp501.md",
+      "reason": "Shared practitioner content",
+      "sha256": "8824fa0f87de16364d164acdb404e2093f31734bfb702cb0fc67bd70b35b1457"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/63_directives_final_settlements.md",
+      "reason": "Shared practitioner content",
+      "sha256": "094a080c88fdafd81f9e5528abed1a9d877395be5ea630f2854e8e04a8e9e2ea"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/practitioner_guide/content/70_sa_labour.md",
+      "reason": "Workplace practitioner content",
+      "sha256": "c01f98dfc95407205e15813a5af5c13cd11b6e95343ed6af6bf35fcaf093ef76"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/practitioner_guide/content/71_sa_coida.md",
+      "reason": "Workplace practitioner content",
+      "sha256": "9800a675a9d9c281009fec2abaeb0d50640dd8b9bfc8a7fbd1d63e95750dd657"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/80_custom_fields_reference.md",
+      "reason": "Shared practitioner content",
+      "sha256": "1fc74d36d934928cc753217808ed70520fca25b706d3149fec6e5512cf49f568"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/81_annual_statutory_update.md",
+      "reason": "Shared practitioner content",
+      "sha256": "5b701e3f5b988a1ccafa85205a709e43e6af6d98f677a34e7ab4fbb7b520aea8"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/82_troubleshooting_faq.md",
+      "reason": "Shared practitioner content",
+      "sha256": "e730992c97bd47e10dd3ebe044a52ae0a8db3a438150c3024b93818fc21d5d2d"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u01_welcome.md",
+      "reason": "Shared practitioner content",
+      "sha256": "d8e97db046f1054c3c9ef901dcf60860dbabb66807524c1ce9a340411814354c"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u02_navigating_workspaces.md",
+      "reason": "Shared practitioner content",
+      "sha256": "a6f1353b83dd6ddce7ca717db777a59fc958667e686d15834faa3b0a31096b70"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u10_before_you_begin.md",
+      "reason": "Shared practitioner content",
+      "sha256": "17696ace52d75ee11da4719d4cfc81dec9fd35ea5c7fab7b7f819e7e52ddd547"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u11_confirm_settings.md",
+      "reason": "Shared practitioner content",
+      "sha256": "aafe53723a53cb59d5f3f3c6918578d7e83e47ace7d5dd0fccda9361933c8802"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u12_everyday_masters.md",
+      "reason": "Shared practitioner content",
+      "sha256": "6f2d9e263eaa7f8d54e4b9d74c9031e803d9e002ef4db77a148bfa9f893450ed"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/practitioner_guide/content/u20_sales_invoice_vat.md",
+      "reason": "Finance practitioner content",
+      "sha256": "9c5b2acdef612df85d899e23dc7a8973863c03a3a43927b7e97b0b84cdc0eb53"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u21_tax_invoices_credit_notes.md",
+      "reason": "Shared practitioner content",
+      "sha256": "25d31874fb095966b173d9d16b7d1510eb82d6f550cb43bba536cd6085a1e186"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/practitioner_guide/content/u22_purchases_input_vat.md",
+      "reason": "Finance practitioner content",
+      "sha256": "6e0e2a1cae39f0b37b38cd571b4698b4d280ffd2e2de03ba8f6b5155fb863c6c"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/practitioner_guide/content/u23_vat201_return.md",
+      "reason": "Finance practitioner content",
+      "sha256": "dc0ffe3abc467051aa9e9c13e49d1516921bca1aa22b9d30fb3405ae2ebd7d97"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/practitioner_guide/content/u30_monthly_payroll_run.md",
+      "reason": "Payroll practitioner content",
+      "sha256": "999ffb32b8e3c2dc17afc9995afb8c1f4f1c4f8a6d50c7a8eee80fa1387daeea"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u31_reviewing_a_payslip.md",
+      "reason": "Shared practitioner content",
+      "sha256": "f1bfe174a84d253e6aa2225b06de15aee96062c8a409aa117d5eb05ca5df4d48"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u32_pay_employees.md",
+      "reason": "Shared practitioner content",
+      "sha256": "1096543c9d65cd1effabf073e5bd6d23235b1185cdee3233cf01bd8156d70f58"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u33_emp201_monthly.md",
+      "reason": "Shared practitioner content",
+      "sha256": "90b4d6a960f9922c22e1e089293f177f549b13c986de1b5e7c9a78a838e3ccf5"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u34_year_end.md",
+      "reason": "Shared practitioner content",
+      "sha256": "6c39ec3017d8df162b0266ab30ae3206b94cebcebf47fc6bbec8a943e7eb3eec"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u40_finding_reports.md",
+      "reason": "Shared practitioner content",
+      "sha256": "d0454291716dc29ebb491629d86b24652a3e4539eed3902cd385196a496dd95a"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/practitioner_guide/content/u41_vat_reports.md",
+      "reason": "Finance practitioner content",
+      "sha256": "fe8798b3c67a58097e77ed2c02700e41daee47e5a0a8d4d3a37f95a66361fdcc"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/practitioner_guide/content/u42_payroll_reports.md",
+      "reason": "Payroll practitioner content",
+      "sha256": "2e45c10e5f351a656754a2c4b5fa63f6803ee0ea19367b489a62825a0097cfe5"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/practitioner_guide/content/u43_labour_coida_reports.md",
+      "reason": "Workplace practitioner content",
+      "sha256": "f3adcc1d88945997e57281ef0c5389bf3a9de6981d257b96bd7b171e3ca2aad2"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u44_exporting_printing.md",
+      "reason": "Shared practitioner content",
+      "sha256": "9711c24b1449128489faa047fefe6aa684a0d1f81c80c0f4eaf613526e954803"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/content/u50_faq_glossary.md",
+      "reason": "Shared practitioner content",
+      "sha256": "b7d2a126d1d53bd7fd7043fb72a54bef45d88492a2a15748e3a9b7bcf370ed19"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/manifest.py",
+      "reason": "Guide registry",
+      "sha256": "e6ea0b8650e0c69e86d6980d3a04a20019c967b3f42e482ff4ee418bff062d32"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/practitioner_guide/stage.py",
+      "reason": "Guide publication service",
+      "sha256": "1dd9bcab9c47b40b86947ff737064dff50f2e17da1a6f16cce105715481235d4"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/.gitkeep",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/IT3b-Certificate.pdf",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "14baea4e44c7e8e621890e20b4ecea8abde00391a4ec45b49476200a507f6387"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/css/irp5_employee_certificate.css",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "136fffa0b9e8f86f00184aa7814daa19bd7c0909cfa913b35fd08cd865bce1e4"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/css/za_local.css",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "9bd9e9ff5d58356843b7545b64e7aebc09f25c4b2be499910e72bbdda3bcdcab"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/desktop_icons/sa_coida.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "c9f5331f2b3442f94eff42a686a6651f923f707794b35aeeedcc54bfaa185678"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/desktop_icons/sa_labour.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "2bfa46df2e3721c7e921e9c7e2fc19a748ce7456a8d5d488900401811183950e"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/desktop_icons/sa_overview.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "4ac19ac69661c5b8fc1c2200ceadfdcf2c5e4fbdaf50bf3b8c097be250ae79f0"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/desktop_icons/sa_payroll.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "93ba503cba37bb9e11f17ee097e865d4573ade95cdddd27d5cdbbcc53e601ec4"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/desktop_icons/sa_vat.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "1b65d86c39866d589f773331940196b02fb21bd891e3f22a3942e2ebdb9a96d1"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/icons/desktop_icons/solid/sa_coida.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "c9f5331f2b3442f94eff42a686a6651f923f707794b35aeeedcc54bfaa185678"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/icons/desktop_icons/solid/sa_labour.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "2bfa46df2e3721c7e921e9c7e2fc19a748ce7456a8d5d488900401811183950e"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/icons/desktop_icons/solid/sa_overview.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "4ac19ac69661c5b8fc1c2200ceadfdcf2c5e4fbdaf50bf3b8c097be250ae79f0"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/icons/desktop_icons/solid/sa_payroll.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "93ba503cba37bb9e11f17ee097e865d4573ade95cdddd27d5cdbbcc53e601ec4"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/icons/desktop_icons/solid/sa_vat.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "1b65d86c39866d589f773331940196b02fb21bd891e3f22a3942e2ebdb9a96d1"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/icons/desktop_icons/subtle/sa_coida.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "c9f5331f2b3442f94eff42a686a6651f923f707794b35aeeedcc54bfaa185678"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/icons/desktop_icons/subtle/sa_labour.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "2bfa46df2e3721c7e921e9c7e2fc19a748ce7456a8d5d488900401811183950e"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/icons/desktop_icons/subtle/sa_overview.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "4ac19ac69661c5b8fc1c2200ceadfdcf2c5e4fbdaf50bf3b8c097be250ae79f0"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/icons/desktop_icons/subtle/sa_payroll.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "93ba503cba37bb9e11f17ee097e865d4573ade95cdddd27d5cdbbcc53e601ec4"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/icons/desktop_icons/subtle/sa_vat.svg",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "1b65d86c39866d589f773331940196b02fb21bd891e3f22a3942e2ebdb9a96d1"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/images/sa_map_icon.png",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "673ae89a7abf66884334bb05bb7a7b032c8fab3ec507d51978c2b9e8d64d4d8c"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/js/coida_annual_return.js",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "0e17731ffed011f8b6d6d8741d27d0d46a98233b5469387148eef8de58c16daf"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/js/employee.js",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "8b4df8b94e134a5c9b223e47bc51dcd17fafc3b6dafa4dfee63a8c431dcf6b15"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/js/employee_benefit_claim.js",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "adf028fd28aa89e5785afa34141ecc81a4fa04c9321230b11214c7f30884816e"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/js/oid_claim.js",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "145486b3910549b7503933110c68971ee37e8d302cae61bc1688bb54598f7dab"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/js/payroll_entry.js",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "8e80cad9cad8f567775141ded841c949dd6b23534f60b26c112594b44b3e6783"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/js/salary_structure.js",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "7507f594895759d7ca517e280f59ae89709f2c5b286ad704e3d7e45d622b84cb"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/js/salary_structure_assignment.js",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "ebf8edb4714364c54aa629faf664e9e77b5a9fbab68c7ff5c97475871a1001bf"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/public/js/vat_tax_calculation.js",
+      "reason": "VAT client behaviour",
+      "sha256": "4ad2d983352918796acfa76ab3408bd1401f7a36978eaa664f3f0654cbbc46ad"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/public/js/workplace_injury.js",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "32bbcda0812c41e48b5c9d030c24cdb271a974f2c7d1a1371379592c67c4a922"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/public/js/za_local_feedback.js",
+      "reason": "Shared Desk feedback",
+      "sha256": "37ca91c6bcad38a5f3b541515496738d6f67ca3a64544512f2483d7de70c26d8"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/__init__.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "53d5ee1ff24f9fb75f5d4993eb2799d5254c45ec0177210b1f2fbed371b2ee13"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/__init__.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/coida_annual_return/coida_annual_return.json",
+      "reason": "COIDA and injury domain",
+      "sha256": "7320c2247a3003acb7b4497b25da12a3f5fa08704f11df6843b9c05c0b848706"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/coida_annual_return/coida_annual_return.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "0c86de5331c57b434d703ebe7f6640d2f14209c07da7ef5738df2f23f0350630"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/coida_industry_rate/__init__.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/coida_industry_rate/coida_industry_rate.json",
+      "reason": "COIDA and injury domain",
+      "sha256": "5aeb84d576fc3bc16b5867b9f749c56ef9a2a9c75d924b1be8778bb3cb743242"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/coida_industry_rate/coida_industry_rate.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "709c196adef6ecf7275fe8667a7a7fbaab0dd5bbd408c9eeb27a38af66ab7060"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/coida_settings/coida_settings.json",
+      "reason": "COIDA and injury domain",
+      "sha256": "a913c7d45e175dcf24a0cb5f56d45e82718a627979309cbbfef46efc6796f324"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/coida_settings/coida_settings.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "5956dad836d05ed2770a625625bb3bbff0b2d5cbf13d48b54847373882444033"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/oid_claim/oid_claim.json",
+      "reason": "COIDA and injury domain",
+      "sha256": "547e8c0918481855d56b3d77cc4b2f0793e79f1635bd5d17d922d6cb6439bc9e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/oid_claim/oid_claim.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "dec9367425c176748975da459709ff2b18bb4d573c39d7d4fc180e2d6dc39951"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/oid_medical_report/__init__.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/oid_medical_report/oid_medical_report.json",
+      "reason": "COIDA and injury domain",
+      "sha256": "943889bfd7bf042554ed64f0e7bcfe43e77e0bf9741b7525ea559a728408cea8"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/oid_medical_report/oid_medical_report.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "644e10ceb757c48bae6e6da0952c29c9e0fba5c0d8730db35e68e4224b66bb74"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/workplace_injury/__init__.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/workplace_injury/workplace_injury.js",
+      "reason": "COIDA and injury domain",
+      "sha256": "638ed91af5b8220ac1e7363bd06b74a4fc86d61957183329d3a7bacc17a7da1b"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/workplace_injury/workplace_injury.json",
+      "reason": "COIDA and injury domain",
+      "sha256": "41ab0ce322a422b2d818c3d69ef6fb36d0bcc929f50660b9cfe017cf9b581b7d"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/doctype/workplace_injury/workplace_injury.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "93c7439e04f49541236799484f846afa3db0087b6fbe94240b90c5daeefba557"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/print_format/sa_coida_annual_return/__init__.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/print_format/sa_coida_annual_return/sa_coida_annual_return.json",
+      "reason": "COIDA and injury domain",
+      "sha256": "274d4634e0ebd08d0dc896aa86663ae90c13bd1964924a8460f11c1c4710ce81"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/print_format/sa_oid_claim/__init__.py",
+      "reason": "COIDA and injury domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/print_format/sa_oid_claim/sa_oid_claim.json",
+      "reason": "COIDA and injury domain",
+      "sha256": "004fdecd96400e7a2186158f74eefd87c4171971c1bc955c7df00f8c891bc97d"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_coida/workspace/sa_coida/sa_coida.json",
+      "reason": "COIDA and injury domain",
+      "sha256": "7661b4cea1a951c14db444f9ec5b14ee53861a91e6d629135f105cc2c821e18c"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "ce9d8825d49571df3ce00442b1bd1a0438cf33c3da4b92d6cc152a50cf003f8b"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/annual_training_report/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/annual_training_report/annual_training_report.js",
+      "reason": "Labour and skills domain",
+      "sha256": "9d24265506f54f4b0e2ff94a825b1a6611c7d57bfe86df093d37cab21e2b7e1f"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/annual_training_report/annual_training_report.json",
+      "reason": "Labour and skills domain",
+      "sha256": "554768045a13f9c5ead1bc78fe113146b0b21b3bc2e3de0528a668ceaf9a2fb4"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/annual_training_report/annual_training_report.py",
+      "reason": "Labour and skills domain",
+      "sha256": "923f5a910047b7f9af3385610f48400dc7ba4f5d7e7529eb1f04f3da826cdffb"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/atr_training_completed/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/atr_training_completed/atr_training_completed.json",
+      "reason": "Labour and skills domain",
+      "sha256": "516dbdd22306a94b712def04afdfbb7ade5fc027d67d02d87656398dddb423bc"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/atr_training_completed/atr_training_completed.py",
+      "reason": "Labour and skills domain",
+      "sha256": "0c6f82ba8199fffe2fea88f17d0572347d3329fac87bb6f17eb665dccde68db7"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/bargaining_council/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/bargaining_council/bargaining_council.js",
+      "reason": "Labour and skills domain",
+      "sha256": "c01e1f21bdb5c6f28850e22c569715477cabd0ceedea5ff0c8ef38eaef839663"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/bargaining_council/bargaining_council.json",
+      "reason": "Labour and skills domain",
+      "sha256": "d759ee9d9e29495e888748786d2b54c4675870cd110d2159e6ca5f79297249d3"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/bargaining_council/bargaining_council.py",
+      "reason": "Labour and skills domain",
+      "sha256": "acf2ca7abb8600db650ff10cdffae6572ac8fa78a937e1525e0c5b7cc76ed992"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip/business_trip.js",
+      "reason": "Labour and skills domain",
+      "sha256": "3890c315becd5e95814a5c17aac5a7c3c2415d78be8b21d7a3931e1c3dd9a01c"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip/business_trip.json",
+      "reason": "Labour and skills domain",
+      "sha256": "c3b630fcb2cf8df0d7d1a0052b54244ea32d53d448dabae5c5f0524d066478bb"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip/business_trip.py",
+      "reason": "Labour and skills domain",
+      "sha256": "3a01d1d904101c40ae484a6a4d8532aaa652f9de5ed3b4b31c78ab8920532941"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_accommodation/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_accommodation/business_trip_accommodation.json",
+      "reason": "Labour and skills domain",
+      "sha256": "f4790b61a89dcbbe2fe78c182ac035e8065b5376beed6624dd62ecb2608b5f9e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_accommodation/business_trip_accommodation.py",
+      "reason": "Labour and skills domain",
+      "sha256": "e842e037d536c2adcc4d1f125119c7a40e406a94c3db05cd2693538415bb7b71"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_allowance/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_allowance/business_trip_allowance.json",
+      "reason": "Labour and skills domain",
+      "sha256": "f9d87b61f3e877e0fc50bd562c59371a63b60993284f797c0df326b2f75c94cd"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_allowance/business_trip_allowance.py",
+      "reason": "Labour and skills domain",
+      "sha256": "d0732b5c704b5faae0de00f7083acf0ea3c5fd71061943ca85d0085c03d735a2"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_journey/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_journey/business_trip_journey.json",
+      "reason": "Labour and skills domain",
+      "sha256": "93e6e0be01e7e8044205500fe859903e6cc58669a851f7b68e304bdfe1957aeb"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_journey/business_trip_journey.py",
+      "reason": "Labour and skills domain",
+      "sha256": "b64e7d50c15223b152602941a8630323eae90d6e88e6aefefb4098dc5d5d2a64"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_other_expense/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_other_expense/business_trip_other_expense.json",
+      "reason": "Labour and skills domain",
+      "sha256": "63d6b0b2b6dcd22b733bffde5939ef6414a6f816beef2e6d1601f533d494f4f7"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_other_expense/business_trip_other_expense.py",
+      "reason": "Labour and skills domain",
+      "sha256": "e9715dae509f953beed7f4acb118393aed0458f1fea31e37b40bb5138593cb97"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_region/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_region/business_trip_region.js",
+      "reason": "Labour and skills domain",
+      "sha256": "d00eec63b034e3be5b415906ebeb0676f40e6e5725ba28ad019dce8203304dfb"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_region/business_trip_region.json",
+      "reason": "Labour and skills domain",
+      "sha256": "6b149cd504bad6d9f74976ecaf4c43b23d25978a9ec8f31522c22fa505c12966"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_region/business_trip_region.py",
+      "reason": "Labour and skills domain",
+      "sha256": "9e3479d4eaeba3678b555b77364e34cf55defd6bf41ed666a3de84a32f248db1"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_settings/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_settings/business_trip_settings.js",
+      "reason": "Labour and skills domain",
+      "sha256": "3a1737703341f93efc1b98a37d7a405678356caa437800e73ad2ec4e29107b5f"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_settings/business_trip_settings.json",
+      "reason": "Labour and skills domain",
+      "sha256": "55640748aa19ee44462f036156f51f039530425b6fc0d35b65df3d4093bf81b7"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/business_trip_settings/business_trip_settings.py",
+      "reason": "Labour and skills domain",
+      "sha256": "f534fb99428020745aa8a8d0a13af5153d351c48abac03598a226db4f8a2a3d6"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/industry_specific_contribution/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/industry_specific_contribution/industry_specific_contribution.js",
+      "reason": "Labour and skills domain",
+      "sha256": "2b56339c5d9da7cccacdb7c3a8c59cea622716e2cc5294ac71e126fa3763ce30"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/industry_specific_contribution/industry_specific_contribution.json",
+      "reason": "Labour and skills domain",
+      "sha256": "b18bb23c297979b1a26fc6055cf9ab2f2c8e1a4575186b30ccc2c43cd2bad550"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/industry_specific_contribution/industry_specific_contribution.py",
+      "reason": "Labour and skills domain",
+      "sha256": "0bbca12f9dd635a0c6058b5531debf6cba8bef8d72b4428fb005c06d30f222ff"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/sectoral_minimum_wage/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/sectoral_minimum_wage/sectoral_minimum_wage.js",
+      "reason": "Labour and skills domain",
+      "sha256": "45902ec70344fda17e9ea3a94848caa6f3aaad1d0e96bb91129553cc9010fae9"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/sectoral_minimum_wage/sectoral_minimum_wage.json",
+      "reason": "Labour and skills domain",
+      "sha256": "3b13e3141d59f4180dbc4dead3e3a520f6518de48e5daef8bb0b2813fcd49c3c"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/sectoral_minimum_wage/sectoral_minimum_wage.py",
+      "reason": "Labour and skills domain",
+      "sha256": "d168ce5ac187e3b9e7f54af9792f38be103f2168bf1c359f2107d6151e92e785"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/seta/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "e4034de6b7b5c0c6750ddeea3dc87db06b2ca9d157fba02de5f36bb6221944a9"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/seta/seta.json",
+      "reason": "Labour and skills domain",
+      "sha256": "b92e35d75ab272c7de51f4635b0be0b057f65e6fd6bc0ecf4c80427e56182499"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/seta/seta.py",
+      "reason": "Labour and skills domain",
+      "sha256": "87630b6fb954b6c9c04a6c16ee152d80a2c96ba82281bcf425a5989959ff97d2"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/skills_development_record/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/skills_development_record/skills_development_record.js",
+      "reason": "Labour and skills domain",
+      "sha256": "5bb44b62b3b640ac6a945c7931c62aa77fcb467f2abe32e31216e94b71eaa094"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/skills_development_record/skills_development_record.json",
+      "reason": "Labour and skills domain",
+      "sha256": "269d43526b72138a30e54487b5b92ffab49793eb5830eda45538035e80961bb9"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/skills_development_record/skills_development_record.py",
+      "reason": "Labour and skills domain",
+      "sha256": "a62ae88b6115c26eb432557c207bdc92a1429758554e1bb5f4c36a5d626fbd06"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/workplace_skills_plan/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/workplace_skills_plan/workplace_skills_plan.js",
+      "reason": "Labour and skills domain",
+      "sha256": "ad6b3ac8285279b119c30a729543b3d8305d1abe4bfa79f0e90118cdf8b97054"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/workplace_skills_plan/workplace_skills_plan.json",
+      "reason": "Labour and skills domain",
+      "sha256": "25ae27f8b3ec7355ade2c8c29ff15c61266e6ccdcb47b1de45705d98017a3aed"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/workplace_skills_plan/workplace_skills_plan.py",
+      "reason": "Labour and skills domain",
+      "sha256": "c0560b7708750b1aebe4eb86356524e9b0a2333f5d984599992699a1d33ccc8e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/wsp_training_detail/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/wsp_training_detail/wsp_training_detail.json",
+      "reason": "Labour and skills domain",
+      "sha256": "757e7a0ca07c21c5890b191ef033e22fff417976103b9a0a47eef789301b984c"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/doctype/wsp_training_detail/wsp_training_detail.py",
+      "reason": "Labour and skills domain",
+      "sha256": "7ef8af2914796da185bba43be53a907e6823ba9c57a93acfdccff6c5da5fd69a"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/print_format/sa_annual_training_report/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/print_format/sa_annual_training_report/sa_annual_training_report.json",
+      "reason": "Labour and skills domain",
+      "sha256": "e00820ccf02cb8313110c038a245a968eafdd016b92a9e39ffe9a230c4889453"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/print_format/sa_business_trip/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/print_format/sa_business_trip/sa_business_trip.json",
+      "reason": "Labour and skills domain",
+      "sha256": "ff83479c4be69bec8c31c7444362da193a72b764cbbd62addc5a2e461654ed93"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/print_format/sa_workplace_skills_plan/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/print_format/sa_workplace_skills_plan/sa_workplace_skills_plan.json",
+      "reason": "Labour and skills domain",
+      "sha256": "d5cc01ef7cdda5b43ee3202cc766041a06b453fb3dae183a50b4cb44f2f89b73"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/ee_workforce_profile/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "19d6aced564e9214c3ba64675655418a15cc616b2a02d738bbbd1dee05ddb7c2"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/ee_workforce_profile/ee_workforce_profile.js",
+      "reason": "Labour and skills domain",
+      "sha256": "20d4c99931c5c5697f390c11bb06fc046fa5a67ab4833b9b2a15e33c600b1084"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/ee_workforce_profile/ee_workforce_profile.json",
+      "reason": "Labour and skills domain",
+      "sha256": "ec86796898755b5dfc5303e271d7b7a5bc8ae14315737cc0488ccc86e995ef2a"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/ee_workforce_profile/ee_workforce_profile.py",
+      "reason": "Labour and skills domain",
+      "sha256": "ef6d1b87fc9871b748cabf668a2712f35c3533df5b0214cfcf3b93c723926db5"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/eea2_income_differentials/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "19d6aced564e9214c3ba64675655418a15cc616b2a02d738bbbd1dee05ddb7c2"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/eea2_income_differentials/eea2_income_differentials.js",
+      "reason": "Labour and skills domain",
+      "sha256": "c02a17815985b4edf08d433e88800c31135e42645e805b5f5fab1fd681760b2b"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/eea2_income_differentials/eea2_income_differentials.json",
+      "reason": "Labour and skills domain",
+      "sha256": "36d6ece7b9d8ece526c6c534d6de5283e1374a2a10202bc2025e97122d36c322"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/eea2_income_differentials/eea2_income_differentials.py",
+      "reason": "Labour and skills domain",
+      "sha256": "e6e84b071a0551b878816552c63be4e67b18176c58fbccbaed75bb75ce8e7d49"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/eea4_employment_equity_plan/__init__.py",
+      "reason": "Labour and skills domain",
+      "sha256": "19d6aced564e9214c3ba64675655418a15cc616b2a02d738bbbd1dee05ddb7c2"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/eea4_employment_equity_plan/eea4_employment_equity_plan.js",
+      "reason": "Labour and skills domain",
+      "sha256": "98d46909bcef6456cda6c6a9017c1de4d0965ce8c89cde2e39b4f30c935d7d2a"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/eea4_employment_equity_plan/eea4_employment_equity_plan.json",
+      "reason": "Labour and skills domain",
+      "sha256": "5f1b950a4aba56a3bea81792ca785d9272db5a672870555ea36771af88050456"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report/eea4_employment_equity_plan/eea4_employment_equity_plan.py",
+      "reason": "Labour and skills domain",
+      "sha256": "21f7236bcffc3a38d4db8c10480113496209ed729431d90aa2dacae9a7181dc4"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/report_utils.py",
+      "reason": "Labour and skills domain",
+      "sha256": "4ebb6a4f9a6ea03a2cac4e0cdc0e806dcf565f2829ab98cf751004cf1c551d96"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/sa_labour/workspace/sa_labour/sa_labour.json",
+      "reason": "Labour and skills domain",
+      "sha256": "f32ec3179c1bed44a0cdfa865e356d5939e4999c6102f2a2450e9ba2d0f346ce"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/sa_localisation/__init__.py",
+      "reason": "Shared localisation module",
+      "sha256": "247e1eddcf7bbeaad60f2e9b14e6648db5b2fd47d422102ed845999b254d1bb3"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "cff9f2bf954594e1bf95da7529d26e7926769e228d9bc87b7978ad4587b7a3d4"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/bursary_benefit/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/bursary_benefit/bursary_benefit.js",
+      "reason": "Payroll domain",
+      "sha256": "065fbe6e98797c5964ad8742cc82b449dbe120433960feae951bfd6ef09bc5e6"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/bursary_benefit/bursary_benefit.json",
+      "reason": "Payroll domain",
+      "sha256": "3b1553e2345eae3b4e225080a57e2e024a84036443acefeefa8f6c0e356a157a"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/bursary_benefit/bursary_benefit.py",
+      "reason": "Payroll domain",
+      "sha256": "0633d2d7303e86f1aae67bbe412f804ee3b131ee738bfca4c0437caa77e12535"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/cellphone_benefit/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/cellphone_benefit/cellphone_benefit.js",
+      "reason": "Payroll domain",
+      "sha256": "8daed54c14c0c497e8695a470c81dcceb496e07012a4acd10e7a74860074a061"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/cellphone_benefit/cellphone_benefit.json",
+      "reason": "Payroll domain",
+      "sha256": "8eb86af4f4be5f1c18f9d61f8e391d19f38de57d7113e4a74090ff3a881e5086"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/cellphone_benefit/cellphone_benefit.py",
+      "reason": "Payroll domain",
+      "sha256": "2e48ee12451f58a70085f2df560774db385c394aedd56818eeeda4e3afa86800"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/company_car_benefit/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/company_car_benefit/company_car_benefit.js",
+      "reason": "Payroll domain",
+      "sha256": "6dcea9a15584638ec91b690cab2e7fe651d5babb84310e3da64ddd0bb471ed80"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/company_car_benefit/company_car_benefit.json",
+      "reason": "Payroll domain",
+      "sha256": "1ece04b280ff305a42100f04fd33f315e96c0fcaab81469ccc0fb1f9c0effd97"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/company_car_benefit/company_car_benefit.py",
+      "reason": "Payroll domain",
+      "sha256": "9c358ad2b1c567bf5d384d83ceab9444361100892f4135c66cc2796f4cb478e4"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/company_contribution/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/company_contribution/company_contribution.json",
+      "reason": "Payroll domain",
+      "sha256": "a349b69f47d33fe256e8b2412a8213e4d7a48fdb2d8b7eed79d4a3dad6ed4e5c"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/company_contribution/company_contribution.py",
+      "reason": "Payroll domain",
+      "sha256": "4409d15e94cdc93f59f018ac66c6227b86499a6864472035069bbcf7f9e95644"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp201_submission/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp201_submission/emp201_submission.js",
+      "reason": "Payroll domain",
+      "sha256": "50d97f61613ad8f4d98a5d64e3748443aeac159923a98bf819ebd76ebf0becbc"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp201_submission/emp201_submission.json",
+      "reason": "Payroll domain",
+      "sha256": "a63c2f8c1ed1f8c670915c883a44162a2f5d24374e51339dc7c99524b511890a"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp201_submission/emp201_submission.py",
+      "reason": "Payroll domain",
+      "sha256": "7c8d3aa39c609e0ef9433226200a49523a2dd28c99732090ce50fe99e3fbaf90"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_emp201_reference/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_emp201_reference/emp501_emp201_reference.json",
+      "reason": "Payroll domain",
+      "sha256": "4c693aa32cfd66d77c620e7ed5c9c131179b9896e32a98102c95c9a2af164ff2"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_emp201_reference/emp501_emp201_reference.py",
+      "reason": "Payroll domain",
+      "sha256": "97080b895cc244328cb5eb82a4bf4f387cfbb110ced4b2802b11e0aeaff2848c"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_irp5_reference/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_irp5_reference/emp501_irp5_reference.json",
+      "reason": "Payroll domain",
+      "sha256": "a0403358670a929aa56f41e419c898934ded146f9921bca84b9c84fa3ec06561"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_irp5_reference/emp501_irp5_reference.py",
+      "reason": "Payroll domain",
+      "sha256": "857cc004f703b6e7a4302aaae50535b17debc587d81e7822234a4f5ea51a6ffb"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_reconciliation/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e88bcccc09abd3e67aa2a4e465c81782b909ad05d5323062876019bcb74380e1"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_reconciliation/emp501_reconciliation.js",
+      "reason": "Payroll domain",
+      "sha256": "f089f8cc2f696b71a9f291bf77648ccba4c2a07ee3651435594b383e19855eea"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_reconciliation/emp501_reconciliation.json",
+      "reason": "Payroll domain",
+      "sha256": "8c3843101b0c1c7368e225725b22fddd0cc2f473f422ce046078a24c2e0879fc"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_reconciliation/emp501_reconciliation.py",
+      "reason": "Payroll domain",
+      "sha256": "5834690754617a9bda4e28ac65985250137dc82a99ccf5d28924273138d05796"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/emp501_reconciliation/emp501_reconciliation_list.js",
+      "reason": "Payroll domain",
+      "sha256": "eec768300c18e0ea49cd316ebaa250b804e687c063e45e3f1c593cebc2d20f2c"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_eti_log/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_eti_log/employee_eti_log.js",
+      "reason": "Payroll domain",
+      "sha256": "3fbdd2af11a63d082de3e0708d224a3e61f7815c7bf49d9f0f3f8ae5955431d9"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_eti_log/employee_eti_log.json",
+      "reason": "Payroll domain",
+      "sha256": "b4c51ea55c92d5e9fb87eafa64286aa9001869b5774d06df1ee7c41fadc1b392"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_eti_log/employee_eti_log.py",
+      "reason": "Payroll domain",
+      "sha256": "f551287162c39258bf7b6e804d6f8d698829f3c46723fccdb76b8fa0767b24c9"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_eti_log/test_employee_eti_log.py",
+      "reason": "Payroll domain",
+      "sha256": "3a138bfc17b054e8be478919e21d885d3e32ba9c100515735629cc34c574d41f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_final_settlement/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_final_settlement/employee_final_settlement.js",
+      "reason": "Payroll domain",
+      "sha256": "78f06191e4d47351753dbd43c88b53ffb5219531579738c907e4fd7df9af1d38"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_final_settlement/employee_final_settlement.json",
+      "reason": "Payroll domain",
+      "sha256": "7266febbc8ff894f7ac9f056eb5f710c278b9c4cfa480c91096e0c6de7903eb3"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_final_settlement/employee_final_settlement.py",
+      "reason": "Payroll domain",
+      "sha256": "1ad006db68c1ed9de072cbdf90f63c49765ca43db463eef55ba5c534091d8eec"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_frequency_detail/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_frequency_detail/employee_frequency_detail.json",
+      "reason": "Payroll domain",
+      "sha256": "11a17c5dcc6cd23b914415622f791ac9ce41d18291687254ed9443d073a0a87c"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_frequency_detail/employee_frequency_detail.py",
+      "reason": "Payroll domain",
+      "sha256": "a69e053756fceabe2ed71337e801347458f04e135811859c1f1127395cf88330"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_payroll_frequency/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_payroll_frequency/employee_payroll_frequency.js",
+      "reason": "Payroll domain",
+      "sha256": "d0db780292aec4e30b890421c90986fe01e11805c63aaec0bf20a8b2d6de581b"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_payroll_frequency/employee_payroll_frequency.json",
+      "reason": "Payroll domain",
+      "sha256": "6f3756a7bf85fceac6059b6db649d76461cf3bae7004f5d53139e4d1735e8ef9"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_payroll_frequency/employee_payroll_frequency.py",
+      "reason": "Payroll domain",
+      "sha256": "871cfff52852a42203dbb2ae82dc6faa801f9839cf78c1a4c04229d741110667"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_payroll_frequency/test_employee_payroll_frequency.py",
+      "reason": "Payroll domain",
+      "sha256": "0901beddc3cd4ad1dc951f6e7779323e01e425c8fb9d9ce91606f83a1a3d89c4"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_private_benefit/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_private_benefit/employee_private_benefit.js",
+      "reason": "Payroll domain",
+      "sha256": "76197d07aad2f656a69594e02576ab57377734a51f9808fed21ddb6d5a171982"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_private_benefit/employee_private_benefit.json",
+      "reason": "Payroll domain",
+      "sha256": "7226e3ba62846444d5e4cca67158666304100f8b72a3650f209a5418390ebba4"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_private_benefit/employee_private_benefit.py",
+      "reason": "Payroll domain",
+      "sha256": "2e189315a928b4f6d6bb32a0eb5bbc2fe4f92b51e166083f70c191845af14b33"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_private_benefit/test_employee_private_benefit.py",
+      "reason": "Payroll domain",
+      "sha256": "c362f5a97c598e8c19fb713713576f0b7a01f1c4bfbb8600a5b589bff6ab00a2"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_type/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_type/employee_type.js",
+      "reason": "Payroll domain",
+      "sha256": "08fa8e0e375b3cdc3b330be24153d16389a35969c40a5ef1f9c52490bdf7475e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_type/employee_type.json",
+      "reason": "Payroll domain",
+      "sha256": "37fcbfa708dc076770c7cf1120b61630cb821d8a7957fd352b4dde2c6fb11c07"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_type/employee_type.py",
+      "reason": "Payroll domain",
+      "sha256": "ed12b4e0bc6b00dd2aa5fc0d26b342ff83eae21d725299c33ccc64c80edabe17"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/employee_type/test_employee_type.py",
+      "reason": "Payroll domain",
+      "sha256": "9e5ee786aa3c0981b87766844cf3877ef0ee64d71a499fa858acc3888f873bfa"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/eti_slab/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/eti_slab/eti_slab.js",
+      "reason": "Payroll domain",
+      "sha256": "f3a56865e9778a907232cde207eece79d34f563c19e973471c8a1ad604009f65"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/eti_slab/eti_slab.json",
+      "reason": "Payroll domain",
+      "sha256": "3eaf5a6e03ddf4c874b9b40cbbc17103ee4fd62119f6c8ab7987ee47f5f93fb8"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/eti_slab/eti_slab.py",
+      "reason": "Payroll domain",
+      "sha256": "d592958e17519478c98bb08c16f8a014b03e04c841f01b75dbff85c7d53c1aec"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/eti_slab/test_eti_slab.py",
+      "reason": "Payroll domain",
+      "sha256": "14af7feb6617e659c30966d71b79efd8e92a6823598dab83ff6395ed0f948491"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/eti_slab_details/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/eti_slab_details/eti_slab_details.json",
+      "reason": "Payroll domain",
+      "sha256": "54a48401fdf0ce488a723aedfec9c28dc70640cfd5f3b3614d0823e47023ae09"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/eti_slab_details/eti_slab_details.py",
+      "reason": "Payroll domain",
+      "sha256": "796bc81a5d0e64930315dcbe04558eb2bc4728a75a4d7e2f672ed88704db6869"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fringe_benefit/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fringe_benefit/fringe_benefit.js",
+      "reason": "Payroll domain",
+      "sha256": "0484be15b0400df84f50b33831d832ee6fce937ffd01d9b7e207e96d0ede656a"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fringe_benefit/fringe_benefit.json",
+      "reason": "Payroll domain",
+      "sha256": "88fea48f2fc17e85c5514f401e199fe56a9efd82d0081b313c486a458eaf1d97"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fringe_benefit/fringe_benefit.py",
+      "reason": "Payroll domain",
+      "sha256": "955760d7f60a25390e4e5e01ed5c24db744087689ea549f847cedf95ecfa6f3e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fringe_benefit_detail/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fringe_benefit_detail/fringe_benefit_detail.json",
+      "reason": "Payroll domain",
+      "sha256": "1da4f0420d28f64eeb2a7ffb91e2c437b7180e06c70ed650cbd35333478b70d3"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fringe_benefit_detail/fringe_benefit_detail.py",
+      "reason": "Payroll domain",
+      "sha256": "e6cac520da91eae18b73929ea2b0dfcc78746240e8262b02857cdbc80250be1b"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fuel_card_benefit/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fuel_card_benefit/fuel_card_benefit.js",
+      "reason": "Payroll domain",
+      "sha256": "a45a872fd58493268d1180bd4057195e5134254c928419325863818d8fc3dede"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fuel_card_benefit/fuel_card_benefit.json",
+      "reason": "Payroll domain",
+      "sha256": "d9d0ee6d9035fc107848933bdffbf000b46ce72fbb561ea5eec59d6078fe9260"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/fuel_card_benefit/fuel_card_benefit.py",
+      "reason": "Payroll domain",
+      "sha256": "48dbb5378db16889199050933c1d3da2ef5d60ddcfa2a0f7bfa2d56ad7d53b80"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/housing_benefit/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/housing_benefit/housing_benefit.js",
+      "reason": "Payroll domain",
+      "sha256": "c75ab1e02487461fac2b627b5b3aaa9b5a94d97f20159690ad6bb74d6bd0a28c"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/housing_benefit/housing_benefit.json",
+      "reason": "Payroll domain",
+      "sha256": "5ae0511097632a17bc03c9849b9783635dfe1600fdff25f0f4cd72391b43774d"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/housing_benefit/housing_benefit.py",
+      "reason": "Payroll domain",
+      "sha256": "47d209b9cb7b071bdd18dc6fb0f5cd69b6c8ab6cd2ebd0b29bc5157b89e867ab"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_certificate/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_certificate/irp5_certificate.js",
+      "reason": "Payroll domain",
+      "sha256": "d38867e2a623dfac7d1d689fb2b9af5bc0fc8fc0b299eff818dda74b97920749"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_certificate/irp5_certificate.json",
+      "reason": "Payroll domain",
+      "sha256": "e4878244edb6eb321ca304e339a6e7370989265690ed9de5fc85cfc66f0dac9f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_certificate/irp5_certificate.py",
+      "reason": "Payroll domain",
+      "sha256": "130caae2af1ff148dbb4c7423d5ecdba2a4244135a86d3aec1e0c70a8c48a93f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_certificate/irp5_certificate_dashboard.py",
+      "reason": "Payroll domain",
+      "sha256": "ac07f06ddb5b596d366cb3ca13d301d3d18bf2764c8221a8e3ef298577af13e5"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_company_contribution_detail/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e88bcccc09abd3e67aa2a4e465c81782b909ad05d5323062876019bcb74380e1"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_company_contribution_detail/irp5_company_contribution_detail.json",
+      "reason": "Payroll domain",
+      "sha256": "69aa354028cd9170bdf145210890d40d3e4ef0fab95241b07628e2c4d0863a36"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_company_contribution_detail/irp5_company_contribution_detail.py",
+      "reason": "Payroll domain",
+      "sha256": "539b5d917fa0011520a5f1e5ca4cf00c1a548be0621d040d5b79d3b809042187"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_deduction_detail/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_deduction_detail/irp5_deduction_detail.js",
+      "reason": "Payroll domain",
+      "sha256": "b633a643b08dd1ce3dc407ce640c57c05e4bee4175f65fd691f2f1a476feee76"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_deduction_detail/irp5_deduction_detail.json",
+      "reason": "Payroll domain",
+      "sha256": "06c8ac759d3932e2299b6f1a35b16b273cd860ef6245a350c3fd8fcdba039bac"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_deduction_detail/irp5_deduction_detail.py",
+      "reason": "Payroll domain",
+      "sha256": "c84cda71fc85efbaf27186eb5f1b4232365e2f4f9e25ab64086698ae27ab5794"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_income_detail/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_income_detail/irp5_income_detail.js",
+      "reason": "Payroll domain",
+      "sha256": "eccf1389424c6b704f28dced864fa530c3613c002037de78cdf1a960230cabac"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_income_detail/irp5_income_detail.json",
+      "reason": "Payroll domain",
+      "sha256": "a70b676858fb3af4042a3a6d977827e32af0690844010d1c271d062d42c607d1"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/irp5_income_detail/irp5_income_detail.py",
+      "reason": "Payroll domain",
+      "sha256": "916eafeb80a72d6581e2f922aed2f1c383749e60c0748f614d05aa55a745f155"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/leave_encashment_sa/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/leave_encashment_sa/leave_encashment_sa.js",
+      "reason": "Payroll domain",
+      "sha256": "6aeacf4d99604934244faa24e2ddd35b66a5e8281ddf96917f3a924d79a2f550"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/leave_encashment_sa/leave_encashment_sa.json",
+      "reason": "Payroll domain",
+      "sha256": "30a7c3d0e5dfe45f47b5cc6c1a31f3c533648fa97e4392e80ed508ccff618826"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/leave_encashment_sa/leave_encashment_sa.py",
+      "reason": "Payroll domain",
+      "sha256": "0164f2821f1445d694034e2f7e60501282003785843ecdd04e741883efad7df0"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/low_interest_loan_benefit/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/low_interest_loan_benefit/low_interest_loan_benefit.js",
+      "reason": "Payroll domain",
+      "sha256": "313f0071daec9c8ddbb588c2fdb36612f9790b8c654af4c32c8e9ff8e1ca2aab"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/low_interest_loan_benefit/low_interest_loan_benefit.json",
+      "reason": "Payroll domain",
+      "sha256": "bd9dc2a3ffd336de660c7a0971b3f40ef7e4916eb955d208773a4c23361a769c"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/low_interest_loan_benefit/low_interest_loan_benefit.py",
+      "reason": "Payroll domain",
+      "sha256": "6ac74a6cde3f82f67a78f8092abd7bc69d34b9fbe9f52b9a147d2598eeb5c1ce"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/medical_tax_credit_rate/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/medical_tax_credit_rate/medical_tax_credit_rate.json",
+      "reason": "Payroll domain",
+      "sha256": "474094856bd98b3f92ce00f099eae9b4b5c44bb48d468d642b948902d7d44f9b"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/medical_tax_credit_rate/medical_tax_credit_rate.py",
+      "reason": "Payroll domain",
+      "sha256": "6ba1034203fc422272ed7ea760e1b62fad924121de3b9b32101cc0d99fb388ff"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/payroll_payment_batch/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "99cdb5c881f482e01214f95e73c8233b9654cc7cf35444b73f0501ead35a7df6"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/payroll_payment_batch/payroll_payment_batch.js",
+      "reason": "Payroll domain",
+      "sha256": "d47506e8c9c5c5cce0386d92348a301ded14b4c8e3a7084a0d4e6c358cb63d34"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/payroll_payment_batch/payroll_payment_batch.json",
+      "reason": "Payroll domain",
+      "sha256": "92da07046b9108865440fb2eb3e04a49497e694668ee874af0263cf2b46af0d9"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/payroll_payment_batch/payroll_payment_batch.py",
+      "reason": "Payroll domain",
+      "sha256": "31e26350a07141ebdc490b4e50f540f34e14a39d9fb0b444f226e1eb0c88ea2a"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/payroll_payment_batch/test_payroll_payment_batch.py",
+      "reason": "Payroll domain",
+      "sha256": "89bd52f6a6e5c4209f580557c845fef2a855132aca096f88472e54172deb9fb8"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/retirement_annuity_slab/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/retirement_annuity_slab/retirement_annuity_slab.json",
+      "reason": "Payroll domain",
+      "sha256": "e3d028b093ada31d9cfb69e383b8e66a8440d9ce61bdbf18311321dab18d9ed9"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/retirement_annuity_slab/retirement_annuity_slab.py",
+      "reason": "Payroll domain",
+      "sha256": "26edd285e962c14444c1c24df6f602cc59dffcab8918c2960956396750b3123c"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/retirement_fund/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/retirement_fund/retirement_fund.js",
+      "reason": "Payroll domain",
+      "sha256": "b1ec8004ae9a90a95f4ca60884437f2fd8d162805b78a4e41dd0916a62d4076c"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/retirement_fund/retirement_fund.json",
+      "reason": "Payroll domain",
+      "sha256": "416c335e64245fcb0d7510ba25faf1aab2f5d349215ac4fb02640427e6299eed"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/retirement_fund/retirement_fund.py",
+      "reason": "Payroll domain",
+      "sha256": "69fa4b46d764f3ea0b7153d9586b6ebdf794c288dac46855c4e7734e1fa1915c"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/sars_payroll_code/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/sars_payroll_code/sars_payroll_code.json",
+      "reason": "Payroll domain",
+      "sha256": "7c04ffc364068b51120f1f661bb109a8b8b41c90f3f6d8bd46e17030a88e39c7"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/sars_payroll_code/sars_payroll_code.py",
+      "reason": "Payroll domain",
+      "sha256": "aaa102c5802381e1e6b8cd0977cd994d6e9d84b3307277bc971ff65099011d22"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/sars_vehicle_emissions_rate/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/sars_vehicle_emissions_rate/sars_vehicle_emissions_rate.js",
+      "reason": "Payroll domain",
+      "sha256": "d38f1a1a6ed5e790427b9d138fbcc92c8ad9496b3b8059a001bbe6cc47b228bc"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/sars_vehicle_emissions_rate/sars_vehicle_emissions_rate.json",
+      "reason": "Payroll domain",
+      "sha256": "cc2ce23be33ae56d35d98d7a4fa53299183771827e33f3118db28503f6af6fdd"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/sars_vehicle_emissions_rate/sars_vehicle_emissions_rate.py",
+      "reason": "Payroll domain",
+      "sha256": "a46aee44db4f162b427d58ca4cacd9a52115140db711340cccffab50c8988042"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_directive/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_directive/tax_directive.js",
+      "reason": "Payroll domain",
+      "sha256": "4b859bfbfa836940b797dc0557a50a3c7b90f3f91c4774b68901b2575f980d4d"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_directive/tax_directive.json",
+      "reason": "Payroll domain",
+      "sha256": "3d05bc183b9bca848aef21aa28cfae0bf61ce8e97b4540ca1b52bd05c20b8672"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_directive/tax_directive.py",
+      "reason": "Payroll domain",
+      "sha256": "826db0d71acdaa42e20dd74c88822862de968a769b3ab0798f3f3612f1640743"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_rebates_and_medical_tax_credit/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_rebates_and_medical_tax_credit/tax_rebates_and_medical_tax_credit.js",
+      "reason": "Payroll domain",
+      "sha256": "bfb0f82cb6c604d0ae342555698667282828f3153b9fdf0514486c5c2af247d7"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_rebates_and_medical_tax_credit/tax_rebates_and_medical_tax_credit.json",
+      "reason": "Payroll domain",
+      "sha256": "58313ea2cedd6b9dcb3a217d9227ae1ecd621bdc0cb1a13c3d2579fe9d82c3f8"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_rebates_and_medical_tax_credit/tax_rebates_and_medical_tax_credit.py",
+      "reason": "Payroll domain",
+      "sha256": "ebf6b2925668e0102ecbf01ff093984bdc6321cee5defd9fc64b95a5b97c5edc"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_rebates_and_medical_tax_credit/test_tax_rebates_and_medical_tax_credit.py",
+      "reason": "Payroll domain",
+      "sha256": "93ff048c975243351ec8a541e5c619949fb75842fd262a76bcd0b446347a0856"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_rebates_rate/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_rebates_rate/tax_rebates_rate.json",
+      "reason": "Payroll domain",
+      "sha256": "a7a37e85b27b30195be0b6e773e7bab0d6472b92962b841d3e357f42061855d1"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/tax_rebates_rate/tax_rebates_rate.py",
+      "reason": "Payroll domain",
+      "sha256": "5a0f40b249a58dc128d8db406ceca0a5f218a4ed91481ce73d0b7fd31b26782e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/travel_allowance_rate/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/travel_allowance_rate/travel_allowance_rate.js",
+      "reason": "Payroll domain",
+      "sha256": "31fba4d835d6a503bf9eb723e5d3ccae7fd54adad24fa92e88f01dda89886faa"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/travel_allowance_rate/travel_allowance_rate.json",
+      "reason": "Payroll domain",
+      "sha256": "12169d374be9a12cc10e1d04c91825722c4df3f335d188535bf79cc43e0a1a62"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/travel_allowance_rate/travel_allowance_rate.py",
+      "reason": "Payroll domain",
+      "sha256": "71263be188b33b43f8d3e5046b36c95fb3674d86c12ce345f324f65bee0c1d0f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/uif_u19_declaration/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "0e48a2cca863813ef8b3279836a192edeb02490c1e1eca767eee993fc870111e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/uif_u19_declaration/uif_u19_declaration.js",
+      "reason": "Payroll domain",
+      "sha256": "bd36bf4a370713a26f4fb41d49eddebd5cbdd4ebf8308cdd91bef0563809bae6"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/uif_u19_declaration/uif_u19_declaration.json",
+      "reason": "Payroll domain",
+      "sha256": "9cb79571e11904cf9e260cf8141b93dae7aca9311bc79fcff2ca4f318d3a5d6f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/doctype/uif_u19_declaration/uif_u19_declaration.py",
+      "reason": "Payroll domain",
+      "sha256": "7490717c22f0611b170b1401436d467aefa4835d8e0c36b5b065ce9da7f828a6"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/fringe_benefits/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "b0ff276ab093baf5160f74513929b2c807391fac595efd409ca7ac0e481c19bf"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/fringe_benefits/calculations.py",
+      "reason": "Payroll domain",
+      "sha256": "688608138906f2070699b12381d42c3cffe9e8b22f45244ccecee3f4f0125a0b"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/fringe_benefits/salary_slip.py",
+      "reason": "Payroll domain",
+      "sha256": "064ff3ebd91e91de06c7450d9ecc88a9bacce0d77136d30cb59d62366aae820b"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/fringe_benefits/service.py",
+      "reason": "Payroll domain",
+      "sha256": "6c08ff33c44a8a798cac0bd8221043122efd9a823688999ca9beefa1ce64b4d1"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/fringe_benefits/tasks.py",
+      "reason": "Payroll domain",
+      "sha256": "ce259695a6b7bc871432955fabaf8359ffccd066e7d2643a943e70952d9f1686"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/irp5_employee_certificate/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/irp5_employee_certificate/irp5_employee_certificate.json",
+      "reason": "Payroll domain",
+      "sha256": "dfc67f8dc83d2f61b993db978d4b4c2d2bae7eaafdbbbca0e553eff92eeb5f09"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/irp5_it3_certificate/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "870d490addd55b7a188d715f33919a22155d8933bd6e37069a68c8096abd0784"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/irp5_it3_certificate/irp5_it3_certificate.json",
+      "reason": "Payroll domain",
+      "sha256": "890fe4bb5bbf64abaf47cbe18d68e45deee89d569d0e027276c4ea70c6181a42"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/sa_emp201_submission/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/sa_emp201_submission/sa_emp201_submission.json",
+      "reason": "Payroll domain",
+      "sha256": "0bc4e050edc2cb47654dbec7d4f4b7316cd28b6911fcfb0b33324feab7812ca1"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/sa_emp501_reconciliation/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/sa_emp501_reconciliation/sa_emp501_reconciliation.json",
+      "reason": "Payroll domain",
+      "sha256": "9e0cc961a1f628546db8be0b17935211c779cfedc18d34d1384d7f6c994769ce"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/sa_salary_slip/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/print_format/sa_salary_slip/sa_salary_slip.json",
+      "reason": "Payroll domain",
+      "sha256": "9441b2ff16e5f30c39712b16299e16107a95b560c7507255c201ff5a39dd32e2"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/department_cost_analysis/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "cfd4a8798949d2f3afa1081493475b34881d8f559fdb3b69b513feb7e9be1d48"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/department_cost_analysis/department_cost_analysis.js",
+      "reason": "Payroll domain",
+      "sha256": "e1cc65c72df9318614ed2b216baefd25e402bc91a18a8473d4aa005992af99b2"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/department_cost_analysis/department_cost_analysis.json",
+      "reason": "Payroll domain",
+      "sha256": "06cebbbdcd983ba738df22f9bc09924f54ceaef8ebd236ddb6c9cf07d784a8a1"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/department_cost_analysis/department_cost_analysis.py",
+      "reason": "Payroll domain",
+      "sha256": "32672e79f8c73c51007e7ce8e4fa9d54210338f11d7fce3b1141fa08e7aa83d3"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/emp201_report/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "e88bcccc09abd3e67aa2a4e465c81782b909ad05d5323062876019bcb74380e1"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/emp201_report/emp201_report.js",
+      "reason": "Payroll domain",
+      "sha256": "cbd5ee8c280491e78b188588e4d451d80bebcfd034b2a1d71e1f1c367d20e267"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/emp201_report/emp201_report.json",
+      "reason": "Payroll domain",
+      "sha256": "025026b0313c4cc52e2b72deb5cbdab3b1b3c69972c95e49aa601ff8b28ef54f"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/emp201_report/emp201_report.py",
+      "reason": "Payroll domain",
+      "sha256": "6506923bd6cb8c90f4c3d2a2c23e73c4d628953e1257e7207a362ac0d8d69b3e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/payroll_register/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "cfd4a8798949d2f3afa1081493475b34881d8f559fdb3b69b513feb7e9be1d48"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/payroll_register/payroll_register.js",
+      "reason": "Payroll domain",
+      "sha256": "be543db1954644abdec4de7f4ed7cc74d5e613f04f29c3c4095a561184189f00"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/payroll_register/payroll_register.json",
+      "reason": "Payroll domain",
+      "sha256": "67bb69dcdaed39cf251873638f7b02c964c6c6286032d0428fc54d6c8f6df0fe"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/payroll_register/payroll_register.py",
+      "reason": "Payroll domain",
+      "sha256": "875126964f81d7a33fb06640cfdb19516adf7035c92cf1f59861856b3a4da212"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/retirement_fund_deductions/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/retirement_fund_deductions/retirement_fund_deductions.js",
+      "reason": "Payroll domain",
+      "sha256": "7990b9fedac15a5e684ed85dcaa34fbb0ebcda730f51cfcafb1c6e13439861ac"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/retirement_fund_deductions/retirement_fund_deductions.json",
+      "reason": "Payroll domain",
+      "sha256": "3b76b5c283467ff49fe6cbe7a6da67489fb2c4228f1c0b26a78864226c92c83a"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/retirement_fund_deductions/retirement_fund_deductions.py",
+      "reason": "Payroll domain",
+      "sha256": "60157bcb83944d9094fd112af832e3bb61b9be8c7b0468ed53a1a227e2fb0971"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/statutory_submissions_summary/__init__.py",
+      "reason": "Payroll domain",
+      "sha256": "cfd4a8798949d2f3afa1081493475b34881d8f559fdb3b69b513feb7e9be1d48"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/statutory_submissions_summary/statutory_submissions_summary.js",
+      "reason": "Payroll domain",
+      "sha256": "8ee6c61dec0d75ba80b1aee904b496edebcea6ea589f2a47a3b48b5c664c296c"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/statutory_submissions_summary/statutory_submissions_summary.json",
+      "reason": "Payroll domain",
+      "sha256": "65296ebdcbdb02f826a76109e0b751eed7e3fe874c99725d765b82adce959793"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/report/statutory_submissions_summary/statutory_submissions_summary.py",
+      "reason": "Payroll domain",
+      "sha256": "70b6e96310f0aa5f84a64c34040729f21173160f88a7c55974ecf780b0865ae0"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/sa_payroll/workspace/sa_payroll/sa_payroll.json",
+      "reason": "Payroll domain",
+      "sha256": "e787e18da949d79f7ed83962a60e7866a16e770b8dd8489da0b8f1fce1b0d2ca"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/__init__.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "462b0c30331e9402ab9e2300818954da9e6d0efcd990be42fe3f6eed79f79b39"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/custom_fields.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "0c30df1d33a00733ba97afde43c0285c1f8e9372570cc37a549837b155378b56"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/earnings_components.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "916b410c9b85dca01c766711c4e90fe5e9cc938a4a275217a4350287f91c8421"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/eti_slabs_2025.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "e954aaf3f9ad65582059e75198f97d4c87070ee25409dad66b97f9e9b5c7b2bf"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/holiday_list_2025.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "76a1f039a7b88d398fc205940a62aae270f9a231fdcb45e69a77df1993a5aa74"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/holiday_list_2026.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "7581f51a731c517228c3efc348e1460fa35d987c1f0e47d71a8d4aa275d4d275"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/holiday_list_2027.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "6783bbe841308a88b8947ccc455f2f611f420f228be7cfc946a9bcf23652a2ba"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/payroll_period_2025.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "ec7e9a9587873642aa76bad57e697d06952a76ef5ebaf960a97d70f1c685b446"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/payroll_period_2026.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "dc421359760814f6a567cf66f41ab3dc6762c5413dc27c727bc81f5b3e7b7d31"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/payroll_period_2027.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "731bddc30dfac5ca9ed5c3cafea0e5166e4bc6c4afbbb5d2e84a708aac804262"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/salary_components.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "b536d89eae3a7f6d64150513afc939a707ff692febca3cc0e0e359065ae53f2a"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/statutory_rates_2025.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "77d78e95b717d751bccdcca49f7454ff80d4494f16ac2ece023b176a8f4b669d"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/statutory_rates_2026.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "0b2e7568e871e4fba878bd21225736a12118f1a473d289b579ee52b47e74c821"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/statutory_rates_2027.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "17d62f890279e4d00f2fb88495296258eb209f70dff73dcaf0bcc6f6321d11f4"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/tax_rebates_2025.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "b037543c21d73490372ae12a62fcf9a96eb5c53b3af27cfcbfe45b9125309688"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/tax_rebates_2026.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "33a3c0e3e4d69f05f8275e041d25814b7aefae8c8a931f73d18b1de99cbeb4ca"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/tax_rebates_2027.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "bf41cf5d79f3d33448ffd66c38beaf50834e6a46b0c5cbaaffa250289c655d98"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/tax_slabs_2025.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "3cfd097d9d7f93379e8f48a2e330f7340db8e91cbc29ae057f78da6b486a7e7d"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/tax_slabs_2026.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "55711b28a5dd894177e59c292d16d999a1b2bb565b1dfc8ba2e563dc96e4329e"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/data/tax_slabs_2027.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "b6c52e14be7cfbffc44dfb8d5b622deb2072ea49e2a11016aca28069279c028a"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/doctype/za_local_setup/__init__.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/doctype/za_local_setup/za_local_setup.js",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "4b38c9cf5c78bae59c7b1c451ba30edef5eaebedbb9fa50664f0aff1b0ade4c4"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/doctype/za_local_setup/za_local_setup.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "31f99b3fb192b0ff8bcf0fd363d5f0d38f4e2fb97f1859234c0157d546676b50"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/doctype/za_local_setup/za_local_setup.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "2bac0d76983886057ef98f9bbf58786970c6e2e4f6ebf941a021478eb6fabd2a"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/form_tour/south_africa_vat_settings_form_tour/south_africa_vat_settings_form_tour.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "29911551d11899bc39706e64cbee365ad28263b9d3e0f548d18fbc6b5f66e7a3"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/form_tour/vat201_return_form_tour/vat201_return_form_tour.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "8e473bdcc16b16e833c8d6b49aad64df658020484f05cc0f99a1d4d91115488c"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/form_tour/za_local_setup_form_tour/za_local_setup_form_tour.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "16c7b7575a5b820530abf108b92b86eebd8d5c94240f9c68cf09878093df6878"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/install.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "c269f2e882a9eb22f582c1b079ff9bd4e0c904ec71538aa9c08c698fc14829d2"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/leave_types.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "2f2f26924fd8368d5bf88f9ac2dbd92e2de516b899ee3da3683e1e91fc7ae68f"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/module_onboarding/sa_coida_onboarding/sa_coida_onboarding.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "b935201501883b1c585d34e2cec13fa0dec8052e576aedc88e8f3904f5193d7f"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/module_onboarding/sa_labour_onboarding/sa_labour_onboarding.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "e8a4e9a2be7487effbe83927332f8224936ec158476b2d5fde430b78cad753ef"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/module_onboarding/sa_localisation_onboarding/sa_localisation_onboarding.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "9369d2962e7af53c680220bd11da29b6b61851f0b1a87036aea1ceaccf930eff"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/module_onboarding/sa_overview_onboarding/sa_overview_onboarding.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "eb769ef5eac9157905c679d210e9fc8979e99b6371f963f3e832869a36700be3"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/module_onboarding/sa_payroll_onboarding/sa_payroll_onboarding.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "f266d894d1326b5cb3c89998c1b94b8da9d5df8a735a45c016eb70e64dc9dea4"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/module_onboarding/sa_vat_onboarding/sa_vat_onboarding.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "b084fc1508dc52a832ed977349a1dd1bc823f8317a6c1164607445ed65e4d468"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/monkey_patches.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "467b76f2232d593a9930f157818558b0b05d6f6acd7ff815a4da927035a9684a"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/apply_recommended_vat_setup/apply_recommended_vat_setup.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "e768ec6a562833534e2b795fb2b99749b05ff98911a153f6334fb7ff341dd8bf"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/create_annual_training_report/create_annual_training_report.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "d720b0c7e1f10454f000278198d23a56dbc5997861bc36f9f6bc999737318ab3"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/create_coida_annual_return/create_coida_annual_return.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "4b441835b4718602ef200eedf528d651d249acd9a448d797f2f193d754e35000"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/create_emp201_submission/create_emp201_submission.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "3ba218dc1bfd3f2865ee2afd576c124c208b38000c8e3691c5f84c44c0c89e4d"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/create_emp501_reconciliation/create_emp501_reconciliation.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "ad3fe80f788bbf314bb0dc1c83ad5cb4770ca1fb729215e4d990357f79257c9e"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/create_irp5_certificate/create_irp5_certificate.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "7c9336db48c50f4953253bf4e7b72c574d5f9334153b4696c87ebac4f16e028f"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/create_oid_claim/create_oid_claim.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "767ad6b3c5c502ad7afbed8f2521113d4cf3053f8546196d88b7e04c2a101841"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/create_vat201_return/create_vat201_return.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "301c76966504ad765edbafe5d8ca1219bad71b358c02910fb34a155a617c9e60"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/create_workplace_injury/create_workplace_injury.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "73a440ddef0e943d8b5ef6a9354b0d680a1b88eaf5f91b9b94254326c279c0ea"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/create_workplace_skills_plan/create_workplace_skills_plan.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "93d8b93e4b689ac2c2df4eda238e9dc3ea4167dfcfb9cbf9f6870d2582ac7ddf"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/create_za_local_setup/create_za_local_setup.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "d8c03986c502a00bf2d3d64f3e969d9c15537c69b7c893f8e7be4481c46c9027"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/fetch_vat_201_transactions/fetch_vat_201_transactions.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "f224d926adfae04d7cadbfd95dc19b0dc13a193aaae62772c800abb2f192987c"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_bargaining_council/review_bargaining_council.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "e4543fd70521be34b85f142edbef4009e4a964f9b05a1b6f587c6d8fc792e423"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_business_trip_settings/review_business_trip_settings.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "442d22532dd736497b20751e3207cfcc339258f9e0887eee3d29d79f5720471d"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_coida_industry_rate/review_coida_industry_rate.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "af90081c7babd84af6b6392416e1236f41a8339267d4a4ddd17270339ec6e4a7"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_coida_settings/review_coida_settings.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "649a2dc9c25844cd67e1c6b81d8444f399adb925488a2cba2de40a509ed56dac"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_company_vat_details/review_company_vat_details.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "4ef90c97e991b78ee4819a79e2f40e1db99c24348e8583a9cd1d4e5e5611e252"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_income_tax_slabs/review_income_tax_slabs.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "0c191eb356d4a54f009ac73598e91aaa69e96f968fb77ed7d4ec61be1684acce"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_item_tax_templates/review_item_tax_templates.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "22bbd320b747eeb3a8067c04b85d2166be570b695c170c14fcef0bbf6549e032"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_payroll_period/review_payroll_period.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "005d769b7aca3b42a438e09ee029c39864478d593ce67e2485865943472bf224"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_payroll_settings/review_payroll_settings.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "b90fd8bac063c652ceb769f3b055052afdda5255b9688ba4b3644727c2cf3696"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_purchase_tax_templates/review_purchase_tax_templates.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "fd89a6e89ecafefc14b670d0e1987bf5300378902972890bf53a425c92f6ea9f"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_salary_components/review_salary_components.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "1d64440c33f9660f136f8ffd9e99a8cade608f1f41f58bbbda0cb56e343a9874"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_salary_structure/review_salary_structure.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "e3e3673417ba2bf318c6efa955eed1855206d92ebdafa50fc2b20ad5428b09cb"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_sales_tax_templates/review_sales_tax_templates.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "69a4992007c8b9d5590075c0086d24b68a3eb76241f46a083fcbe5eaae2b8d4a"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_sectoral_minimum_wage/review_sectoral_minimum_wage.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "9f4fd6ec709b3dce7479dbd593c18e0c6264f7a8b8f732fad19f733c85f7f30d"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_seta/review_seta.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "e16f2af968768ad55cd03109625a23ef2adf6453896086932ca771e8102ed9d9"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_south_africa_vat_settings/review_south_africa_vat_settings.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "2d050babedd7d17b834d53adbf3d37c715c1373fd7ea8ba55f4ce2135a7499a9"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_tax_rebates_and_medical_tax_credit/review_tax_rebates_and_medical_tax_credit.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "4754d123f894fe579e3d4815620bdb95de9556452ee647a6669c22a34546d9ef"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/review_vat_201_linked_transactions/review_vat_201_linked_transactions.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "9d1b2ddbe18d86d4614b1131ed00021eb34978f673dd50af3157fa002e48467f"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/sync_vat_accounts/sync_vat_accounts.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "7582671f85a425640e12d2ee3d48fb576f47685aa26a734ad264f5b8e12d47cc"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/view_eea4_employment_equity_plan/view_eea4_employment_equity_plan.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "11bda7abe6261fd1e19d8bd6da522fdf0031e5ae16caa48005899ef7eb07cb2f"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/view_statutory_submissions_summary/view_statutory_submissions_summary.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "f8dbaffeaa33ce4a642f7960b70a416f36c1a0bd2c4ea90c0fab911c80455f3c"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/onboarding_step/view_vat_audit_report/view_vat_audit_report.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "61a313a0722eb28f296bcca857f5ed0ad03e82428793d0cb4b4fdf936c49cc8c"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/page/sa_local_help/__init__.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/page/sa_local_help/sa_local_help.html",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "c1fd63d5f2c7bd1051c4d119e0a85d04efdb364f8951d12ff429e604e41d7edb"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/page/sa_local_help/sa_local_help.js",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "8f7597dd07f146f83bc29f97ea58a8d96a3c52e40ab4f1b160284f7688c80145"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/page/sa_local_help/sa_local_help.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "9f29d6c95320403fc17de579f06e344a856827a05727e8e13a2efab7375f3b44"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/page/sa_local_help/sa_local_help.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "65610e5a8c0f9b03a908b0e26a6f5e795913d19a583e7f361351a088ccc3117d"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/property_setters.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "c3ad85cbdcdce26f9e1895a7b6e5b039fd19716d99e49077ebd8048389004df1"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/setup_wizard.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "50ddf9932cee4bacf8b142c03e56887fe02734c50c6046cf468033b579f46396"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/statutory_setup.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "d47d184ba4e213c761fbd396078511de7d461cfcf34e3447794b8ee0c937b68f"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/uninstall.py",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "eb795134b787913842dcc5742f1bd3ccc2e29ff8725035bd4d7c0a4b02f225a0"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/sa_setup/workspace/sa_localisation/sa_localisation.json",
+      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "sha256": "529a4338466bcbc57fda7fc7b2a7b20dd864e3560bda10b0c80cf26c5d397bc8"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "c1558d6ac0a314f487e5ddb04a3fe9379157b9121de44c0b32a9f5a3494483ae"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_rate/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_rate/south_africa_vat_rate.json",
+      "reason": "VAT domain",
+      "sha256": "9cd1d4ad346ac0a51ab8b517c130587f2b9ff2ceefc34b900b6660a3f7f3d64c"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_rate/south_africa_vat_rate.py",
+      "reason": "VAT domain",
+      "sha256": "4d67055b8e3e06cc4d5b93089c1c1e4deefe9a74d75e7299c2bf3a3014405fdb"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_settings/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_settings/south_africa_vat_settings.js",
+      "reason": "VAT domain",
+      "sha256": "26f3cb138f4040397da59941095dbc7b377bda65ee1a62b9c44d3755be3981fa"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_settings/south_africa_vat_settings.json",
+      "reason": "VAT domain",
+      "sha256": "174180a39803204a3b2a717c5859e3f8f16a61f746312a8deb70ee20e34af78f"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_settings/south_africa_vat_settings.py",
+      "reason": "VAT domain",
+      "sha256": "193f2f2f3fd0ddd569c25ec835c635a27e8148fbc83b33e2aa3e23495f60becf"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_settings/test_south_africa_vat_settings.py",
+      "reason": "VAT domain",
+      "sha256": "9d0f13cd635818cc9217e569362d55af6a8602ca346bcc261116cf3663c6f69a"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_tax_account/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_tax_account/south_africa_vat_tax_account.json",
+      "reason": "VAT domain",
+      "sha256": "9279ea965245a7e87db56b7d1e63fe3844b5bbfd218fd7e2b6a932a93bc1665e"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/south_africa_vat_tax_account/south_africa_vat_tax_account.py",
+      "reason": "VAT domain",
+      "sha256": "b660b372833c5c496c3e93454cf96742a00841af3119df4168abf18c9e29e41d"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/vat201_return/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/vat201_return/vat201_return.js",
+      "reason": "VAT domain",
+      "sha256": "cf87584fde548edab868ddea88ba3290de0c90882b563189aae0a642390a5175"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/vat201_return/vat201_return.json",
+      "reason": "VAT domain",
+      "sha256": "b81d87b9456109d7ddd46d04689a9fb15613be6b522f348c049edcb4e8c8c982"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/vat201_return/vat201_return.py",
+      "reason": "VAT domain",
+      "sha256": "755c137b645a304bae0f5066dba41409da7d99e3ae6ffb171895445b656be7b3"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/vat201_return_transaction/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/vat201_return_transaction/vat201_return_transaction.json",
+      "reason": "VAT domain",
+      "sha256": "d328df414e64377d7805e525783cbf286f753129b6cb0899eabca2fcab947a1e"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/vat201_return_transaction/vat201_return_transaction.py",
+      "reason": "VAT domain",
+      "sha256": "e75eb9c8d93237b2a15d0ffde5e6c9e821f8d0307daa7999e139e958446a801d"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/vat_vendor_type/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/vat_vendor_type/vat_vendor_type.json",
+      "reason": "VAT domain",
+      "sha256": "4649b2c20b44a56cc959ea2ec66506bfee91f785c8f93972c8b6c174e263140f"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/doctype/vat_vendor_type/vat_vendor_type.py",
+      "reason": "VAT domain",
+      "sha256": "4d24cd3de091895e34ac1ddfd21fc2e4ced704e5c230de0fa7a28bbb6773c3fb"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/item_sync.py",
+      "reason": "VAT domain",
+      "sha256": "5d96600d5f9a72f79f4d106bbc9cfb62e2cc3a7467642a8b0d6acefa15f3aa9d"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "19c1880f3b8440116e88038afbf88ccc943bf3da340bd3defd0a122b7c1c8312"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_abridged_tax_invoice/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "a2629b2e936ef3fbb1558d5b185ac0c12b332d054e87abfe474212bdc703375e"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_abridged_tax_invoice/sa_abridged_tax_invoice.json",
+      "reason": "VAT domain",
+      "sha256": "d1ba2001722b0671a492ef46383a12c5e08cae519d86033879b2a8cc29fa8817"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_credit_note/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "50d19eed1f9e4e407bf21bed7e09c9ebd91a414e09d4cd34372b39a076105ae6"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_credit_note/sa_credit_note.json",
+      "reason": "VAT domain",
+      "sha256": "bb550d9a45f27472f66d2a6e71a761435362ce77bf8410d362f65c6f83c4b21e"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_debit_note/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "88ff6883a7161d309824109a9229fa31e122de4273654f0847eb2190f0ff456f"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_debit_note/sa_debit_note.json",
+      "reason": "VAT domain",
+      "sha256": "3e2e8e31b7fce6053843d6079e7bca37181dfb23658f1a706dca7fd780f4d521"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_delivery_note/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "eb5119be634585e7de0bcd29e66eec41cebc89ce51be229a8e719683abfe58eb"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_delivery_note/sa_delivery_note.json",
+      "reason": "VAT domain",
+      "sha256": "44bf4e3fec3d7c9ec02047eb05f8f59d81ce5f63e62e656888dbf964078642fc"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_full_tax_invoice/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "723a1da3b44d292cbfe3be1d79d01d02882455e3c3cc054a2ed2cf977bd33ebe"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_full_tax_invoice/sa_full_tax_invoice.json",
+      "reason": "VAT domain",
+      "sha256": "4e3884a7baad0b5a8856096710eacf4361ff56d0974d4d49203bc5acdd9ff39b"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_payment_entry/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "018368748c480a21495b5fbbb0e595631464c516b2adc2449881185aa98a36a2"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_payment_entry/sa_payment_entry.json",
+      "reason": "VAT domain",
+      "sha256": "94157cd414e7a1f30024702fed9ea1feac5d3525f8899628c097948701c7e3cb"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_purchase_invoice/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "7041ea61a7623900d69af9afb34c1043dc95627f404cf5e97133f44d07a50a11"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_purchase_invoice/sa_purchase_invoice.json",
+      "reason": "VAT domain",
+      "sha256": "f85bc568b7c9d48d704b69b4707501671a2b74ff37e89f6656bdfc6c9d726bbf"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_purchase_order/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "f8e1a9058cd27e5e41a38a88679610d4ace252a3e87da92e28e8a6aa8a01e3e5"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_purchase_order/sa_purchase_order.json",
+      "reason": "VAT domain",
+      "sha256": "e0a741ffc87da816f8c4d252c3af463bbd38313485e4a9810a70e25aa0dba964"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_quotation/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "f29a478331d2712119d5d54e78e0733cc3c1cac822f6f918460be71a6ff23630"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_quotation/sa_quotation.json",
+      "reason": "VAT domain",
+      "sha256": "884aac477afbf3e4af317f75f2fc766fe197a9474d766b710f99b54d8c4b1f7a"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_sales_invoice/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "d80cfbb9fcbe51ce47ab185ff00d57bff91628cf080074e51a0bd1df6fd2540f"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_sales_invoice/sa_sales_invoice.json",
+      "reason": "VAT domain",
+      "sha256": "dcbe55405aca6230aef7ea2142de0df2f0195a10bf528fa7c4895e20dfb6646e"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_sales_order/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "823c7237017593064d3195e95e3a4d25e278865ad9737859179038817fdceccf"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_sales_order/sa_sales_order.json",
+      "reason": "VAT domain",
+      "sha256": "b01bdaefabace63be751a99a3af397b579c32e7866e86b71f17ffc0e3beb2e3f"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_vat201_return/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format/sa_vat201_return/sa_vat201_return.json",
+      "reason": "VAT domain",
+      "sha256": "1641d05a5e780d2a42ec24f94b9336995133e8da35498747177270454e2d58be"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "0ec88d282f1cdd8826870a7dff248ef049cc6ff28d66fd57f6ecee4988c05847"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/sa_purchase_invoice_taxes/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "30212670680f51da4663aabf840b4bb1b5edb00d9ad523741d86da5e5d8ff1a1"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/sa_purchase_invoice_taxes/sa_purchase_invoice_taxes.json",
+      "reason": "VAT domain",
+      "sha256": "0fff115937c3c3b8c96c4c6fa2214c6d300abbd8159996d5ccc30abfed44e0ae"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/sa_purchase_order_taxes/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "08b87f58f971f825b94589baf76fd6fd560c597085a02a2023d9813b252d1b29"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/sa_purchase_order_taxes/sa_purchase_order_taxes.json",
+      "reason": "VAT domain",
+      "sha256": "31cf0b7846761d517c652f6966c65cab9c38200c12f7537e0bf8487d39fa329a"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/sa_quotation_taxes/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "c1ca7cdc71fd9847c5b37af83607a0b65be7d916c35efdf2653a80eaced25d95"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/sa_quotation_taxes/sa_quotation_taxes.json",
+      "reason": "VAT domain",
+      "sha256": "3e4554afe08cad02e311f765e8c21c3a6a74bab0bc0898ea402e58fde8f2fa16"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/sa_sales_invoice_taxes/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "54160d55c56b1390578796dfdf6fa0b85ef27e2d0a5f428e66337e4967d03abb"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/sa_sales_invoice_taxes/sa_sales_invoice_taxes.json",
+      "reason": "VAT domain",
+      "sha256": "696ee2faa2773d480f5d4cace2817bf93963f4293e46cd7c1c93a569d7dfa993"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/sa_sales_order_taxes/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "04a4916f177cbbeb9fcaccf5d330e4ff173c6f13e89679e569e436391c61fb23"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/print_format_field_template/sa_sales_order_taxes/sa_sales_order_taxes.json",
+      "reason": "VAT domain",
+      "sha256": "098895d1527678659e241066ec4a7fd4ad464c6331aa4058f6d504ae1465e171"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/report/vat_201_account_classifications/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/report/vat_201_account_classifications/vat_201_account_classifications.json",
+      "reason": "VAT domain",
+      "sha256": "d62e7bee62968364103274774bf675b8d614dfc60322f06034525971aebf1c92"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/report/vat_201_account_classifications/vat_201_account_classifications.py",
+      "reason": "VAT domain",
+      "sha256": "c4601b97f04af5adfd20ebe738ddb86c755c0d759b10c04c3c8dc9caf89688a7"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/report/vat_201_linked_transactions/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/report/vat_201_linked_transactions/vat_201_linked_transactions.json",
+      "reason": "VAT domain",
+      "sha256": "f8bf39ad52e560929cc63eaa510aa25284a912d124343e441bb34fb21580fce9"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/report/vat_201_linked_transactions/vat_201_linked_transactions.py",
+      "reason": "VAT domain",
+      "sha256": "8b4cd2eade8b991f4b035134c05fd118a5939fc88e0f5b1fc7128c960581b104"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/report/vat_analysis/__init__.py",
+      "reason": "VAT domain",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/report/vat_analysis/vat_analysis.json",
+      "reason": "VAT domain",
+      "sha256": "1464cca7a6bfcacb9cce3f9e3f60a4b1bd777d8ddaa7958f346b4ecb3569f484"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/report/vat_analysis/vat_analysis.py",
+      "reason": "VAT domain",
+      "sha256": "c464f7f1c516d6032207a72dcde03c7f8a92a424d577c148967fb0ee1540863e"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/setup.py",
+      "reason": "VAT domain",
+      "sha256": "953ffa165b1f053ac0415379aafc8c37cf216738eb605549cf2bc90cc3ee8100"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/tax_invoice.py",
+      "reason": "VAT domain",
+      "sha256": "f0a7e0cfa92002d3cc564ceff9beefb9c67e41f814db172dfa61c9ec37a8701b"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/vat_tax_calculation.py",
+      "reason": "VAT domain",
+      "sha256": "83eaae6cae462d03e159473c1b250869c732db79b488f3ff467b3ccd853c5455"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/sa_vat/workspace/sa_vat/sa_vat.json",
+      "reason": "VAT domain",
+      "sha256": "fde443be328afc3587d0c6f3e9fb88d7bf3c3f116e1ed92cf73b6f7585dc6987"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/tasks.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "ebb1db738bf23b251165aad421bd0436ee0e15b74680c860b85f1c705fd5b280"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/templates/__init__.py",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/templates/pages/__init__.py",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/templates/print_format/irp5_employee_certificate.html",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "fac17e80bc827e423f9d6689adcc3f69d1a6aff68dc2a00a866603d3fdf8117e"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/templates/print_format/sa_commercial_document.html",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "a911beb92e9dc3df8ab8c58fe6bbc7c2fd3b6d26cc07423f12531f7e3e841bd0"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/templates/print_format/sa_payment_entry.html",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "6f58a82b4e5b5df127f4f3895935dcfb57b38d560e56925810f3cd2698dcabed"
+    },
+    {
+      "owner": "migration_split",
+      "path": "za_local/templates/print_format/sa_salary_slip.html",
+      "reason": "Split by domain before compatibility retirement",
+      "sha256": "12ca8f6f0a41231b41b71795665cfea90b678b5ee93b197a602af7a694ba158c"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/test_data_loading.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "88977ad4bee559f0cc46d99a9040cac58bafb9998adac68399a48fcc9fd56d6d"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/__init__.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "32c4858e22cc2c967b42150fa550562a2c839c2cebcaab91cabdf6f4da020022"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/compat.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "c54558f2c30a4b214d83d682473020e62e82a0af5656a031ec80e967e1a0de60"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/e2e_data.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "02b26fc252f99f3acdb699ae25d23138a9f3265458c28d5f80cb35ac83e09691"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/test_api_permissions.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "627e110332f397741df40211a96eca7bb25537bf663790bf21df912545642726"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/tests/test_coida_labour_remediation.py",
+      "reason": "Workplace regression test",
+      "sha256": "297d35754d007e9821f860f8039c603419f9be21d2de7ebc86eb10fcaa579426"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/tests/test_fringe_benefit_remediation.py",
+      "reason": "Payroll regression test",
+      "sha256": "c25f230e84308008c4675372530bafa06046b06150868bc7063a8ff10847ee86"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/tests/test_irp5_certificate_setup.py",
+      "reason": "Payroll regression test",
+      "sha256": "425267dbe380b1ce005d04a021b03911916dabd84582911eb74b41a7e278896e"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/test_journal_entry_cleanup.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "b0c812463e078f96c150b499eea55e48615e8012bf50507590b5998390725d33"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/tests/test_payroll_calculation_regressions.py",
+      "reason": "Payroll regression test",
+      "sha256": "9b4578542c20dffac7d99dcf61f2f8fb071fac5eef9410e368e97e1c7ff16b74"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/tests/test_payroll_entry_validation.py",
+      "reason": "Payroll regression test",
+      "sha256": "f4cff2c9af5d0455cf215f721f14292a5f4741466fed68f998034110952a49a2"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/tests/test_payroll_utility_regressions.py",
+      "reason": "Payroll regression test",
+      "sha256": "a6584c21db184b90d1d638f719d5f90198088ec63fe4e89073eb4f54c1e9250c"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/test_repo_hygiene.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "bc24b7738e69000901c2ed5ff80c902c5ea716358a3c17023ec3d3e28f4d5236"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/tests/test_sa_labour_custom_fields.py",
+      "reason": "Workplace regression test",
+      "sha256": "fce953bc47917ec614b9ed02c90ab1aa1076facbe9c41c5670d5afec76dd944e"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/tests/test_sa_payroll_compliance_2027.py",
+      "reason": "Payroll regression test",
+      "sha256": "1154a16d29b2b5110c844cc52bfacf8bdbff0bb024fc95794acfba6a2b231e5a"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/tests/test_sa_payroll_compliance_prior_years.py",
+      "reason": "Payroll regression test",
+      "sha256": "f3e6b41eca1ea43e4a7fc90268d8b3684d906476c4beb5a0e876b6f72d2a9344"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/tests/test_sa_vat_production_readiness.py",
+      "reason": "Finance regression test",
+      "sha256": "c71e152c57701e0da8401a57d3bd943a93d8b0588eed7cd5c26e7dfdaa1c671b"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/tests/test_sars_reporting_regressions.py",
+      "reason": "Payroll regression test",
+      "sha256": "1f22abf53b2f6e85e9fb880a9b78613b4806be131c26b32b339728fb60e8c612"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/test_scheduler_integrity.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "0f2c4feb0cac17a4f2ff1b0353e6e022c9923a5863155b2726c13ebc5b0db2b9"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/test_setup_stabilisation.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "c027909b070cfab26b6d1014bdfd79b5a34bad1bd2e93b4bb8a003972ba6d6db"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/test_statutory_setup.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "33d45f146c9a5c8d89adf03e5a6bf39e9e96a64bb291a9d5bcf461f7a7efd408"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/test_statutory_workflow_regressions.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "f09044c92a23513160b507827494e3658066501dcc1affaf6bad5b07029b98cf"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/tests/test_tasks.py",
+      "reason": "Cross-domain or shared regression test",
+      "sha256": "f4df4296c7baa8b016ce737718cb2c21c16d2533ed77a41c7ab7c9e7281f5f27"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/tests/test_tax_utils.py",
+      "reason": "Payroll regression test",
+      "sha256": "220643ba58ad5b647f0a31c6b0d750f30d4d4b317b8e72bf963ae29bd350f9c6"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/utils/__init__.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "8f27fd0220e003b8facd0c67d9d1aa60cd718016f6e03b925f4285407d0a30f1"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/utils/coida_utils.py",
+      "reason": "COIDA services",
+      "sha256": "355c3292a6f756846d944acf5dcfc05dd40d36d9e60d53fccabca5bb440574e8"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/utils/create_test_data.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "5db696b7e0a2627d7d93df5a429e87b36380307ff25ea8f175e7e972a937cdf0"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/utils/csv_importer.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "cec31af4ac1051be3bffe45cfc5d216cf251a57f2ed6029ac1e1fa4ef7748754"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/utils/emp501_utils.py",
+      "reason": "EMP501 services",
+      "sha256": "0c9f70a4f604cce6f310f6b196bce3ebcb9d8b17adf5899fcf02a6943e29be75"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/utils/eti_utils.py",
+      "reason": "ETI services",
+      "sha256": "a4ecfbe3b618087db2fd102b853a016a41385d9cd22258caf07c13d7d1e73ec2"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/utils/file_utils.py",
+      "reason": "Shared safe resource access",
+      "sha256": "21b99d8cfe239202eb69c8cb5a04b42b69e674dd0c74ca324fdcb91b1680c63a"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/utils/fringe_benefit_utils.py",
+      "reason": "Fringe-benefit services",
+      "sha256": "3e063e3e11fb371072d24a9bff1cb2fbeb6450cafbb3e2bb74f79a690221aa63"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/utils/hooks_utils.py",
+      "reason": "Compatibility hook composition",
+      "sha256": "5688c66969b18c06220f0814ce189b0da667f8fbc763ae42e5cd0b55f7c6483a"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/utils/hrms_detection.py",
+      "reason": "Installed-app detection",
+      "sha256": "3a377d8431ac35c2735b5be40185f9d59ee8d3a04f1bf3ddd13683541824ae83"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/utils/integrations/__init__.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "41eeed93a8e08b54fe9faf6e5bc533adde27b6d9a4f71bff9a55903697de4125"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/utils/integrations/eft_file_generator.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "1a7f2d6d7bb513908c4e2a3941c1b9c8412475683736247f07c7e1e2dd622891"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/utils/integrations/sars_xml_generator.py",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "e4025027028a4a34f9e8ad31b8b31508e8945e09d8b57af7404104fa26c42b66"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/utils/lump_sum_tax_utils.py",
+      "reason": "Lump-sum tax services",
+      "sha256": "126baf184eaa48e21cd6f50f35730157138ccc84f72956e403644d6c636ff4db"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/utils/payroll_utils.py",
+      "reason": "Payroll services",
+      "sha256": "dfd5a50dc8ec4f063c3bf1c4a9b459a3441f30ed7888762b4d3c9ce25c7eb129"
+    },
+    {
+      "owner": "za_local_core",
+      "path": "za_local/utils/setup_utils.py",
+      "reason": "Shared setup services",
+      "sha256": "0d3ad01babb9b37cbdca656ed67b3c335dd23b8e0c2732ac4f38dcc449f60062"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/utils/statutory_rates.py",
+      "reason": "Legacy payroll rate resolver",
+      "sha256": "5d73571747ee9df515074291a4bb42ff0facd7e32426857031666b70135a08c0"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/utils/tax_utils.py",
+      "reason": "PAYE services",
+      "sha256": "95225d0029fa9031a91744e92e36d216efcd002c71c4cfe096e17f7cc947b739"
+    },
+    {
+      "owner": "za_local_workplace",
+      "path": "za_local/utils/termination_utils.py",
+      "reason": "Termination entitlement services",
+      "sha256": "e7ff727c2c65f404b9a8914dada01dd91e7ae95ce46bd2547c8972a5b92ebbd7"
+    },
+    {
+      "owner": "za_local_payroll",
+      "path": "za_local/utils/travel_allowance_utils.py",
+      "reason": "Travel allowance tax services",
+      "sha256": "2d86e6628853011d6da13faadbcbbd6becc346f5235100dcef65aa703ba18174"
+    },
+    {
+      "owner": "za_local_finance",
+      "path": "za_local/utils/vat_utils.py",
+      "reason": "VAT services",
+      "sha256": "81c6936d1342c6a1c9a6c043eb9ec0e9cc3e354f21e28ca780b29e6a9ab254e4"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/workspace_sidebar/sa_coida.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "f1a6f5e16c59568d4bee9e9cc9c4e66d7a3196f0eff5757ff71bf462a6e76afb"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/workspace_sidebar/sa_labour.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "dadef9832de53d15a0c60849962ed10246925fdd725132b9e16feb40b7ff7999"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/workspace_sidebar/sa_payroll.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "1a0e240ceb07c4872b1eb12b5269a77df26a9fdcc060719878be6273fe78f35a"
+    },
+    {
+      "owner": "za_local_compatibility",
+      "path": "za_local/workspace_sidebar/sa_vat.json",
+      "reason": "Temporary compatibility or repository-level artifact",
+      "sha256": "d03a6249bd99b169c6f47cc70f6f8ef71d54e202c9c78ad7f5534e985a269dfb"
+    }
+  ],
+  "legacy_app": "za_local",
+  "owner_counts": {
+    "migration_split": 120,
+    "za_local_compatibility": 52,
+    "za_local_core": 58,
+    "za_local_finance": 93,
+    "za_local_payroll": 216,
+    "za_local_workplace": 112
+  },
+  "schema_version": 1
+}

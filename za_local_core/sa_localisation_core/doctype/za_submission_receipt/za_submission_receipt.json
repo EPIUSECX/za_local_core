@@ -1,0 +1,40 @@
+{
+ "actions": [],
+ "autoname": "format:ZA-RECEIPT-{#####}",
+ "creation": "2026-08-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["filing", "authority_reference", "submitted_at", "response_status", "submitted_by", "section_evidence", "evidence_file", "sha256_checksum", "declared_amount", "notes", "amended_from"],
+ "fields": [
+  {"fieldname": "filing", "fieldtype": "Link", "label": "Approved Filing", "options": "ZA Filing", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "authority_reference", "fieldtype": "Data", "label": "External Reference", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "submitted_at", "fieldtype": "Datetime", "label": "Submitted At", "reqd": 1},
+  {"fieldname": "response_status", "fieldtype": "Select", "label": "Response Status", "options": "Filed\nAccepted\nRejected", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "submitted_by", "fieldtype": "Link", "label": "Submitted By", "options": "User", "reqd": 1},
+  {"fieldname": "section_evidence", "fieldtype": "Section Break", "label": "Immutable Evidence"},
+  {"fieldname": "evidence_file", "fieldtype": "Attach", "label": "Portal or Authority Evidence", "reqd": 1},
+  {"fieldname": "sha256_checksum", "fieldtype": "Data", "label": "SHA-256 Checksum", "reqd": 1, "unique": 1},
+  {"fieldname": "declared_amount", "fieldtype": "Currency", "label": "Externally Declared Amount", "reqd": 1},
+  {"fieldname": "notes", "fieldtype": "Text", "label": "Response Notes"},
+  {"fieldname": "amended_from", "fieldtype": "Link", "label": "Amended From", "options": "ZA Submission Receipt", "read_only": 1, "no_copy": 1}
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-08-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "SA Localisation Core",
+ "name": "ZA Submission Receipt",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {"role": "ZA Compliance User", "read": 1},
+  {"role": "ZA Compliance Reviewer", "read": 1, "create": 1, "write": 1},
+  {"role": "ZA Compliance Manager", "read": 1, "create": 1, "write": 1, "submit": 1, "cancel": 1, "delete": 1, "amend": 1},
+  {"role": "System Manager", "read": 1, "create": 1, "write": 1, "submit": 1, "cancel": 1, "delete": 1, "amend": 1}
+ ],
+ "sort_field": "submitted_at",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

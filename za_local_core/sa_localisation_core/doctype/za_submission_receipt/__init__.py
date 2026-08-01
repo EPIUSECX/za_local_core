@@ -1,0 +1,1 @@
+"""ZA Submission Receipt DocType."""

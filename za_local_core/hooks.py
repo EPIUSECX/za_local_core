@@ -8,7 +8,25 @@ app_license = "mit"
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["frappe", "erpnext"]
+
+after_install = "za_local_core.install.after_install"
+after_migrate = "za_local_core.install.after_migrate"
+
+scheduler_events = {
+	"daily_long": ["za_local_core.tasks.daily"],
+}
+
+app_include_js = "/assets/za_local_core/js/za_local_feedback.js"
+
+add_to_apps_screen = [
+	{
+		"name": "za_local_core",
+		"title": "SA Compliance",
+		"route": "/desk/sa-compliance",
+		"has_permission": "za_local_core.api.has_app_permission",
+	}
+]
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -255,4 +273,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

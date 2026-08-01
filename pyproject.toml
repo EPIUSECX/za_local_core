@@ -4,7 +4,7 @@ authors = [
     { name = "Cohenix", email = "info@cohenix.com"}
 ]
 description = "Shared statutory sources, rate packs, compliance profiles, filing controls, and audit foundations for South Africa."
-requires-python = ">=3.14"
+requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
 dependencies = [
@@ -14,6 +14,13 @@ dependencies = [
 [build-system]
 requires = ["flit_core >=3.4,<4"]
 build-backend = "flit_core.buildapi"
+
+[tool.frappe]
+frappe_version = ">=16.0.0,<17.0.0"
+required_frappe_version = ">=16.0.0,<17.0.0"
+
+[tool.bench.frappe-dependencies]
+frappe = ">=16.0.0,<17.0.0"
 
 # These dependencies are only installed when developer mode is enabled
 [tool.bench.dev-dependencies]
@@ -25,7 +32,7 @@ packages = []
 
 [tool.ruff]
 line-length = 110
-target-version = "py314"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = [

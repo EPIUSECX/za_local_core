@@ -1,0 +1,1 @@
+"""Information Officer registration record."""

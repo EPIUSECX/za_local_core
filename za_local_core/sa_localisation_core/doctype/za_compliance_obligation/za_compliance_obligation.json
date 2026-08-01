@@ -1,0 +1,43 @@
+{
+ "actions": [],
+ "autoname": "field:obligation_code",
+ "creation": "2026-08-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["obligation_code", "title", "domain", "authority", "source", "section_schedule", "frequency", "due_rule", "capability", "active", "effective_from", "effective_to", "notes", "amended_from"],
+ "fields": [
+  {"fieldname": "obligation_code", "fieldtype": "Data", "label": "Obligation Code", "reqd": 1, "unique": 1, "in_list_view": 1},
+  {"fieldname": "title", "fieldtype": "Data", "label": "Title", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "domain", "fieldtype": "Select", "label": "Domain", "options": "VAT\nPayroll\nLabour\nEmployment Equity\nSkills Development\nCOIDA\nCIPC\nCorporate Tax\nPOPIA and PAIA", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "authority", "fieldtype": "Select", "label": "Authority", "options": "SARS\nDepartment of Employment and Labour\nCompensation Fund\nCIPC\nInformation Regulator\nOther", "reqd": 1},
+  {"fieldname": "source", "fieldtype": "Link", "label": "Approved Statutory Source", "options": "ZA Statutory Source", "reqd": 1},
+  {"fieldname": "section_schedule", "fieldtype": "Section Break", "label": "Schedule and Capability"},
+  {"fieldname": "frequency", "fieldtype": "Select", "label": "Frequency", "options": "Monthly\nBi-monthly\nSix-monthly\nAnnual\nEvent-driven", "reqd": 1},
+  {"fieldname": "due_rule", "fieldtype": "Small Text", "label": "Due-date Rule", "reqd": 1, "description": "Human-readable approved rule; calendar generation implements a tested rule key."},
+  {"fieldname": "capability", "fieldtype": "Select", "label": "Capability", "options": "Production\nControlled Manual\nPreview\nUnsupported", "reqd": 1},
+  {"default": "1", "fieldname": "active", "fieldtype": "Check", "label": "Active"},
+  {"fieldname": "effective_from", "fieldtype": "Date", "label": "Effective From", "reqd": 1},
+  {"fieldname": "effective_to", "fieldtype": "Date", "label": "Effective To"},
+  {"fieldname": "notes", "fieldtype": "Text", "label": "Notes and Manual Steps"},
+  {"fieldname": "amended_from", "fieldtype": "Link", "label": "Amended From", "options": "ZA Compliance Obligation", "read_only": 1, "no_copy": 1}
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-08-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "SA Localisation Core",
+ "name": "ZA Compliance Obligation",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {"role": "ZA Compliance User", "read": 1},
+  {"role": "ZA Compliance Reviewer", "read": 1, "write": 1, "create": 1},
+  {"role": "ZA Compliance Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "delete": 1, "amend": 1},
+  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "delete": 1, "amend": 1}
+ ],
+ "sort_field": "domain",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1
+}
