@@ -116,9 +116,9 @@
       "sha256": "00b990d9b5e527b1973bf40d91ba859a34ade9c615598ecec775cf8c7cf767b7"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/__init__.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Legacy composition artifact owned by the core migration programme",
       "sha256": "99e0be1541fd81306eb9e20def5c0faad4d279755b85ddce0cd86cbefc211e63"
     },
     {
@@ -152,39 +152,39 @@
       "sha256": "6a615cf518ed71b74c84a381872b52141f812c8d462c86db16703537ab28e229"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/config/__init__.py",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Shared navigation configuration",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/config/sa_coida.py",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace navigation configuration",
       "sha256": "117f9cd5ce9a71688909da71095e325454e6bf327edf0bc2e629cc361565d8ab"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/config/sa_labour.py",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace navigation configuration",
       "sha256": "ddad579d821406b73ed5fb5ca19d4455d2002a6bb63ecd1e4232056235898bc2"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/config/sa_payroll.py",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll navigation configuration",
       "sha256": "bb782e9fc2ff302c8fe0801aa1956b1a11d3224e6ebcc86b2ee3ba94355efc71"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/config/sa_setup.py",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Shared navigation configuration",
       "sha256": "500d36662161281a5ac753fc062301a49781b67d1fe44acc6c8b9f4892dae3fc"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/config/sa_vat.py",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Finance navigation configuration",
       "sha256": "7bcc70b2a5cd5d952502635c1101aa0a8f7ef9dddac4d5d7fbdf210b0ddc5b92"
     },
     {
@@ -212,129 +212,129 @@
       "sha256": "ebbd35555b23975eb21293dc4cf5a3675469075d3297fa0b9c760704caf90e97"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_workplace",
       "path": "za_local/data/bargaining_council_list.csv",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Workplace reference data",
       "sha256": "877668e1af44b4c9380c225a07a6baab86974bc03680d1d5be8ec208b66bd99f"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_workplace",
       "path": "za_local/data/business_trip_region.csv",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Workplace reference data",
       "sha256": "147417fc52c635bb0fd21c312fe467ee62d06bf233d06ebb072b4c13a5e592fc"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_workplace",
       "path": "za_local/data/seta_list.csv",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Workplace reference data",
       "sha256": "dff145cd2fb98ea99fa36442c63ff535f50104a4d891a2144e1fd7469017b8f3"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_workplace",
       "path": "za_local/desktop_icon/sa_coida.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Workplace public asset",
       "sha256": "f0bea5ca29cb7a21e51133b32dccbfe3fa4917e26d3ec72041ccc8b903f5b31d"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_workplace",
       "path": "za_local/desktop_icon/sa_labour.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Workplace public asset",
       "sha256": "21f527b6c2dacb838e8cfc2c42d7b1bd043f0fd540ce105a4380887cef3ec078"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/desktop_icon/sa_localisation.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Shared localisation public asset",
       "sha256": "030a0cf9358cb6b9b93000fed5e3ef45cd0159b4ff8aaecc9fa2eb3d8d2f2006"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_payroll",
       "path": "za_local/desktop_icon/sa_payroll.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Payroll public asset",
       "sha256": "e36e268eb417b1eac78057079d06a7246dfeb615ba67b69111115fe8038dec18"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/desktop_icon/sa_vat.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Finance public asset",
       "sha256": "855fcfee90f7c4869f66d240507570cbbe9d34dad2357f02ffc38c61054e6e5d"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/hooks.py",
-      "reason": "Temporary compatibility or repository-level artifact",
-      "sha256": "24daf57e93fa4f167e7edefe9d7040a46f22a29d0646598dbf49b266f2ea10e0"
+      "reason": "Legacy composition artifact owned by the core migration programme",
+      "sha256": "0e0a4c5694752ee18b10d296e2e341d3c9f27cae45bf4b44a74f9e4cd63dafe2"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/legacy_standard_docs/README.md",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Retired finance print-format source",
       "sha256": "9fbf120123f203e8671af7ab7a69fdbfe270d245b12db999e7f43c10d5355f3a"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/legacy_standard_docs/print_format/sa_credit_note.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Retired finance print-format source",
       "sha256": "644e478e78eca540c3e5834d10c3716b42bcaa29bf2d004c5496c348118fb615"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/legacy_standard_docs/print_format/sa_debit_note.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Retired finance print-format source",
       "sha256": "6507b694d51f5e2065dc3f729036cf0e065822e3c86db028dacd95a3b1d3f22a"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/legacy_standard_docs/print_format/sa_delivery_note.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Retired finance print-format source",
       "sha256": "a98c89c0c1e1ebb00572f8991a0e853043125bf6d35ab05bf176153c5a5b0171"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/legacy_standard_docs/print_format/sa_payment_entry.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Retired finance print-format source",
       "sha256": "61a529555bd592701f5a650a2bd28aad734114535f2fad9c6866c27eff24248e"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/legacy_standard_docs/print_format/sa_purchase_invoice.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Retired finance print-format source",
       "sha256": "507b917f2a4323c1c294f8b212c3b0812ae04e4631c06108c383fc4b25af6372"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/legacy_standard_docs/print_format/sa_purchase_order.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Retired finance print-format source",
       "sha256": "93726f1fd9478e1e937952fb7f2a8005063a6eb0a5f478b14ba16ef3f3e99a7b"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/legacy_standard_docs/print_format/sa_quotation.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Retired finance print-format source",
       "sha256": "75d3f4fcff6658175c12b430bb2846abcebabf25e5dd865be2e018573d62b413"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/legacy_standard_docs/print_format/sa_sales_invoice.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Retired finance print-format source",
       "sha256": "c2174dad7f8d83fd5e3af5e2bdcd583c8cb6b3b251f39fce59f1da05d158ae6d"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/legacy_standard_docs/print_format/sa_sales_order.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Retired finance print-format source",
       "sha256": "f93a2cdb1038e9ab59094930658fb67961b3aaa0f9d80ec2f999398636bc2fe6"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/modules.txt",
-      "reason": "Temporary compatibility or repository-level artifact",
-      "sha256": "7a63ad38e2780ce33b72194d4479a4ce82d46f2b03b42b0faef304730f808436"
+      "reason": "Legacy composition artifact owned by the core migration programme",
+      "sha256": "32184bb3f0254d623b560706389c785945245b78b7900b88895a1ebf419f7d5c"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/overrides/__init__.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Legacy composition artifact owned by the core migration programme",
       "sha256": "41bd394da57ffbd2b45fc99fb93601c8b8e120ba46e80a0046f7eb1ecf7e29e8"
     },
     {
@@ -386,45 +386,45 @@
       "sha256": "a84b02cd5d9adc3926f9367a68f30df472b3597a403906535590075afae026fd"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/patches.txt",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Legacy composition artifact owned by the core migration programme",
       "sha256": "31e8abcd983394549b09d09c5d58c7624afd392d63de35b1fa96fbedee1c4680"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/patches/__init__.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Shared migration package",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/patches/v1_1/__init__.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Shared migration package",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_payroll",
       "path": "za_local/patches/v1_1/backfill_emp201_submission_keys.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Payroll migration patch",
       "sha256": "100bb8dbfda72a259a0aedbfae2cb941dce12f2a1d00e7aa0293e11b905c82c6"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_payroll",
       "path": "za_local/patches/v1_1/ensure_statutory_tax_configuration.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Payroll migration patch",
       "sha256": "a2016380cc1a24fd3530ab175cc0ec40d064e0d4e821bc728085ab263ff37bb1"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/practitioner_guide/README.md",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Legacy composition artifact owned by the core migration programme",
       "sha256": "170cd7ac316459f045b2b31d87bc974a4bc54b37bb25038562d0086185bd541f"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/practitioner_guide/__init__.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Legacy composition artifact owned by the core migration programme",
       "sha256": "008e7fc72811421647fbb2b0cf9f587bbb3d241ea4c3ab1077a2add906ef859f"
     },
     {
@@ -752,165 +752,165 @@
       "sha256": "1dd9bcab9c47b40b86947ff737064dff50f2e17da1a6f16cce105715481235d4"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/public/.gitkeep",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Shared localisation public asset",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/public/IT3b-Certificate.pdf",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll public asset",
       "sha256": "14baea4e44c7e8e621890e20b4ecea8abde00391a4ec45b49476200a507f6387"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/public/css/irp5_employee_certificate.css",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll public asset",
       "sha256": "136fffa0b9e8f86f00184aa7814daa19bd7c0909cfa913b35fd08cd865bce1e4"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/public/css/za_local.css",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Shared localisation public asset",
       "sha256": "9bd9e9ff5d58356843b7545b64e7aebc09f25c4b2be499910e72bbdda3bcdcab"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/public/desktop_icons/sa_coida.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace public asset",
       "sha256": "c9f5331f2b3442f94eff42a686a6651f923f707794b35aeeedcc54bfaa185678"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/public/desktop_icons/sa_labour.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace public asset",
       "sha256": "2bfa46df2e3721c7e921e9c7e2fc19a748ce7456a8d5d488900401811183950e"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/public/desktop_icons/sa_overview.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Shared localisation public asset",
       "sha256": "4ac19ac69661c5b8fc1c2200ceadfdcf2c5e4fbdaf50bf3b8c097be250ae79f0"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/public/desktop_icons/sa_payroll.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll public asset",
       "sha256": "93ba503cba37bb9e11f17ee097e865d4573ade95cdddd27d5cdbbcc53e601ec4"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/public/desktop_icons/sa_vat.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Finance public asset",
       "sha256": "1b65d86c39866d589f773331940196b02fb21bd891e3f22a3942e2ebdb9a96d1"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/public/icons/desktop_icons/solid/sa_coida.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace public asset",
       "sha256": "c9f5331f2b3442f94eff42a686a6651f923f707794b35aeeedcc54bfaa185678"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/public/icons/desktop_icons/solid/sa_labour.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace public asset",
       "sha256": "2bfa46df2e3721c7e921e9c7e2fc19a748ce7456a8d5d488900401811183950e"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/public/icons/desktop_icons/solid/sa_overview.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Shared localisation public asset",
       "sha256": "4ac19ac69661c5b8fc1c2200ceadfdcf2c5e4fbdaf50bf3b8c097be250ae79f0"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/public/icons/desktop_icons/solid/sa_payroll.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll public asset",
       "sha256": "93ba503cba37bb9e11f17ee097e865d4573ade95cdddd27d5cdbbcc53e601ec4"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/public/icons/desktop_icons/solid/sa_vat.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Finance public asset",
       "sha256": "1b65d86c39866d589f773331940196b02fb21bd891e3f22a3942e2ebdb9a96d1"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/public/icons/desktop_icons/subtle/sa_coida.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace public asset",
       "sha256": "c9f5331f2b3442f94eff42a686a6651f923f707794b35aeeedcc54bfaa185678"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/public/icons/desktop_icons/subtle/sa_labour.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace public asset",
       "sha256": "2bfa46df2e3721c7e921e9c7e2fc19a748ce7456a8d5d488900401811183950e"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/public/icons/desktop_icons/subtle/sa_overview.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Shared localisation public asset",
       "sha256": "4ac19ac69661c5b8fc1c2200ceadfdcf2c5e4fbdaf50bf3b8c097be250ae79f0"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/public/icons/desktop_icons/subtle/sa_payroll.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll public asset",
       "sha256": "93ba503cba37bb9e11f17ee097e865d4573ade95cdddd27d5cdbbcc53e601ec4"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/public/icons/desktop_icons/subtle/sa_vat.svg",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Finance public asset",
       "sha256": "1b65d86c39866d589f773331940196b02fb21bd891e3f22a3942e2ebdb9a96d1"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/public/images/sa_map_icon.png",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Shared localisation public asset",
       "sha256": "673ae89a7abf66884334bb05bb7a7b032c8fab3ec507d51978c2b9e8d64d4d8c"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/public/js/coida_annual_return.js",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace public asset",
       "sha256": "0e17731ffed011f8b6d6d8741d27d0d46a98233b5469387148eef8de58c16daf"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/public/js/employee.js",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll public asset",
       "sha256": "8b4df8b94e134a5c9b223e47bc51dcd17fafc3b6dafa4dfee63a8c431dcf6b15"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/public/js/employee_benefit_claim.js",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll public asset",
       "sha256": "adf028fd28aa89e5785afa34141ecc81a4fa04c9321230b11214c7f30884816e"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/public/js/oid_claim.js",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace public asset",
       "sha256": "145486b3910549b7503933110c68971ee37e8d302cae61bc1688bb54598f7dab"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/public/js/payroll_entry.js",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll public asset",
       "sha256": "8e80cad9cad8f567775141ded841c949dd6b23534f60b26c112594b44b3e6783"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/public/js/salary_structure.js",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll public asset",
       "sha256": "7507f594895759d7ca517e280f59ae89709f2c5b286ad704e3d7e45d622b84cb"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/public/js/salary_structure_assignment.js",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll public asset",
       "sha256": "ebf8edb4714364c54aa629faf664e9e77b5a9fbab68c7ff5c97475871a1001bf"
     },
     {
@@ -920,9 +920,9 @@
       "sha256": "4ad2d983352918796acfa76ab3408bd1401f7a36978eaa664f3f0654cbbc46ad"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/public/js/workplace_injury.js",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Workplace public asset",
       "sha256": "32bbcda0812c41e48b5c9d030c24cdb271a974f2c7d1a1371379592c67c4a922"
     },
     {
@@ -2654,483 +2654,483 @@
       "sha256": "e787e18da949d79f7ed83962a60e7866a16e770b8dd8489da0b8f1fce1b0d2ca"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/__init__.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "462b0c30331e9402ab9e2300818954da9e6d0efcd990be42fe3f6eed79f79b39"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/custom_fields.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
-      "sha256": "0c30df1d33a00733ba97afde43c0285c1f8e9372570cc37a549837b155378b56"
+      "reason": "Shared setup and migration orchestration",
+      "sha256": "40b4c985f8cc6f5a1ca82e37b1d2f4b6b08dd232069b79f07eef4737ba4458b5"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/earnings_components.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "916b410c9b85dca01c766711c4e90fe5e9cc938a4a275217a4350287f91c8421"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/eti_slabs_2025.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "e954aaf3f9ad65582059e75198f97d4c87070ee25409dad66b97f9e9b5c7b2bf"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/holiday_list_2025.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "76a1f039a7b88d398fc205940a62aae270f9a231fdcb45e69a77df1993a5aa74"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/holiday_list_2026.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "7581f51a731c517228c3efc348e1460fa35d987c1f0e47d71a8d4aa275d4d275"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/holiday_list_2027.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "6783bbe841308a88b8947ccc455f2f611f420f228be7cfc946a9bcf23652a2ba"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/payroll_period_2025.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "ec7e9a9587873642aa76bad57e697d06952a76ef5ebaf960a97d70f1c685b446"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/payroll_period_2026.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "dc421359760814f6a567cf66f41ab3dc6762c5413dc27c727bc81f5b3e7b7d31"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/payroll_period_2027.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "731bddc30dfac5ca9ed5c3cafea0e5166e4bc6c4afbbb5d2e84a708aac804262"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/salary_components.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "b536d89eae3a7f6d64150513afc939a707ff692febca3cc0e0e359065ae53f2a"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/statutory_rates_2025.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "77d78e95b717d751bccdcca49f7454ff80d4494f16ac2ece023b176a8f4b669d"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/statutory_rates_2026.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "0b2e7568e871e4fba878bd21225736a12118f1a473d289b579ee52b47e74c821"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/statutory_rates_2027.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "17d62f890279e4d00f2fb88495296258eb209f70dff73dcaf0bcc6f6321d11f4"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/tax_rebates_2025.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "b037543c21d73490372ae12a62fcf9a96eb5c53b3af27cfcbfe45b9125309688"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/tax_rebates_2026.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "33a3c0e3e4d69f05f8275e041d25814b7aefae8c8a931f73d18b1de99cbeb4ca"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/tax_rebates_2027.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "bf41cf5d79f3d33448ffd66c38beaf50834e6a46b0c5cbaaffa250289c655d98"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/tax_slabs_2025.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "3cfd097d9d7f93379e8f48a2e330f7340db8e91cbc29ae057f78da6b486a7e7d"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/tax_slabs_2026.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "55711b28a5dd894177e59c292d16d999a1b2bb565b1dfc8ba2e563dc96e4329e"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/data/tax_slabs_2027.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "b6c52e14be7cfbffc44dfb8d5b622deb2072ea49e2a11016aca28069279c028a"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/doctype/za_local_setup/__init__.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "328e6c984ce15b80e8b237a984956077bd7fa03dc8019ae71b105b8c8446f68f"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/doctype/za_local_setup/za_local_setup.js",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "4b38c9cf5c78bae59c7b1c451ba30edef5eaebedbb9fa50664f0aff1b0ade4c4"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/doctype/za_local_setup/za_local_setup.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "31f99b3fb192b0ff8bcf0fd363d5f0d38f4e2fb97f1859234c0157d546676b50"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/doctype/za_local_setup/za_local_setup.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "2bac0d76983886057ef98f9bbf58786970c6e2e4f6ebf941a021478eb6fabd2a"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/form_tour/south_africa_vat_settings_form_tour/south_africa_vat_settings_form_tour.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "29911551d11899bc39706e64cbee365ad28263b9d3e0f548d18fbc6b5f66e7a3"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/form_tour/vat201_return_form_tour/vat201_return_form_tour.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "8e473bdcc16b16e833c8d6b49aad64df658020484f05cc0f99a1d4d91115488c"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/form_tour/za_local_setup_form_tour/za_local_setup_form_tour.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "16c7b7575a5b820530abf108b92b86eebd8d5c94240f9c68cf09878093df6878"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/install.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
-      "sha256": "c269f2e882a9eb22f582c1b079ff9bd4e0c904ec71538aa9c08c698fc14829d2"
+      "reason": "Shared setup and migration orchestration",
+      "sha256": "d8aa18d69c9cb636b492d003ae54c80837b8fc5c5a59445c5c65647d441a4358"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/leave_types.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "2f2f26924fd8368d5bf88f9ac2dbd92e2de516b899ee3da3683e1e91fc7ae68f"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/module_onboarding/sa_coida_onboarding/sa_coida_onboarding.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "b935201501883b1c585d34e2cec13fa0dec8052e576aedc88e8f3904f5193d7f"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/module_onboarding/sa_labour_onboarding/sa_labour_onboarding.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "e8a4e9a2be7487effbe83927332f8224936ec158476b2d5fde430b78cad753ef"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/module_onboarding/sa_localisation_onboarding/sa_localisation_onboarding.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "9369d2962e7af53c680220bd11da29b6b61851f0b1a87036aea1ceaccf930eff"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/module_onboarding/sa_overview_onboarding/sa_overview_onboarding.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "eb769ef5eac9157905c679d210e9fc8979e99b6371f963f3e832869a36700be3"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/module_onboarding/sa_payroll_onboarding/sa_payroll_onboarding.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "f266d894d1326b5cb3c89998c1b94b8da9d5df8a735a45c016eb70e64dc9dea4"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/module_onboarding/sa_vat_onboarding/sa_vat_onboarding.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "b084fc1508dc52a832ed977349a1dd1bc823f8317a6c1164607445ed65e4d468"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/monkey_patches.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "467b76f2232d593a9930f157818558b0b05d6f6acd7ff815a4da927035a9684a"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/apply_recommended_vat_setup/apply_recommended_vat_setup.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "e768ec6a562833534e2b795fb2b99749b05ff98911a153f6334fb7ff341dd8bf"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/create_annual_training_report/create_annual_training_report.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "d720b0c7e1f10454f000278198d23a56dbc5997861bc36f9f6bc999737318ab3"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/create_coida_annual_return/create_coida_annual_return.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "4b441835b4718602ef200eedf528d651d249acd9a448d797f2f193d754e35000"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/onboarding_step/create_emp201_submission/create_emp201_submission.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "3ba218dc1bfd3f2865ee2afd576c124c208b38000c8e3691c5f84c44c0c89e4d"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/onboarding_step/create_emp501_reconciliation/create_emp501_reconciliation.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "ad3fe80f788bbf314bb0dc1c83ad5cb4770ca1fb729215e4d990357f79257c9e"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/onboarding_step/create_irp5_certificate/create_irp5_certificate.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "7c9336db48c50f4953253bf4e7b72c574d5f9334153b4696c87ebac4f16e028f"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/create_oid_claim/create_oid_claim.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "767ad6b3c5c502ad7afbed8f2521113d4cf3053f8546196d88b7e04c2a101841"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/create_vat201_return/create_vat201_return.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "301c76966504ad765edbafe5d8ca1219bad71b358c02910fb34a155a617c9e60"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/create_workplace_injury/create_workplace_injury.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "73a440ddef0e943d8b5ef6a9354b0d680a1b88eaf5f91b9b94254326c279c0ea"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/create_workplace_skills_plan/create_workplace_skills_plan.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "93d8b93e4b689ac2c2df4eda238e9dc3ea4167dfcfb9cbf9f6870d2582ac7ddf"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/onboarding_step/create_za_local_setup/create_za_local_setup.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "d8c03986c502a00bf2d3d64f3e969d9c15537c69b7c893f8e7be4481c46c9027"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/fetch_vat_201_transactions/fetch_vat_201_transactions.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "f224d926adfae04d7cadbfd95dc19b0dc13a193aaae62772c800abb2f192987c"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/review_bargaining_council/review_bargaining_council.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "e4543fd70521be34b85f142edbef4009e4a964f9b05a1b6f587c6d8fc792e423"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/review_business_trip_settings/review_business_trip_settings.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "442d22532dd736497b20751e3207cfcc339258f9e0887eee3d29d79f5720471d"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/review_coida_industry_rate/review_coida_industry_rate.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "af90081c7babd84af6b6392416e1236f41a8339267d4a4ddd17270339ec6e4a7"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/review_coida_settings/review_coida_settings.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "649a2dc9c25844cd67e1c6b81d8444f399adb925488a2cba2de40a509ed56dac"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/review_company_vat_details/review_company_vat_details.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "4ef90c97e991b78ee4819a79e2f40e1db99c24348e8583a9cd1d4e5e5611e252"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/onboarding_step/review_income_tax_slabs/review_income_tax_slabs.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "0c191eb356d4a54f009ac73598e91aaa69e96f968fb77ed7d4ec61be1684acce"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/review_item_tax_templates/review_item_tax_templates.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "22bbd320b747eeb3a8067c04b85d2166be570b695c170c14fcef0bbf6549e032"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/onboarding_step/review_payroll_period/review_payroll_period.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "005d769b7aca3b42a438e09ee029c39864478d593ce67e2485865943472bf224"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/onboarding_step/review_payroll_settings/review_payroll_settings.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "b90fd8bac063c652ceb769f3b055052afdda5255b9688ba4b3644727c2cf3696"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/review_purchase_tax_templates/review_purchase_tax_templates.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "fd89a6e89ecafefc14b670d0e1987bf5300378902972890bf53a425c92f6ea9f"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/onboarding_step/review_salary_components/review_salary_components.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "1d64440c33f9660f136f8ffd9e99a8cade608f1f41f58bbbda0cb56e343a9874"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/onboarding_step/review_salary_structure/review_salary_structure.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "e3e3673417ba2bf318c6efa955eed1855206d92ebdafa50fc2b20ad5428b09cb"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/review_sales_tax_templates/review_sales_tax_templates.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "69a4992007c8b9d5590075c0086d24b68a3eb76241f46a083fcbe5eaae2b8d4a"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/review_sectoral_minimum_wage/review_sectoral_minimum_wage.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "9f4fd6ec709b3dce7479dbd593c18e0c6264f7a8b8f732fad19f733c85f7f30d"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/review_seta/review_seta.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "e16f2af968768ad55cd03109625a23ef2adf6453896086932ca771e8102ed9d9"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/review_south_africa_vat_settings/review_south_africa_vat_settings.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "2d050babedd7d17b834d53adbf3d37c715c1373fd7ea8ba55f4ce2135a7499a9"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/onboarding_step/review_tax_rebates_and_medical_tax_credit/review_tax_rebates_and_medical_tax_credit.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "4754d123f894fe579e3d4815620bdb95de9556452ee647a6669c22a34546d9ef"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/review_vat_201_linked_transactions/review_vat_201_linked_transactions.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "9d1b2ddbe18d86d4614b1131ed00021eb34978f673dd50af3157fa002e48467f"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/sync_vat_accounts/sync_vat_accounts.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "7582671f85a425640e12d2ee3d48fb576f47685aa26a734ad264f5b8e12d47cc"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_workplace",
       "path": "za_local/sa_setup/onboarding_step/view_eea4_employment_equity_plan/view_eea4_employment_equity_plan.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Workplace setup artifact",
       "sha256": "11bda7abe6261fd1e19d8bd6da522fdf0031e5ae16caa48005899ef7eb07cb2f"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/sa_setup/onboarding_step/view_statutory_submissions_summary/view_statutory_submissions_summary.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Payroll setup artifact",
       "sha256": "f8dbaffeaa33ce4a642f7960b70a416f36c1a0bd2c4ea90c0fab911c80455f3c"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/sa_setup/onboarding_step/view_vat_audit_report/view_vat_audit_report.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Finance setup artifact",
       "sha256": "61a313a0722eb28f296bcca857f5ed0ad03e82428793d0cb4b4fdf936c49cc8c"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/page/sa_local_help/__init__.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/page/sa_local_help/sa_local_help.html",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "c1fd63d5f2c7bd1051c4d119e0a85d04efdb364f8951d12ff429e604e41d7edb"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/page/sa_local_help/sa_local_help.js",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "8f7597dd07f146f83bc29f97ea58a8d96a3c52e40ab4f1b160284f7688c80145"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/page/sa_local_help/sa_local_help.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "9f29d6c95320403fc17de579f06e344a856827a05727e8e13a2efab7375f3b44"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/page/sa_local_help/sa_local_help.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "65610e5a8c0f9b03a908b0e26a6f5e795913d19a583e7f361351a088ccc3117d"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/property_setters.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "c3ad85cbdcdce26f9e1895a7b6e5b039fd19716d99e49077ebd8048389004df1"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/setup_wizard.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "50ddf9932cee4bacf8b142c03e56887fe02734c50c6046cf468033b579f46396"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/statutory_setup.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "d47d184ba4e213c761fbd396078511de7d461cfcf34e3447794b8ee0c937b68f"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/uninstall.py",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "eb795134b787913842dcc5742f1bd3ccc2e29ff8725035bd4d7c0a4b02f225a0"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/sa_setup/workspace/sa_localisation/sa_localisation.json",
-      "reason": "Split by fixture/record ownership before compatibility retirement",
+      "reason": "Shared setup and migration orchestration",
       "sha256": "529a4338466bcbc57fda7fc7b2a7b20dd864e3560bda10b0c80cf26c5d397bc8"
     },
     {
@@ -3572,51 +3572,51 @@
       "sha256": "fde443be328afc3587d0c6f3e9fb88d7bf3c3f116e1ed92cf73b6f7585dc6987"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/tasks.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Legacy composition artifact owned by the core migration programme",
       "sha256": "ebb1db738bf23b251165aad421bd0436ee0e15b74680c860b85f1c705fd5b280"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/templates/__init__.py",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Shared template package",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_core",
       "path": "za_local/templates/pages/__init__.py",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Shared template package",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/templates/print_format/irp5_employee_certificate.html",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll print template",
       "sha256": "fac17e80bc827e423f9d6689adcc3f69d1a6aff68dc2a00a866603d3fdf8117e"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/templates/print_format/sa_commercial_document.html",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Finance print template",
       "sha256": "a911beb92e9dc3df8ab8c58fe6bbc7c2fd3b6d26cc07423f12531f7e3e841bd0"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_finance",
       "path": "za_local/templates/print_format/sa_payment_entry.html",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Finance print template",
       "sha256": "6f58a82b4e5b5df127f4f3895935dcfb57b38d560e56925810f3cd2698dcabed"
     },
     {
-      "owner": "migration_split",
+      "owner": "za_local_payroll",
       "path": "za_local/templates/print_format/sa_salary_slip.html",
-      "reason": "Split by domain before compatibility retirement",
+      "reason": "Payroll print template",
       "sha256": "12ca8f6f0a41231b41b71795665cfea90b678b5ee93b197a602af7a694ba158c"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/test_data_loading.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Legacy composition artifact owned by the core migration programme",
       "sha256": "88977ad4bee559f0cc46d99a9040cac58bafb9998adac68399a48fcc9fd56d6d"
     },
     {
@@ -3635,7 +3635,7 @@
       "owner": "za_local_core",
       "path": "za_local/tests/e2e_data.py",
       "reason": "Cross-domain or shared regression test",
-      "sha256": "02b26fc252f99f3acdb699ae25d23138a9f3265458c28d5f80cb35ac83e09691"
+      "sha256": "da5c4960953ef519db59be4136569a8b97d2acd0eff699bc4ef5e92dba77bba4"
     },
     {
       "owner": "za_local_core",
@@ -3725,25 +3725,25 @@
       "owner": "za_local_core",
       "path": "za_local/tests/test_scheduler_integrity.py",
       "reason": "Cross-domain or shared regression test",
-      "sha256": "0f2c4feb0cac17a4f2ff1b0353e6e022c9923a5863155b2726c13ebc5b0db2b9"
+      "sha256": "85cc49a1ceacf6dba5515eaf08f14ff77f36834845dc8353d5b2d7dcbb0b7b19"
     },
     {
       "owner": "za_local_core",
       "path": "za_local/tests/test_setup_stabilisation.py",
       "reason": "Cross-domain or shared regression test",
-      "sha256": "c027909b070cfab26b6d1014bdfd79b5a34bad1bd2e93b4bb8a003972ba6d6db"
+      "sha256": "3b3915d75c6a00fa5be3a7cd3eeb2e6f7e3111a40bac88242e3d7892e7cba79e"
     },
     {
       "owner": "za_local_core",
       "path": "za_local/tests/test_statutory_setup.py",
       "reason": "Cross-domain or shared regression test",
-      "sha256": "33d45f146c9a5c8d89adf03e5a6bf39e9e96a64bb291a9d5bcf461f7a7efd408"
+      "sha256": "951fa907ce65a34a7663884a7cf5f8106f0d6105c896a125978dfb3c58e1f7b4"
     },
     {
       "owner": "za_local_core",
       "path": "za_local/tests/test_statutory_workflow_regressions.py",
       "reason": "Cross-domain or shared regression test",
-      "sha256": "f09044c92a23513160b507827494e3658066501dcc1affaf6bad5b07029b98cf"
+      "sha256": "ce61038967de60146bb72e34d6b28dbddc95131c84045ef7ce42165f46c366ce"
     },
     {
       "owner": "za_local_core",
@@ -3758,9 +3758,9 @@
       "sha256": "220643ba58ad5b647f0a31c6b0d750f30d4d4b317b8e72bf963ae29bd350f9c6"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/utils/__init__.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Legacy composition artifact owned by the core migration programme",
       "sha256": "8f27fd0220e003b8facd0c67d9d1aa60cd718016f6e03b925f4285407d0a30f1"
     },
     {
@@ -3770,15 +3770,15 @@
       "sha256": "355c3292a6f756846d944acf5dcfc05dd40d36d9e60d53fccabca5bb440574e8"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_core",
       "path": "za_local/utils/create_test_data.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Legacy composition artifact owned by the core migration programme",
       "sha256": "5db696b7e0a2627d7d93df5a429e87b36380307ff25ea8f175e7e972a937cdf0"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_workplace",
       "path": "za_local/utils/csv_importer.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Workplace reference-data importer",
       "sha256": "cec31af4ac1051be3bffe45cfc5d216cf251a57f2ed6029ac1e1fa4ef7748754"
     },
     {
@@ -3815,24 +3815,24 @@
       "owner": "za_local_core",
       "path": "za_local/utils/hrms_detection.py",
       "reason": "Installed-app detection",
-      "sha256": "3a377d8431ac35c2735b5be40185f9d59ee8d3a04f1bf3ddd13683541824ae83"
+      "sha256": "3536408af3bbdc4b4dad1bf2b7571b5a5bee556750603c16d7d9e76a503ebde2"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_payroll",
       "path": "za_local/utils/integrations/__init__.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Payroll statutory and payment integration",
       "sha256": "41eeed93a8e08b54fe9faf6e5bc533adde27b6d9a4f71bff9a55903697de4125"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_payroll",
       "path": "za_local/utils/integrations/eft_file_generator.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Payroll statutory and payment integration",
       "sha256": "1a7f2d6d7bb513908c4e2a3941c1b9c8412475683736247f07c7e1e2dd622891"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_payroll",
       "path": "za_local/utils/integrations/sars_xml_generator.py",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Payroll statutory and payment integration",
       "sha256": "e4025027028a4a34f9e8ad31b8b31508e8945e09d8b57af7404104fa26c42b66"
     },
     {
@@ -3884,38 +3884,37 @@
       "sha256": "81c6936d1342c6a1c9a6c043eb9ec0e9cc3e354f21e28ca780b29e6a9ab254e4"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_workplace",
       "path": "za_local/workspace_sidebar/sa_coida.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Workplace public asset",
       "sha256": "f1a6f5e16c59568d4bee9e9cc9c4e66d7a3196f0eff5757ff71bf462a6e76afb"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_workplace",
       "path": "za_local/workspace_sidebar/sa_labour.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Workplace public asset",
       "sha256": "dadef9832de53d15a0c60849962ed10246925fdd725132b9e16feb40b7ff7999"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_payroll",
       "path": "za_local/workspace_sidebar/sa_payroll.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Payroll public asset",
       "sha256": "1a0e240ceb07c4872b1eb12b5269a77df26a9fdcc060719878be6273fe78f35a"
     },
     {
-      "owner": "za_local_compatibility",
+      "owner": "za_local_finance",
       "path": "za_local/workspace_sidebar/sa_vat.json",
-      "reason": "Temporary compatibility or repository-level artifact",
+      "reason": "Finance public asset",
       "sha256": "d03a6249bd99b169c6f47cc70f6f8ef71d54e202c9c78ad7f5534e985a269dfb"
     }
   ],
   "legacy_app": "za_local",
   "owner_counts": {
-    "migration_split": 120,
-    "za_local_compatibility": 52,
-    "za_local_core": 58,
-    "za_local_finance": 93,
-    "za_local_payroll": 216,
-    "za_local_workplace": 112
+    "za_local_compatibility": 11,
+    "za_local_core": 106,
+    "za_local_finance": 125,
+    "za_local_payroll": 263,
+    "za_local_workplace": 146
   },
   "schema_version": 1
 }

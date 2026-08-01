@@ -21,3 +21,4 @@ class TestOwnershipManifest(UnitTestCase):
 			sum(manifest["owner_counts"].values()),
 		)
 		self.assertTrue(all(artifact["owner"] for artifact in manifest["artifacts"]))
+		self.assertNotIn("migration_split", manifest["owner_counts"])

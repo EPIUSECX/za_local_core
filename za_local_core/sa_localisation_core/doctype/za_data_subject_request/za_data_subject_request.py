@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 import frappe
 from frappe import _
 
@@ -7,7 +9,7 @@ from za_local_core.sa_localisation_core.doctype._privacy import OperationalPriva
 class ZADataSubjectRequest(OperationalPrivacyDocument):
 	initial_status = "Received"
 	date_pairs = (("received_on", "due_date"), ("received_on", "completed_on"))
-	allowed_transitions = {
+	allowed_transitions: ClassVar[dict[str, frozenset[str]]] = {
 		"Received": frozenset({"Identity Verification Pending", "In Progress", "Withdrawn"}),
 		"Identity Verification Pending": frozenset({"In Progress", "Refused", "Withdrawn"}),
 		"In Progress": frozenset({"Extended", "Fulfilled", "Refused", "Withdrawn"}),

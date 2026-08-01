@@ -4,7 +4,7 @@ from calendar import month_name, monthrange
 
 import frappe
 from frappe import _
-from frappe.utils import getdate, today
+from frappe.utils import flt, getdate, today
 
 E2E_COMPANY = "Cohenix Localisation E2E"
 E2E_COMPANY_ABBR = "CLE2E"
@@ -25,6 +25,8 @@ E2E_VAT_ITEM = "ZA-LOCAL-E2E-SERVICE"
 def stage_foundation():
 	"""Run ERPNext's supported setup flow for a South African test company."""
 	_require_isolated_test_site()
+	if not frappe.db.get_single_value("System Settings", "language"):
+		frappe.db.set_single_value("System Settings", "language", "en")
 
 	if not frappe.db.exists("Company", E2E_COMPANY):
 		from erpnext.setup.setup_wizard.setup_wizard import setup_complete
@@ -38,6 +40,7 @@ def stage_foundation():
 					"company_abbr": E2E_COMPANY_ABBR,
 					"currency": "ZAR",
 					"country": "South Africa",
+					"language": "en",
 					"chart_of_accounts": "Standard",
 					"domain": "Services",
 					"bank_account": "E2E Bank",
@@ -45,13 +48,9 @@ def stage_foundation():
 			)
 		)
 
-	from za_local.sa_setup.install import (
-		repair_salary_component_accounts,
-		seed_salary_component_classifications,
-		seed_sars_payroll_codes,
-		seed_statutory_rate_packs,
-	)
-	from za_local.sa_setup.statutory_setup import ensure_company_tax_configuration
+	from za_local_finance.accounts.setup_chart import load_sa_chart_of_accounts
+	from za_local_payroll.setup.masters import repair_salary_component_accounts, seed_payroll_masters
+	from za_local_payroll.setup.statutory import ensure_company_tax_configuration
 
 	company_address = _ensure_address("ZA Local E2E Business Address", "Company", E2E_COMPANY)
 	frappe.db.set_value(
@@ -67,12 +66,11 @@ def stage_foundation():
 		},
 	)
 	ensure_company_tax_configuration(E2E_COMPANY)
+	load_sa_chart_of_accounts(E2E_COMPANY)
 	frappe.db.set_single_value(
 		"Payroll Settings", "za_eti_unregulated_minimum_monthly_wage", 2500
 	)
-	seed_statutory_rate_packs()
-	seed_sars_payroll_codes()
-	seed_salary_component_classifications()
+	seed_payroll_masters()
 	repair_salary_component_accounts(E2E_COMPANY)
 	frappe.db.commit()
 
@@ -244,6 +242,7 @@ def stage_coida_assessment():
 	"""Create a submitted COIDA annual return from the staged payroll evidence."""
 	_require_isolated_test_site()
 	stage_payroll_year_to_date()
+	stage_timesheet_payroll()
 
 	settings = frappe.get_single("COIDA Settings")
 	settings.registration_number = "E2E-COIDA-001"
@@ -417,7 +416,7 @@ def stage_eft_payment_batch():
 	if batch.docstatus == 0:
 		batch.submit()
 
-	from za_local.utils.integrations.eft_file_generator import generate_eft_file
+	from za_local_payroll.utils.integrations.eft_file_generator import generate_eft_file
 
 	result = generate_eft_file(payment_batch=batch.name)
 	batch.reload()
@@ -517,6 +516,161 @@ def stage_timesheet_payroll():
 		"hour_rate": slip.hour_rate,
 		"gross_pay": slip.gross_pay,
 		"docstatus": slip.docstatus,
+	}
+
+
+def stage_workplace_injury_cycle():
+	"""Submit an injury and complete its linked OID claim workflow."""
+	_require_isolated_test_site()
+	employee = stage_payroll_masters()["employees"]["regular"]
+	injury_name = frappe.db.get_value(
+		"Workplace Injury",
+		{
+			"employee": employee,
+			"injury_date": "2026-07-15",
+			"docstatus": ["<", 2],
+		},
+		"name",
+	)
+	if injury_name:
+		injury = frappe.get_doc("Workplace Injury", injury_name)
+	else:
+		injury = frappe.get_doc(
+			{
+				"doctype": "Workplace Injury",
+				"employee": employee,
+				"injury_date": "2026-07-15",
+				"injury_time": "10:30:00",
+				"injury_location": "E2E office",
+				"injury_type": "Moderate",
+				"severity": "Medium",
+				"injury_description": "Deterministic isolated-site workplace injury scenario.",
+				"medical_attention_required": 1,
+				"medical_provider": "E2E Occupational Health",
+				"expected_recovery_date": "2026-07-18",
+				"requires_claim": 1,
+			}
+		)
+		injury.insert(ignore_permissions=True)
+	if injury.docstatus == 0:
+		injury.submit()
+	injury.reload()
+	if not injury.oid_claim:
+		injury.create_oid_claim_after_submit()
+		injury.reload()
+
+	claim = frappe.get_doc("OID Claim", injury.oid_claim)
+	if claim.docstatus == 0:
+		claim.submit()
+		claim.reload()
+	if not claim.medical_reports:
+		claim.add_medical_report(
+			"2026-07-16",
+			"E2E Occupational Health",
+			"Initial Assessment",
+			"E2E soft-tissue injury",
+		)
+		claim.reload()
+	if claim.claim_status == "Submitted":
+		claim.update_claim_status("Under Review")
+		claim.reload()
+	if claim.claim_status == "Under Review":
+		claim.update_claim_status("Approved", compensation_amount=1250)
+		claim.reload()
+	if claim.claim_status == "Approved":
+		payment_date = max(getdate("2026-08-01"), getdate(claim.claim_date or claim.injury_date))
+		claim.update_claim_status("Paid", payment_date=payment_date)
+		claim.reload()
+	injury.reload()
+	frappe.db.commit()
+	return {
+		"workplace_injury": injury.name,
+		"injury_docstatus": injury.docstatus,
+		"injury_status": injury.status,
+		"oid_claim": claim.name,
+		"claim_docstatus": claim.docstatus,
+		"claim_status": claim.claim_status,
+		"compensation_amount": claim.compensation_amount,
+		"payment_date": claim.payment_date,
+		"medical_reports": len(claim.medical_reports),
+	}
+
+
+def collect_signoff_evidence():
+	"""Return deterministic control totals for migration and restore comparisons."""
+	_require_isolated_test_site()
+	slips = frappe.get_all(
+		"Salary Slip",
+		filters={"company": E2E_COMPANY, "docstatus": 1},
+		fields=["gross_pay", "total_deduction", "net_pay", "za_monthly_eti"],
+	)
+	emp201_rows = frappe.get_all(
+		"EMP201 Submission",
+		filters={"company": E2E_COMPANY, "docstatus": 1},
+		fields=["net_paye_payable", "uif_payable", "sdl_payable", "eti_utilized_current_month"],
+	)
+	vat_rows = frappe.get_all(
+		"VAT201 Return",
+		filters={"company": E2E_COMPANY, "docstatus": 1},
+		fields=["total_output_tax", "total_input_tax", "vat_payable"],
+	)
+	coida_rows = frappe.get_all(
+		"COIDA Annual Return",
+		filters={"company": E2E_COMPANY, "docstatus": 1},
+		fields=["total_annual_earnings", "assessment_fee"],
+	)
+	payment_rows = frappe.get_all(
+		"Payroll Payment Batch",
+		filters={"company": E2E_COMPANY, "docstatus": 1},
+		fields=["total_amount"],
+	)
+
+	def total(rows, fieldname):
+		return flt(sum(flt(row.get(fieldname)) for row in rows), 2)
+
+	return {
+		"installed_apps": frappe.get_installed_apps(),
+		"salary_slips": {
+			"count": len(slips),
+			"gross_pay": total(slips, "gross_pay"),
+			"total_deduction": total(slips, "total_deduction"),
+			"net_pay": total(slips, "net_pay"),
+			"eti": total(slips, "za_monthly_eti"),
+		},
+		"emp201": {
+			"count": len(emp201_rows),
+			"paye": total(emp201_rows, "net_paye_payable"),
+			"uif": total(emp201_rows, "uif_payable"),
+			"sdl": total(emp201_rows, "sdl_payable"),
+			"eti_utilised": total(emp201_rows, "eti_utilized_current_month"),
+		},
+		"statutory_documents": {
+			"emp501": frappe.db.count(
+				"EMP501 Reconciliation", {"company": E2E_COMPANY, "docstatus": 1}
+			),
+			"irp5": frappe.db.count("IRP5 Certificate", {"company": E2E_COMPANY, "docstatus": 1}),
+		},
+		"vat201": {
+			"count": len(vat_rows),
+			"output_tax": total(vat_rows, "total_output_tax"),
+			"input_tax": total(vat_rows, "total_input_tax"),
+			"vat_payable": total(vat_rows, "vat_payable"),
+		},
+		"coida": {
+			"count": len(coida_rows),
+			"assessable_earnings": total(coida_rows, "total_annual_earnings"),
+			"assessment_fee": total(coida_rows, "assessment_fee"),
+		},
+		"payments": {
+			"count": len(payment_rows),
+			"total_amount": total(payment_rows, "total_amount"),
+		},
+		"workplace": {
+			"submitted_injuries": frappe.db.count(
+				"Workplace Injury", {"company": E2E_COMPANY, "docstatus": 1}
+			),
+			"submitted_claims": frappe.db.count("OID Claim", {"company": E2E_COMPANY, "docstatus": 1}),
+		},
 	}
 
 
@@ -1129,8 +1283,9 @@ def _ensure_vat_invoice(doctype, party, tax_template, amount):
 
 def _require_isolated_test_site():
 	site = frappe.local.site or ""
-	if not frappe.conf.developer_mode or "e2e" not in site.lower():
+	is_test_name = "e2e" in site.lower() or site.lower().endswith(".test")
+	if not frappe.conf.developer_mode or not is_test_name:
 		frappe.throw(
-			_("E2E data may only be staged on a developer-mode site whose name contains 'e2e'."),
+			_("E2E data may only be staged on a developer-mode .test or e2e site."),
 			title=_("Isolated Test Site Required"),
 		)

@@ -8,7 +8,6 @@ import frappe
 from frappe.query_builder.functions import Count, Sum
 from frappe.utils import flt
 
-
 _COUNT_DOCTYPES = (
 	"Company",
 	"Employee",

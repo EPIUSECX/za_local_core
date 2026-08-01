@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 import frappe
 from frappe import _
 from frappe.utils import cint
@@ -12,7 +14,7 @@ class ZAPersonalInformationIncident(OperationalPrivacyDocument):
 		("detected_at", "contained_at"),
 		("detected_at", "resolved_at"),
 	)
-	allowed_transitions = {
+	allowed_transitions: ClassVar[dict[str, frozenset[str]]] = {
 		"Reported": frozenset({"Triaged"}),
 		"Triaged": frozenset({"Contained", "Notification Assessment"}),
 		"Contained": frozenset({"Notification Assessment"}),

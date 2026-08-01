@@ -10,7 +10,7 @@
   {"fieldname": "company", "fieldtype": "Link", "label": "Company", "options": "Company", "reqd": 1, "in_list_view": 1},
   {"fieldname": "feature_code", "fieldtype": "Data", "label": "Feature Code", "reqd": 1, "in_list_view": 1},
   {"fieldname": "feature_name", "fieldtype": "Data", "label": "Feature Name", "reqd": 1},
-  {"fieldname": "domain", "fieldtype": "Select", "label": "Domain", "options": "Core\nVAT\nPayroll\nLabour\nEmployment Equity\nSkills Development\nCOIDA\nCIPC\nCorporate Tax", "reqd": 1},
+  {"fieldname": "domain", "fieldtype": "Select", "label": "Domain", "options": "Core\nVAT\nPayroll\nLabour\nEmployment Equity\nSkills Development\nCOIDA\nCIPC\nCorporate Tax\nPOPIA and PAIA", "reqd": 1},
   {"fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Production\nControlled Manual\nPreview\nUnsupported\nBlocked", "reqd": 1, "in_list_view": 1},
   {"fieldname": "source", "fieldtype": "Link", "label": "Statutory Source", "options": "ZA Statutory Source"},
   {"fieldname": "checked_on", "fieldtype": "Datetime", "label": "Checked On", "read_only": 1},

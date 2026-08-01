@@ -5,6 +5,8 @@ app_description = "Shared statutory sources, rate packs, compliance profiles, fi
 app_email = "info@cohenix.com"
 app_license = "mit"
 
+za_local_practitioner_guide_provider = "za_local_core.practitioner_guide.provider.get_guide_sections"
+
 # Apps
 # ------------------
 
@@ -23,6 +25,7 @@ add_to_apps_screen = [
 	{
 		"name": "za_local_core",
 		"title": "SA Compliance",
+		"logo": "/assets/za_local_core/images/sa_map_icon.png",
 		"route": "/desk/sa-compliance",
 		"has_permission": "za_local_core.api.has_app_permission",
 	}

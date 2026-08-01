@@ -1,7 +1,7 @@
 # South African Localisation Multi-App Migration Programme
 
-Status: executable programme plan. Creating these repositories did not move production ownership. The existing
-`za_local` app remains authoritative until each cutover gate below is approved.
+Status: extraction implementation complete on the development bench. Compatibility and legacy-free E2E sites pass
+the implemented technical gates. Production cutover still requires the approvals and external validation below.
 
 ## Target repositories
 

@@ -8,6 +8,23 @@ release gates.
 See also the [multi-app migration programme](MULTI_APP_MIGRATION_PROGRAMME.md) for sequencing, test data,
 cutover, rollback and sign-off across all four repositories.
 
+Current test evidence and remaining release gates are recorded in [VALIDATION_AND_SIGNOFF.md](VALIDATION_AND_SIGNOFF.md). Use [CUTOVER_RUNBOOK.md](CUTOVER_RUNBOOK.md) for backup, migration, validation and rollback.
+
+The optional federated Wiki publisher combines documentation from all installed localisation apps. After installing Frappe Wiki, run:
+
+```bash
+bench --site $SITE_NAME execute za_local_core.practitioner_guide.stage.stage_space
+```
+
+It publishes `/sa-guide` and `/sa-user-guide`. CI validates ownership, content files, routes and relative links.
+
+## Support and releases
+
+See [SUPPORT.md](SUPPORT.md), [SECURITY.md](SECURITY.md), and
+[CHANGELOG.md](CHANGELOG.md). A successful technical test run is not a substitute
+for the external statutory and operational approvals in
+[VALIDATION_AND_SIGNOFF.md](VALIDATION_AND_SIGNOFF.md).
+
 ## Installation
 
 You can install this app using the [bench](https://github.com/frappe/bench) CLI:

@@ -1,7 +1,7 @@
 {
  "app": "za_local_core",
  "charts": [],
- "content": "[{\"id\":\"za-core-head\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>South African Compliance</b></span>\",\"col\":12}},{\"id\":\"za-core-copy\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"text-muted\\\">Govern statutory sources, effective-dated rules, obligations, readiness, filings and external evidence.</span>\",\"col\":12}},{\"id\":\"za-core-card-1\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":4}},{\"id\":\"za-core-card-2\",\"type\":\"card\",\"data\":{\"card_name\":\"Filing controls\",\"col\":4}},{\"id\":\"za-core-card-3\",\"type\":\"card\",\"data\":{\"card_name\":\"Change governance\",\"col\":4}}]",
+ "content": "[{\"id\":\"za-core-head\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>South African Compliance</b></span>\",\"col\":12}},{\"id\":\"za-core-copy\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"text-muted\\\">Govern statutory sources, effective-dated rules, obligations, readiness, filings, privacy controls and external evidence.</span>\",\"col\":12}},{\"id\":\"za-core-card-1\",\"type\":\"card\",\"data\":{\"card_name\":\"Configuration\",\"col\":4}},{\"id\":\"za-core-card-2\",\"type\":\"card\",\"data\":{\"card_name\":\"Filing controls\",\"col\":4}},{\"id\":\"za-core-card-3\",\"type\":\"card\",\"data\":{\"card_name\":\"Change governance\",\"col\":4}},{\"id\":\"za-core-card-4\",\"type\":\"card\",\"data\":{\"card_name\":\"POPIA and PAIA\",\"col\":12}}]",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -24,7 +24,16 @@
   {"hidden": 0, "is_query_report": 0, "label": "Filings", "link_count": 0, "link_to": "ZA Filing", "link_type": "DocType", "onboard": 1, "type": "Link"},
   {"hidden": 0, "is_query_report": 0, "label": "Submission Receipts", "link_count": 0, "link_to": "ZA Submission Receipt", "link_type": "DocType", "onboard": 1, "type": "Link"},
   {"hidden": 0, "is_query_report": 0, "label": "Change governance", "link_count": 1, "link_type": "DocType", "onboard": 0, "type": "Card Break"},
-  {"hidden": 0, "is_query_report": 0, "label": "Statutory Change Reviews", "link_count": 0, "link_to": "ZA Statutory Change Review", "link_type": "DocType", "onboard": 1, "type": "Link"}
+  {"hidden": 0, "is_query_report": 0, "label": "Statutory Change Reviews", "link_count": 0, "link_to": "ZA Statutory Change Review", "link_type": "DocType", "onboard": 1, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "POPIA and PAIA", "link_count": 8, "link_type": "DocType", "onboard": 0, "type": "Card Break"},
+  {"hidden": 0, "is_query_report": 0, "label": "Information Officer Registrations", "link_count": 0, "link_to": "ZA Information Officer Registration", "link_type": "DocType", "onboard": 1, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "Processing Activities", "link_count": 0, "link_to": "ZA Processing Activity", "link_type": "DocType", "onboard": 1, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "Retention Schedules", "link_count": 0, "link_to": "ZA Retention Schedule", "link_type": "DocType", "onboard": 1, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "Operator Agreements", "link_count": 0, "link_to": "ZA Operator Agreement", "link_type": "DocType", "onboard": 1, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "Cross-Border Transfers", "link_count": 0, "link_to": "ZA Cross Border Transfer", "link_type": "DocType", "onboard": 1, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "Data Subject Requests", "link_count": 0, "link_to": "ZA Data Subject Request", "link_type": "DocType", "onboard": 1, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "Personal Information Incidents", "link_count": 0, "link_to": "ZA Personal Information Incident", "link_type": "DocType", "onboard": 1, "type": "Link"},
+  {"hidden": 0, "is_query_report": 0, "label": "PAIA Manuals", "link_count": 0, "link_to": "ZA PAIA Manual", "link_type": "DocType", "onboard": 1, "type": "Link"}
  ],
  "module": "SA Localisation Core",
  "name": "SA Compliance",

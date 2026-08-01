@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 import frappe
 from frappe import _
 from frappe.model.document import Document
@@ -79,7 +81,7 @@ class ReviewedPrivacyDocument(CompanyScopedPrivacyDocument):
 class OperationalPrivacyDocument(CompanyScopedPrivacyDocument):
 	"""Mutable case record with an explicit, auditable status state machine."""
 
-	allowed_transitions: dict[str, frozenset[str]] = {}
+	allowed_transitions: ClassVar[dict[str, frozenset[str]]] = {}
 	initial_status = "Draft"
 
 	def validate(self) -> None:

@@ -75,6 +75,7 @@ class TestPrivacyGovernance(IntegrationTestCase):
 		with self.assertRaises(frappe.ValidationError):
 			request.save()
 
+		request.reload()
 		request.status = "In Progress"
 		request.identity_verified_on = "2026-08-02"
 		request.identity_verification_evidence = "/private/files/_test-id-check.pdf"
@@ -83,6 +84,8 @@ class TestPrivacyGovernance(IntegrationTestCase):
 		with self.assertRaises(frappe.ValidationError):
 			request.save()
 
+		request.reload()
+		request.status = "Fulfilled"
 		request.completed_on = "2026-08-10"
 		request.final_response_evidence = "/private/files/_test-dsr-response.pdf"
 		request.reviewed_by = self.reviewer
@@ -125,6 +128,8 @@ class TestPrivacyGovernance(IntegrationTestCase):
 		with self.assertRaises(frappe.ValidationError):
 			incident.save()
 
+		incident.reload()
+		incident.status = "Remediating"
 		incident.regulator_notified_on = "2026-08-01 11:00:00"
 		incident.regulator_notification_evidence = "/private/files/_test-regulator-notice.pdf"
 		incident.data_subjects_notified_on = "2026-08-01 12:00:00"

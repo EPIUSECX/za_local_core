@@ -1,6 +1,6 @@
 # SA Localisation Core Migration Plan
 
-Status: architecture and migration specification; no production ownership has moved yet.
+Status: target ownership and runtime extraction implemented and validated on isolated compatibility and legacy-free sites. Production cutover and external practitioner approval remain release gates.
 
 ## Purpose
 
@@ -16,8 +16,8 @@ frappe -> erpnext -> za_local_core
 ```
 
 The core app knows nothing about downstream apps. It publishes services and document events; it does not import
-finance, payroll, or workplace modules. The existing `za_local` app remains the compatibility and migration
-orchestrator until all ownership transfers are complete.
+finance, payroll, or workplace modules. The existing `za_local` app remains a temporary compatibility shell for
+upgraded sites. Fresh sites run without it; the four target apps own the active runtime hooks.
 
 ## Existing source to move
 
@@ -142,4 +142,3 @@ manifest. CI must reject broken links, duplicate routes and undocumented Product
 - Fresh and upgraded sites pass repeated migrate, backup and restore.
 - No critical/high security or migration findings remain.
 - Finance, payroll and workplace can be released independently against the same supported core version.
-

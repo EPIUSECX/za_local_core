@@ -85,10 +85,51 @@ def classify_path(path: str) -> Ownership:
 		return _classify_documentation(path)
 
 	if path.startswith("za_local/sa_setup/"):
-		return Ownership("migration_split", "Split by fixture/record ownership before compatibility retirement")
+		return _classify_setup(path)
 
-	if path.startswith(("za_local/public/", "za_local/templates/", "za_local/config/")):
-		return Ownership("migration_split", "Split by domain before compatibility retirement")
+	if path.startswith("za_local/public/"):
+		return _classify_public_asset(path)
+
+	if path.startswith("za_local/templates/"):
+		return _classify_template(path)
+
+	if path.startswith("za_local/config/"):
+		return _classify_config(path)
+
+	if path.startswith(("za_local/desktop_icon/", "za_local/workspace_sidebar/")):
+		return _classify_public_asset(path)
+
+	if path.startswith("za_local/legacy_standard_docs/"):
+		return Ownership("za_local_finance", "Retired finance print-format source")
+
+	if path.startswith("za_local/data/"):
+		return Ownership("za_local_workplace", "Workplace reference data")
+
+	if path.startswith("za_local/patches/"):
+		if any(token in path.lower() for token in ("emp201", "statutory_tax")):
+			return Ownership("za_local_payroll", "Payroll migration patch")
+		return Ownership("za_local_core", "Shared migration package")
+
+	if path.startswith("za_local/utils/integrations/"):
+		return Ownership("za_local_payroll", "Payroll statutory and payment integration")
+
+	if path == "za_local/utils/csv_importer.py":
+		return Ownership("za_local_workplace", "Workplace reference-data importer")
+
+	if path in {
+		"za_local/hooks.py",
+		"za_local/__init__.py",
+		"za_local/modules.txt",
+		"za_local/overrides/__init__.py",
+		"za_local/patches.txt",
+		"za_local/practitioner_guide/README.md",
+		"za_local/practitioner_guide/__init__.py",
+		"za_local/tasks.py",
+		"za_local/test_data_loading.py",
+		"za_local/utils/__init__.py",
+		"za_local/utils/create_test_data.py",
+	}:
+		return Ownership("za_local_core", "Legacy composition artifact owned by the core migration programme")
 
 	return Ownership("za_local_compatibility", "Temporary compatibility or repository-level artifact")
 
@@ -164,3 +205,88 @@ def _classify_documentation(path: str) -> Ownership:
 	if any(token in lower_path for token in ("coida", "labour", "employment", "skills")):
 		return Ownership("za_local_workplace", "Workplace practitioner content")
 	return Ownership("za_local_core", "Shared practitioner content")
+
+
+def _classify_config(path: str) -> Ownership:
+	name = Path(path).stem
+	if name == "sa_vat":
+		return Ownership("za_local_finance", "Finance navigation configuration")
+	if name == "sa_payroll":
+		return Ownership("za_local_payroll", "Payroll navigation configuration")
+	if name in {"sa_coida", "sa_labour"}:
+		return Ownership("za_local_workplace", "Workplace navigation configuration")
+	return Ownership("za_local_core", "Shared navigation configuration")
+
+
+def _classify_public_asset(path: str) -> Ownership:
+	lower_path = path.lower()
+	if any(token in lower_path for token in ("vat", "commercial", "payment_entry")):
+		return Ownership("za_local_finance", "Finance public asset")
+	if any(
+		token in lower_path
+		for token in (
+			"payroll",
+			"salary",
+			"irp5",
+			"it3",
+			"benefit_claim",
+			"/employee.js",
+		)
+	):
+		return Ownership("za_local_payroll", "Payroll public asset")
+	if any(token in lower_path for token in ("coida", "labour", "workplace", "oid_claim")):
+		return Ownership("za_local_workplace", "Workplace public asset")
+	return Ownership("za_local_core", "Shared localisation public asset")
+
+
+def _classify_template(path: str) -> Ownership:
+	lower_path = path.lower()
+	if any(token in lower_path for token in ("irp5", "salary_slip")):
+		return Ownership("za_local_payroll", "Payroll print template")
+	if any(token in lower_path for token in ("commercial", "payment_entry")):
+		return Ownership("za_local_finance", "Finance print template")
+	return Ownership("za_local_core", "Shared template package")
+
+
+def _classify_setup(path: str) -> Ownership:
+	lower_path = path.lower()
+	payroll_tokens = (
+		"earnings_components",
+		"eti_slab",
+		"holiday_list",
+		"payroll_period",
+		"salary_component",
+		"statutory_rate",
+		"tax_rebate",
+		"tax_slab",
+		"emp201",
+		"emp501",
+		"irp5",
+		"sa_payroll",
+		"statutory_submission",
+	)
+	finance_tokens = (
+		"vat",
+		"sales_tax",
+		"purchase_tax",
+		"item_tax",
+	)
+	workplace_tokens = (
+		"coida",
+		"labour",
+		"workplace",
+		"oid_claim",
+		"seta",
+		"bargaining_council",
+		"business_trip",
+		"employment_equity",
+		"annual_training",
+		"sectoral_minimum_wage",
+	)
+	if any(token in lower_path for token in finance_tokens):
+		return Ownership("za_local_finance", "Finance setup artifact")
+	if any(token in lower_path for token in payroll_tokens):
+		return Ownership("za_local_payroll", "Payroll setup artifact")
+	if any(token in lower_path for token in workplace_tokens) or lower_path.endswith("/leave_types.py"):
+		return Ownership("za_local_workplace", "Workplace setup artifact")
+	return Ownership("za_local_core", "Shared setup and migration orchestration")
