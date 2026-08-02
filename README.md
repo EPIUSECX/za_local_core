@@ -2,6 +2,9 @@
 
 Shared statutory sources, rate packs, compliance profiles, filing controls, and audit foundations for South Africa.
 
+This app provides governance and evidence controls. It is not a legal certification, does not make an employer or
+vendor compliant by installation alone, and does not submit returns to SARS or another authority.
+
 See the [migration plan](MIGRATION_PLAN.md) for the source ownership, new compliance model, migration sequence and
 release gates.
 
@@ -22,10 +25,12 @@ Current test evidence and remaining release gates are recorded in [VALIDATION_AN
 
 The finance, payroll and workplace apps do not add separate desktop applications. Their install, migrate and uninstall hooks ask core to refresh the shared navigation, so the launcher reflects only the localisation areas available on the site. The icon assets are packaged by core and remain consistent across the desktop launcher and workspace headers.
 
-The optional federated Wiki publisher combines documentation from all installed localisation apps. After installing Frappe Wiki, run:
+The optional federated Wiki publisher combines documentation from all installed localisation apps. A System
+Manager can publish it from the localisation setup UI. A bench administrator may run the same idempotent publisher
+directly after installing Frappe Wiki:
 
 ```bash
-bench --site $SITE_NAME execute za_local_core.practitioner_guide.stage.stage_space
+bench --site <site> execute za_local_core.practitioner_guide.stage.stage_space
 ```
 
 It publishes `/sa-guide` and `/sa-user-guide`. CI validates ownership, content files, routes and relative links.
@@ -39,12 +44,25 @@ for the external statutory and operational approvals in
 
 ## Installation
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+Install on a Frappe v16 bench after ERPNext. A full-suite target must use this dependency order:
+
+1. Frappe and ERPNext
+2. HRMS, when payroll or workplace is required
+3. `za_local_core`
+4. `za_local_finance`
+5. `za_local_payroll`
+6. `za_local_workplace`
+
+Install this app using the [bench](https://github.com/frappe/bench) CLI:
 
 ```bash
-bench get-app $URL_OF_THIS_REPO --branch main
-bench --site $SITE_NAME install-app za_local_core
+bench get-app <core-repository-url> --branch main
+bench --site <site> install-app za_local_core
 ```
+
+Do not install the extracted apps as active writers on a site or bench that still runs the legacy `za_local`
+monolith. The release gate rejects legacy `za_local` on a target-only candidate. Rehearse a populated legacy
+upgrade on an isolated clone, retain a separate rollback environment, and follow [CUTOVER_RUNBOOK.md](CUTOVER_RUNBOOK.md).
 
 ## Contributing
 

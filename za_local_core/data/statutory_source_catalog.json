@@ -1,0 +1,64 @@
+[
+  {
+    "catalog_key": "SARS-PAYE-EMPLOYER-GUIDE-2027",
+    "authority": "SARS",
+    "title": "Guide for Employers in respect of Employees' Tax (2027 Tax Year)",
+    "document_type": "Employer Guide",
+    "version": "2027",
+    "publication_date": "2026-02-25",
+    "effective_from": "2026-03-01",
+    "effective_to": "2027-02-28",
+    "source_url": "https://www.sars.gov.za/guide-for-employers-in-respect-of-employees-tax-2027/",
+    "reference_file_url": "https://www.sars.gov.za/wp-content/uploads/Ops/Guides/PAYE-GEN-01-G21-Guide-for-Employers-iro-Employees-Tax-for-2027-External-Guide.pdf",
+    "reference_sha256": "ec7c3e806b7f70159c56a01cc3ffa2769762da173131beb57c168755271238c2",
+    "notes": "Catalog metadata only. Upload the retrieved PDF privately, verify its digest and obtain independent practitioner approval before submission."
+  },
+  {
+    "catalog_key": "SARS-PAYE-BRS-2026-27-V25.3.0",
+    "authority": "SARS",
+    "title": "PAYE Employer Reconciliation Business Requirement Specification",
+    "document_type": "Business Requirement Specification",
+    "version": "25.3.0",
+    "publication_date": "2026-06-10",
+    "effective_from": "2026-03-01",
+    "source_url": "https://www.sars.gov.za/wp-content/uploads/Docs/PAYE/BRS/SARS_PAYE_BRS-PAYE-Employer-Reconciliation_V25-3-0.pdf",
+    "reference_sha256": "14ec0e57c5f56c8e995dfe9ad7e67061fabff69c4bcbe0a8fa19179b5992d2cf",
+    "notes": "Catalog metadata only. Effective until replaced. This does not assert automated generation or SARS acceptance of any filing format."
+  },
+  {
+    "catalog_key": "COIDA-GAZETTE-54577-NOTICE-3910",
+    "authority": "Compensation Fund",
+    "title": "Maximum Amount of Earnings on which the Assessment of an Employer shall be calculated",
+    "document_type": "Government Gazette Notice",
+    "version": "Gazette 54577, Notice 3910",
+    "publication_date": "2026-04-24",
+    "effective_from": "2026-03-01",
+    "effective_to": "2027-02-28",
+    "source_url": "https://www.gov.za/sites/default/files/gcis_document/202604/54577gen3910.pdf",
+    "reference_sha256": "067625d4e4073c1b163b724c356a1f345bbeac4d328a6c9ad500a0b0b6239011",
+    "notes": "Records the R668,000 annual maximum per employee. Catalog metadata does not activate a COIDA calculation."
+  },
+  {
+    "catalog_key": "DEL-BCEA-EARNINGS-THRESHOLD-2026",
+    "authority": "Department of Employment and Labour",
+    "title": "BCEA Earnings Threshold effective 1 May 2026",
+    "document_type": "Ministerial Determination",
+    "version": "2026",
+    "publication_date": "2026-04-21",
+    "effective_from": "2026-05-01",
+    "source_url": "https://www.labour.gov.za/Media-Desk/Media-Statements/Pages/Department-of-Employment-and-Labour-sets-a-new-threshold-in-the-protection-of-employees-.aspx",
+    "notes": "Records the R269,900.90 annual threshold. Practitioner review and supporting private evidence remain required."
+  },
+  {
+    "catalog_key": "DEL-NMW-GAZETTE-54075-NOTICE-7083",
+    "authority": "Department of Employment and Labour",
+    "title": "National Minimum Wage adjustment effective 1 March 2026",
+    "document_type": "Government Gazette Notice",
+    "version": "Gazette 54075, Notice 7083",
+    "publication_date": "2026-02-03",
+    "effective_from": "2026-03-01",
+    "source_url": "https://www.gov.za/sites/default/files/gcis_document/202602/54075rg11941gon7083.pdf",
+    "reference_sha256": "c6a205ec4fb70fc1fbdb4b5ecc218895fad671ecf78d88a1ffcb0a5f1f51a557",
+    "notes": "Records the general R30.23 ordinary-hour minimum. Sectoral and worker-category exceptions require separate reviewed rules."
+  }
+]

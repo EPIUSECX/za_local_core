@@ -9,6 +9,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: Ruff
@@ -21,11 +24,18 @@ jobs:
           cache: pip
       - run: python -m pip install ruff
       - run: ruff check .
+      - run: ruff format --check .
+      - run: bash -n .github/helper/install.sh
+      - run: git ls-files '*.json' -z | xargs -0 -n1 python -m json.tool >/dev/null
 
   server-tests:
-    name: Frappe v16 server tests
+    name: Frappe v16 / Python ${{ matrix.python-version }}
     runs-on: ubuntu-22.04
     needs: lint
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.14"]
     services:
       mariadb:
         image: mariadb:10.6
@@ -43,11 +53,13 @@ jobs:
       FRAPPE_BRANCH: version-16
       ERPNEXT_BRANCH: version-16
       HRMS_BRANCH: version-16
+      ZA_LOCAL_CORE_REF: main
+      ZA_LOCAL_PAYROLL_REF: main
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
         with:
-          python-version: "3.14"
+          python-version: ${{ matrix.python-version }}
           cache: pip
       - uses: actions/setup-node@v6
         with:
@@ -61,3 +73,6 @@ jobs:
         run: |
           bench --site test_site set-config allow_tests true
           bench --site test_site run-tests --app "$APP_NAME" --lightmode
+      - name: Verify legacy app is absent
+        working-directory: /home/runner/frappe-bench
+        run: '! bench --site test_site list-apps | grep -Fx za_local'

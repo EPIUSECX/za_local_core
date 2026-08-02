@@ -13,9 +13,10 @@ class ZAFeatureReadiness(Document):
 		self._set_readiness_key()
 		self.checked_by = frappe.session.user
 		self.checked_on = now_datetime()
-		if self.status in ("Controlled Manual", "Preview", "Unsupported", "Blocked") and not (
-			self.blocking_reason or ""
-		).strip():
+		if (
+			self.status in ("Controlled Manual", "Preview", "Unsupported", "Blocked")
+			and not (self.blocking_reason or "").strip()
+		):
 			frappe.throw(_("Blocking Reason or Limitations is required for status {0}.").format(self.status))
 
 	def _set_readiness_key(self) -> None:

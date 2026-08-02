@@ -2,6 +2,8 @@
 
 import frappe
 
+from za_local_core.migration.backfill import run as run_core_backfill
+from za_local_core.migration.ownership import verify_checked_manifest
 from za_local_core.navigation import sync_shared_navigation
 
 CORE_ROLES = (
@@ -30,11 +32,13 @@ CORE_FEATURES = (
 
 def after_install() -> None:
 	ensure_core_roles()
+	run_core_backfill()
 	seed_core_readiness()
 	sync_shared_navigation()
 
 
 def after_migrate() -> None:
+	verify_checked_manifest()
 	ensure_core_roles()
 	seed_core_readiness()
 	sync_shared_navigation()

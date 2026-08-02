@@ -1,7 +1,12 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import getdate, now_datetime
+from frappe.utils import cint, flt, getdate, now_datetime
+
+from za_local_core.governance import REVIEW_ROLES, canonical_sha256, validate_accountable_actor
+
+NUMERIC_UNITS = frozenset({"Amount", "Percentage", "Count", "Hours", "Days"})
+MAX_RATE_PRECISION = 9
 
 
 class ZAStatutoryRatePack(Document):
@@ -9,19 +14,22 @@ class ZAStatutoryRatePack(Document):
 		self._validate_dates()
 		self._validate_items()
 		self._validate_no_overlap()
+		self.content_sha256 = self._calculate_content_sha256()
 
 	def before_submit(self) -> None:
 		if frappe.db.get_value("ZA Statutory Source", self.source, "docstatus") != 1:
-			frappe.throw(_("Statutory Source {0} must be approved before this rate pack.").format(self.source))
-		if not self.reviewed_by:
-			frappe.throw(_("Reviewed By is required before approving a statutory rate pack."))
-		if self.reviewed_by == self.owner:
-			frappe.throw(_("The rate-pack reviewer must differ from its creator."))
+			frappe.throw(
+				_("Statutory Source {0} must be approved before this rate pack.").format(self.source)
+			)
+		validate_accountable_actor(self, "reviewed_by", REVIEW_ROLES, "approve")
 		self.status = "Approved"
 		self.approved_on = now_datetime()
 
 	def on_cancel(self) -> None:
 		self.db_set("status", "Cancelled", update_modified=False)
+
+	def before_cancel(self) -> None:
+		validate_accountable_actor(self, "reviewed_by", REVIEW_ROLES, "cancel")
 
 	def _validate_dates(self) -> None:
 		if getdate(self.effective_to) < getdate(self.effective_from):
@@ -41,6 +49,40 @@ class ZAStatutoryRatePack(Document):
 			row.rule_key = key
 			if row.unit == "Text" and not row.text_value:
 				frappe.throw(_("Text Value is required for rule {0}.").format(key))
+			if row.unit in NUMERIC_UNITS:
+				if row.get("numeric_value") is None:
+					frappe.throw(_("Numeric Value is required for rule {0}.").format(key))
+				precision = cint(row.precision)
+				if precision < 0 or precision > MAX_RATE_PRECISION:
+					frappe.throw(
+						_("Display Precision for rule {0} must be between 0 and {1}.").format(
+							key, MAX_RATE_PRECISION
+						)
+					)
+				row.precision = precision
+				row.numeric_value = flt(row.numeric_value, precision)
+				if row.text_value:
+					frappe.throw(_("Text Value is not allowed for numeric rule {0}.").format(key))
+
+	def _calculate_content_sha256(self) -> str:
+		return canonical_sha256(
+			{
+				"domain": self.domain,
+				"effective_from": str(self.effective_from),
+				"effective_to": str(self.effective_to),
+				"items": [
+					{
+						"numeric_value": row.numeric_value if row.unit in NUMERIC_UNITS else None,
+						"precision": row.precision,
+						"rule_key": row.rule_key,
+						"text_value": row.text_value if row.unit == "Text" else None,
+						"unit": row.unit,
+					}
+					for row in sorted(self.items, key=lambda item: item.rule_key)
+				],
+				"source": self.source,
+			}
+		)
 
 	def _validate_no_overlap(self) -> None:
 		pack = frappe.qb.DocType("ZA Statutory Rate Pack")

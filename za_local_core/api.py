@@ -30,7 +30,7 @@ def has_app_permission() -> bool:
 	return False
 
 
-@frappe.whitelist()
+@frappe.whitelist(methods=["GET"])
 def get_company_readiness(company: str) -> list[dict]:
 	"""Return capability labels after enforcing Company read permission."""
 	if not isinstance(company, str) or not company.strip():

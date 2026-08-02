@@ -36,7 +36,14 @@ class ZAPersonalInformationIncident(OperationalPrivacyDocument):
 			self._validate_closure_review("remediation_evidence", "resolved_at")
 
 	def _validate_containment(self) -> None:
-		if self.status in {"Contained", "Notification Assessment", "Notifying", "Remediating", "Resolved", "Closed"}:
+		if self.status in {
+			"Contained",
+			"Notification Assessment",
+			"Notifying",
+			"Remediating",
+			"Resolved",
+			"Closed",
+		}:
 			if not self.contained_at or not self.containment_evidence:
 				frappe.throw(_("Contained At and Containment Evidence are required for this status."))
 

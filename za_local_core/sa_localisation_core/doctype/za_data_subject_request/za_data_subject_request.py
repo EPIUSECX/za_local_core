@@ -31,7 +31,9 @@ class ZADataSubjectRequest(OperationalPrivacyDocument):
 			return
 		if not self.identity_verified_on or not self.identity_verification_evidence:
 			frappe.throw(
-				_("Identity Verified On and Identity Verification Evidence are required before processing or disclosure.")
+				_(
+					"Identity Verified On and Identity Verification Evidence are required before processing or disclosure."
+				)
 			)
 
 	def _validate_extension(self) -> None:

@@ -9,9 +9,21 @@ def get_guide_sections() -> dict:
 				"title": "Getting Started",
 				"order": 10,
 				"pages": [
-					{"slug": "overview", "title": "Overview and Capability Boundaries", "file": "01_overview.md"},
-					{"slug": "installation", "title": "Installation and Migration", "file": "02_installation.md"},
-					{"slug": "post-install-verification", "title": "Post-Install Verification", "file": "04_verification.md"},
+					{
+						"slug": "overview",
+						"title": "Overview and Capability Boundaries",
+						"file": "01_overview.md",
+					},
+					{
+						"slug": "installation",
+						"title": "Installation and Migration",
+						"file": "02_installation.md",
+					},
+					{
+						"slug": "post-install-verification",
+						"title": "Post-Install Verification",
+						"file": "04_verification.md",
+					},
 				],
 			},
 			{
@@ -19,7 +31,11 @@ def get_guide_sections() -> dict:
 				"title": "Foundation Setup",
 				"order": 15,
 				"pages": [
-					{"slug": "company-registration", "title": "Company and Registration Details", "file": "10_company_registration.md"},
+					{
+						"slug": "company-registration",
+						"title": "Company and Registration Details",
+						"file": "10_company_registration.md",
+					},
 				],
 			},
 			{
@@ -27,10 +43,26 @@ def get_guide_sections() -> dict:
 				"title": "Governance, POPIA and Operations",
 				"order": 80,
 				"pages": [
-					{"slug": "custom-fields-reference", "title": "Configuration Ownership", "file": "79_configuration_ownership.md"},
-					{"slug": "statutory-source-governance", "title": "Statutory Source Governance", "file": "80_source_governance.md"},
-					{"slug": "popia-paia-controls", "title": "POPIA and PAIA Controls", "file": "81_popia_paia.md"},
-					{"slug": "troubleshooting-faq", "title": "Operations and Troubleshooting", "file": "82_operations.md"},
+					{
+						"slug": "custom-fields-reference",
+						"title": "Configuration Ownership",
+						"file": "79_configuration_ownership.md",
+					},
+					{
+						"slug": "statutory-source-governance",
+						"title": "Statutory Source Governance",
+						"file": "80_source_governance.md",
+					},
+					{
+						"slug": "popia-paia-controls",
+						"title": "POPIA and PAIA Controls",
+						"file": "81_popia_paia.md",
+					},
+					{
+						"slug": "troubleshooting-faq",
+						"title": "Operations and Troubleshooting",
+						"file": "82_operations.md",
+					},
 				],
 			},
 		],
@@ -57,8 +89,16 @@ def get_guide_sections() -> dict:
 				"title": "Reports",
 				"order": 35,
 				"pages": [
-					{"slug": "finding-reports", "title": "Finding and Running Reports", "file": "u40_reports.md"},
-					{"slug": "exporting-printing", "title": "Exporting and Printing", "file": "u44_exporting.md"},
+					{
+						"slug": "finding-reports",
+						"title": "Finding and Running Reports",
+						"file": "u40_reports.md",
+					},
+					{
+						"slug": "exporting-printing",
+						"title": "Exporting and Printing",
+						"file": "u44_exporting.md",
+					},
 				],
 			},
 		],

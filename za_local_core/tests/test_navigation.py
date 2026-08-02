@@ -59,15 +59,16 @@ class TestSharedNavigationSync(IntegrationTestCase):
 		children = frappe.get_all(
 			"Desktop Icon",
 			filters={"parent_icon": APP_TITLE},
-			fields=["label", "app", "link_type", "link_to", "hidden"],
+			fields=["label", "app", "link_type", "link_to", "hidden", "logo_url"],
 			order_by="idx asc",
 		)
 		self.assertEqual(labels, [child.label for child in children])
-		for child in children:
+		for child, spec in zip(children, available, strict=True):
 			self.assertEqual(APP_NAME, child.app)
 			self.assertEqual("Workspace Sidebar", child.link_type)
 			self.assertEqual(child.label, child.link_to)
 			self.assertEqual(0, child.hidden)
+			self.assertEqual(spec.logo_url, child.logo_url)
 
 		for label in labels:
 			sidebar = frappe.get_doc("Workspace Sidebar", label)

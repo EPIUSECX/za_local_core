@@ -4,7 +4,7 @@
  "creation": "2026-08-01 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["filing_key", "company", "obligation", "capability", "section_period", "period_start", "period_end", "due_date", "status", "section_controls", "currency", "ledger_amount", "declared_amount", "paid_amount", "unexplained_difference", "column_break_1", "reviewed_by", "approved_by", "approved_on", "working_paper", "notes", "amended_from"],
+ "field_order": ["filing_key", "company", "obligation", "capability", "section_period", "period_start", "period_end", "due_date", "status", "section_controls", "currency", "ledger_amount", "declared_amount", "paid_amount", "unexplained_difference", "column_break_1", "reviewed_by", "reviewed_on", "approved_by", "approved_on", "working_paper", "working_paper_sha256", "review_checksum", "notes", "amended_from"],
  "fields": [
   {"fieldname": "filing_key", "fieldtype": "Data", "label": "Filing Key", "read_only": 1, "unique": 1, "no_copy": 1},
   {"fieldname": "company", "fieldtype": "Link", "label": "Company", "options": "Company", "reqd": 1, "in_list_view": 1},
@@ -23,9 +23,12 @@
   {"fieldname": "unexplained_difference", "fieldtype": "Currency", "label": "Unexplained Difference", "options": "currency", "read_only": 1},
   {"fieldname": "column_break_1", "fieldtype": "Column Break"},
   {"fieldname": "reviewed_by", "fieldtype": "Link", "label": "Reviewed By", "options": "User", "reqd": 1},
+  {"fieldname": "reviewed_on", "fieldtype": "Datetime", "label": "Reviewed On", "read_only": 1, "no_copy": 1},
   {"fieldname": "approved_by", "fieldtype": "Link", "label": "Approved By", "options": "User", "reqd": 1},
   {"fieldname": "approved_on", "fieldtype": "Datetime", "label": "Approved On", "read_only": 1},
   {"fieldname": "working_paper", "fieldtype": "Attach", "label": "Approved Working Paper"},
+  {"fieldname": "working_paper_sha256", "fieldtype": "Data", "label": "Working Paper SHA-256"},
+  {"fieldname": "review_checksum", "fieldtype": "Data", "label": "Review Checksum", "read_only": 1, "no_copy": 1},
   {"fieldname": "notes", "fieldtype": "Text", "label": "Difference Explanation and Notes"},
   {"fieldname": "amended_from", "fieldtype": "Link", "label": "Amended From", "options": "ZA Filing", "read_only": 1, "no_copy": 1}
  ],

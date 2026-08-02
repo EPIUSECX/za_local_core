@@ -22,9 +22,12 @@ class ZAPAIAManual(ReviewedPrivacyDocument):
 			self.information_officer_registration,
 			_("Information Officer Registration"),
 		)
-		if frappe.db.get_value(
-			"ZA Information Officer Registration", self.information_officer_registration, "docstatus"
-		) != 1:
+		if (
+			frappe.db.get_value(
+				"ZA Information Officer Registration", self.information_officer_registration, "docstatus"
+			)
+			!= 1
+		):
 			frappe.throw(_("Information Officer Registration must be active and approved."))
 
 	def before_submit(self) -> None:

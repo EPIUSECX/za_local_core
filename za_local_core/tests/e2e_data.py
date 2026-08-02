@@ -1,11 +1,14 @@
 """Deterministic end-to-end data for the isolated za_local test site."""
 
+import hashlib
+import json
 from calendar import month_name, monthrange
 from pathlib import Path
 
 import frappe
 from frappe import _
 from frappe.utils import flt, getdate, today
+from frappe.utils.file_manager import save_file
 
 E2E_COMPANY = "Cohenix Localisation E2E"
 E2E_COMPANY_ABBR = "CLE2E"
@@ -81,9 +84,7 @@ def stage_foundation():
 	)
 	ensure_company_tax_configuration(E2E_COMPANY)
 	load_sa_chart_of_accounts(E2E_COMPANY)
-	frappe.db.set_single_value(
-		"Payroll Settings", "za_eti_unregulated_minimum_monthly_wage", 2500
-	)
+	frappe.db.set_single_value("Payroll Settings", "za_eti_unregulated_minimum_monthly_wage", 2500)
 	seed_payroll_masters()
 	repair_salary_component_accounts(E2E_COMPANY)
 	frappe.db.commit()
@@ -130,9 +131,7 @@ def stage_payroll_masters():
 		"regular": _ensure_employee(
 			"Regular", "1990-01-15", "e2e.regular@cohenix.test", 5000, E2E_MONTHLY_DEPARTMENT
 		),
-		"eti": _ensure_employee(
-			"ETI", "2002-05-10", "e2e.eti@cohenix.test", 5001, E2E_MONTHLY_DEPARTMENT
-		),
+		"eti": _ensure_employee("ETI", "2002-05-10", "e2e.eti@cohenix.test", 5001, E2E_MONTHLY_DEPARTMENT),
 		"timesheet": _ensure_employee(
 			"Timesheet",
 			"1995-07-20",
@@ -255,6 +254,7 @@ def stage_interim_statutory_reconciliation():
 def stage_coida_assessment():
 	"""Create a submitted COIDA annual return from the staged payroll evidence."""
 	_require_isolated_test_site()
+	stage_test_coida_governance()
 	stage_payroll_year_to_date()
 	stage_timesheet_payroll()
 
@@ -263,8 +263,7 @@ def stage_coida_assessment():
 	settings.reference_number = "E2E-ROE-001"
 	settings.assessment_year = "2026-2027"
 	if not any(
-		row.company == E2E_COMPANY and row.industry_class == "E2E Services"
-		for row in settings.industry_rates
+		row.company == E2E_COMPANY and row.industry_class == "E2E Services" for row in settings.industry_rates
 	):
 		settings.append(
 			"industry_rates",
@@ -307,20 +306,136 @@ def stage_coida_assessment():
 	}
 
 
+def stage_test_coida_governance():
+	"""Approve deterministic COIDA controls only on the isolated E2E site.
+
+	The attachment is synthetic test evidence. Production sites must retrieve,
+	independently review, and approve the applicable Compensation Fund source.
+	"""
+	_require_isolated_test_site()
+	if "za_local_workplace" not in frappe.get_installed_apps():
+		frappe.throw(_("Install ZA Local Workplace before staging COIDA governance."))
+
+	from za_local_core.services.rates import resolve_rate
+
+	try:
+		return resolve_rate("COIDA", "coida.annual_earnings_cap", "2026-03-01")
+	except frappe.ValidationError:
+		frappe.clear_messages()
+
+	reviewer = _ensure_test_compliance_reviewer()
+	source_key = "TEST-E2E-COIDA-CONTROLS-2026"
+	source_name = frappe.db.get_value("ZA Statutory Source", {"catalog_key": source_key}, "name")
+	if source_name:
+		source = frappe.get_doc("ZA Statutory Source", source_name)
+	else:
+		source = frappe.get_doc(
+			{
+				"doctype": "ZA Statutory Source",
+				"catalog_key": source_key,
+				"authority": "Compensation Fund",
+				"title": "_E2E COIDA controls (test evidence only)",
+				"document_type": "Test Governance Evidence",
+				"version": "2026-E2E",
+				"publication_date": "2026-04-17",
+				"effective_from": "2026-03-01",
+				"effective_to": "2027-02-28",
+				"source_url": "https://www.labour.gov.za/DocumentCenter/Pages/default.aspx",
+				"reviewed_by": reviewer,
+				"notes": (
+					"Synthetic, deterministic evidence for the isolated E2E site. It must never be "
+					"copied into a production source register."
+				),
+			}
+		).insert(ignore_permissions=True)
+
+	if source.docstatus == 0:
+		content = json.dumps(
+			{
+				"scope": "isolated-e2e-only",
+				"authority_reference": "COIDA-GAZETTE-54577-NOTICE-3910",
+				"values": {
+					"coida.annual_earnings_cap": 668000,
+					"coida.minimum_assessment": 1621,
+					"coida.domestic_minimum_assessment": 560,
+					f"coida.assessment_rate.{E2E_COMPANY}.E2E Services": 1.25,
+				},
+			},
+			sort_keys=True,
+		).encode()
+		file_doc = save_file(
+			"_e2e-coida-governance.json",
+			content,
+			"ZA Statutory Source",
+			source.name,
+			is_private=1,
+		)
+		source.source_file = file_doc.file_url
+		source.sha256_checksum = hashlib.sha256(content).hexdigest()
+		source.reviewed_by = reviewer
+		source.save(ignore_permissions=True)
+		_submit_as(source, reviewer)
+
+	pack_title = "_E2E Approved COIDA Controls 2026-2027"
+	pack_name = frappe.db.get_value(
+		"ZA Statutory Rate Pack", {"title": pack_title, "docstatus": ["<", 2]}, "name"
+	)
+	pack = (
+		frappe.get_doc("ZA Statutory Rate Pack", pack_name)
+		if pack_name
+		else frappe.new_doc("ZA Statutory Rate Pack")
+	)
+	if pack.docstatus == 0:
+		pack.update(
+			{
+				"domain": "COIDA",
+				"title": pack_title,
+				"source": source.name,
+				"effective_from": "2026-03-01",
+				"effective_to": "2027-02-28",
+				"reviewed_by": reviewer,
+				"notes": "Approved only for deterministic isolated-site E2E execution.",
+			}
+		)
+		pack.set("items", [])
+		for rule_key, value, unit in (
+			("coida.annual_earnings_cap", 668000, "Amount"),
+			("coida.minimum_assessment", 1621, "Amount"),
+			("coida.domestic_minimum_assessment", 560, "Amount"),
+			(f"coida.assessment_rate.{E2E_COMPANY}.E2E Services", 1.25, "Percentage"),
+		):
+			pack.append(
+				"items",
+				{"rule_key": rule_key, "numeric_value": value, "unit": unit, "precision": 2},
+			)
+		if pack.is_new():
+			pack.insert(ignore_permissions=True)
+		else:
+			pack.save(ignore_permissions=True)
+		_submit_as(pack, reviewer)
+	frappe.db.commit()
+	return resolve_rate("COIDA", "coida.annual_earnings_cap", "2026-03-01")
+
+
 def stage_vat_cycle():
 	"""Post sales and purchase VAT evidence and submit a VAT201 working paper."""
 	_require_isolated_test_site()
 	stage_foundation()
 
-	if "za_local_finance" in frappe.get_installed_apps():
-		from za_local_finance.sa_vat.setup import bootstrap_company_vat_setup, get_vat_settings
-	else:
-		from za_local.sa_vat.setup import bootstrap_company_vat_setup, get_vat_settings
+	if "za_local_finance" not in frappe.get_installed_apps():
+		frappe.throw(_("Install ZA Local Finance before staging the VAT end-to-end scenario."))
 
+	from za_local_finance.sa_vat.setup import bootstrap_company_vat_setup, get_vat_settings
+
+	stage_test_vat_governance()
 	settings = get_vat_settings(E2E_COMPANY, create_if_missing=True)
 	settings.output_vat_account = _get_e2e_account("VAT Collected - Sales")
 	settings.input_vat_account = _get_e2e_account("VAT Paid - Purchases")
+	settings.statutory_control_date = "2026-07-15"
 	settings.standard_vat_rate = 15
+	settings.vat_filing_category = "Category C"
+	settings.vat_filing_frequency = "Monthly"
+	settings.vat201_compliance_obligation = _ensure_test_vat_obligation()
 	settings.flags.ignore_permissions = True
 	if settings.is_new():
 		settings.insert()
@@ -363,6 +478,7 @@ def stage_vat_cycle():
 				"doctype": "VAT201 Return",
 				"company": E2E_COMPANY,
 				"tax_period": "Monthly",
+				"filing_category": "Category C",
 				"from_date": "2026-07-01",
 				"to_date": "2026-07-31",
 				"submission_date": "2026-08-01",
@@ -372,6 +488,9 @@ def stage_vat_cycle():
 		vat_return.insert(ignore_permissions=True)
 
 	if vat_return.docstatus == 0:
+		vat_return.filing_due_date = "2026-08-25"
+		vat_return.filing_reviewer = _ensure_test_compliance_reviewer()
+		vat_return.filing_approver = _ensure_test_compliance_approver()
 		vat_return.get_vat_transactions()
 		vat_return.save(ignore_permissions=True)
 		if vat_return.unresolved_transaction_count:
@@ -399,6 +518,229 @@ def stage_vat_cycle():
 		"input_tax": vat_return.total_input_tax,
 		"vat_payable": vat_return.vat_payable,
 	}
+
+
+def stage_vat_filing_lifecycle():
+	"""Complete the isolated VAT review, approval, and synthetic receipt lifecycle."""
+	_require_isolated_test_site()
+	result = stage_vat_cycle()
+	vat_return = frappe.get_doc("VAT201 Return", result["vat201_return"])
+	if not vat_return.za_filing:
+		frappe.throw(_("The staged VAT201 Return did not create its governed filing."))
+
+	reviewer = _ensure_test_compliance_reviewer()
+	approver = _ensure_test_compliance_approver()
+	filing = frappe.get_doc("ZA Filing", vat_return.za_filing)
+	if filing.docstatus == 0 and filing.status == "Draft":
+		original_user = frappe.session.user
+		try:
+			frappe.set_user(reviewer)
+			filing.mark_reviewed()
+		finally:
+			frappe.set_user(original_user)
+		filing.reload()
+	if filing.docstatus == 0:
+		_submit_as(filing, approver)
+		filing.reload()
+
+	authority_reference = "_E2E-SARS-VAT201-ACCEPTED-2026-07"
+	receipt_name = frappe.db.get_value(
+		"ZA Submission Receipt",
+		{
+			"filing": filing.name,
+			"authority_reference": authority_reference,
+			"docstatus": ["<", 2],
+		},
+		"name",
+	)
+	if receipt_name:
+		receipt = frappe.get_doc("ZA Submission Receipt", receipt_name)
+	else:
+		receipt_content = b"Synthetic accepted VAT201 receipt for isolated E2E evidence only."
+		receipt_file = save_file(
+			"_e2e-accepted-vat201.txt",
+			receipt_content,
+			None,
+			None,
+			is_private=1,
+		)
+		original_user = frappe.session.user
+		try:
+			frappe.set_user(reviewer)
+			receipt_name = vat_return.record_submission_receipt(
+				authority_reference=authority_reference,
+				response_status="Accepted",
+				evidence_file=receipt_file.file_url,
+				sha256_checksum=hashlib.sha256(receipt_content).hexdigest(),
+				submitted_by=approver,
+				submitted_at="2026-08-20 10:00:00",
+				notes="Synthetic isolated-site evidence; not a real SARS response.",
+			)
+		finally:
+			frappe.set_user(original_user)
+		receipt = frappe.get_doc("ZA Submission Receipt", receipt_name)
+	if receipt.docstatus == 0:
+		_submit_as(receipt, approver)
+		receipt.reload()
+	vat_return.reload()
+	frappe.db.commit()
+	return {
+		"vat201_return": vat_return.name,
+		"vat201_status": vat_return.status,
+		"filing": filing.name,
+		"filing_docstatus": filing.docstatus,
+		"filing_status": filing.status,
+		"receipt": receipt.name,
+		"receipt_docstatus": receipt.docstatus,
+		"receipt_status": receipt.response_status,
+	}
+
+
+def stage_test_vat_governance():
+	"""Approve deterministic VAT controls only on the isolated E2E site.
+
+	This is test evidence, not a production statutory seed. Production sources
+	must be independently retrieved, checked and approved through the core UI.
+	"""
+	_require_isolated_test_site()
+	if "za_local_finance" not in frappe.get_installed_apps():
+		frappe.throw(_("Install ZA Local Finance before staging VAT governance."))
+
+	from za_local_finance.sa_vat.statutory import (
+		CURRENT_APPROVED_SOURCE_METADATA,
+		VAT_CONTROL_UNITS,
+		resolve_vat_controls,
+	)
+
+	try:
+		return resolve_vat_controls("2026-07-15")
+	except frappe.ValidationError:
+		frappe.clear_messages()
+
+	reviewer = _ensure_test_compliance_reviewer()
+	source_key = "TEST-E2E-VAT-CONTROLS-2026"
+	source_name = frappe.db.get_value("ZA Statutory Source", {"catalog_key": source_key}, "name")
+	if source_name:
+		source = frappe.get_doc("ZA Statutory Source", source_name)
+	else:
+		source = frappe.get_doc(
+			{
+				"doctype": "ZA Statutory Source",
+				"catalog_key": source_key,
+				"authority": "SARS",
+				"title": "_E2E VAT control source (test evidence only)",
+				"document_type": "Test Governance Evidence",
+				"version": "2026-E2E",
+				"publication_date": "2026-04-01",
+				"effective_from": "2026-04-01",
+				"effective_to": "2027-03-31",
+				"source_url": CURRENT_APPROVED_SOURCE_METADATA["rate_source_url"],
+				"reviewed_by": reviewer,
+				"notes": (
+					"Synthetic, deterministic evidence for the isolated E2E site. It must never be "
+					"copied into a production source register."
+				),
+			}
+		).insert(ignore_permissions=True)
+
+	if source.docstatus == 0:
+		content = json.dumps(
+			{
+				"scope": "isolated-e2e-only",
+				"source_metadata": CURRENT_APPROVED_SOURCE_METADATA,
+			},
+			sort_keys=True,
+		).encode()
+		file_doc = save_file(
+			"_e2e-vat-governance.json",
+			content,
+			"ZA Statutory Source",
+			source.name,
+			is_private=1,
+		)
+		source.source_file = file_doc.file_url
+		source.sha256_checksum = hashlib.sha256(content).hexdigest()
+		source.reviewed_by = reviewer
+		source.save(ignore_permissions=True)
+		_submit_as(source, reviewer)
+
+	pack_title = "_E2E Approved VAT Controls 2026-2027"
+	pack_name = frappe.db.get_value(
+		"ZA Statutory Rate Pack", {"title": pack_title, "docstatus": ["<", 2]}, "name"
+	)
+	pack = (
+		frappe.get_doc("ZA Statutory Rate Pack", pack_name)
+		if pack_name
+		else frappe.new_doc("ZA Statutory Rate Pack")
+	)
+	if pack.docstatus == 0:
+		pack.update(
+			{
+				"domain": "VAT",
+				"title": pack_title,
+				"source": source.name,
+				"effective_from": "2026-04-01",
+				"effective_to": "2027-03-31",
+				"reviewed_by": reviewer,
+				"notes": "Approved only for deterministic isolated-site E2E execution.",
+			}
+		)
+		pack.set("items", [])
+		for rule_key, value in CURRENT_APPROVED_SOURCE_METADATA["expected_current_values"].items():
+			pack.append(
+				"items",
+				{
+					"rule_key": rule_key,
+					"numeric_value": value,
+					"unit": VAT_CONTROL_UNITS[rule_key],
+					"precision": 2,
+				},
+			)
+		if pack.is_new():
+			pack.insert(ignore_permissions=True)
+		else:
+			pack.save(ignore_permissions=True)
+		_submit_as(pack, reviewer)
+	frappe.db.commit()
+	return resolve_vat_controls("2026-07-15")
+
+
+def _ensure_test_vat_obligation() -> str:
+	obligation_code = "TEST-E2E-VAT201-2026"
+	existing = frappe.db.get_value(
+		"ZA Compliance Obligation",
+		{"obligation_code": obligation_code, "docstatus": ["<", 2]},
+		"name",
+	)
+	if existing:
+		return existing
+
+	source = frappe.db.get_value(
+		"ZA Statutory Source",
+		{"catalog_key": "TEST-E2E-VAT-CONTROLS-2026", "docstatus": 1},
+		"name",
+	)
+	if not source:
+		frappe.throw(_("Stage the approved E2E VAT source before creating its obligation."))
+
+	doc = frappe.get_doc(
+		{
+			"doctype": "ZA Compliance Obligation",
+			"obligation_code": obligation_code,
+			"title": "_E2E VAT201 controlled-manual obligation",
+			"domain": "VAT",
+			"authority": "SARS",
+			"source": source,
+			"frequency": "Monthly",
+			"due_rule": "E2E practitioner-confirmed due date",
+			"capability": "Controlled Manual",
+			"effective_from": "2026-04-01",
+			"effective_to": "2027-03-31",
+			"notes": "Synthetic obligation for isolated end-to-end testing only.",
+		}
+	).insert(ignore_permissions=True)
+	doc.submit()
+	return doc.name
 
 
 def stage_eft_payment_batch():
@@ -559,6 +901,9 @@ def stage_workplace_injury_cycle():
 				"injury_type": "Moderate",
 				"severity": "Medium",
 				"injury_description": "Deterministic isolated-site workplace injury scenario.",
+				"incident_mechanism": "Slip on a controlled office walkway during normal duties.",
+				"body_part_affected": "Right ankle",
+				"investigation_summary": "Area inspected; no continuing hazard identified in the isolated E2E scenario.",
 				"medical_attention_required": 1,
 				"medical_provider": "E2E Occupational Health",
 				"expected_recovery_date": "2026-07-18",
@@ -663,9 +1008,7 @@ def collect_signoff_evidence():
 			"eti_utilised": total(emp201_rows, "eti_utilized_current_month"),
 		},
 		"statutory_documents": {
-			"emp501": frappe.db.count(
-				"EMP501 Reconciliation", {"company": E2E_COMPANY, "docstatus": 1}
-			),
+			"emp501": frappe.db.count("EMP501 Reconciliation", {"company": E2E_COMPANY, "docstatus": 1}),
 			"irp5": frappe.db.count("IRP5 Certificate", {"company": E2E_COMPANY, "docstatus": 1}),
 		},
 		"vat201": {
@@ -673,6 +1016,11 @@ def collect_signoff_evidence():
 			"output_tax": total(vat_rows, "total_output_tax"),
 			"input_tax": total(vat_rows, "total_input_tax"),
 			"vat_payable": total(vat_rows, "vat_payable"),
+			"submitted_filings": frappe.db.count("ZA Filing", {"company": E2E_COMPANY, "docstatus": 1}),
+			"accepted_receipts": frappe.db.count(
+				"ZA Submission Receipt",
+				{"docstatus": 1, "response_status": "Accepted"},
+			),
 		},
 		"coida": {
 			"count": len(coida_rows),
@@ -690,6 +1038,218 @@ def collect_signoff_evidence():
 			"submitted_claims": frappe.db.count("OID Claim", {"company": E2E_COMPANY, "docstatus": 1}),
 		},
 	}
+
+
+def validate_signoff_invariants():
+	"""Fail when staged statutory results disagree with independently versioned controls."""
+	_require_isolated_test_site()
+	controls = json.loads(
+		Path(frappe.get_app_path("za_local_core", "tests", "golden", "2026_27_e2e.json")).read_text()
+	)
+	tolerance = flt(controls["tolerance"])
+	errors = []
+
+	def compare(label, actual, expected):
+		actual = flt(actual, 2)
+		expected = flt(expected, 2)
+		if abs(actual - expected) > tolerance:
+			errors.append(f"{label}: expected {expected:.2f}, got {actual:.2f}")
+
+	slips = frappe.get_all(
+		"Salary Slip",
+		filters={"company": E2E_COMPANY, "docstatus": 1},
+		fields=["name", "gross_pay", "start_date", "end_date", "payroll_entry"],
+		order_by="end_date, name",
+	)
+	if not slips:
+		errors.append("No submitted Salary Slips exist for statutory invariant checks")
+
+	for slip in slips:
+		uif_basis = flt(slip.gross_pay)
+		expected_employee_uif = min(uif_basis, flt(controls["uif"]["monthly_remuneration_cap"])) * flt(
+			controls["uif"]["employee_rate"]
+		)
+		expected_employer_uif = min(uif_basis, flt(controls["uif"]["monthly_remuneration_cap"])) * flt(
+			controls["uif"]["employer_rate"]
+		)
+		expected_sdl = uif_basis * flt(controls["sdl"]["rate"])
+		compare(
+			f"{slip.name} employee UIF",
+			_component_total(slip.name, "deductions", "UIF Employee Contribution"),
+			expected_employee_uif,
+		)
+		compare(
+			f"{slip.name} employer UIF",
+			_component_total(slip.name, "company_contribution", "UIF Employer Contribution"),
+			expected_employer_uif,
+		)
+		compare(
+			f"{slip.name} SDL",
+			_component_total(slip.name, "company_contribution", "SDL Contribution"),
+			expected_sdl,
+		)
+
+	for declaration in frappe.get_all(
+		"EMP201 Submission",
+		filters={"company": E2E_COMPANY, "docstatus": 1},
+		fields=["name", "submission_period_start_date", "submission_period_end_date", "uif_payable"],
+		order_by="submission_period_start_date",
+	):
+		period_slips = frappe.get_all(
+			"Salary Slip",
+			filters={
+				"company": E2E_COMPANY,
+				"docstatus": 1,
+				"end_date": [
+					"between",
+					[declaration.submission_period_start_date, declaration.submission_period_end_date],
+				],
+			},
+			pluck="name",
+		)
+		expected_uif = sum(
+			_component_total(name, "deductions", "UIF Employee Contribution")
+			+ _component_total(name, "company_contribution", "UIF Employer Contribution")
+			for name in period_slips
+		)
+		compare(f"{declaration.name} total UIF", declaration.uif_payable, expected_uif)
+
+	evidence = collect_signoff_evidence()
+	for fieldname, expected in {
+		"output_tax": controls["vat"]["expected_output_tax"],
+		"input_tax": controls["vat"]["expected_input_tax"],
+		"vat_payable": controls["vat"]["expected_payable"],
+	}.items():
+		compare(f"VAT201 {fieldname}", evidence["vat201"][fieldname], expected)
+	compare(
+		"COIDA assessable earnings",
+		evidence["coida"]["assessable_earnings"],
+		controls["coida"]["expected_assessable_earnings"],
+	)
+	compare(
+		"COIDA assessment fee",
+		evidence["coida"]["assessment_fee"],
+		controls["coida"]["expected_assessment_fee"],
+	)
+	if evidence["vat201"]["submitted_filings"] != 1:
+		errors.append("Expected exactly one submitted ZA Filing for the staged VAT201 cycle")
+	if evidence["vat201"]["accepted_receipts"] != 1:
+		errors.append("Expected exactly one accepted submission receipt for the staged VAT201 cycle")
+
+	_validate_company_contribution_journals(slips, errors, tolerance)
+	_validate_payment_batches(errors, tolerance)
+
+	if errors:
+		frappe.throw(
+			_("Statutory E2E invariant checks failed:<br>{0}").format(
+				"<br>".join(frappe.utils.escape_html(error) for error in errors)
+			),
+			title=_("Production Sign-off Blocked"),
+		)
+	return {
+		"status": "passed",
+		"tax_year": controls["tax_year"],
+		"verified_on": controls["verified_on"],
+		"salary_slips_checked": len(slips),
+		"sources": controls["sources"],
+	}
+
+
+def _component_total(parent, parentfield, component):
+	doctype = "Salary Detail" if parentfield in {"earnings", "deductions"} else "Company Contribution"
+	return flt(
+		sum(
+			flt(row.amount)
+			for row in frappe.get_all(
+				doctype,
+				filters={
+					"parent": parent,
+					"parentfield": parentfield,
+					"salary_component": component,
+				},
+				fields=["amount"],
+			)
+		),
+		2,
+	)
+
+
+def _validate_company_contribution_journals(slips, errors, tolerance):
+	payroll_entries = sorted({slip.payroll_entry for slip in slips if slip.payroll_entry})
+	for payroll_entry in payroll_entries:
+		expected = flt(
+			sum(
+				_component_total(slip.name, "company_contribution", "UIF Employer Contribution")
+				+ _component_total(slip.name, "company_contribution", "SDL Contribution")
+				for slip in slips
+				if slip.payroll_entry == payroll_entry
+			),
+			2,
+		)
+		if not expected:
+			continue
+		journal_entries = frappe.get_all(
+			"Journal Entry",
+			filters={
+				"docstatus": 1,
+				"user_remark": ["like", "Company Contribution%"],
+			},
+			pluck="name",
+		)
+		matching = []
+		for journal_entry in journal_entries:
+			if frappe.db.exists(
+				"Journal Entry Account",
+				{
+					"parent": journal_entry,
+					"reference_type": "Payroll Entry",
+					"reference_name": payroll_entry,
+				},
+			):
+				matching.append(journal_entry)
+		if len(matching) != 1:
+			errors.append(
+				f"{payroll_entry} requires exactly one submitted company-contribution journal; found {len(matching)}"
+			)
+			continue
+		actual = flt(
+			sum(
+				flt(row.debit_in_account_currency)
+				for row in frappe.get_all(
+					"Journal Entry Account",
+					filters={"parent": matching[0]},
+					fields=["debit_in_account_currency"],
+				)
+			),
+			2,
+		)
+		if abs(actual - expected) > tolerance:
+			errors.append(
+				f"{payroll_entry} employer-contribution journal: expected {expected:.2f}, got {actual:.2f}"
+			)
+
+
+def _validate_payment_batches(errors, tolerance):
+	for batch in frappe.get_all(
+		"Payroll Payment Batch",
+		filters={"company": E2E_COMPANY, "docstatus": 1},
+		fields=["name", "payroll_entry", "total_amount"],
+	):
+		expected = flt(
+			sum(
+				flt(row.net_pay)
+				for row in frappe.get_all(
+					"Salary Slip",
+					filters={"payroll_entry": batch.payroll_entry, "docstatus": 1},
+					fields=["net_pay"],
+				)
+			),
+			2,
+		)
+		if abs(flt(batch.total_amount, 2) - expected) > tolerance:
+			errors.append(
+				f"{batch.name} payment total: expected submitted-slip net {expected:.2f}, got {flt(batch.total_amount, 2):.2f}"
+			)
 
 
 def render_signoff_pdfs(output_dir="/tmp/za-local-signoff-pdfs"):
@@ -743,22 +1303,19 @@ def run_permission_smoke():
 	from za_local_finance.sa_vat.tax_invoice import check_tax_invoice_readiness
 	from za_local_payroll.utils.emp501_utils import generate_emp501_csv
 
-	sales_invoice = frappe.db.get_value(
-		"Sales Invoice", {"company": E2E_COMPANY, "docstatus": 1}, "name"
-	)
-	emp501 = frappe.db.get_value(
-		"EMP501 Reconciliation", {"company": E2E_COMPANY, "docstatus": 1}, "name"
-	)
-	injury = frappe.db.get_value(
-		"Workplace Injury", {"company": E2E_COMPANY, "docstatus": 1}, "name"
-	)
+	sales_invoice = frappe.db.get_value("Sales Invoice", {"company": E2E_COMPANY, "docstatus": 1}, "name")
+	emp501 = frappe.db.get_value("EMP501 Reconciliation", {"company": E2E_COMPANY, "docstatus": 1}, "name")
+	injury = frappe.db.get_value("Workplace Injury", {"company": E2E_COMPANY, "docstatus": 1}, "name")
 	if not all((sales_invoice, emp501, injury)):
 		frappe.throw(_("Stage the complete E2E scenario before running permission smoke tests."))
 
 	checks = (
 		("sales_invoice_readiness", lambda: check_tax_invoice_readiness(sales_invoice)),
 		("emp501_export", lambda: generate_emp501_csv(emp501)),
-		("workplace_injury_health_data", lambda: frappe.get_doc("Workplace Injury", injury).check_permission("read")),
+		(
+			"workplace_injury_health_data",
+			lambda: frappe.get_doc("Workplace Injury", injury).check_permission("read"),
+		),
 	)
 	original_user = frappe.session.user
 	denied = []
@@ -865,15 +1422,11 @@ def _stage_payroll_month(year, month):
 			doc.submit()
 			doc.reload()
 		if doc.docstatus == 1:
-			slip_count = frappe.db.count(
-				"Salary Slip", {"payroll_entry": doc.name, "docstatus": ["<", 2]}
-			)
+			slip_count = frappe.db.count("Salary Slip", {"payroll_entry": doc.name, "docstatus": ["<", 2]})
 			if not slip_count:
 				doc.create_salary_slips()
 				doc.reload()
-			draft_slips = frappe.db.count(
-				"Salary Slip", {"payroll_entry": doc.name, "docstatus": 0}
-			)
+			draft_slips = frappe.db.count("Salary Slip", {"payroll_entry": doc.name, "docstatus": 0})
 			if draft_slips:
 				doc.submit_salary_slips()
 		frappe.db.commit()
@@ -1129,9 +1682,9 @@ def _ensure_employee_bank_account(employee, label, sequence):
 	if not frappe.db.exists("Bank", bank_name):
 		frappe.get_doc({"doctype": "Bank", "bank_name": bank_name}).insert(ignore_permissions=True)
 	if not frappe.db.exists("Bank Account Type", "Current"):
-		frappe.get_doc(
-			{"doctype": "Bank Account Type", "account_type": "Current"}
-		).insert(ignore_permissions=True)
+		frappe.get_doc({"doctype": "Bank Account Type", "account_type": "Current"}).insert(
+			ignore_permissions=True
+		)
 
 	account_name = f"E2E {label} Payroll"
 	existing = frappe.db.get_value(
@@ -1163,9 +1716,9 @@ def _ensure_company_bank_account():
 	if not frappe.db.exists("Bank", bank_name):
 		frappe.get_doc({"doctype": "Bank", "bank_name": bank_name}).insert(ignore_permissions=True)
 	if not frappe.db.exists("Bank Account Type", "Current"):
-		frappe.get_doc(
-			{"doctype": "Bank Account Type", "account_type": "Current"}
-		).insert(ignore_permissions=True)
+		frappe.get_doc({"doctype": "Bank Account Type", "account_type": "Current"}).insert(
+			ignore_permissions=True
+		)
 
 	gl_account = f"E2E Bank - {E2E_COMPANY_ABBR}"
 	existing = frappe.db.get_value("Bank Account", {"account": gl_account}, "name")
@@ -1397,3 +1950,44 @@ def _require_isolated_test_site():
 			_("E2E data may only be staged on a developer-mode .test or e2e site."),
 			title=_("Isolated Test Site Required"),
 		)
+
+
+def _ensure_test_compliance_reviewer() -> str:
+	email = "_e2e.za.compliance.reviewer@cohenix.test"
+	if not frappe.db.exists("User", email):
+		frappe.get_doc(
+			{
+				"doctype": "User",
+				"email": email,
+				"first_name": "E2E ZA Compliance Reviewer",
+				"send_welcome_email": 0,
+			}
+		).insert(ignore_permissions=True)
+	if "ZA Compliance Reviewer" not in frappe.get_roles(email):
+		frappe.get_doc("User", email).add_roles("ZA Compliance Reviewer")
+	return email
+
+
+def _ensure_test_compliance_approver() -> str:
+	email = "_e2e.za.compliance.approver@cohenix.test"
+	if not frappe.db.exists("User", email):
+		frappe.get_doc(
+			{
+				"doctype": "User",
+				"email": email,
+				"first_name": "E2E ZA Compliance Approver",
+				"send_welcome_email": 0,
+			}
+		).insert(ignore_permissions=True)
+	if "ZA Compliance Manager" not in frappe.get_roles(email):
+		frappe.get_doc("User", email).add_roles("ZA Compliance Manager")
+	return email
+
+
+def _submit_as(doc, user: str) -> None:
+	original_user = frappe.session.user
+	try:
+		frappe.set_user(user)
+		doc.submit()
+	finally:
+		frappe.set_user(original_user)

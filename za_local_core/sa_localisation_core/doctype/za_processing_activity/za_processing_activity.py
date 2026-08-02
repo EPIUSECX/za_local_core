@@ -33,7 +33,8 @@ class ZAProcessingActivity(ReviewedPrivacyDocument):
 			self.cross_border_transfer_record,
 			_("Cross-border Transfer Record"),
 		)
-		if frappe.db.get_value(
-			"ZA Cross Border Transfer", self.cross_border_transfer_record, "docstatus"
-		) != 1:
+		if (
+			frappe.db.get_value("ZA Cross Border Transfer", self.cross_border_transfer_record, "docstatus")
+			!= 1
+		):
 			frappe.throw(_("Cross-border Transfer Record must be approved."))

@@ -7,6 +7,11 @@ The suite is four independently versioned Frappe v16 applications:
 - `za_local_payroll`: PAYE, UIF, SDL, ETI, payroll benefits, declarations, certificates and approved bank exports.
 - `za_local_workplace`: BCEA/EE/skills working papers, COIDA, injuries and claims.
 
-The software supports controlled statutory processes; it does not transfer the employer, vendor or practitioner’s legal responsibility. A document submitted in ERPNext is an approved internal working paper until the corresponding authority or bank receipt is captured.
+The software supports controlled statutory processes; it does not transfer the employer, vendor or practitioner's
+legal responsibility and is not legal certification. A submitted domain document is an internal record. For a
+controlled-manual obligation, external submission or payment is complete only after the authorised user performs
+it through the authority/bank channel and retains the corresponding private evidence.
 
-Feature Readiness is authoritative. Do not use a Preview or Unsupported capability as a production filing or payment channel.
+Feature Readiness is a conservative deployment control, not proof of legal approval. Do not use a Preview or
+Unsupported capability as a production filing or payment channel. A Production label still requires the released
+guide, approved source/configuration and organisation-specific sign-off; current SARS filing remains controlled/manual.

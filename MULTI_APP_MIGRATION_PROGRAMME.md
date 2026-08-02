@@ -1,14 +1,17 @@
 # South African Localisation Multi-App Migration Programme
 
-Status: extraction implementation complete on the development bench. Compatibility and legacy-free E2E sites pass
-the implemented technical gates. Production cutover still requires the approvals and external validation below.
+Status: the target architecture and four-app target-only implementation are complete on the development worktree.
+Fresh E2E, repeated migration, target-only backup/restore and 296 app tests are recorded in
+`VALIDATION_AND_SIGNOFF.md`. Production cutover still requires pinned release tags, populated legacy migration and
+rollback rehearsal, parallel cycles, company-specific practitioner approval and external bank/authority acceptance
+where claimed. This programme is not legal certification.
 
 ## Target repositories
 
 | App | Runtime dependencies | Primary ownership |
 |---|---|---|
 | `za_local_core` | Frappe, ERPNext | Statutory sources, company compliance profile, obligations, filing evidence, shared security/setup/docs. |
-| `za_local_finance` | Frappe, ERPNext, core | VAT, commercial documents, accounting localisation, finance working papers and CIPC. |
+| `za_local_finance` | Frappe, ERPNext, core | Implemented VAT, commercial documents and accounting localisation; corporate tax and CIPC remain roadmap scope. |
 | `za_local_payroll` | Frappe, ERPNext, HRMS, core | SA employee/payroll foundation, PAYE/UIF/SDL/ETI, benefits, declarations, certificates and payroll payments. |
 | `za_local_workplace` | Frappe, ERPNext, HRMS, core, payroll | BCEA/NMW, leave/termination entitlement, EE, skills/SETA, COIDA, injuries and workplace controls. |
 
@@ -30,8 +33,9 @@ The dependency graph is one-way; circular imports or optional reverse dependenci
    use today's rates.
 7. Missing mandatory statutory configuration fails before calculation or filing. It never silently returns zero,
    guesses a row or relies on a component label.
-8. “Prepared”, “Approved”, “Submitted”, “Filed”, “Paid” and “Accepted” are distinct states. External acceptance
-   requires portal/bank evidence.
+8. Domain preparation/submission is separate from core review/approval. `ZA Filing` records Draft, Reviewed and
+   Approved; submitted receipt evidence derives Filed, Accepted or Rejected. Payment/bank acceptance remains a
+   domain/external process and requires its own evidence.
 9. Unsupported electronic formats remain `Controlled Manual` or `Preview`; generic exports are never represented
    as official filing files.
 10. Security follows least privilege, Company/User Permissions and POPIA-sensitive field separation.
@@ -52,7 +56,7 @@ target app, migration patch, compatibility path, test owner and documentation ow
 | `sa_labour`, `sa_coida`, leave/separation overrides and COIDA utilities | Workplace |
 | BCEA/EE/skills/SETA/COIDA fields, reports, formats and schedulers | Workplace |
 | Domain practitioner content | Owning domain; published through core |
-| Compatibility imports and migration orchestration | Existing `za_local`, temporarily |
+| Legacy source inventory and rollback artifact | Existing `za_local`, retained separately until cutover approval |
 
 The manifest must account for every tracked file and every installed database customization. CI rejects duplicate
 owners, unowned artifacts and hooks registered by more than one installed app.
@@ -79,7 +83,10 @@ For each release, record title, issuing authority, publication/effective dates, 
 checksum, affected rules, practitioner reviewer and approval. Values marked unverified in legacy JSON cannot enter
 a Production rate pack.
 
-## Programme workstreams
+## Programme workstreams and release controls
+
+The bullets below include both implemented controls and remaining release/roadmap work. They are requirements, not
+claims that every item is present in the current release.
 
 ### 1. Repository and dependency foundation
 
@@ -157,17 +164,18 @@ Actions:
 
 Exit: reproducible baseline, restorable backup and signed control totals.
 
-### Wave 1 — Core
+### Wave 1 — Core (target implementation complete; production approval pending)
 
 - Install core with no downstream runtime hooks.
 - Create compliance/source/obligation/filing/readiness records.
 - Backfill company profiles and import source packs as unapproved until reviewed.
-- Move shared guide/setup/security services behind compatibility routes.
+- Publish shared guide/setup/security services from core; do not depend on legacy compatibility routes.
 - Run repeated migrate and restore tests.
 
-Exit: core operates independently, has no HRMS imports, and old features behave unchanged.
+Exit: core operates independently and has no HRMS imports. Legacy behavioural parity must be proven by the
+populated upgrade rehearsal rather than assumed.
 
-### Wave 2 — Finance
+### Wave 2 — Finance (target implementation complete; two-period/practitioner sign-off pending)
 
 - Transfer VAT/finance schema and print/report ownership.
 - Shadow tax classification and VAT201 for historical/current periods.
@@ -176,7 +184,7 @@ Exit: core operates independently, has no HRMS imports, and old features behave 
 
 Exit: two tax periods reconcile with no unexplained differences and practitioner/accounting sign-off.
 
-### Wave 3 — Payroll
+### Wave 3 — Payroll (target implementation complete; parallel payroll/bank acceptance pending)
 
 - Transfer payroll schema and import approved tax-year rules.
 - Run historical golden tests and employee-level shadow comparisons.
@@ -185,7 +193,7 @@ Exit: two tax periods reconcile with no unexplained differences and practitioner
 
 Exit: gross-to-net, GL, bank, EMP201, EMP501 and certificate controls reconcile; payroll sign-off recorded.
 
-### Wave 4 — Workplace
+### Wave 4 — Workplace (target implementation complete; practitioner/regulatory review pending)
 
 - Transfer labour/COIDA schema and restrict sensitive permissions first.
 - Shadow BCEA warnings, EE/skills outputs and COIDA assessment.
@@ -194,11 +202,12 @@ Exit: gross-to-net, GL, bank, EMP201, EMP501 and certificate controls reconcile;
 
 Exit: labour/EE/SDF/COIDA/privacy sign-offs and zero unexplained assessment/report differences.
 
-### Wave 5 — Compatibility retirement
+### Wave 5 — Legacy retirement (not complete)
 
 - Run two stable releases with telemetry showing no deprecated imports/routes.
 - Take and restore a final pre-cleanup backup.
-- Remove old hooks/source and only then migrate obsolete metadata.
+- Keep the legacy bench/runtime separate from the extracted target. Remove old hooks/source only through the
+  populated, release-specific migration procedure.
 - Keep a documented downgrade boundary; data created under the new model is not destructively downgraded.
 
 Exit: `za_local` can be uninstalled without orphan Links, fields, formats, workspaces or broken imports.
@@ -246,20 +255,24 @@ independent calculation notes.
 
 ## CI/CD quality gates
 
-Every pull request runs:
+Current repository CI runs Ruff lint/format, JSON/shell validation, a fresh target-only Frappe v16 app installation,
+two migrations and server tests for the owning app. Core CI also compares the deterministic core-state fingerprint
+and rejects a site containing legacy `za_local`.
 
-- Python lint/format/type checks and JavaScript lint/format checks.
-- Unit and integration tests for the changed app.
-- Frappe DocType lifecycle and permission tests.
-- Fresh multi-app install and repeated `bench migrate`.
+The release pipeline must additionally run:
+
+- JavaScript lint/format and any configured type checks not covered by repository CI.
+- Full multi-app unit, integration, DocType lifecycle and permission suites.
+- Fresh full-suite install and repeated `bench migrate`.
 - Populated upgrade from the last two supported releases.
 - Cross-app contract and dependency-boundary tests.
 - Static scan for unknown field references, unsafe whitelisted methods, broad exception swallowing, `today()` in
   dated statutory calculations, unescaped template sinks and writes to submitted child records.
 - Documentation/link/source-manifest validation.
 
-Nightly/release CI adds the full end-to-end suite, browser print/form tests, performance profiles, backup/restore,
-uninstall checks, dependency/security scans and the supported app-version matrix.
+Until those jobs are automated in hosted CI, retain manual/release evidence for the full end-to-end suite, browser
+print/form tests, performance profiles, backup/restore, uninstall checks, dependency/security scans and supported
+app-version matrix. Do not describe them as per-pull-request CI.
 
 No release proceeds with failing tests, unresolved critical/high findings, unapproved statutory packs, unexplained
 control-total differences or undocumented Production capabilities.

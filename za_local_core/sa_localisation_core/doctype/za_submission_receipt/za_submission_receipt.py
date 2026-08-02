@@ -1,18 +1,23 @@
-import re
-
 import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.utils import flt
 
+from za_local_core.governance import (
+	APPROVAL_ROLES,
+	normalize_sha256,
+	validate_accountable_actor,
+	validate_private_evidence,
+)
+
 
 class ZASubmissionReceipt(Document):
 	def validate(self) -> None:
-		self.sha256_checksum = (self.sha256_checksum or "").strip().lower()
-		if not re.fullmatch(r"[0-9a-f]{64}", self.sha256_checksum):
-			frappe.throw(_("SHA-256 Checksum must contain exactly 64 hexadecimal characters."))
+		self.sha256_checksum = normalize_sha256(self.sha256_checksum)
 
 	def before_submit(self) -> None:
+		validate_accountable_actor(self, "submitted_by", APPROVAL_ROLES, "record the external response")
+		validate_private_evidence(self, "evidence_file", checksum_field="sha256_checksum", required=True)
 		filing = frappe.get_doc("ZA Filing", self.filing)
 		if filing.docstatus != 1 or filing.status not in ("Approved", "Filed", "Rejected"):
 			frappe.throw(_("Filing {0} must be approved before recording a receipt.").format(self.filing))
@@ -24,3 +29,6 @@ class ZASubmissionReceipt(Document):
 
 	def on_cancel(self) -> None:
 		frappe.db.set_value("ZA Filing", self.filing, "status", "Approved", update_modified=False)
+
+	def before_cancel(self) -> None:
+		validate_accountable_actor(self, "submitted_by", APPROVAL_ROLES, "cancel the external response")

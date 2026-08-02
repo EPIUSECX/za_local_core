@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ZA Local legacy ownership manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "classification_version", "legacy_app", "target_apps", "artifact_count", "owner_counts", "artifacts"],
+  "properties": {
+    "schema_version": {"const": 2},
+    "classification_version": {"type": "string", "minLength": 1},
+    "legacy_app": {"const": "za_local"},
+    "target_apps": {
+      "const": ["za_local_core", "za_local_finance", "za_local_payroll", "za_local_workplace"]
+    },
+    "artifact_count": {"type": "integer", "minimum": 0},
+    "owner_counts": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "owner", "reason"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "owner": {"enum": ["za_local_compatibility", "za_local_core", "za_local_finance", "za_local_payroll", "za_local_workplace"]},
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

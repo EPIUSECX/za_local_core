@@ -18,7 +18,8 @@ start_redis_port() {
 
 get_localisation_dependency() {
 	local app="$1"
-	bench get-app "$app" "https://github.com/EPIUSECX/$app.git"
+	local ref="$2"
+	bench get-app "$app" "https://github.com/EPIUSECX/$app.git" --branch "$ref"
 }
 
 sudo apt-get update
@@ -29,17 +30,21 @@ bench init --skip-assets --python "$(command -v python)" --frappe-branch "$FRAPP
 cd /home/runner/frappe-bench
 
 bench get-app erpnext https://github.com/frappe/erpnext --branch "$ERPNEXT_BRANCH" --resolve-deps
-bench get-app hrms https://github.com/frappe/hrms --branch "$HRMS_BRANCH"
 
-install_apps=(erpnext hrms)
-build_apps=(frappe erpnext hrms)
+install_apps=(erpnext)
+build_apps=(frappe erpnext)
+if [[ "$APP_NAME" == "za_local_payroll" || "$APP_NAME" == "za_local_workplace" ]]; then
+	bench get-app hrms https://github.com/frappe/hrms --branch "$HRMS_BRANCH"
+	install_apps+=(hrms)
+	build_apps+=(hrms)
+fi
 if [[ "$APP_NAME" != "za_local_core" ]]; then
-	get_localisation_dependency za_local_core
+	get_localisation_dependency za_local_core "${ZA_LOCAL_CORE_REF:-main}"
 	install_apps+=(za_local_core)
 	build_apps+=(za_local_core)
 fi
 if [[ "$APP_NAME" == "za_local_workplace" ]]; then
-	get_localisation_dependency za_local_payroll
+	get_localisation_dependency za_local_payroll "${ZA_LOCAL_PAYROLL_REF:-main}"
 	install_apps+=(za_local_payroll)
 	build_apps+=(za_local_payroll)
 fi
@@ -70,3 +75,15 @@ for app in "${install_apps[@]}"; do
 		installed[$app]=1
 	fi
 done
+
+bench --site test_site migrate
+first_core_state="$(bench --site test_site execute za_local_core.migration.release.core_state_fingerprint | tail -n 1)"
+bench --site test_site migrate
+second_core_state="$(bench --site test_site execute za_local_core.migration.release.core_state_fingerprint | tail -n 1)"
+if [[ "$first_core_state" != "$second_core_state" ]]; then
+	echo "Core-owned migration state changed on the second migrate" >&2
+	echo "first:  $first_core_state" >&2
+	echo "second: $second_core_state" >&2
+	exit 1
+fi
+bench --site test_site execute za_local_core.migration.release.assert_legacy_app_absent

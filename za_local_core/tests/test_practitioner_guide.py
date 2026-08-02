@@ -39,23 +39,21 @@ class TestPractitionerGuide(UnitTestCase):
 		}
 		for guide in guides:
 			targets = {
-				f"{group['key']}/{page['slug']}"
-				for group in guide["groups"]
-				for page in group["pages"]
+				f"{group['key']}/{page['slug']}" for group in guide["groups"] for page in group["pages"]
 			}
 			for group in guide["groups"]:
 				for page in group["pages"]:
 					path = Path(
-						frappe.get_app_path(
-							page["app"], "practitioner_guide", "content", page["file"]
-						)
+						frappe.get_app_path(page["app"], "practitioner_guide", "content", page["file"])
 					)
 					for link in RELATIVE_LINK.findall(path.read_text(encoding="utf-8")):
 						clean = link.split("#", 1)[0].strip().rstrip("/")
 						if not clean or clean.endswith((".png", ".jpg", ".jpeg", ".svg", ".pdf")):
 							continue
 						if clean.startswith("/"):
-							self.assertIn(clean.lstrip("/"), all_routes, msg=f"Broken guide link in {path.name}: {link}")
+							self.assertIn(
+								clean.lstrip("/"), all_routes, msg=f"Broken guide link in {path.name}: {link}"
+							)
 							continue
 						target = clean[3:] if clean.startswith("../") else f"{group['key']}/{clean}"
 						self.assertIn(target, targets, msg=f"Broken guide link in {path.name}: {link}")

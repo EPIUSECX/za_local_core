@@ -5,6 +5,12 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.utils import getdate, now_datetime
 
+from za_local_core.governance import (
+	REVIEW_ROLES,
+	validate_accountable_actor,
+	validate_populated_private_attachments,
+)
+
 
 class CompanyScopedPrivacyDocument(Document):
 	"""Shared validation for company-scoped POPIA and PAIA records."""
@@ -62,13 +68,17 @@ class ReviewedPrivacyDocument(CompanyScopedPrivacyDocument):
 	def on_cancel(self) -> None:
 		self.db_set("status", self.cancelled_status, update_modified=False)
 
-	def _validate_reviewer(self) -> None:
-		if not self.reviewed_by:
-			frappe.throw(_("Reviewed By is required before approval."))
-		if self.reviewed_by == self.owner:
-			frappe.throw(_("The reviewer must differ from the record creator."))
-		if self.get("responsible_user") and self.reviewed_by == self.responsible_user:
-			frappe.throw(_("The reviewer must differ from the Responsible User."))
+	def before_cancel(self) -> None:
+		self._validate_reviewer("cancel")
+
+	def _validate_reviewer(self, action: str = "approve") -> None:
+		validate_accountable_actor(
+			self,
+			"reviewed_by",
+			REVIEW_ROLES,
+			action,
+			additional_excluded_users=(self.get("responsible_user"),),
+		)
 
 	def _validate_evidence(self) -> None:
 		if self.required_evidence_fields and not any(
@@ -76,6 +86,7 @@ class ReviewedPrivacyDocument(CompanyScopedPrivacyDocument):
 		):
 			labels = ", ".join(self.meta.get_label(fieldname) for fieldname in self.required_evidence_fields)
 			frappe.throw(_("Attach at least one approval evidence file: {0}.").format(labels))
+		validate_populated_private_attachments(self)
 
 
 class OperationalPrivacyDocument(CompanyScopedPrivacyDocument):
@@ -92,24 +103,28 @@ class OperationalPrivacyDocument(CompanyScopedPrivacyDocument):
 		previous = self.get_doc_before_save()
 		if not previous:
 			if self.status != self.initial_status:
-				frappe.throw(_("A new {0} must start in status {1}.").format(self.doctype, self.initial_status))
+				frappe.throw(
+					_("A new {0} must start in status {1}.").format(self.doctype, self.initial_status)
+				)
 			return
 		if previous.status == self.status:
 			return
 		allowed = self.allowed_transitions.get(previous.status, frozenset())
 		if self.status not in allowed:
-			frappe.throw(
-				_("Status cannot change from {0} to {1}.").format(previous.status, self.status)
-			)
+			frappe.throw(_("Status cannot change from {0} to {1}.").format(previous.status, self.status))
 
 	def _validate_closure_review(self, evidence_field: str, resolution_field: str) -> None:
 		if not self.get(resolution_field):
 			frappe.throw(_("{0} is required for this status.").format(self.meta.get_label(resolution_field)))
 		if not self.get(evidence_field):
 			frappe.throw(_("{0} is required for this status.").format(self.meta.get_label(evidence_field)))
-		if not self.reviewed_by:
-			frappe.throw(_("Reviewed By is required for this status."))
-		if self.reviewed_by in {self.owner, self.get("responsible_user")}:
-			frappe.throw(_("The closing reviewer must differ from the creator and Responsible User."))
+		validate_accountable_actor(
+			self,
+			"reviewed_by",
+			REVIEW_ROLES,
+			"close",
+			additional_excluded_users=(self.get("responsible_user"),),
+		)
+		validate_populated_private_attachments(self)
 		if not self.reviewed_on:
 			self.reviewed_on = now_datetime()

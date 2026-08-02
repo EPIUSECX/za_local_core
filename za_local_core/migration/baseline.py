@@ -83,7 +83,13 @@ def _vat_controls() -> dict[str, float | int]:
 	meta = frappe.get_meta("VAT201 Return")
 	fields = [
 		field
-		for field in ("total_output_tax", "total_input_tax", "vat_payable", "vat_refundable", "total_amount_payable")
+		for field in (
+			"total_output_tax",
+			"total_input_tax",
+			"vat_payable",
+			"vat_refundable",
+			"total_amount_payable",
+		)
 		if meta.has_field(field)
 	]
 	return _aggregate("VAT201 Return", fields)

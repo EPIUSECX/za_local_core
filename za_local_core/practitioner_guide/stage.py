@@ -84,12 +84,12 @@ def stage_space() -> str:
 	return "; ".join(summaries)
 
 
-@frappe.whitelist()
+@frappe.whitelist(methods=["GET"])
 def is_wiki_available() -> bool:
 	return _wiki_installed()
 
 
-@frappe.whitelist()
+@frappe.whitelist(methods=["POST"])
 def publish_practitioner_guide() -> dict:
 	"""Queue site-wide guide publication on the long queue."""
 	frappe.only_for("System Manager")

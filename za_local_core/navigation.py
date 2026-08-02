@@ -33,14 +33,19 @@ class WorkspaceSpec:
 	label: str
 	app: str
 	icon: str
+	asset_name: str
+
+	@property
+	def logo_url(self) -> str:
+		return f"/assets/{APP_NAME}/desktop_icons/{self.asset_name}"
 
 
 WORKSPACE_SPECS = (
-	WorkspaceSpec("SA Overview", "za_local_core", "shield-check"),
-	WorkspaceSpec("SA Payroll", "za_local_payroll", "accounting"),
-	WorkspaceSpec("SA VAT", "za_local_finance", "sell"),
-	WorkspaceSpec("SA Labour", "za_local_workplace", "hr"),
-	WorkspaceSpec("SA COIDA", "za_local_workplace", "support"),
+	WorkspaceSpec("SA Overview", "za_local_core", "shield-check", "sa_overview.svg"),
+	WorkspaceSpec("SA Payroll", "za_local_payroll", "accounting", "sa_payroll.svg"),
+	WorkspaceSpec("SA VAT", "za_local_finance", "sell", "sa_vat.svg"),
+	WorkspaceSpec("SA Labour", "za_local_workplace", "hr", "sa_labour.svg"),
+	WorkspaceSpec("SA COIDA", "za_local_workplace", "support", "sa_coida.svg"),
 )
 
 
@@ -234,7 +239,7 @@ def _sync_desktop_icons(available: tuple[WorkspaceSpec, ...]) -> None:
 				"hidden": 0,
 				"standard": 0,
 				"idx": index,
-				"logo_url": "",
+				"logo_url": spec.logo_url,
 				"icon_image": "",
 			}
 		)

@@ -1,5 +1,6 @@
 {
   "artifact_count": 651,
+  "classification_version": "2026.08",
   "artifacts": [
     {
       "owner": "za_local_compatibility",
@@ -3916,5 +3917,11 @@
     "za_local_payroll": 263,
     "za_local_workplace": 146
   },
-  "schema_version": 1
+  "schema_version": 2,
+  "target_apps": [
+    "za_local_core",
+    "za_local_finance",
+    "za_local_payroll",
+    "za_local_workplace"
+  ]
 }

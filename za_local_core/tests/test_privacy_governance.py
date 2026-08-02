@@ -1,25 +1,31 @@
 import frappe
 from frappe.tests.classes import IntegrationTestCase
+from frappe.utils.file_manager import save_file
 
 
 class TestPrivacyGovernance(IntegrationTestCase):
 	def setUp(self):
-		self.company = frappe.get_all(
-			"Company", filters={"country": "South Africa"}, pluck="name", limit=1
-		)[0]
-		self.case_owner = self._ensure_user("_test.za.privacy.owner@example.com", "Privacy Owner")
-		self.reviewer = self._ensure_user("_test.za.privacy.reviewer@example.com", "Privacy Reviewer")
+		self.company = frappe.get_all("Company", filters={"country": "South Africa"}, pluck="name", limit=1)[
+			0
+		]
+		self.case_owner = self._ensure_user(
+			"_test.za.privacy.owner@example.com", "Privacy Owner", "ZA Compliance User"
+		)
+		self.reviewer = self._ensure_user(
+			"_test.za.privacy.reviewer@example.com", "Privacy Reviewer", "ZA Compliance Reviewer"
+		)
 
 	def test_information_officer_registration_requires_independent_review_and_evidence(self):
 		registration = self._information_officer_registration(reviewed_by="Administrator")
 		registration.insert()
-		with self.assertRaises(frappe.ValidationError):
+		with self.assertRaises(frappe.PermissionError):
 			registration.submit()
 
 		approved = self._information_officer_registration(reviewed_by=self.reviewer)
-		approved.submission_evidence = "/private/files/_test-io-submission.pdf"
+		approved.submission_evidence = self._private_file("io-submission")
 		approved.insert()
-		approved.submit()
+		with self.set_user(self.reviewer):
+			approved.submit()
 
 		self.assertEqual(approved.status, "Active")
 		self.assertIsNotNone(approved.reviewed_on)
@@ -46,11 +52,12 @@ class TestPrivacyGovernance(IntegrationTestCase):
 				"security_measures": "_Test role access, encryption and audit logs",
 				"last_reviewed_on": "2026-07-01",
 				"next_review_date": "2027-07-01",
-				"risk_assessment": "/private/files/_test-ropa-risk.pdf",
+				"risk_assessment": self._private_file("ropa-risk"),
 				"reviewed_by": self.reviewer,
 			}
 		).insert()
-		activity.submit()
+		with self.set_user(self.reviewer):
+			activity.submit()
 
 		self.assertEqual(activity.status, "Approved")
 		self.assertEqual(activity.retention_schedule, retention.name)
@@ -67,7 +74,7 @@ class TestPrivacyGovernance(IntegrationTestCase):
 				"received_on": "2026-08-01",
 				"due_date": "2026-08-31",
 				"request_scope": "_Test payroll records",
-				"request_evidence": "/private/files/_test-dsr-request.pdf",
+				"request_evidence": self._private_file("dsr-request"),
 			}
 		).insert()
 
@@ -78,7 +85,7 @@ class TestPrivacyGovernance(IntegrationTestCase):
 		request.reload()
 		request.status = "In Progress"
 		request.identity_verified_on = "2026-08-02"
-		request.identity_verification_evidence = "/private/files/_test-id-check.pdf"
+		request.identity_verification_evidence = self._private_file("id-check")
 		request.save()
 		request.status = "Fulfilled"
 		with self.assertRaises(frappe.ValidationError):
@@ -87,11 +94,12 @@ class TestPrivacyGovernance(IntegrationTestCase):
 		request.reload()
 		request.status = "Fulfilled"
 		request.completed_on = "2026-08-10"
-		request.final_response_evidence = "/private/files/_test-dsr-response.pdf"
+		request.final_response_evidence = self._private_file("dsr-response")
 		request.reviewed_by = self.reviewer
-		request.save()
-		request.status = "Closed"
-		request.save()
+		with self.set_user(self.reviewer):
+			request.save()
+			request.status = "Closed"
+			request.save()
 
 		self.assertEqual(request.status, "Closed")
 		self.assertIsNotNone(request.reviewed_on)
@@ -115,12 +123,12 @@ class TestPrivacyGovernance(IntegrationTestCase):
 		incident.save()
 		incident.status = "Contained"
 		incident.contained_at = "2026-08-01 10:00:00"
-		incident.containment_evidence = "/private/files/_test-containment.pdf"
+		incident.containment_evidence = self._private_file("containment")
 		incident.save()
 		incident.status = "Notification Assessment"
 		incident.notification_decision = "Regulator and Data Subjects"
 		incident.notification_rationale = "_Test notification required after risk assessment"
-		incident.notification_assessment_evidence = "/private/files/_test-notification-assessment.pdf"
+		incident.notification_assessment_evidence = self._private_file("notification-assessment")
 		incident.save()
 		incident.status = "Notifying"
 		incident.save()
@@ -131,15 +139,16 @@ class TestPrivacyGovernance(IntegrationTestCase):
 		incident.reload()
 		incident.status = "Remediating"
 		incident.regulator_notified_on = "2026-08-01 11:00:00"
-		incident.regulator_notification_evidence = "/private/files/_test-regulator-notice.pdf"
+		incident.regulator_notification_evidence = self._private_file("regulator-notice")
 		incident.data_subjects_notified_on = "2026-08-01 12:00:00"
-		incident.data_subject_notification_evidence = "/private/files/_test-subject-notice.pdf"
+		incident.data_subject_notification_evidence = self._private_file("subject-notice")
 		incident.save()
 		incident.status = "Resolved"
 		incident.resolved_at = "2026-08-02 10:00:00"
-		incident.remediation_evidence = "/private/files/_test-remediation.pdf"
+		incident.remediation_evidence = self._private_file("remediation")
 		incident.reviewed_by = self.reviewer
-		incident.save()
+		with self.set_user(self.reviewer):
+			incident.save()
 
 		self.assertEqual(incident.status, "Resolved")
 		self.assertIsNotNone(incident.reviewed_on)
@@ -151,15 +160,17 @@ class TestPrivacyGovernance(IntegrationTestCase):
 
 	def test_paia_manual_requires_approved_information_officer_registration(self):
 		registration = self._information_officer_registration(reviewed_by=self.reviewer)
-		registration.submission_evidence = "/private/files/_test-io-submission.pdf"
+		registration.submission_evidence = self._private_file("paia-io-submission")
 		registration.insert()
 		manual = self._paia_manual(registration.name)
 		with self.assertRaises(frappe.ValidationError):
 			manual.insert()
 
-		registration.submit()
+		with self.set_user(self.reviewer):
+			registration.submit()
 		manual.insert()
-		manual.submit()
+		with self.set_user(self.reviewer):
+			manual.submit()
 		self.assertEqual(manual.status, "Published")
 
 	def test_sensitive_case_permissions_are_owner_scoped(self):
@@ -210,16 +221,18 @@ class TestPrivacyGovernance(IntegrationTestCase):
 				"disposal_instructions": "_Test verified secure destruction",
 				"legal_hold_process": "_Test suspend disposal on authorised legal hold",
 				"effective_from": "2026-07-01",
-				"legal_basis_evidence": "/private/files/_test-retention-basis.pdf",
+				"legal_basis_evidence": self._private_file("retention-basis"),
 				"reviewed_by": self.reviewer,
 			}
 		).insert()
-		doc.submit()
+		with self.set_user(self.reviewer):
+			doc.submit()
 		return doc
 
 	def _approved_cross_border_transfer(self):
 		doc = self._cross_border_transfer("Germany").insert()
-		doc.submit()
+		with self.set_user(self.reviewer):
+			doc.submit()
 		return doc
 
 	def _cross_border_transfer(self, destination_country: str):
@@ -239,7 +252,7 @@ class TestPrivacyGovernance(IntegrationTestCase):
 				"assessment_date": "2026-07-01",
 				"next_review_date": "2027-07-01",
 				"effective_from": "2026-07-01",
-				"transfer_assessment": "/private/files/_test-transfer-assessment.pdf",
+				"transfer_assessment": self._private_file("transfer-assessment"),
 				"reviewed_by": self.reviewer,
 			}
 		)
@@ -260,22 +273,29 @@ class TestPrivacyGovernance(IntegrationTestCase):
 				"last_reviewed_on": "2026-07-01",
 				"next_review_due": "2027-07-01",
 				"review_scope": "_Test annual content and publication review",
-				"manual_file": "/private/files/_test-paia-manual.pdf",
-				"publication_evidence": "/private/files/_test-paia-publication.pdf",
+				"manual_file": self._private_file("paia-manual"),
+				"publication_evidence": self._private_file("paia-publication"),
 				"reviewed_by": self.reviewer,
 			}
 		)
 
 	@staticmethod
-	def _ensure_user(email: str, full_name: str) -> str:
-		if frappe.db.exists("User", email):
-			return email
-		frappe.get_doc(
-			{
-				"doctype": "User",
-				"email": email,
-				"first_name": full_name,
-				"send_welcome_email": 0,
-			}
-		).insert(ignore_permissions=True)
+	def _private_file(stem: str) -> str:
+		content = f"private evidence: {stem}".encode()
+		return save_file(f"_test-{stem}.txt", content, None, None, is_private=1).file_url
+
+	@staticmethod
+	def _ensure_user(email: str, full_name: str, role: str) -> str:
+		if not frappe.db.exists("User", email):
+			frappe.get_doc(
+				{
+					"doctype": "User",
+					"email": email,
+					"first_name": full_name,
+					"send_welcome_email": 0,
+				}
+			).insert(ignore_permissions=True)
+		user = frappe.get_doc("User", email)
+		if role not in frappe.get_roles(email):
+			user.add_roles(role)
 		return email

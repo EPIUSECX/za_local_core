@@ -40,7 +40,11 @@ def _resolve_argument(app_name: str, first: str | Path, parts: tuple[str, ...]) 
 	if parts:
 		return resolve_packaged_path(app_name, str(first), *parts)
 	path = Path(first)
-	return ensure_packaged_path(app_name, path) if path.is_absolute() else resolve_packaged_path(app_name, str(path))
+	return (
+		ensure_packaged_path(app_name, path)
+		if path.is_absolute()
+		else resolve_packaged_path(app_name, str(path))
+	)
 
 
 def _validate_child(path: Path, app_root: Path) -> None:

@@ -8,6 +8,18 @@ import subprocess
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
+ALLOWED_OWNERS = frozenset(
+	{
+		"za_local_compatibility",
+		"za_local_core",
+		"za_local_finance",
+		"za_local_payroll",
+		"za_local_workplace",
+	}
+)
+MANIFEST_SCHEMA_VERSION = 2
+TARGET_APPS = ("za_local_core", "za_local_finance", "za_local_payroll", "za_local_workplace")
+
 
 @dataclass(frozen=True)
 class Ownership:
@@ -52,13 +64,17 @@ _EXACT_RULES = {
 	"za_local/utils/emp501_utils.py": Ownership("za_local_payroll", "EMP501 services"),
 	"za_local/utils/lump_sum_tax_utils.py": Ownership("za_local_payroll", "Lump-sum tax services"),
 	"za_local/utils/fringe_benefit_utils.py": Ownership("za_local_payroll", "Fringe-benefit services"),
-	"za_local/utils/travel_allowance_utils.py": Ownership("za_local_payroll", "Travel allowance tax services"),
+	"za_local/utils/travel_allowance_utils.py": Ownership(
+		"za_local_payroll", "Travel allowance tax services"
+	),
 	"za_local/utils/sars_xml_generator.py": Ownership("za_local_payroll", "Payroll statutory export"),
 	"za_local/utils/integrations/eft_generator.py": Ownership("za_local_payroll", "Payroll payment export"),
 	"za_local/overrides/leave_application.py": Ownership("za_local_workplace", "BCEA leave rules"),
 	"za_local/overrides/employee_separation.py": Ownership("za_local_workplace", "Termination entitlement"),
 	"za_local/utils/coida_utils.py": Ownership("za_local_workplace", "COIDA services"),
-	"za_local/utils/termination_utils.py": Ownership("za_local_workplace", "Termination entitlement services"),
+	"za_local/utils/termination_utils.py": Ownership(
+		"za_local_workplace", "Termination entitlement services"
+	),
 	"za_local/utils/file_utils.py": Ownership("za_local_core", "Shared safe resource access"),
 	"za_local/utils/setup_utils.py": Ownership("za_local_core", "Shared setup services"),
 	"za_local/utils/hooks_utils.py": Ownership("za_local_core", "Compatibility hook composition"),
@@ -137,6 +153,15 @@ def classify_path(path: str) -> Ownership:
 def build_manifest(legacy_repo: Path) -> dict:
 	"""Build a deterministic manifest for all tracked files in the legacy repository."""
 	paths = _tracked_paths(legacy_repo)
+	missing_paths = [relative_path for relative_path in paths if not (legacy_repo / relative_path).is_file()]
+	if missing_paths:
+		formatted_paths = "\n".join(f"- {path}" for path in missing_paths)
+		raise FileNotFoundError(
+			"The legacy worktree is missing files that are still tracked by Git. "
+			"Restore the files or stage their deletion before rebuilding the ownership manifest:\n"
+			f"{formatted_paths}"
+		)
+
 	artifacts = []
 	for relative_path in paths:
 		ownership = classify_path(relative_path)
@@ -154,8 +179,10 @@ def build_manifest(legacy_repo: Path) -> dict:
 		owner_counts[artifact.owner] = owner_counts.get(artifact.owner, 0) + 1
 
 	return {
-		"schema_version": 1,
+		"schema_version": MANIFEST_SCHEMA_VERSION,
+		"classification_version": "2026.08",
 		"legacy_app": "za_local",
+		"target_apps": list(TARGET_APPS),
 		"artifact_count": len(artifacts),
 		"owner_counts": dict(sorted(owner_counts.items())),
 		"artifacts": [asdict(artifact) for artifact in artifacts],
@@ -165,7 +192,57 @@ def build_manifest(legacy_repo: Path) -> dict:
 def write_manifest(legacy_repo: Path, output_path: Path) -> None:
 	"""Write the ownership manifest with stable ordering and formatting."""
 	manifest = build_manifest(legacy_repo.resolve())
+	validate_manifest(manifest)
 	output_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+
+
+def verify_checked_manifest() -> dict:
+	"""Validate the packaged ownership declaration before install/migrate completes."""
+	path = Path(__file__).resolve().parents[2] / "ownership_manifest.json"
+	manifest = json.loads(path.read_text(encoding="utf-8"))
+	validate_manifest(manifest)
+	return manifest
+
+
+def validate_manifest(manifest: dict) -> None:
+	"""Validate ownership identity, counts and artifact integrity without extra dependencies."""
+	required_keys = {
+		"artifact_count",
+		"artifacts",
+		"classification_version",
+		"legacy_app",
+		"owner_counts",
+		"schema_version",
+		"target_apps",
+	}
+	if set(manifest) != required_keys:
+		raise ValueError("ownership manifest has missing or unexpected top-level keys")
+	if manifest["schema_version"] != MANIFEST_SCHEMA_VERSION:
+		raise ValueError(f"ownership manifest schema_version must be {MANIFEST_SCHEMA_VERSION}")
+	if manifest["legacy_app"] != "za_local" or tuple(manifest["target_apps"]) != TARGET_APPS:
+		raise ValueError("ownership manifest application identities are invalid")
+	artifacts = manifest["artifacts"]
+	if not isinstance(artifacts, list) or manifest["artifact_count"] != len(artifacts):
+		raise ValueError("ownership manifest artifact_count is inconsistent")
+	paths = set()
+	owner_counts = {owner: 0 for owner in manifest["owner_counts"]}
+	for artifact in artifacts:
+		if set(artifact) != {"owner", "path", "reason", "sha256"}:
+			raise ValueError("ownership manifest artifact shape is invalid")
+		if artifact["owner"] not in ALLOWED_OWNERS:
+			raise ValueError(f"unsupported ownership target: {artifact['owner']}")
+		if not artifact["path"] or artifact["path"] in paths:
+			raise ValueError(f"duplicate or empty ownership path: {artifact['path']}")
+		if len(artifact["sha256"]) != 64 or any(
+			character not in "0123456789abcdef" for character in artifact["sha256"]
+		):
+			raise ValueError(f"invalid SHA-256 for ownership path: {artifact['path']}")
+		if not artifact["reason"]:
+			raise ValueError(f"missing ownership reason: {artifact['path']}")
+		paths.add(artifact["path"])
+		owner_counts[artifact["owner"]] = owner_counts.get(artifact["owner"], 0) + 1
+	if dict(sorted(owner_counts.items())) != manifest["owner_counts"]:
+		raise ValueError("ownership manifest owner_counts are inconsistent")
 
 
 def _tracked_paths(repo: Path) -> list[str]:

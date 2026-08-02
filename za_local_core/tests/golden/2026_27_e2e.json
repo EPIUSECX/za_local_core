@@ -1,0 +1,30 @@
+{
+  "tax_year": "2026-2027",
+  "verified_on": "2026-08-02",
+  "sources": {
+    "uif": "https://www.sars.gov.za/types-of-tax/unemployment-insurance-fund/",
+    "sdl": "https://www.sars.gov.za/types-of-tax/skills-development-levy/",
+    "vat": "https://www.sars.gov.za/types-of-tax/value-added-tax/",
+    "employees_tax": "https://www.sars.gov.za/guide-for-employers-in-respect-of-employees-tax-2027/",
+    "coida": "https://www.gov.za/sites/default/files/gcis_document/202604/54577gen3910.pdf"
+  },
+  "uif": {
+    "monthly_remuneration_cap": 17712.0,
+    "employee_rate": 0.01,
+    "employer_rate": 0.01
+  },
+  "sdl": {
+    "rate": 0.01
+  },
+  "vat": {
+    "standard_rate": 0.15,
+    "expected_output_tax": 150.0,
+    "expected_input_tax": 60.0,
+    "expected_payable": 90.0
+  },
+  "coida": {
+    "expected_assessable_earnings": 281500.0,
+    "expected_assessment_fee": 3518.75
+  },
+  "tolerance": 0.01
+}
