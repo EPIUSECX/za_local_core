@@ -55,6 +55,8 @@ jobs:
       HRMS_BRANCH: version-16
       ZA_LOCAL_CORE_REF: main
       ZA_LOCAL_PAYROLL_REF: main
+      # Read access to the sibling private localisation repositories.
+      ZA_LOCAL_CI_TOKEN: ${{ secrets.ZA_LOCAL_CI_TOKEN }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6

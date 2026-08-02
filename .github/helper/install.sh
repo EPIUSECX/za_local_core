@@ -16,9 +16,31 @@ start_redis_port() {
 	exit 1
 }
 
+authorise_private_repositories() {
+	# The localisation repositories are private. A workflow's GITHUB_TOKEN only
+	# grants access to its own repository, so cloning a sibling needs an explicit
+	# credential. Configure it through insteadOf so the token never reaches a
+	# command line or a build log.
+	if [[ -z "${ZA_LOCAL_CI_TOKEN:-}" ]]; then
+		cat >&2 <<-'MISSING'
+			This job must clone a sibling localisation repository, and those
+			repositories are private.
+
+			Add a repository or organisation secret named ZA_LOCAL_CI_TOKEN holding a
+			token with read access to the EPIUSECX localisation repositories, and pass
+			it to this step, or make those repositories public.
+		MISSING
+		exit 1
+	fi
+	git config --global \
+		url."https://x-access-token:${ZA_LOCAL_CI_TOKEN}@github.com/".insteadOf \
+		"https://github.com/"
+}
+
 get_localisation_dependency() {
 	local app="$1"
 	local ref="$2"
+	authorise_private_repositories
 	bench get-app "$app" "https://github.com/EPIUSECX/$app.git" --branch "$ref"
 }
 
