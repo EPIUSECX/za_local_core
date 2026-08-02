@@ -80,6 +80,18 @@ Pre-commit is configured to use the following tools for checking and formatting 
 - prettier
 - pyupgrade
 
+## Uninstalling
+
+`bench uninstall-app` removes this suite's DocTypes and every schema
+customisation it owns: Custom Fields, Property Setters, Print Formats and
+Workspaces all carry an owning module, and `za_local_core` additionally removes
+the `ZA Compliance` roles, which Frappe cannot reclaim by module.
+
+Business and audit records are deliberately retained. Salary Components,
+Payroll Periods, Income Tax Slabs, approved statutory sources, rate packs,
+filings and submission receipts are a company's payroll and compliance history,
+not app schema. Remove them only through a reviewed data decision.
+
 ## License
 
 MIT

@@ -44,6 +44,19 @@ def after_migrate() -> None:
 	sync_shared_navigation()
 
 
+def before_uninstall() -> None:
+	"""Remove artefacts Frappe cannot reclaim by module.
+
+	``remove_app`` deletes any record whose DocType links to Module Def, which
+	covers this suite's Custom Fields, Property Setters, Print Formats and
+	Workspaces. Role has no module field, so its rows must be removed here.
+
+	Statutory and payroll business records are deliberately retained: an
+	uninstall must not destroy a company's payroll history or filing evidence.
+	"""
+	remove_core_roles()
+
+
 def ensure_core_roles() -> None:
 	"""Create missing roles without overwriting administrator-managed role settings."""
 	for role_name, description in CORE_ROLES:
@@ -57,6 +70,13 @@ def ensure_core_roles() -> None:
 				"description": description,
 			}
 		).insert(ignore_permissions=True)
+
+
+def remove_core_roles() -> None:
+	"""Delete this app's roles, including their assignments to users."""
+	for role_name, _description in CORE_ROLES:
+		if frappe.db.exists("Role", role_name):
+			frappe.delete_doc("Role", role_name, force=True, ignore_permissions=True)
 
 
 def seed_core_readiness() -> None:

@@ -112,8 +112,7 @@ add_to_apps_screen = [
 # Uninstallation
 # ------------
 
-# before_uninstall = "za_local_core.uninstall.before_uninstall"
-# after_uninstall = "za_local_core.uninstall.after_uninstall"
+before_uninstall = "za_local_core.install.before_uninstall"
 
 # Integration Setup
 # ------------------

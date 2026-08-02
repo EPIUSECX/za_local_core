@@ -2,6 +2,26 @@
 
 Updated: 2 August 2026
 
+## Country scope
+
+Every South African statutory rule in this suite is gated on the company's
+country. A site may hold companies in several countries: those outside South
+Africa keep stock Frappe, ERPNext and HRMS behaviour, including the standard
+HRMS bank entry, and are never blocked by South African statutory setup they
+cannot complete. `za_local_core.localisation.is_south_african_company` is the
+single owner of that decision; a blank or unknown company is treated as out of
+scope so the owning DocType reports its own missing mandatory fields.
+
+## Uninstall contract
+
+`bench uninstall-app` removes the suite's DocTypes and every schema
+customisation it owns. Custom Fields, Property Setters, Print Formats and
+Workspaces all carry an owning module so Frappe reclaims them; `za_local_core`
+additionally removes the `ZA Compliance` roles, which have no module field.
+Business and audit records — Salary Components, Payroll Periods, Income Tax
+Slabs, statutory sources, rate packs, filings and receipts — are retained by
+design, because an uninstall must not destroy payroll or compliance history.
+
 ## Release candidate
 
 The technical release candidate is the four-app `1.0.0` suite, installed in this order:
@@ -17,7 +37,9 @@ PDF validation. Port 8000 belongs to the retained legacy environment and is not 
 
 ## Reproducible technical evidence
 
-- 296 application tests passed: core 38, finance 70, payroll 141 and workplace 47.
+- 313 application tests passed: core 38, finance 70, payroll 154 and workplace 51. This
+  includes country-gating coverage proving a company outside South Africa is unaffected, and
+  uninstall-hygiene coverage proving every schema customisation declares an owning module.
 - Ruff lint and format checks passed for all four apps; 184 JSON files parsed and `git diff --check` passed.
 - Two consecutive migrations produced the same core-state fingerprint:
   `a549b5e14073acc3bfb2149b091249d6efe9f83f6b1342c3bea1649af93f91cb`.
@@ -61,6 +83,15 @@ professional judgement. Before live cutover, retain evidence of:
 External SARS, DEL, Compensation Fund and bank submission remains **Controlled Manual** unless a separately
 approved integration is configured. A prepared filing, PDF, CSV or XML is not evidence of regulator acceptance;
 capture the external receipt in the filing controls.
+
+## Legacy suite on a shared bench
+
+The retiring `za_local` suite is only meaningful on a legacy-only site. On a bench that also
+holds the extracted apps, both declare the same module names, so `frappe.new_doc` resolves a
+DocType to whichever app wins the module map while the legacy unit tests call legacy classes
+directly. Eight tests fail from that mismatch alone. This is the duplicate-ownership condition
+this programme already declares unsupported, not a defect in either app; run the legacy suite
+on a site where only `za_local` is installed.
 
 ## Confidence and legacy retirement
 

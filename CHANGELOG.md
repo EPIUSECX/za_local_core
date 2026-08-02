@@ -2,6 +2,10 @@
 
 ## 1.0.0 - 2026-08-02
 
+- Added `za_local_core.localisation` as the single owner of country scope; the
+  suite now asks one question before enforcing any South African rule.
+- Added `before_uninstall` to remove the `ZA Compliance` roles, which Frappe
+  cannot reclaim by module, and documented the artefacts it deliberately keeps.
 - Established the shared South African compliance, source-governance, privacy,
   readiness, filing-evidence and practitioner-guide foundation.
 - Added deterministic multi-app ownership and hook audits.
