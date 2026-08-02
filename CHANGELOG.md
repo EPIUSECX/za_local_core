@@ -9,5 +9,7 @@
 - Made restored E2E fixtures self-healing for Frappe setup flags and added
   reproducible PDF, permission and control-total sign-off helpers.
 - Added Frappe v16 CI, migration, backup/restore and release-gate documentation.
+- Consolidated the extracted repositories behind one SA Localisation desktop app,
+  a shared workspace switcher, and the original domain icon set.
 
 Release tags must pin compatible versions of all four localisation apps.

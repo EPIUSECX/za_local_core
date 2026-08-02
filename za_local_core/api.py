@@ -6,19 +6,28 @@ import frappe
 
 
 def has_app_permission() -> bool:
-	"""Show the compliance shell only to authorised desk users."""
+	"""Show the shared shell when the user can access any installed SA domain."""
 	if frappe.session.user == "Administrator":
 		return True
 	roles = set(frappe.get_roles())
-	return bool(
-		roles
-		& {
-			"System Manager",
-			"ZA Compliance User",
-			"ZA Compliance Reviewer",
-			"ZA Compliance Manager",
-		}
-	)
+	if roles & {
+		"System Manager",
+		"ZA Compliance User",
+		"ZA Compliance Reviewer",
+		"ZA Compliance Manager",
+	}:
+		return True
+
+	for doctype in (
+		"South Africa VAT Settings",
+		"Salary Slip",
+		"Business Trip",
+		"Workplace Injury",
+		"COIDA Annual Return",
+	):
+		if frappe.db.exists("DocType", doctype) and frappe.has_permission(doctype, "read"):
+			return True
+	return False
 
 
 @frappe.whitelist()

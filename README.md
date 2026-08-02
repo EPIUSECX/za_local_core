@@ -10,6 +10,18 @@ cutover, rollback and sign-off across all four repositories.
 
 Current test evidence and remaining release gates are recorded in [VALIDATION_AND_SIGNOFF.md](VALIDATION_AND_SIGNOFF.md). Use [CUTOVER_RUNBOOK.md](CUTOVER_RUNBOOK.md) for backup, migration, validation and rollback.
 
+## Unified Desk experience
+
+`za_local_core` owns the single **SA Localisation** desktop entry. It discovers the installed localisation extensions and presents their workspaces together under one launcher and workspace switcher:
+
+- SA Overview
+- SA Payroll
+- SA VAT
+- SA Labour
+- SA COIDA
+
+The finance, payroll and workplace apps do not add separate desktop applications. Their install, migrate and uninstall hooks ask core to refresh the shared navigation, so the launcher reflects only the localisation areas available on the site. The icon assets are packaged by core and remain consistent across the desktop launcher and workspace headers.
+
 The optional federated Wiki publisher combines documentation from all installed localisation apps. After installing Frappe Wiki, run:
 
 ```bash

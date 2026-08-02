@@ -1,5 +1,5 @@
 app_name = "za_local_core"
-app_title = "SA Localisation Core"
+app_title = "SA Localisation"
 app_publisher = "Cohenix"
 app_description = "Shared statutory sources, rate packs, compliance profiles, filing controls, and audit foundations for South Africa."
 app_email = "info@cohenix.com"
@@ -24,9 +24,9 @@ app_include_js = "/assets/za_local_core/js/za_local_feedback.js"
 add_to_apps_screen = [
 	{
 		"name": "za_local_core",
-		"title": "SA Compliance",
+		"title": "SA Localisation",
 		"logo": "/assets/za_local_core/images/sa_map_icon.png",
-		"route": "/desk/sa-compliance",
+		"route": "/desk/sa-overview",
 		"has_permission": "za_local_core.api.has_app_permission",
 	}
 ]

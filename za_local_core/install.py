@@ -2,6 +2,8 @@
 
 import frappe
 
+from za_local_core.navigation import sync_shared_navigation
+
 CORE_ROLES = (
 	("ZA Compliance User", "Prepare South African compliance working papers"),
 	("ZA Compliance Reviewer", "Review South African compliance working papers"),
@@ -29,11 +31,13 @@ CORE_FEATURES = (
 def after_install() -> None:
 	ensure_core_roles()
 	seed_core_readiness()
+	sync_shared_navigation()
 
 
 def after_migrate() -> None:
 	ensure_core_roles()
 	seed_core_readiness()
+	sync_shared_navigation()
 
 
 def ensure_core_roles() -> None:

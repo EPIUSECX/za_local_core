@@ -11,7 +11,7 @@
  "idx": 0,
  "indicator_color": "green",
  "is_hidden": 0,
- "label": "SA Compliance",
+ "label": "SA Overview",
  "links": [
   {"hidden": 0, "is_query_report": 0, "label": "Configuration", "link_count": 4, "link_type": "DocType", "onboard": 0, "type": "Card Break"},
   {"hidden": 0, "is_query_report": 0, "label": "Company Compliance Profiles", "link_count": 0, "link_to": "ZA Company Compliance Profile", "link_type": "DocType", "onboard": 1, "type": "Link"},
@@ -36,7 +36,7 @@
   {"hidden": 0, "is_query_report": 0, "label": "PAIA Manuals", "link_count": 0, "link_to": "ZA PAIA Manual", "link_type": "DocType", "onboard": 1, "type": "Link"}
  ],
  "module": "SA Localisation Core",
- "name": "SA Compliance",
+ "name": "SA Overview",
  "number_cards": [],
  "parent_page": "",
  "public": 1,
@@ -44,6 +44,6 @@
  "roles": [],
  "sequence_id": 1.0,
  "shortcuts": [],
- "title": "SA Compliance",
+ "title": "SA Overview",
  "type": "Workspace"
 }
