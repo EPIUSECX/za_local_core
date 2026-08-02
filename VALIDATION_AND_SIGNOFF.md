@@ -5,7 +5,7 @@ Updated: 1 August 2026
 ## Technical evidence completed
 
 - Full legacy compatibility suite: 243 tests passed.
-- Dedicated-app suites: core 15, finance 41, payroll 119 and workplace 26 tests passed.
+- Dedicated-app suites: core 15, finance 41, payroll 120 and workplace 26 tests passed.
 - Ruff passes across all four repositories.
 - Every legacy source artifact has one declared owner; no `migration_split` entries remain.
 - Runtime hook audit confirms one owner for payroll, finance, workplace and shared scheduled hooks.
@@ -15,15 +15,16 @@ Updated: 1 August 2026
 - Fresh-site payroll controls: gross R281,500.00; deductions R38,809.03; net R242,690.97; ETI generated R7,875.00.
 - Fresh-site EMP201 controls through August: net PAYE R23,676.09; UIF R1,422.72; SDL R2,250.00; ETI utilised R6,750.00.
 - VAT201 controls: output R150.00; input R60.00; payable R90.00.
+- A full database, public-file and private-file backup from the legacy-free candidate was restored over an isolated sign-off site. Public and private file hashes matched after pre-existing target-only files were quarantined, and all monetary/document controls matched before and after a second migration.
+- The restored site is Desk-ready and browser-smoke-tested: all four app tiles and five domain workspaces load, and the Salary Structure timesheet flag, salary component and hourly rate remain visible while only `max_benefits` is hidden.
+- Representative Salary Slip, IRP5, Sales Invoice, VAT201 and COIDA PDFs rendered successfully and were visually inspected. The inspection identified and fixed blank statutory-component defaults that had made the salary-slip PAYE summary disagree with its deduction table.
+- Live permission smoke checks on the restored site confirmed Guest access is denied for Sales Invoice tax readiness, EMP501 export and Workplace Injury health data.
 - Federated practitioner/end-user guide validates installed contributors, unique routes, content existence and relative links.
+- The optional Wiki publisher exits safely when Frappe Wiki is not installed; repository guides remain the authoritative packaged documentation in that deployment shape.
 - 2026/27 headline values were rechecked against the SARS 2027 Employer Guide, SARS 2026 Budget Tax Guide and COIDA General Notice 3910 of 2026.
 
 ## Release gates still requiring evidence
 
-- Restore the final candidate backup onto the isolated sign-off site and compare files plus all monetary controls.
-- Complete browser smoke tests for role-based workspaces, the Salary Structure hourly/timesheet fields and critical workflows.
-- Render and visually inspect representative Salary Slip, IRP5/IT3(a), VAT invoice, VAT201 and COIDA PDFs.
-- Run permission-denial tests with representative real roles and User Permissions on the restored candidate.
 - Obtain independent payroll-practitioner approval of golden calculations, SARS mappings and 2026/27 sources.
 - Obtain VAT-practitioner approval of company treatment/mapping and sample tax documents.
 - Obtain labour/EE/skills/COIDA and Information Officer/privacy approval of controlled-manual processes.

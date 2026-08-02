@@ -1,6 +1,7 @@
 """Deterministic end-to-end data for the isolated za_local test site."""
 
 from calendar import month_name, monthrange
+from pathlib import Path
 
 import frappe
 from frappe import _
@@ -47,6 +48,19 @@ def stage_foundation():
 				}
 			)
 		)
+
+	# A restored E2E database can already contain the deterministic company while
+	# retaining fresh-site setup flags. Keep this isolated staging helper
+	# self-healing so browser and API sign-off runs open Desk, not Setup Wizard.
+	frappe.db.set_value(
+		"Installed Application",
+		{"app_name": ["in", ["frappe", "erpnext"]]},
+		"is_setup_complete",
+		1,
+		update_modified=False,
+	)
+	frappe.db.set_single_value("System Settings", "setup_complete", 1)
+	frappe.db.set_default("desktop:home_page", "workspace")
 
 	from za_local_finance.accounts.setup_chart import load_sa_chart_of_accounts
 	from za_local_payroll.setup.masters import repair_salary_component_accounts, seed_payroll_masters
@@ -630,6 +644,10 @@ def collect_signoff_evidence():
 
 	return {
 		"installed_apps": frappe.get_installed_apps(),
+		"site": {
+			"setup_complete": int(frappe.is_setup_complete()),
+			"company": E2E_COMPANY,
+		},
 		"salary_slips": {
 			"count": len(slips),
 			"gross_pay": total(slips, "gross_pay"),
@@ -672,6 +690,96 @@ def collect_signoff_evidence():
 			"submitted_claims": frappe.db.count("OID Claim", {"company": E2E_COMPANY, "docstatus": 1}),
 		},
 	}
+
+
+def render_signoff_pdfs(output_dir="/tmp/za-local-signoff-pdfs"):
+	"""Render representative statutory PDFs for visual release-gate inspection."""
+	_require_isolated_test_site()
+	from frappe.utils.print_utils import get_print
+
+	output_path = Path(output_dir).resolve()
+	if not output_path.is_relative_to(Path("/tmp")):
+		frappe.throw(_("Sign-off PDFs may only be written below /tmp."))
+	output_path.mkdir(parents=True, exist_ok=True)
+
+	renders = (
+		("Salary Slip", "SA Salary Slip", "salary_slip.pdf"),
+		("IRP5 Certificate", "IRP5 Employee Certificate", "irp5_certificate.pdf"),
+		("Sales Invoice", "SA Sales Invoice", "sales_invoice.pdf"),
+		("VAT201 Return", "SA VAT201 Return", "vat201_return.pdf"),
+		("COIDA Annual Return", "SA COIDA Annual Return", "coida_annual_return.pdf"),
+	)
+	result = []
+	for doctype, print_format, filename in renders:
+		name = frappe.db.get_value(
+			doctype,
+			{"company": E2E_COMPANY, "docstatus": 1},
+			"name",
+			order_by="name asc",
+		)
+		if not name:
+			frappe.throw(_("No submitted {0} exists for PDF sign-off.").format(doctype))
+		pdf = get_print(doctype, name, print_format=print_format, as_pdf=True)
+		if not pdf.startswith(b"%PDF"):
+			frappe.throw(_("{0} did not render as a PDF.").format(print_format))
+		file_path = output_path / filename
+		file_path.write_bytes(pdf)
+		result.append(
+			{
+				"doctype": doctype,
+				"name": name,
+				"print_format": print_format,
+				"path": str(file_path),
+				"bytes": len(pdf),
+			}
+		)
+
+	return result
+
+
+def run_permission_smoke():
+	"""Verify representative sensitive records reject an unauthorised session."""
+	_require_isolated_test_site()
+	from za_local_finance.sa_vat.tax_invoice import check_tax_invoice_readiness
+	from za_local_payroll.utils.emp501_utils import generate_emp501_csv
+
+	sales_invoice = frappe.db.get_value(
+		"Sales Invoice", {"company": E2E_COMPANY, "docstatus": 1}, "name"
+	)
+	emp501 = frappe.db.get_value(
+		"EMP501 Reconciliation", {"company": E2E_COMPANY, "docstatus": 1}, "name"
+	)
+	injury = frappe.db.get_value(
+		"Workplace Injury", {"company": E2E_COMPANY, "docstatus": 1}, "name"
+	)
+	if not all((sales_invoice, emp501, injury)):
+		frappe.throw(_("Stage the complete E2E scenario before running permission smoke tests."))
+
+	checks = (
+		("sales_invoice_readiness", lambda: check_tax_invoice_readiness(sales_invoice)),
+		("emp501_export", lambda: generate_emp501_csv(emp501)),
+		("workplace_injury_health_data", lambda: frappe.get_doc("Workplace Injury", injury).check_permission("read")),
+	)
+	original_user = frappe.session.user
+	denied = []
+	failures = []
+	try:
+		frappe.set_user("Guest")
+		for label, check in checks:
+			try:
+				check()
+			except frappe.PermissionError:
+				denied.append(label)
+			except Exception as exc:
+				failures.append({"check": label, "error": type(exc).__name__})
+			else:
+				failures.append({"check": label, "error": "access_was_allowed"})
+	finally:
+		frappe.set_user(original_user)
+
+	if failures:
+		frappe.throw(_("Permission smoke tests failed: {0}").format(frappe.as_json(failures)))
+	return {"user": "Guest", "denied": denied}
 
 
 def _ensure_emp201(month):
