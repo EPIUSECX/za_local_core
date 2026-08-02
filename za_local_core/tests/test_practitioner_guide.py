@@ -6,7 +6,7 @@ from pathlib import Path
 import frappe
 from frappe.tests import UnitTestCase
 
-from za_local_core.practitioner_guide.registry import get_guides
+from za_local_core.practitioner_guide.registry import PROVIDER_HOOK, get_guides
 
 RELATIVE_LINK = re.compile(r"\]\((?!https?://|#|mailto:)([^)]+)\)")
 
@@ -24,10 +24,13 @@ class TestPractitionerGuide(UnitTestCase):
 					self.assertNotIn(route, routes)
 					routes.add(route)
 
-		self.assertEqual(
-			apps,
-			{"za_local_core", "za_local_finance", "za_local_payroll", "za_local_workplace"},
-		)
+		# Each app's CI installs only its own dependency chain, so the contract is
+		# "every installed contributor publishes pages", not a fixed list of four.
+		contributors = {
+			app for app in frappe.get_installed_apps() if frappe.get_hooks(PROVIDER_HOOK, app_name=app)
+		}
+		self.assertEqual(apps, contributors)
+		self.assertIn("za_local_core", contributors)
 
 	def test_relative_links_resolve_to_published_pages(self):
 		guides = get_guides()

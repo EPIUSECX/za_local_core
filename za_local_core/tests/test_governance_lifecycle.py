@@ -6,13 +6,12 @@ from frappe.utils.file_manager import save_file
 
 from za_local_core.services.profiles import resolve_company_profile
 from za_local_core.services.rates import get_rate, resolve_rate
+from za_local_core.tests.utils import ensure_south_african_company
 
 
 class TestGovernanceLifecycle(IntegrationTestCase):
 	def setUp(self):
-		self.company = frappe.get_all("Company", filters={"country": "South Africa"}, pluck="name", limit=1)[
-			0
-		]
+		self.company = ensure_south_african_company()
 		self.reviewer = self._ensure_user(
 			"_test.za.reviewer@example.com", "ZA Reviewer", "ZA Compliance Reviewer"
 		)

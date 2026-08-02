@@ -4,7 +4,7 @@ authors = [
     { name = "Cohenix", email = "info@cohenix.com"}
 ]
 description = "Shared statutory sources, rate packs, compliance profiles, filing controls, and audit foundations for South Africa."
-requires-python = ">=3.10,<3.15"
+requires-python = ">=3.14,<3.15"
 readme = "README.md"
 dynamic = ["version"]
 dependencies = [

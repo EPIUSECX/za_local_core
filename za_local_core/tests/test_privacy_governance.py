@@ -2,12 +2,12 @@ import frappe
 from frappe.tests.classes import IntegrationTestCase
 from frappe.utils.file_manager import save_file
 
+from za_local_core.tests.utils import ensure_south_african_company
+
 
 class TestPrivacyGovernance(IntegrationTestCase):
 	def setUp(self):
-		self.company = frappe.get_all("Company", filters={"country": "South Africa"}, pluck="name", limit=1)[
-			0
-		]
+		self.company = ensure_south_african_company()
 		self.case_owner = self._ensure_user(
 			"_test.za.privacy.owner@example.com", "Privacy Owner", "ZA Compliance User"
 		)
