@@ -2,6 +2,12 @@
 // Frappe Wiki. Publication is deliberately manual -- it writes website content,
 // so it is not something an install or migrate should do behind the user's back.
 
+// The HTTP method is stated on every call. frappe.call defaults to POST, and a
+// method the endpoint does not allow is rejected as "Not permitted", which reads
+// like a role problem and is not one.
+const STATUS_METHOD = "za_local_core.practitioner_guide.stage.get_guide_status";
+const PUBLISH_METHOD = "za_local_core.practitioner_guide.stage.publish_practitioner_guide";
+
 frappe.pages["sa-localisation-guides"].on_page_load = function (wrapper) {
 	const page = frappe.ui.make_app_page({
 		parent: wrapper,
@@ -19,11 +25,12 @@ frappe.pages["sa-localisation-guides"].on_page_load = function (wrapper) {
 function render(page, container) {
 	container.html(`<div class="text-muted">${__("Loading…")}</div>`);
 	frappe
-		.call({ method: "za_local_core.practitioner_guide.stage.get_guide_status" })
+		.call({ method: STATUS_METHOD, type: "GET" })
 		.then((response) => {
 			const status = response.message || {};
-			// Nothing to publish into without Wiki, so offer no button at all.
-			if (status.wiki_installed) {
+			// No Wiki to publish into, or no right to publish, means no button --
+			// not a button that fails when pressed.
+			if (status.wiki_installed && status.can_publish) {
 				page.set_primary_action(__("Publish Guides"), () => publish(page, container));
 			} else {
 				page.clear_primary_action();
@@ -51,6 +58,18 @@ function intro(status) {
 				<p class="mb-0">
 					${summary}
 					${__("Install Frappe Wiki to publish them on this site. The same content ships as Markdown in each app repository, which stays authoritative either way.")}
+				</p>
+			</div>
+		`);
+	}
+
+	if (!status.can_publish) {
+		return $(`
+			<div class="alert alert-warning" role="alert">
+				<b>${__("Read only")}</b>
+				<p class="mb-0">
+					${summary}
+					${__("Publishing writes website content and needs the System Manager role, so this page shows the current state without offering to change it.")}
 				</p>
 			</div>
 		`);
@@ -127,7 +146,7 @@ function spaces(status) {
 
 function publish(page, container) {
 	frappe
-		.call({ method: "za_local_core.practitioner_guide.stage.publish_practitioner_guide" })
+		.call({ method: PUBLISH_METHOD, type: "POST" })
 		.then((response) => {
 			const result = response.message || {};
 			frappe.show_alert({

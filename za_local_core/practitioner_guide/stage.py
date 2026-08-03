@@ -22,6 +22,9 @@ DOCUMENT_DOCTYPE = "Wiki Document"
 # these spaces survives both a republish and an uninstall.
 INVENTORY_KEY = "za_local_guide_inventory"
 
+# Publishing writes website content, so it stays a System Manager action.
+PUBLISH_ROLE = "System Manager"
+
 
 def _wiki_installed() -> bool:
 	return bool(frappe.db.exists("DocType", SPACE_DOCTYPE) and frappe.db.exists("DocType", DOCUMENT_DOCTYPE))
@@ -274,8 +277,13 @@ def is_wiki_available() -> bool:
 
 @frappe.whitelist(methods=["GET"])
 def get_guide_status() -> dict:
-	"""Describe publication state without changing it, for the Desk page."""
-	frappe.only_for("System Manager")
+	"""Describe publication state without changing it, for the Desk page.
+
+	Reading status deliberately does not throw on role. It reports ``can_publish``
+	instead, so the page can hide its own action rather than offer a button that
+	fails, and so widening the Page's role list yields a read-only screen instead
+	of an error. The role is enforced where it matters, on publication.
+	"""
 	declared = get_declared_pages()
 	contributors = {}
 	for app in declared.values():
@@ -283,6 +291,7 @@ def get_guide_status() -> dict:
 
 	status = {
 		"wiki_installed": _wiki_installed(),
+		"can_publish": PUBLISH_ROLE in frappe.get_roles(),
 		"declared": len(declared),
 		"contributors": [{"app": app, "pages": count} for app, count in sorted(contributors.items())],
 		"spaces": [],
@@ -313,7 +322,7 @@ def get_guide_status() -> dict:
 @frappe.whitelist(methods=["POST"])
 def publish_practitioner_guide() -> dict:
 	"""Queue site-wide guide publication on the long queue."""
-	frappe.only_for("System Manager")
+	frappe.only_for(PUBLISH_ROLE)
 	if not _wiki_installed():
 		return {
 			"title": _("Wiki Not Installed"),

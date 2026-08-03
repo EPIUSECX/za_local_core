@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.1 - 2026-08-03
+
+- Fixed the guide status read failing with "Not permitted" on the Desk page.
+  `frappe.call` defaults to POST while the endpoint is whitelisted `GET`, and
+  Frappe reports that method mismatch as a permission error, which it is not. Both
+  calls in the page now state their HTTP method, and a test asserts each stated
+  method is one the endpoint allows.
+- Reading guide status no longer requires a role. It reports `can_publish`, so the
+  page hides its own publish button instead of offering an action that fails.
+  Publication itself still requires System Manager.
+
 ## 1.2.0 - 2026-08-03
 
 - Added a Desk entry point for the on-site guides: **SA Overview → Publish
