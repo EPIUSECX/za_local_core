@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 - 2026-08-03
+
+- Added workspace metrics: five number cards and three charts on SA Overview,
+  seeded idempotently and fail-safe on a site with no data yet.
+- Gave every workspace group its own icon instead of one shared list glyph.
+
 ## 1.0.0 - 2026-08-02
 
 - Added `za_local_core.localisation` as the single owner of country scope; the

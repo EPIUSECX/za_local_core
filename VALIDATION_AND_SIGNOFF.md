@@ -37,9 +37,13 @@ PDF validation. Port 8000 belongs to the retained legacy environment and is not 
 
 ## Reproducible technical evidence
 
-- 313 application tests passed: core 38, finance 70, payroll 154 and workplace 51. This
-  includes country-gating coverage proving a company outside South Africa is unaffected, and
-  uninstall-hygiene coverage proving every schema customisation declares an owning module.
+- 320 application tests passed: core 45, finance 70, payroll 154 and workplace 51. This
+  includes country-gating coverage proving a company outside South Africa is unaffected,
+  uninstall-hygiene coverage proving every schema customisation declares an owning module, and
+  dashboard coverage proving each metric is seeded once, declares its module, is skipped when
+  its inputs are absent, and renders on a site with no data.
+- All 42 workspace metrics rendered without error on both a zero-data site and the populated
+  sign-off site: 26 number cards and 16 charts across the five workspaces.
 - Ruff lint and format checks passed for all four apps; 184 JSON files parsed and `git diff --check` passed.
 - Two consecutive migrations produced the same core-state fingerprint:
   `a549b5e14073acc3bfb2149b091249d6efe9f83f6b1342c3bea1649af93f91cb`.

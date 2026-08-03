@@ -2,6 +2,7 @@
 
 import frappe
 
+from za_local_core.dashboards import seed_dashboards
 from za_local_core.migration.backfill import run as run_core_backfill
 from za_local_core.migration.ownership import verify_checked_manifest
 from za_local_core.navigation import sync_shared_navigation
@@ -34,6 +35,7 @@ def after_install() -> None:
 	ensure_core_roles()
 	run_core_backfill()
 	seed_core_readiness()
+	seed_core_dashboards()
 	sync_shared_navigation()
 
 
@@ -41,6 +43,7 @@ def after_migrate() -> None:
 	verify_checked_manifest()
 	ensure_core_roles()
 	seed_core_readiness()
+	seed_core_dashboards()
 	sync_shared_navigation()
 
 
@@ -101,3 +104,71 @@ def seed_core_readiness() -> None:
 					"remediation_route": "Complete accountable-person review and attach approval evidence.",
 				}
 			).insert(ignore_permissions=True)
+
+
+CORE_MODULE = "SA Localisation Core"
+
+CORE_NUMBER_CARDS = (
+	{
+		"label": "Filings Awaiting Approval",
+		"document_type": "ZA Filing",
+		"function": "Count",
+		"filters": [["status", "in", ["Draft", "Reviewed"]]],
+	},
+	{
+		"label": "Filings Rejected by an Authority",
+		"document_type": "ZA Filing",
+		"function": "Count",
+		"filters": [["status", "=", "Rejected"]],
+	},
+	{
+		"label": "Obligations Overdue",
+		"document_type": "ZA Compliance Calendar Entry",
+		"function": "Count",
+		"filters": [["status", "=", "Overdue"]],
+	},
+	{
+		"label": "Capabilities Not Yet Production",
+		"document_type": "ZA Feature Readiness",
+		"function": "Count",
+		"filters": [["status", "in", ["Preview", "Controlled Manual", "Blocked"]]],
+	},
+	{
+		"label": "Approved Statutory Rate Packs",
+		"document_type": "ZA Statutory Rate Pack",
+		"function": "Count",
+		"filters": [["docstatus", "=", 1]],
+	},
+)
+
+CORE_CHARTS = (
+	{
+		"chart_name": "SA Filings by Status",
+		"chart_type": "Group By",
+		"document_type": "ZA Filing",
+		"group_by_type": "Count",
+		"group_by_based_on": "status",
+		"type": "Donut",
+	},
+	{
+		"chart_name": "SA Compliance Calendar by Status",
+		"chart_type": "Group By",
+		"document_type": "ZA Compliance Calendar Entry",
+		"group_by_type": "Count",
+		"group_by_based_on": "status",
+		"type": "Bar",
+	},
+	{
+		"chart_name": "SA Capability Readiness by Domain",
+		"chart_type": "Group By",
+		"document_type": "ZA Feature Readiness",
+		"group_by_type": "Count",
+		"group_by_based_on": "domain",
+		"type": "Bar",
+	},
+)
+
+
+def seed_core_dashboards() -> dict:
+	"""Create the SA Overview number cards and charts when missing."""
+	return seed_dashboards(CORE_MODULE, cards=CORE_NUMBER_CARDS, charts=CORE_CHARTS, workspace="SA Overview")

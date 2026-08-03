@@ -1,7 +1,20 @@
 {
  "app": "za_local_core",
- "charts": [],
- "content": "[{\"id\": \"za-core-head\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>South African Compliance</b></span>\", \"col\": 12}}, {\"id\": \"za-core-copy\", \"type\": \"paragraph\", \"data\": {\"text\": \"<span class=\\\"text-muted\\\">Govern statutory sources, effective-dated rules, obligations, readiness, filings, privacy controls and external evidence.</span>\", \"col\": 12}}, {\"id\": \"za-core-card-1\", \"type\": \"card\", \"data\": {\"card_name\": \"Configuration\", \"col\": 4}}, {\"id\": \"za-core-card-2\", \"type\": \"card\", \"data\": {\"card_name\": \"Filing controls\", \"col\": 4}}, {\"id\": \"za-core-card-3\", \"type\": \"card\", \"data\": {\"card_name\": \"Change governance\", \"col\": 4}}, {\"id\": \"za-core-card-4\", \"type\": \"card\", \"data\": {\"card_name\": \"POPIA and PAIA\", \"col\": 12}}]",
+ "charts": [
+  {
+   "chart_name": "SA Filings by Status",
+   "label": "SA Filings by Status"
+  },
+  {
+   "chart_name": "SA Compliance Calendar by Status",
+   "label": "SA Compliance Calendar by Status"
+  },
+  {
+   "chart_name": "SA Capability Readiness by Domain",
+   "label": "SA Capability Readiness by Domain"
+  }
+ ],
+ "content": "[{\"id\": \"sa-overview-nc-0\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Filings Awaiting Approval\", \"col\": 4}}, {\"id\": \"sa-overview-nc-1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Filings Rejected by an Authority\", \"col\": 4}}, {\"id\": \"sa-overview-nc-2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Obligations Overdue\", \"col\": 4}}, {\"id\": \"sa-overview-nc-3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Capabilities Not Yet Production\", \"col\": 4}}, {\"id\": \"sa-overview-nc-4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Approved Statutory Rate Packs\", \"col\": 4}}, {\"id\": \"sa-overview-ch-0\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SA Filings by Status\", \"col\": 6}}, {\"id\": \"sa-overview-ch-1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SA Compliance Calendar by Status\", \"col\": 6}}, {\"id\": \"sa-overview-ch-2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SA Capability Readiness by Domain\", \"col\": 6}}, {\"id\": \"za-core-head\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>South African Compliance</b></span>\", \"col\": 12}}, {\"id\": \"za-core-copy\", \"type\": \"paragraph\", \"data\": {\"text\": \"<span class=\\\"text-muted\\\">Govern statutory sources, effective-dated rules, obligations, readiness, filings, privacy controls and external evidence.</span>\", \"col\": 12}}, {\"id\": \"za-core-card-1\", \"type\": \"card\", \"data\": {\"card_name\": \"Configuration\", \"col\": 4}}, {\"id\": \"za-core-card-2\", \"type\": \"card\", \"data\": {\"card_name\": \"Filing controls\", \"col\": 4}}, {\"id\": \"za-core-card-3\", \"type\": \"card\", \"data\": {\"card_name\": \"Change governance\", \"col\": 4}}, {\"id\": \"za-core-card-4\", \"type\": \"card\", \"data\": {\"card_name\": \"POPIA and PAIA\", \"col\": 12}}]",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -226,7 +239,28 @@
  ],
  "module": "SA Localisation Core",
  "name": "SA Overview",
- "number_cards": [],
+ "number_cards": [
+  {
+   "label": "Filings Awaiting Approval",
+   "number_card_name": "Filings Awaiting Approval"
+  },
+  {
+   "label": "Filings Rejected by an Authority",
+   "number_card_name": "Filings Rejected by an Authority"
+  },
+  {
+   "label": "Obligations Overdue",
+   "number_card_name": "Obligations Overdue"
+  },
+  {
+   "label": "Capabilities Not Yet Production",
+   "number_card_name": "Capabilities Not Yet Production"
+  },
+  {
+   "label": "Approved Statutory Rate Packs",
+   "number_card_name": "Approved Statutory Rate Packs"
+  }
+ ],
  "parent_page": "",
  "public": 1,
  "quick_lists": [],
@@ -235,5 +269,5 @@
  "shortcuts": [],
  "title": "SA Overview",
  "type": "Workspace",
- "modified": "2026-08-03 06:35:31.219446"
+ "modified": "2026-08-03 07:36:13.134938"
 }
