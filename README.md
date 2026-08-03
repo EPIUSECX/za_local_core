@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="za_local_core/public/images/za_local_core_logo.svg" height="128" alt="SA Localisation Core logo">
+
 # SA Localisation Core
 
 **The governance foundation for South African localisation on Frappe and ERPNext**
