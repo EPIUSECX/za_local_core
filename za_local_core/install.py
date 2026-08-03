@@ -6,6 +6,7 @@ from za_local_core.dashboards import seed_dashboards
 from za_local_core.migration.backfill import run as run_core_backfill
 from za_local_core.migration.ownership import verify_checked_manifest
 from za_local_core.navigation import sync_shared_navigation
+from za_local_core.practitioner_guide.stage import unpublish_guides
 
 CORE_ROLES = (
 	("ZA Compliance User", "Prepare South African compliance working papers"),
@@ -51,13 +52,15 @@ def before_uninstall() -> None:
 	"""Remove artefacts Frappe cannot reclaim by module.
 
 	``remove_app`` deletes any record whose DocType links to Module Def, which
-	covers this suite's Custom Fields, Property Setters, Print Formats and
-	Workspaces. Role has no module field, so its rows must be removed here.
+	covers this suite's Custom Fields, Property Setters, Print Formats, Pages and
+	Workspaces. Role has no module field, and neither Wiki DocType has one, so
+	those rows must be removed here or they outlive the app.
 
 	Statutory and payroll business records are deliberately retained: an
 	uninstall must not destroy a company's payroll history or filing evidence.
 	"""
 	remove_core_roles()
+	unpublish_guides()
 
 
 def ensure_core_roles() -> None:

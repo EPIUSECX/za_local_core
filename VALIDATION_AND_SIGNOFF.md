@@ -15,9 +15,12 @@ scope so the owning DocType reports its own missing mandatory fields.
 ## Uninstall contract
 
 `bench uninstall-app` removes the suite's DocTypes and every schema
-customisation it owns. Custom Fields, Property Setters, Print Formats and
-Workspaces all carry an owning module so Frappe reclaims them; `za_local_core`
-additionally removes the `ZA Compliance` roles, which have no module field.
+customisation it owns. Custom Fields, Property Setters, Print Formats, Pages and
+Workspaces all carry an owning module so Frappe reclaims them. Two artefacts have
+no module field, so the suite removes them itself: the `ZA Compliance` roles, and
+any guide pages published into Frappe Wiki. Each domain app withdraws only the
+pages it published; core removes the guide spaces, unless a space also holds pages
+this suite did not publish, in which case only ours go and the space is kept.
 Business and audit records — Salary Components, Payroll Periods, Income Tax
 Slabs, statutory sources, rate packs, filings and receipts — are retained by
 design, because an uninstall must not destroy payroll or compliance history.
@@ -37,11 +40,16 @@ PDF validation. Port 8000 belongs to the retained legacy environment and is not 
 
 ## Reproducible technical evidence
 
-- 320 application tests passed: core 45, finance 70, payroll 154 and workplace 51. This
+- 334 application tests passed: core 59, finance 70, payroll 154 and workplace 51. This
   includes country-gating coverage proving a company outside South Africa is unaffected,
-  uninstall-hygiene coverage proving every schema customisation declares an owning module, and
+  uninstall-hygiene coverage proving every schema customisation declares an owning module,
   dashboard coverage proving each metric is seeded once, declares its module, is skipped when
-  its inputs are absent, and renders on a site with no data.
+  its inputs are absent, and renders on a site with no data, and guide-publication coverage
+  proving publish is idempotent, an uninstall reclaims what this suite published, and content
+  this suite did not publish is never destroyed.
+- The suite was run on three site shapes: without Frappe Wiki, where the 8 Wiki-dependent tests
+  skip and the rest pass; with Wiki and all four apps installed; and with Wiki and a partial app
+  set, which is the shape each repository's CI builds.
 - All 42 workspace metrics rendered without error on both a zero-data site and the populated
   sign-off site: 26 number cards and 16 charts across the five workspaces.
 - Ruff lint and format checks passed for all four apps; 184 JSON files parsed and `git diff --check` passed.
@@ -64,6 +72,11 @@ PDF validation. Port 8000 belongs to the retained legacy environment and is not 
 - The federated practitioner and end-user guide registry resolves every installed app contribution with unique
   routes. Frappe Wiki is optional and is not installed on the validated site; packaged Markdown is authoritative
   there, and the publisher exits safely without creating partial pages.
+- Publication and withdrawal were exercised against Frappe Wiki 3.0.0 on a disposable site. Publishing 44 pages
+  into `/sa-guide` and `/sa-user-guide` is idempotent. A real `bench uninstall-app` of one domain app withdrew
+  exactly its own pages and the group they emptied, leaving the other apps' pages intact; uninstalling the
+  remaining apps and then core withdrew every page, removed both spaces, cleared the provenance record and left
+  no orphan routes.
 
 ## Current official-source checks
 

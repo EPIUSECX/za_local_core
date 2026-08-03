@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.2.0 - 2026-08-03
+
+- Added a Desk entry point for the on-site guides: **SA Overview → Publish
+  Localisation Guides** shows what each installed app contributes, whether Frappe
+  Wiki is present and whether each space is up to date, and publishes on request.
+  The whitelisted publish endpoint previously had no caller.
+- Guide pages published into Frappe Wiki are now withdrawn on uninstall. Neither
+  Wiki DocType has a module field, so `remove_app` could not reclaim them and they
+  stayed live after the app that wrote them was gone.
+- Publishing now converges: pages no installed app declares any more are
+  withdrawn, and groups left empty are removed. Provenance is recorded per page so
+  only pages this suite published are ever deleted.
+- Uninstalling core removes the `/sa-guide` and `/sa-user-guide` spaces, unless a
+  space also holds pages this suite did not publish. Deleting a Wiki Space
+  cascades to its whole tree, so in that case only ours are withdrawn.
+- Added a patch that force-reloads the SA Overview workspace, so the new card
+  lands on sites where the stored record is newer than the shipped file.
+
 ## 1.1.0 - 2026-08-03
 
 - Added workspace metrics: five number cards and three charts on SA Overview,

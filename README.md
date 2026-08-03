@@ -154,17 +154,26 @@ restored copy, never on a production site.
 | [SECURITY.md](SECURITY.md) | Reporting a vulnerability |
 | [SUPPORT.md](SUPPORT.md) | Getting help |
 
-Practitioner and end-user guides ship as Markdown under
-`za_local_core/practitioner_guide/content/`. When Frappe Wiki is installed, a
-System Manager can publish the federated guide from every installed localisation
-app:
+### On-site guides
+
+Practitioner and end-user guides ship as Markdown under each app's
+`practitioner_guide/content/`. That packaged Markdown is authoritative; Frappe
+Wiki is only a rendering target, and nothing is published unless someone asks for
+it — publication writes website content, so an install or migrate never does it
+behind your back.
+
+With [Frappe Wiki](https://github.com/frappe/wiki) installed, a System Manager
+publishes from **SA Overview → Publish Localisation Guides**, or from the shell:
 
 ```bash
 bench --site <site> execute za_local_core.practitioner_guide.stage.stage_space
 ```
 
-This publishes `/sa-guide` and `/sa-user-guide`. Where Wiki is absent, the
-packaged Markdown is authoritative.
+Either route builds `/sa-guide` and `/sa-user-guide` from every installed
+localisation app, and is safe to repeat: pages are rewritten in place, pages no
+longer declared by any installed app are withdrawn, and pages added by hand inside
+those spaces are left alone. Without Wiki the Desk page explains the position and
+offers no publish button.
 
 ## Filing boundary
 
@@ -181,9 +190,16 @@ here is a legal certification.
 ## Uninstalling
 
 `bench uninstall-app` removes this suite's DocTypes and every schema
-customisation it owns: Custom Fields, Property Setters, Print Formats and
-Workspaces all carry an owning module, and this app additionally removes the
-`ZA Compliance` roles, which Frappe cannot reclaim by module.
+customisation it owns: Custom Fields, Property Setters, Print Formats, Pages and
+Workspaces all carry an owning module. Two things have no module for Frappe to
+reclaim them by, so this app removes them itself — the `ZA Compliance` roles, and
+any guide pages published into Frappe Wiki.
+
+Guide withdrawal is scoped. Uninstalling one domain app takes away only the pages
+that app published, plus any group left empty. Uninstalling core removes the
+`/sa-guide` and `/sa-user-guide` spaces — unless a space also holds pages this
+suite did not publish, in which case only ours are withdrawn and the space is
+kept, because deleting a Wiki Space cascades to everything beneath it.
 
 Business and audit records are deliberately retained. Salary Components, Payroll
 Periods, Income Tax Slabs, approved statutory sources, rate packs, filings and

@@ -1,0 +1,20 @@
+{
+ "creation": "2026-08-03 09:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "icon": "book",
+ "idx": 1,
+ "modified": "2026-08-03 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "SA Localisation Core",
+ "name": "sa-localisation-guides",
+ "owner": "Administrator",
+ "page_name": "sa-localisation-guides",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "standard": "Yes",
+ "title": "SA Localisation Guides"
+}
