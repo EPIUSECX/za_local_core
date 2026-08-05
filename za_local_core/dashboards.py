@@ -114,9 +114,13 @@ def ensure_number_card(module: str, spec: dict) -> str | None:
 			"document_type": spec.get("document_type"),
 			"function": spec.get("function", "Count"),
 			"aggregate_function_based_on": spec.get("aggregate_function_based_on"),
-			"filters_json": json.dumps(spec.get("filters") or []),
+			"filters_json": _filters_for(spec),
 			"is_public": 1,
 			"show_percentage_stats": 0,
+			# Statutory amounts are reconciled to the cent, so never abbreviate them.
+			# It also avoids Frappe rendering a zero currency card as "R NaN":
+			# shorten_number() returns "" for 0, and parseFloat("") is NaN.
+			"show_full_number": spec.get("show_full_number", 1),
 			"module": module,
 			"is_standard": 0,
 		}
@@ -149,7 +153,7 @@ def ensure_dashboard_chart(module: str, spec: dict) -> str | None:
 			"time_interval": spec.get("time_interval", "Monthly"),
 			"timespan": spec.get("timespan", "Last Year"),
 			"type": spec.get("type", "Bar"),
-			"filters_json": json.dumps(spec.get("filters") or []),
+			"filters_json": _filters_for(spec),
 			"is_public": 1,
 			"module": module,
 			"is_standard": 0,
@@ -159,6 +163,49 @@ def ensure_dashboard_chart(module: str, spec: dict) -> str | None:
 		chart.append("y_axis", column)
 	chart.insert(ignore_permissions=True)
 	return chart.name
+
+
+def _filters_for(spec: dict) -> str:
+	"""Serialise filters in the four-part form the Desk reads.
+
+	``frappe.utils.get_filter_from_json`` treats a stored filter as
+	``[doctype, fieldname, operator, value]``. A three-part filter still aggregates
+	correctly server-side, which is why the figures were right, but the Desk reads
+	the operator as the fieldname and reports ``Invalid filter: =`` when it draws
+	the filter area. Specs stay three-part, which is the readable form; the
+	doctype is added here so no caller has to remember.
+	"""
+	doctype = spec.get("document_type")
+	filters = []
+	for condition in spec.get("filters") or []:
+		condition = list(condition)
+		filters.append(condition if len(condition) == 4 or not doctype else [doctype, *condition])
+	return json.dumps(filters)
+
+
+def repair_metric_presentation(module: str, cards=(), charts=()) -> dict:
+	"""Bring metrics created by an earlier release up to the current contract.
+
+	``ensure_*`` never overwrites an existing record, so a site that installed
+	before this fix keeps the broken filter shape until something repairs it. Only
+	the fields that were wrong are written, so a deliberate edit elsewhere on the
+	card survives, and only records this module owns are touched.
+	"""
+	if not _schema_available():
+		return {"cards": [], "charts": []}
+
+	repaired = {"cards": [], "charts": []}
+	for doctype, specs, key, extra in (
+		(CARD_DOCTYPE, cards, "label", {"show_full_number": 1}),
+		(CHART_DOCTYPE, charts, "chart_name", {}),
+	):
+		for spec in specs:
+			name = spec[key]
+			if frappe.db.get_value(doctype, name, "module") != module:
+				continue
+			frappe.db.set_value(doctype, name, {"filters_json": _filters_for(spec), **extra})
+			repaired["cards" if doctype == CARD_DOCTYPE else "charts"].append(name)
+	return repaired
 
 
 def _schema_available() -> bool:

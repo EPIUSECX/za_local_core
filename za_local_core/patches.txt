@@ -7,3 +7,4 @@
 za_local_core.patches.v1_0.ensure_core_roles
 za_local_core.patches.v1_0.backfill_core_governance
 za_local_core.patches.v1_1.reload_sa_overview_workspace
+za_local_core.patches.v1_2.repair_dashboard_filters
