@@ -27,12 +27,17 @@ design, because an uninstall must not destroy payroll or compliance history.
 
 ## Release candidate
 
-The technical release candidate is the four-app `1.0.0` suite, installed in this order:
+The technical release candidate is the three-app suite, installed in this order:
 
 1. `za_local_core`
 2. `za_local_finance`
 3. `za_local_payroll`
-4. `za_local_workplace`
+
+`za_local_workplace` is retired. Its SA Labour and SA COIDA modules ship inside `za_local_payroll` from
+2.0.0, moved unchanged — same DocTypes, same fieldnames, same tables. A fresh three-app install and an
+in-place migration from the four-app layout were verified to produce identical sites: the same 90 DocTypes
+across five modules, 12 reports, 22 print formats, 5 workspaces, 41 metrics, 139 custom fields and 16
+property setters, with every record count unchanged.
 
 The validated site is `za-local-production-e2e.test`. It contains Frappe, ERPNext and HRMS v16 plus the four
 apps above; the legacy monolithic `za_local` app is not installed. Port 8004 was used for isolated browser and
@@ -40,7 +45,7 @@ PDF validation. Port 8000 belongs to the retained legacy environment and is not 
 
 ## Reproducible technical evidence
 
-- 334 application tests passed: core 59, finance 70, payroll 154 and workplace 51. This
+- 336 application tests passed: core 61, finance 72 and payroll 203. This
   includes country-gating coverage proving a company outside South Africa is unaffected,
   uninstall-hygiene coverage proving every schema customisation declares an owning module,
   dashboard coverage proving each metric is seeded once, declares its module, is skipped when
@@ -48,11 +53,11 @@ PDF validation. Port 8000 belongs to the retained legacy environment and is not 
   proving publish is idempotent, an uninstall reclaims what this suite published, and content
   this suite did not publish is never destroyed.
 - The suite was run on three site shapes: without Frappe Wiki, where the 8 Wiki-dependent tests
-  skip and the rest pass; with Wiki and all four apps installed; and with Wiki and a partial app
+  skip and the rest pass; with Wiki and the full suite installed; and with Wiki and a partial app
   set, which is the shape each repository's CI builds.
 - All 42 workspace metrics rendered without error on both a zero-data site and the populated
   sign-off site: 26 number cards and 16 charts across the five workspaces.
-- Ruff lint and format checks passed for all four apps; 184 JSON files parsed and `git diff --check` passed.
+- Ruff lint and format checks passed for every app; JSON fixtures parsed and `git diff --check` passed.
 - Two consecutive migrations produced the same core-state fingerprint:
   `a549b5e14073acc3bfb2149b091249d6efe9f83f6b1342c3bea1649af93f91cb`.
 - Critical runtime hook ownership is unique; the packaged 651-artifact legacy ownership manifest validates.

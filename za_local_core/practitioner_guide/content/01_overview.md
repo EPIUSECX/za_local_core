@@ -1,11 +1,11 @@
 # South African localisation suite
 
-The suite is four independently versioned Frappe v16 applications:
+The suite is three independently versioned Frappe v16 applications:
 
 - `za_local_core`: statutory-source governance, filing evidence, readiness, POPIA and PAIA controls.
 - `za_local_finance`: VAT201 working papers, South African tax documents and finance setup.
-- `za_local_payroll`: PAYE, UIF, SDL, ETI, payroll benefits, declarations, certificates and approved bank exports.
-- `za_local_workplace`: BCEA/EE/skills working papers, COIDA, injuries and claims.
+- `za_local_payroll`: PAYE, UIF, SDL, ETI, payroll benefits, declarations, certificates, approved bank exports,
+  and the BCEA/EE/skills working papers, COIDA, injuries and claims that shipped separately before 2.0.0.
 
 The software supports controlled statutory processes; it does not transfer the employer, vendor or practitioner's
 legal responsibility and is not legal certification. A submitted domain document is an internal record. For a

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.2 - 2026-08-03
+
+- Documented the three-app suite. `za_local_workplace` is retired and its SA Labour
+  and SA COIDA modules ship inside `za_local_payroll` from 2.0.0; the packaged
+  guide pages and dependency tree now say so.
+
 ## 1.2.1 - 2026-08-03
 
 - Fixed the guide status read failing with "Not permitted" on the Desk page.

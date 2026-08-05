@@ -45,7 +45,7 @@ Do not proceed if any row count, amount, hash, permission or rendered statutory 
 ## 3. Production cutover
 
 1. Repeat the final backup and hash verification.
-2. Deploy pinned, approved tags for all four apps.
+2. Deploy pinned, approved tags for every app in the suite.
 3. Apply the exact migration procedure proven on the populated rehearsal, then install/migrate in dependency order.
 4. Activate the extracted runtime once; never leave legacy and dedicated writers active together.
 5. Clear cache, restart workers/web, build assets and run read-only health/control checks.

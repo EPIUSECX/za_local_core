@@ -25,7 +25,7 @@ compliance feature depends on:
 - Where is the evidence, and can it be altered after approval?
 
 It also owns the shared Desk experience, so the suite presents itself as one
-**SA Localisation** application rather than four separate apps.
+**SA Localisation** application rather than three separate apps.
 
 ## Why it exists
 
@@ -96,8 +96,8 @@ capability in this suite ships as Production until an authorised reviewer sets i
 ERPNext
 └── za_local_core            governance, sources, rate packs, filings, POPIA/PAIA
     ├── za_local_finance     VAT, tax invoices, VAT201
-    └── za_local_payroll     PAYE, UIF, SDL, ETI, EMP201/501, IRP5   (+ HRMS)
-        └── za_local_workplace   BCEA, Employment Equity, skills, COIDA   (+ HRMS)
+    └── za_local_payroll     PAYE, UIF, SDL, ETI, EMP201/501, IRP5,
+                             BCEA, Employment Equity, skills, COIDA   (+ HRMS)
 ```
 
 Install in that order. Each app declares its `required_apps`, so bench enforces

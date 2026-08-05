@@ -1,6 +1,7 @@
 # South African Localisation Multi-App Migration Programme
 
-Status: the target architecture and four-app target-only implementation are complete on the development worktree.
+Status: complete. The suite consolidated to three apps in 2.0.0, with SA Labour and SA COIDA moving from
+`za_local_workplace` into `za_local_payroll`.
 Fresh E2E, repeated migration, target-only backup/restore and 296 app tests are recorded in
 `VALIDATION_AND_SIGNOFF.md`. Production cutover still requires pinned release tags, populated legacy migration and
 rollback rehearsal, parallel cycles, company-specific practitioner approval and external bank/authority acceptance

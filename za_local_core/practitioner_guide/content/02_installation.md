@@ -1,8 +1,12 @@
 # Installation and migration
 
-Install on Frappe v16 in dependency order. ERPNext is required by core and finance. HRMS is required before payroll
-or workplace. For the full suite, install ERPNext, HRMS, `za_local_core`, `za_local_finance`, `za_local_payroll`,
-then `za_local_workplace`. Finance can be installed without HRMS when payroll/workplace are not required.
+Install on Frappe v16 in dependency order. ERPNext is required by core and finance. HRMS is required before
+payroll. For the full suite, install ERPNext, HRMS, `za_local_core`, `za_local_finance`, then `za_local_payroll`.
+Finance can be installed without HRMS when payroll is not required.
+
+Sites running the 1.x four-app layout update `za_local_payroll` to 2.0.0 and migrate; a patch adopts the SA Labour
+and SA COIDA modules and de-registers `za_local_workplace` without dropping schema or records. Do not run
+`bench uninstall-app za_local_workplace` — that deletes the labour, injury, claim and COIDA history.
 
 Before migrating from legacy `za_local`:
 
