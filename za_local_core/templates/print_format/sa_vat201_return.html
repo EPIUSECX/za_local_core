@@ -1,0 +1,104 @@
+{# South African VAT201 working-paper print format. #}
+<style>
+.za-doc { color:#111827; font-size:11px; line-height:1.35; }
+.za-doc__header { border-bottom:2px solid #111827; display:flex; justify-content:space-between; margin-bottom:12px; padding-bottom:8px; }
+.za-doc__title { font-size:20px; font-weight:700; }
+.za-doc__meta { text-align:right; }
+.za-doc__grid { display:grid; gap:12px; grid-template-columns:1fr 1fr; }
+.za-doc__section { border:1px solid #d1d5db; border-radius:6px; margin-bottom:10px; padding:10px; }
+.za-doc__section-title { font-size:12px; font-weight:700; letter-spacing:.02em; margin-bottom:6px; text-transform:uppercase; }
+.za-doc__row { display:grid; grid-template-columns:170px 1fr; margin-bottom:3px; }
+.za-doc__label { color:#4b5563; font-weight:600; }
+.za-doc table { border-collapse:collapse; margin-top:4px; width:100%; }
+.za-doc th, .za-doc td { border-bottom:1px solid #e5e7eb; padding:4px 5px; vertical-align:top; }
+.za-doc th { background:#f9fafb; color:#374151; font-weight:700; text-align:left; }
+.za-doc .num { text-align:right; white-space:nowrap; }
+.za-doc__net { border:2px solid #111827; border-radius:6px; font-size:14px; font-weight:700; margin-top:8px; padding:8px 10px; text-align:right; }
+.za-doc__note { color:#6b7280; font-size:9.5px; margin-top:10px; }
+</style>
+
+{% macro money(value) -%}
+	{{ frappe.format(value or 0, {"fieldtype": "Currency", "options": "ZAR"}) | e }}
+{%- endmacro %}
+{% macro date_value(value) -%}
+	{{ (frappe.format(value, {"fieldtype": "Date"}) if value else "") | e }}
+{%- endmacro %}
+{% macro field(label, value) -%}
+	<div class="za-doc__row"><div class="za-doc__label">{{ label | e }}</div><div>{{ (value if value is not none else "") | e }}</div></div>
+{%- endmacro %}
+
+<div class="za-doc">
+	<div class="za-doc__header">
+		<div>
+			<div class="za-doc__title">{{ _("VAT 201 Return") }}</div>
+			<div>{{ (doc.get("company_name") or doc.company) | e }}</div>
+		</div>
+		<div class="za-doc__meta">
+			<div><strong>{{ _("Document") }}</strong> {{ doc.name | e }}</div>
+			<div><strong>{{ _("Status") }}</strong> {{ (doc.get("status") or ("Submitted" if doc.docstatus == 1 else "Draft")) | e }}</div>
+			<div><strong>{{ _("Currency") }}</strong> ZAR</div>
+		</div>
+	</div>
+
+	<div class="za-doc__grid">
+		<div class="za-doc__section">
+			<div class="za-doc__section-title">{{ _("Vendor & Period") }}</div>
+			{{ field(_("Company"), doc.company) }}
+			{{ field(_("VAT Registration Number"), doc.vat_registration_number) }}
+			{{ field(_("VAT Filing Category"), doc.filing_category) }}
+			{{ field(_("From Date"), date_value(doc.from_date)) }}
+			{{ field(_("To Date"), date_value(doc.to_date)) }}
+			{{ field(_("Submission Date"), date_value(doc.submission_date)) }}
+		</div>
+		<div class="za-doc__section">
+			<div class="za-doc__section-title">{{ _("Output Tax") }}</div>
+			{{ field(_("Standard-Rated Supplies"), money(doc.standard_rated_supplies)) }}
+			{{ field(_("Zero-Rated Supplies"), money(doc.zero_rated_supplies)) }}
+			{{ field(_("Exempt Supplies"), money(doc.exempt_supplies)) }}
+			{{ field(_("Total Supplies"), money(doc.total_supplies)) }}
+			{{ field(_("Output Tax"), money(doc.total_output_tax)) }}
+		</div>
+	</div>
+	<div class="za-doc__grid">
+		<div class="za-doc__section">
+			<div class="za-doc__section-title">{{ _("Input Tax") }}</div>
+			{{ field(_("Capital Goods Input"), money(doc.capital_goods_input)) }}
+			{{ field(_("Other Goods/Services Input"), money(doc.other_goods_services_input)) }}
+			{{ field(_("Bad Debts Input"), money(doc.bad_debts_input)) }}
+			{{ field(_("Box 18 Other Input Adjustment"), money(doc.other_input_adjustment)) }}
+			{{ field(_("Total Input Tax"), money(doc.total_input_tax)) }}
+		</div>
+		<div class="za-doc__section">
+			<div class="za-doc__section-title">{{ _("Calculation") }}</div>
+			{{ field(_("Total Output Tax"), money(doc.total_output_tax)) }}
+			{{ field(_("Total Input Tax"), money(doc.total_input_tax)) }}
+			{{ field(_("VAT Payable"), money(doc.vat_payable)) }}
+			{{ field(_("VAT Refundable"), money(doc.vat_refundable)) }}
+			{{ field(_("Diesel Refund"), money(doc.diesel_refund)) }}
+		</div>
+	</div>
+	<div class="za-doc__net">{{ _("Total Amount Payable") }}: {{ money(doc.total_amount_payable) }}</div>
+	<div class="za-doc__section">
+		<div class="za-doc__section-title">{{ _("Linked VAT Transactions") }}</div>
+		<table>
+			<thead><tr><th>#</th><th>{{ _("Voucher Type") }}</th><th>{{ _("Voucher No") }}</th><th>{{ _("Date") }}</th><th>{{ _("Classification") }}</th><th>{{ _("Status") }}</th><th class="num">{{ _("Tax Amount") }}</th></tr></thead>
+			<tbody>
+				{% for row in doc.transactions %}
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ row.voucher_type | e }}</td>
+					<td>{{ row.voucher_no | e }}</td>
+					<td>{{ date_value(row.posting_date) }}</td>
+					<td>{{ row.classification | e }}</td>
+					<td>{{ row.classification_status | e }}</td>
+					<td class="num">{{ money(row.tax_amount) }}</td>
+				</tr>
+				{% else %}
+				<tr><td colspan="7">{{ _("No linked transactions.") }}</td></tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+	<div class="za-doc__note">{{ _("This document is a working paper produced by the South African localisation. Electronic submission to SARS is not performed here; complete submission through the authority's approved channel and retain the receipt. A practitioner remains responsible for validating statutory figures before filing.") }}</div>
+</div>

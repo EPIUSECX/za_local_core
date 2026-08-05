@@ -1,7 +1,11 @@
 app_name = "za_local_core"
 app_title = "SA Localisation"
 app_publisher = "Cohenix"
-app_description = "Shared statutory sources, rate packs, compliance profiles, filing controls, and audit foundations for South Africa."
+app_description = (
+	"South African VAT and compliance foundation: statutory sources, effective-dated "
+	"rate packs, compliance profiles, filing controls, POPIA and PAIA registers, "
+	"VAT201 working papers and compliant commercial documents for ERPNext."
+)
 app_email = "info@cohenix.com"
 app_license = "mit"
 
@@ -275,3 +279,37 @@ before_uninstall = "za_local_core.install.before_uninstall"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
+
+
+# --- SA VAT ------------------------------------------------------------------
+# Absorbed from za_local_finance, which is retired. The VAT module is inert until
+# a company has South Africa VAT Settings, so a site that only runs payroll is
+# unaffected by its presence.
+
+doctype_js = {
+	"Sales Invoice": "public/js/vat_tax_calculation.js",
+	"Purchase Invoice": "public/js/vat_tax_calculation.js",
+}
+
+extend_doctype_class = {
+	"Sales Invoice": "za_local_core.overrides.vat_invoices.ZASalesInvoice",
+	"Purchase Invoice": "za_local_core.overrides.vat_invoices.ZAPurchaseInvoice",
+}
+
+doc_events = {
+	"Customer": {
+		"validate": "za_local_core.custom.customer.validate",
+	},
+	"Item": {
+		"validate": "za_local_core.sa_vat.item_sync.sync_item_zero_rated_flag",
+	},
+	"ZA Submission Receipt": {
+		"on_submit": "za_local_core.sa_vat.events.sync_vat201_from_receipt",
+		"on_cancel": "za_local_core.sa_vat.events.sync_vat201_from_receipt",
+	},
+	"ZA Filing": {
+		"on_cancel": "za_local_core.sa_vat.events.sync_vat201_from_filing",
+	},
+}
+
+before_request = ["za_local_core.accounts.setup_chart.apply_chart_patches_on_request"]

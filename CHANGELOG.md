@@ -1,5 +1,44 @@
 # Changelog
 
+## 2.0.0 - 2026-08-03
+
+### Absorbed SA Localisation Finance
+
+The SA VAT module moved into this app from the separate `za_local_finance` app,
+which is retired. The suite is now two apps: this one, and payroll and HR.
+
+- VAT settings, supply classification, tax-invoice controls, VAT201 returns, the
+  SA commercial print formats, VAT reports and the chart-of-accounts augmentation
+  all ship here. The app is titled **SA Localisation Finance & Compliance**.
+- Nothing was rewritten. The module name, DocType names, fieldnames and tables are
+  unchanged, so no data is migrated or re-entered.
+- `patches.v1_3.adopt_vat_module` re-points the SA VAT Module Def and Workspace to
+  this app and de-registers `za_local_finance` using `remove_from_installed_apps`,
+  never `remove_app` — an uninstall would have dropped every VAT201 return and
+  tax-document record. It also removes the empty `SA Localisation Finance` module
+  the retired app declared but never populated, and only when nothing references it.
+- VAT setup lives in `sa_vat/install.py`, inside the module it configures.
+- VAT stays inert until a company has South Africa VAT Settings, so a payroll-only
+  site is unaffected by its presence.
+
+### Fixed
+
+- SA Labour and SA COIDA lost their Desk sidebar and desktop icons after the
+  payroll merge in `za_local_payroll` 2.0.0. `WORKSPACE_SPECS` still attributed
+  them to the retired `za_local_workplace`, and `get_available_workspaces` filters
+  on the owning app being installed, so `_cleanup_stale_navigation` deleted their
+  navigation entries while leaving the Workspace records intact. Both are now
+  attributed to `za_local_payroll`, and a test asserts every shipped workspace
+  names an app that actually declares its module.
+- `LOCALISATION_APPS` keeps every app name the suite has shipped under, including
+  retired ones. It is a cleanup allow-list, so dropping a retired name would leave
+  that app's stale Desktop Icon on the site forever.
+
+### Upgrading from 1.x
+
+Update both apps and run `bench --site <site> migrate`. Do not run
+`bench uninstall-app` on `za_local_finance` or `za_local_workplace`.
+
 ## 1.2.2 - 2026-08-03
 
 - Documented the three-app suite. `za_local_workplace` is retired and its SA Labour

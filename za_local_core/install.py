@@ -7,6 +7,11 @@ from za_local_core.migration.backfill import run as run_core_backfill
 from za_local_core.migration.ownership import verify_checked_manifest
 from za_local_core.navigation import sync_shared_navigation
 from za_local_core.practitioner_guide.stage import unpublish_guides
+from za_local_core.sa_vat.install import (
+	apply_vat_setup,
+	seed_vat_dashboards,
+	seed_vat_readiness,
+)
 
 CORE_ROLES = (
 	("ZA Compliance User", "Prepare South African compliance working papers"),
@@ -37,6 +42,7 @@ def after_install() -> None:
 	run_core_backfill()
 	seed_core_readiness()
 	seed_core_dashboards()
+	_setup_vat_module()
 	sync_shared_navigation()
 
 
@@ -45,7 +51,15 @@ def after_migrate() -> None:
 	ensure_core_roles()
 	seed_core_readiness()
 	seed_core_dashboards()
+	_setup_vat_module()
 	sync_shared_navigation()
+
+
+def _setup_vat_module() -> None:
+	"""Set up the SA VAT module this app absorbed from za_local_finance."""
+	apply_vat_setup()
+	seed_vat_readiness()
+	seed_vat_dashboards()
 
 
 def before_uninstall() -> None:

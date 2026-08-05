@@ -27,17 +27,20 @@ design, because an uninstall must not destroy payroll or compliance history.
 
 ## Release candidate
 
-The technical release candidate is the three-app suite, installed in this order:
+The technical release candidate is the two-app suite, installed in this order:
 
-1. `za_local_core`
-2. `za_local_finance`
-3. `za_local_payroll`
+1. `za_local_core` — governance foundation plus SA VAT
+2. `za_local_payroll` — SA Payroll, SA Labour and SA COIDA
 
-`za_local_workplace` is retired. Its SA Labour and SA COIDA modules ship inside `za_local_payroll` from
-2.0.0, moved unchanged — same DocTypes, same fieldnames, same tables. A fresh three-app install and an
-in-place migration from the four-app layout were verified to produce identical sites: the same 90 DocTypes
-across five modules, 12 reports, 22 print formats, 5 workspaces, 41 metrics, 139 custom fields and 16
-property setters, with every record count unchanged.
+`za_local_finance` and `za_local_workplace` are retired. Their modules ship inside the two apps above from
+2.0.0, moved unchanged — same module names, same DocTypes, same fieldnames, same tables. At each
+consolidation step a fresh install and an in-place migration were verified to produce identical sites: the
+same 90 DocTypes across five modules, 12 reports, 22 print formats, 5 workspaces, 41 metrics, 139 custom
+fields and 16 property setters, with every record count unchanged and nothing dropped.
+
+Each retired app is de-registered with `remove_from_installed_apps`, never `remove_app`, so no DocType or
+record is deleted. Running `bench uninstall-app` on a retired app would destroy the VAT201, labour, injury,
+claim and COIDA history it created.
 
 The validated site is `za-local-production-e2e.test`. It contains Frappe, ERPNext and HRMS v16 plus the four
 apps above; the legacy monolithic `za_local` app is not installed. Port 8004 was used for isolated browser and
@@ -45,7 +48,7 @@ PDF validation. Port 8000 belongs to the retained legacy environment and is not 
 
 ## Reproducible technical evidence
 
-- 336 application tests passed: core 61, finance 72 and payroll 203. This
+- 337 application tests passed: core 134 and payroll 203. This
   includes country-gating coverage proving a company outside South Africa is unaffected,
   uninstall-hygiene coverage proving every schema customisation declares an owning module,
   dashboard coverage proving each metric is seeded once, declares its module, is skipped when

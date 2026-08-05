@@ -1,0 +1,286 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-24 12:00:00.000000",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "gl_entry",
+  "voucher_type",
+  "voucher_no",
+  "posting_date",
+  "taxes_and_charges",
+  "tax_account_debit",
+  "tax_account_credit",
+  "tax_amount",
+  "incl_tax_amount",
+  "classification",
+  "classification_status",
+  "classification_issue",
+  "is_cancelled",
+  "input_treatment_section",
+  "input_treatment",
+  "deduction_percentage",
+  "treatment_evidence_reference",
+  "gross_tax_amount",
+  "non_deductible_tax_amount",
+  "snapshot_section",
+  "source_rows_json",
+  "source_modified",
+  "source_currency",
+  "exchange_rate",
+  "source_tax_amount",
+  "source_base_tax_amount",
+  "tax_account",
+  "gl_entries_json",
+  "gl_tax_amount",
+  "reconciliation_difference",
+  "reconciliation_status",
+  "source_snapshot_sha256",
+  "gl_snapshot_sha256",
+  "classification_debugging_section",
+  "classification_debugging"
+ ],
+ "fields": [
+  {
+   "fieldname": "gl_entry",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "GL Entry",
+   "options": "GL Entry"
+  },
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Voucher Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "voucher_no",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Voucher No",
+   "options": "voucher_type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "taxes_and_charges",
+   "fieldtype": "Data",
+   "label": "Taxes and Charges Template",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_account_debit",
+   "fieldtype": "Currency",
+   "label": "Tax Account Debit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_account_credit",
+   "fieldtype": "Currency",
+   "label": "Tax Account Credit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "incl_tax_amount",
+   "fieldtype": "Currency",
+   "label": "Incl Tax Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "classification",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Classification",
+   "options": "\nOutput - A Standard rate (excl capital goods)\nOutput - B Standard rate (only capital goods)\nOutput - C Zero Rated (excl goods exported)\nOutput - D Zero Rated (only goods exported)\nOutput - E Exempt\nInput - A Capital goods and/or services supplied to you (local)\nInput - B Capital goods imported\nInput - C Other goods supplied to you (excl capital goods)\nInput - D Other goods imported (excl capital goods)\nSARS Payment/Receipt",
+   "read_only_depends_on": "eval: doc.is_cancelled"
+  },
+  {
+   "fieldname": "classification_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Classification Status",
+   "options": "Classified\nNeeds Review\nExcluded",
+   "read_only": 1
+  },
+  {
+   "fieldname": "classification_issue",
+   "fieldtype": "Small Text",
+   "label": "Classification Issue",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cancelled",
+   "fieldtype": "Check",
+   "label": "Is Cancelled",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "input_treatment_section",
+   "fieldtype": "Section Break",
+   "label": "Input VAT Treatment"
+  },
+  {
+   "fieldname": "input_treatment",
+   "fieldtype": "Data",
+   "label": "Input Treatment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "deduction_percentage",
+   "fieldtype": "Percent",
+   "label": "Deduction Percentage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "treatment_evidence_reference",
+   "fieldtype": "Data",
+   "label": "Treatment Evidence Reference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "non_deductible_tax_amount",
+   "fieldtype": "Currency",
+   "label": "Non-Deductible Tax Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gross_tax_amount",
+   "fieldtype": "Currency",
+   "hidden": 1,
+   "label": "Gross Posted Tax Amount",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "snapshot_section",
+   "fieldtype": "Section Break",
+   "label": "Immutable Source and GL Snapshot"
+  },
+  {
+   "fieldname": "source_rows_json",
+   "fieldtype": "Code",
+   "label": "Source Rows",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_modified",
+   "fieldtype": "Datetime",
+   "label": "Source Modified At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_currency",
+   "fieldtype": "Link",
+   "label": "Source Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate",
+   "precision": "9",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_tax_amount",
+   "fieldtype": "Currency",
+   "label": "Source Tax Amount",
+   "options": "source_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_base_tax_amount",
+   "fieldtype": "Currency",
+   "label": "Source Tax in Company Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_account",
+   "fieldtype": "Link",
+   "label": "VAT GL Account",
+   "options": "Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gl_entries_json",
+   "fieldtype": "Code",
+   "label": "GL Entries",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gl_tax_amount",
+   "fieldtype": "Currency",
+   "label": "GL Tax in Company Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reconciliation_difference",
+   "fieldtype": "Currency",
+   "label": "Source-to-GL Difference",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reconciliation_status",
+   "fieldtype": "Select",
+   "label": "Reconciliation Status",
+   "options": "Reconciled\nNeeds Review\nExcluded",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_snapshot_sha256",
+   "fieldtype": "Data",
+   "label": "Source Snapshot SHA-256",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gl_snapshot_sha256",
+   "fieldtype": "Data",
+   "label": "GL Snapshot SHA-256",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "classification_debugging_section",
+   "fieldtype": "Section Break",
+   "label": "Automatic Classification Log"
+  },
+  {
+   "fieldname": "classification_debugging",
+   "fieldtype": "Code",
+   "label": "Log Messages",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-24 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "SA VAT",
+ "name": "VAT201 Return Transaction",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

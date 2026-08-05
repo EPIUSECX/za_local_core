@@ -65,6 +65,29 @@ def get_guide_sections() -> dict:
 					},
 				],
 			},
+			{
+				"key": "vat-finance",
+				"title": "VAT and Finance",
+				"order": 20,
+				"pages": [
+					{
+						"slug": "vat-settings",
+						"title": "South Africa VAT Settings",
+						"file": "20_vat_settings.md",
+					},
+					{
+						"slug": "tax-templates",
+						"title": "Tax Templates and Classification",
+						"file": "21_tax_templates.md",
+					},
+					{
+						"slug": "tax-documents",
+						"title": "Tax Invoices and Credit Notes",
+						"file": "23_tax_documents.md",
+					},
+					{"slug": "vat201", "title": "VAT201 Working Paper", "file": "24_vat201.md"},
+				],
+			},
 		],
 		"user": [
 			{
@@ -99,6 +122,19 @@ def get_guide_sections() -> dict:
 						"title": "Exporting and Printing",
 						"file": "u44_exporting.md",
 					},
+				],
+			},
+			{
+				"key": "working-with-vat",
+				"title": "Working with VAT",
+				"order": 20,
+				"pages": [
+					{
+						"slug": "sales-and-purchases",
+						"title": "Sales and Purchase VAT",
+						"file": "u20_sales_purchases.md",
+					},
+					{"slug": "vat201-review", "title": "Prepare and Review VAT201", "file": "u23_vat201.md"},
 				],
 			},
 		],

@@ -65,9 +65,10 @@ def stage_foundation():
 	frappe.db.set_single_value("System Settings", "setup_complete", 1)
 	frappe.db.set_default("desktop:home_page", "workspace")
 
-	from za_local_finance.accounts.setup_chart import load_sa_chart_of_accounts
 	from za_local_payroll.setup.masters import repair_salary_component_accounts, seed_payroll_masters
 	from za_local_payroll.setup.statutory import ensure_company_tax_configuration
+
+	from za_local_core.accounts.setup_chart import load_sa_chart_of_accounts
 
 	company_address = _ensure_address("ZA Local E2E Business Address", "Company", E2E_COMPANY)
 	frappe.db.set_value(
@@ -422,10 +423,10 @@ def stage_vat_cycle():
 	_require_isolated_test_site()
 	stage_foundation()
 
-	if "za_local_finance" not in frappe.get_installed_apps():
+	if "za_local_core" not in frappe.get_installed_apps():
 		frappe.throw(_("Install ZA Local Finance before staging the VAT end-to-end scenario."))
 
-	from za_local_finance.sa_vat.setup import bootstrap_company_vat_setup, get_vat_settings
+	from za_local_core.sa_vat.setup import bootstrap_company_vat_setup, get_vat_settings
 
 	stage_test_vat_governance()
 	settings = get_vat_settings(E2E_COMPANY, create_if_missing=True)
@@ -603,10 +604,10 @@ def stage_test_vat_governance():
 	must be independently retrieved, checked and approved through the core UI.
 	"""
 	_require_isolated_test_site()
-	if "za_local_finance" not in frappe.get_installed_apps():
+	if "za_local_core" not in frappe.get_installed_apps():
 		frappe.throw(_("Install ZA Local Finance before staging VAT governance."))
 
-	from za_local_finance.sa_vat.statutory import (
+	from za_local_core.sa_vat.statutory import (
 		CURRENT_APPROVED_SOURCE_METADATA,
 		VAT_CONTROL_UNITS,
 		resolve_vat_controls,
@@ -1300,8 +1301,9 @@ def render_signoff_pdfs(output_dir="/tmp/za-local-signoff-pdfs"):
 def run_permission_smoke():
 	"""Verify representative sensitive records reject an unauthorised session."""
 	_require_isolated_test_site()
-	from za_local_finance.sa_vat.tax_invoice import check_tax_invoice_readiness
 	from za_local_payroll.utils.emp501_utils import generate_emp501_csv
+
+	from za_local_core.sa_vat.tax_invoice import check_tax_invoice_readiness
 
 	sales_invoice = frappe.db.get_value("Sales Invoice", {"company": E2E_COMPANY, "docstatus": 1}, "name")
 	emp501 = frappe.db.get_value("EMP501 Reconciliation", {"company": E2E_COMPANY, "docstatus": 1}, "name")

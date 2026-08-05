@@ -1,0 +1,485 @@
+{
+ "actions": [],
+ "autoname": "field:company",
+ "creation": "2025-05-06 17:30:00",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company_registration_section",
+  "company",
+  "column_break_registration",
+  "vat_registration_number",
+  "vat_settings_section",
+  "standard_vat_rate",
+  "column_break_3",
+  "enable_zero_rated_items",
+  "enable_exempt_items",
+  "vat_thresholds_section",
+  "statutory_control_date",
+  "statutory_rate_pack",
+  "statutory_rate_pack_sha256",
+  "column_break_statutory_source",
+  "statutory_source",
+  "statutory_source_sha256",
+  "statutory_effective_from",
+  "statutory_effective_to",
+  "vat_registration_threshold",
+  "column_break_thresholds",
+  "vat_voluntary_threshold",
+  "no_invoice_threshold",
+  "full_invoice_threshold",
+  "vat_vendor_type",
+  "column_break_10",
+  "vat_filing_category",
+  "vat_filing_frequency",
+  "vat_filing_day",
+  "vat201_compliance_obligation",
+  "vat_accounts_section",
+  "output_vat_account",
+  "column_break_16",
+  "input_vat_account",
+  "item_tax_template_account",
+  "vat_accounts",
+  "classification_settings_section",
+  "output_tax_doctype",
+  "standard_rate_non_capital",
+  "standard_rate_non_capital_2",
+  "standard_rate_capital",
+  "zero_rate_non_exported",
+  "zero_rate_exported",
+  "exempt",
+  "column_break_output_map",
+  "input_tax_doctype",
+  "input_capital_local",
+  "input_capital_import",
+  "input_goods_local",
+  "input_goods_import",
+  "vat_rates_section",
+  "vat_rates",
+  "sars_efiling_section",
+  "sars_efiling_username",
+  "column_break_24",
+  "sars_efiling_password",
+  "vat_report_settings_section",
+  "default_vat_report_company",
+  "column_break_29",
+  "default_vat_report_period"
+ ],
+ "fields": [
+  {
+   "fieldname": "company_registration_section",
+   "fieldtype": "Section Break",
+   "label": "Company & Registration"
+  },
+  {
+   "description": "Company for which these VAT settings apply.",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_registration",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "South African VAT Registration Number. Saving this form updates the selected Company record.",
+   "fieldname": "vat_registration_number",
+   "fieldtype": "Data",
+   "label": "VAT Registration Number",
+   "length": 10
+  },
+  {
+   "fieldname": "vat_settings_section",
+   "fieldtype": "Section Break",
+   "label": "VAT Settings"
+  },
+  {
+   "description": "Date-effective standard VAT rate resolved from the approved statutory rate pack.",
+   "fieldname": "standard_vat_rate",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Standard VAT Rate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Enable zero-rated items (0% VAT).",
+   "fieldname": "enable_zero_rated_items",
+   "fieldtype": "Check",
+   "label": "Enable Zero-Rated Items"
+  },
+  {
+   "default": "1",
+   "description": "Enable VAT exempt items.",
+   "fieldname": "enable_exempt_items",
+   "fieldtype": "Check",
+   "label": "Enable Exempt Items"
+  },
+  {
+   "fieldname": "vat_thresholds_section",
+   "fieldtype": "Section Break",
+   "label": "Approved Statutory VAT Controls"
+  },
+  {
+   "description": "Date used to resolve the submitted ZA Statutory Rate Pack. No current-date or hard-coded fallback is permitted.",
+   "fieldname": "statutory_control_date",
+   "fieldtype": "Date",
+   "label": "Statutory Control Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "statutory_rate_pack",
+   "fieldtype": "Link",
+   "label": "Approved VAT Rate Pack",
+   "options": "ZA Statutory Rate Pack",
+   "read_only": 1
+  },
+  {
+   "fieldname": "statutory_rate_pack_sha256",
+   "fieldtype": "Data",
+   "label": "Rate Pack SHA-256",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_statutory_source",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "statutory_source",
+   "fieldtype": "Link",
+   "label": "Approved SARS Source",
+   "options": "ZA Statutory Source",
+   "read_only": 1
+  },
+  {
+   "fieldname": "statutory_source_sha256",
+   "fieldtype": "Data",
+   "label": "Source SHA-256",
+   "read_only": 1
+  },
+  {
+   "fieldname": "statutory_effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "read_only": 1
+  },
+  {
+   "fieldname": "statutory_effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To",
+   "read_only": 1
+  },
+  {
+   "description": "Date-effective compulsory VAT registration threshold resolved from the approved statutory rate pack.",
+   "fieldname": "vat_registration_threshold",
+   "fieldtype": "Currency",
+   "label": "Compulsory Registration Threshold",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_thresholds",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Date-effective voluntary VAT registration threshold resolved from the approved statutory rate pack.",
+   "fieldname": "vat_voluntary_threshold",
+   "fieldtype": "Currency",
+   "label": "Voluntary Registration Threshold",
+   "read_only": 1
+  },
+  {
+   "description": "No tax invoice is required at or below this consideration, although documentary proof remains required for input tax.",
+   "fieldname": "no_invoice_threshold",
+   "fieldtype": "Currency",
+   "label": "No Tax Invoice At or Below",
+   "read_only": 1
+  },
+  {
+   "description": "A full tax invoice is required when consideration exceeds this amount; the abridged band is above the no-invoice threshold through this amount.",
+   "fieldname": "full_invoice_threshold",
+   "fieldtype": "Currency",
+   "label": "Full Tax Invoice Over",
+   "read_only": 1
+  },
+  {
+   "description": "Type of VAT vendor.",
+   "fieldname": "vat_vendor_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "VAT Vendor Type",
+   "options": "VAT Vendor Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "SARS VAT filing category allocated to this vendor. Do not infer Category A or B from a generic frequency.",
+   "fieldname": "vat_filing_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "VAT Filing Category",
+   "options": "Category A\nCategory B\nCategory C\nCategory D\nCategory E",
+   "reqd": 1
+  },
+  {
+   "description": "How often VAT returns are filed.",
+   "fieldname": "vat_filing_frequency",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Legacy VAT Filing Frequency",
+   "options": "Monthly\nBi-Monthly\nQuarterly\nAnnually",
+   "read_only": 1
+  },
+  {
+   "description": "Day of the month when VAT returns are due.",
+   "fieldname": "vat_filing_day",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "VAT Filing Day",
+   "reqd": 1
+  },
+  {
+   "description": "Approved core obligation used to create the maker-checker ZA Filing for each VAT201 working paper.",
+   "fieldname": "vat201_compliance_obligation",
+   "fieldtype": "Link",
+   "label": "VAT201 Compliance Obligation",
+   "options": "ZA Compliance Obligation"
+  },
+  {
+   "fieldname": "vat_accounts_section",
+   "fieldtype": "Section Break",
+   "label": "VAT Accounts"
+  },
+  {
+   "description": "Primary account used for Output VAT.",
+   "fieldname": "output_vat_account",
+   "fieldtype": "Link",
+   "label": "Output VAT Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Primary account used for Input VAT.",
+   "fieldname": "input_vat_account",
+   "fieldtype": "Link",
+   "label": "Input VAT Account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "description": "Optional ERPNext tax account used when generating Item Tax Templates automatically. This is separate from the VAT control accounts used for VAT201 and reporting.",
+   "fieldname": "item_tax_template_account",
+   "fieldtype": "Link",
+   "label": "Item Tax Template Account",
+   "options": "Account"
+  },
+  {
+   "description": "Tracked VAT tax accounts shared with ERPNext's South Africa VAT settings and VAT Audit Report.",
+   "fieldname": "vat_accounts",
+   "fieldtype": "Table",
+   "label": "Tracked VAT Accounts",
+   "options": "South Africa VAT Account"
+  },
+  {
+   "fieldname": "classification_settings_section",
+   "fieldtype": "Section Break",
+   "label": "VAT201 Classification Mapping"
+  },
+  {
+   "default": "Sales Taxes and Charges Template",
+   "fieldname": "output_tax_doctype",
+   "fieldtype": "Data",
+   "label": "Output Tax Doctype",
+   "read_only": 1
+  },
+  {
+   "fieldname": "standard_rate_non_capital",
+   "fieldtype": "Link",
+   "label": "Output A. Standard Rate (Non-Capital)",
+   "options": "Sales Taxes and Charges Template"
+  },
+  {
+   "fieldname": "standard_rate_non_capital_2",
+   "fieldtype": "Link",
+   "label": "Output A. Standard Rate (Additional Template)",
+   "options": "Sales Taxes and Charges Template"
+  },
+  {
+   "fieldname": "standard_rate_capital",
+   "fieldtype": "Link",
+   "label": "Output B. Standard Rate (Capital Goods)",
+   "options": "Sales Taxes and Charges Template"
+  },
+  {
+   "fieldname": "zero_rate_non_exported",
+   "fieldtype": "Link",
+   "label": "Output C. Zero Rated (Local)",
+   "options": "Sales Taxes and Charges Template"
+  },
+  {
+   "fieldname": "zero_rate_exported",
+   "fieldtype": "Link",
+   "label": "Output D. Zero Rated (Exports)",
+   "options": "Sales Taxes and Charges Template"
+  },
+  {
+   "fieldname": "exempt",
+   "fieldtype": "Link",
+   "label": "Output E. Exempt",
+   "options": "Sales Taxes and Charges Template"
+  },
+  {
+   "fieldname": "column_break_output_map",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Purchase Taxes and Charges Template",
+   "fieldname": "input_tax_doctype",
+   "fieldtype": "Data",
+   "label": "Input Tax Doctype",
+   "read_only": 1
+  },
+  {
+   "fieldname": "input_capital_local",
+   "fieldtype": "Link",
+   "label": "Input A. Capital Goods (Local)",
+   "options": "Purchase Taxes and Charges Template"
+  },
+  {
+   "fieldname": "input_capital_import",
+   "fieldtype": "Link",
+   "label": "Input B. Capital Goods (Imported)",
+   "options": "Purchase Taxes and Charges Template"
+  },
+  {
+   "fieldname": "input_goods_local",
+   "fieldtype": "Link",
+   "label": "Input C. Other Goods (Local)",
+   "options": "Purchase Taxes and Charges Template"
+  },
+  {
+   "fieldname": "input_goods_import",
+   "fieldtype": "Link",
+   "label": "Input D. Other Goods (Imported)",
+   "options": "Purchase Taxes and Charges Template"
+  },
+  {
+   "fieldname": "vat_rates_section",
+   "fieldtype": "Section Break",
+   "label": "VAT Rates"
+  },
+  {
+   "description": "Configure different VAT rates.",
+   "fieldname": "vat_rates",
+   "fieldtype": "Table",
+   "label": "VAT Rates",
+   "options": "South Africa VAT Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sars_efiling_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "SARS e-Filing Integration"
+  },
+  {
+   "description": "Inactive placeholder for any future SARS integration.",
+   "fieldname": "sars_efiling_username",
+   "fieldtype": "Data",
+   "label": "SARS e-Filing Username"
+  },
+  {
+   "fieldname": "column_break_24",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Inactive placeholder for any future SARS integration.",
+   "fieldname": "sars_efiling_password",
+   "fieldtype": "Password",
+   "label": "SARS e-Filing Password"
+  },
+  {
+   "fieldname": "vat_report_settings_section",
+   "fieldtype": "Section Break",
+   "label": "VAT Report Settings"
+  },
+  {
+   "description": "Compatibility field kept in sync with Company for older report hooks.",
+   "fieldname": "default_vat_report_company",
+   "fieldtype": "Link",
+   "label": "Default VAT Report Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_29",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Legacy compatibility field. VAT201 periods are governed by VAT Filing Category.",
+   "fieldname": "default_vat_report_period",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Legacy Default VAT Report Period",
+   "options": "Monthly\nBi-Monthly\nQuarterly\nAnnually",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-04-24 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "SA VAT",
+ "name": "South Africa VAT Settings",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Accounts User",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,207 @@
+{
+ "app": "za_local_core",
+ "charts": [
+  {
+   "chart_name": "SA VAT Payable by Period",
+   "label": "SA VAT Payable by Period"
+  },
+  {
+   "chart_name": "SA VAT201 Returns by Status",
+   "label": "SA VAT201 Returns by Status"
+  },
+  {
+   "chart_name": "SA VAT by Classification",
+   "label": "SA VAT by Classification"
+  }
+ ],
+ "content": "[{\"id\": \"sa-vat-nc-0\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Output VAT (Submitted Returns)\", \"col\": 4}}, {\"id\": \"sa-vat-nc-1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Input VAT (Submitted Returns)\", \"col\": 4}}, {\"id\": \"sa-vat-nc-2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"VAT Payable (Submitted Returns)\", \"col\": 4}}, {\"id\": \"sa-vat-nc-3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"VAT201 Returns Awaiting Approval\", \"col\": 4}}, {\"id\": \"sa-vat-nc-4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"VAT201 Returns Needing Reconciliation Review\", \"col\": 4}}, {\"id\": \"sa-vat-ch-0\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SA VAT Payable by Period\", \"col\": 6}}, {\"id\": \"sa-vat-ch-1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SA VAT201 Returns by Status\", \"col\": 6}}, {\"id\": \"sa-vat-ch-2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SA VAT by Classification\", \"col\": 6}}, {\"id\": \"sa-vat-sp\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"sa-vat-h\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Transactions &amp; Reports</b></span>\", \"col\": 12}}, {\"id\": \"sa-vat-p\", \"type\": \"paragraph\", \"data\": {\"text\": \"<span class=\\\"text-muted\\\">South African VAT configuration, VAT201 working papers, audit reporting, and ERPNext tax templates.</span>\", \"col\": 12}}, {\"id\": \"sa-vat-c1\", \"type\": \"card\", \"data\": {\"card_name\": \"Organisation\", \"col\": 4}}, {\"id\": \"sa-vat-c2\", \"type\": \"card\", \"data\": {\"card_name\": \"Configuration\", \"col\": 4}}, {\"id\": \"sa-vat-c3\", \"type\": \"card\", \"data\": {\"card_name\": \"Returns & reports\", \"col\": 4}}, {\"id\": \"sa-vat-c4\", \"type\": \"card\", \"data\": {\"card_name\": \"ERPNext \\u2014 tax templates\", \"col\": 4}}]",
+ "creation": "2026-02-27 11:40:24.605799",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "sell",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "SA VAT",
+ "link_type": "DocType",
+ "links": [
+  {
+   "hidden": 0,
+   "icon": "organization",
+   "is_query_report": 0,
+   "label": "Organisation",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Company",
+   "link_count": 0,
+   "link_to": "Company",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "icon": "file-large",
+   "is_query_report": 0,
+   "label": "Returns & reports",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "VAT201 Return",
+   "link_count": 0,
+   "link_to": "VAT201 Return",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "VAT 201 Linked Transactions",
+   "link_count": 0,
+   "link_to": "VAT 201 Linked Transactions",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "VAT 201 Account Classifications",
+   "link_count": 0,
+   "link_to": "VAT 201 Account Classifications",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "VAT Audit Report",
+   "link_count": 0,
+   "link_to": "VAT Audit Report",
+   "link_type": "Report",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "icon": "customization",
+   "is_query_report": 0,
+   "label": "ERPNext — tax templates",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Item Tax Template",
+   "link_count": 0,
+   "link_to": "Item Tax Template",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Taxes and Charges Template",
+   "link_count": 0,
+   "link_to": "Sales Taxes and Charges Template",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Purchase Taxes and Charges Template",
+   "link_count": 0,
+   "link_to": "Purchase Taxes and Charges Template",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "icon": "setting-gear",
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "South Africa VAT Settings",
+   "link_count": 0,
+   "link_to": "South Africa VAT Settings",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "VAT Vendor Type",
+   "link_count": 0,
+   "link_to": "VAT Vendor Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-08-03 07:36:13.134938",
+ "modified_by": "Administrator",
+ "module": "SA VAT",
+ "name": "SA VAT",
+ "number_cards": [
+  {
+   "label": "Output VAT (Submitted Returns)",
+   "number_card_name": "Output VAT (Submitted Returns)"
+  },
+  {
+   "label": "Input VAT (Submitted Returns)",
+   "number_card_name": "Input VAT (Submitted Returns)"
+  },
+  {
+   "label": "VAT Payable (Submitted Returns)",
+   "number_card_name": "VAT Payable (Submitted Returns)"
+  },
+  {
+   "label": "VAT201 Returns Awaiting Approval",
+   "number_card_name": "VAT201 Returns Awaiting Approval"
+  },
+  {
+   "label": "VAT201 Returns Needing Reconciliation Review",
+   "number_card_name": "VAT201 Returns Needing Reconciliation Review"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "SA Overview",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 24.0,
+ "shortcuts": [],
+ "title": "SA VAT",
+ "type": "Workspace"
+}

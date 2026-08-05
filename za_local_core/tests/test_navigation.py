@@ -32,6 +32,26 @@ class TestSharedNavigationContract(UnitTestCase):
 				continue
 			self.assertNotIn("add_to_apps_screen", hooks_path.read_text(encoding="utf-8"))
 
+	def test_every_workspace_is_attributed_to_an_app_that_ships_it(self):
+		"""A workspace attributed to a retired app disappears from the Desk.
+
+		``get_available_workspaces`` filters on ``spec.app in installed_apps`` and
+		``_cleanup_stale_navigation`` then deletes the sidebar and desktop entries of
+		anything it excluded. Naming an app that no longer exists therefore silently
+		removes a workspace from navigation while leaving the Workspace record intact.
+		"""
+		bench_apps = Path(frappe.get_app_path(APP_NAME)).resolve().parents[1]
+		for spec in WORKSPACE_SPECS:
+			modules = bench_apps / spec.app / spec.app / "modules.txt"
+			self.assertTrue(modules.is_file(), f"{spec.label} names a non-existent app: {spec.app}")
+			owning_module = frappe.db.get_value("Workspace", spec.label, "module")
+			if owning_module:
+				self.assertIn(
+					owning_module,
+					modules.read_text(encoding="utf-8").split("\n"),
+					f"{spec.label} is attributed to {spec.app}, which does not declare {owning_module}",
+				)
+
 	def test_legacy_domain_icons_are_packaged_by_core(self):
 		public = Path(frappe.get_app_path(APP_NAME, "public"))
 		for spec in WORKSPACE_SPECS:

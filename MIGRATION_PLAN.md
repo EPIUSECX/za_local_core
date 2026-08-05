@@ -6,18 +6,23 @@ legacy upgrade, release-tag rehearsal, production cutover and external practitio
 
 ## Purpose
 
-`za_local_core` owns shared South African compliance infrastructure. It must not contain VAT calculations,
-payroll calculations, labour rules, or COIDA transaction logic. Domain apps consume its stable public services.
+`za_local_core` owns shared South African compliance infrastructure **and**, from 2.0.0, the SA VAT module that
+shipped separately as `za_local_finance`. It must not contain payroll calculations, labour rules, or COIDA
+transaction logic; those belong to `za_local_payroll`, which consumes this app's stable public services.
+
+VAT lives here because every localisation site needs the governance foundation and in practice settles a ledger
+too, so a separate VAT app drew a boundary no customer could act on. It stays inert until a company has South
+Africa VAT Settings, so a payroll-only site is unaffected.
 
 ## Dependency contract
 
 ```text
-frappe -> erpnext -> za_local_core -> za_local_finance
+frappe -> erpnext -> za_local_core   (governance + SA VAT)
              |             |
-             +-> hrms -----+-> za_local_payroll -> za_local_workplace
+             +-> hrms -----+-> za_local_payroll   (SA Payroll + SA Labour + SA COIDA)
 ```
 
-The core app knows nothing about downstream apps. It publishes services and document events; it does not import
+The core app knows nothing about the payroll app. It publishes services and document events; it does not import
 finance, payroll, or workplace modules. The existing `za_local` repository is retained only as a migration source
 and rollback artifact. It is not a supported compatibility runtime beside the extracted apps. Target candidates
 must run without legacy `za_local`; the four target apps own the active runtime hooks.
@@ -46,7 +51,7 @@ the implemented target or an intentional replacement.
 
 ## Content that must not move to core
 
-- Chart of Accounts and VAT settings move to `za_local_finance`.
+- Chart of Accounts and VAT settings moved to `za_local_finance` in the original extraction, and returned to this app when that app was retired in 2.0.0.
 - Employee, Payroll Settings, Salary Component and Salary Slip fields move to `za_local_payroll`.
 - Leave Type, Employee Separation, EE, SETA, bargaining-council and COIDA fields move to `za_local_workplace`.
 - Domain print formats, reports, workspaces and schedulers move with their domain.

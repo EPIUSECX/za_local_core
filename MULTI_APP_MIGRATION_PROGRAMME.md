@@ -11,8 +11,7 @@ where claimed. This programme is not legal certification.
 
 | App | Runtime dependencies | Primary ownership |
 |---|---|---|
-| `za_local_core` | Frappe, ERPNext | Statutory sources, company compliance profile, obligations, filing evidence, shared security/setup/docs. |
-| `za_local_finance` | Frappe, ERPNext, core | Implemented VAT, commercial documents and accounting localisation; corporate tax and CIPC remain roadmap scope. |
+| `za_local_core` | Frappe, ERPNext | Statutory sources, company compliance profile, obligations, filing evidence, shared security/setup/docs, and the SA VAT module absorbed from the retired `za_local_finance` in 2.0.0: VAT, commercial documents and accounting localisation. Corporate tax and CIPC remain roadmap scope. |
 | `za_local_payroll` | Frappe, ERPNext, HRMS, core | SA employee/payroll foundation, PAYE/UIF/SDL/ETI, benefits, declarations, certificates and payroll payments. |
 | `za_local_workplace` | Frappe, ERPNext, HRMS, core, payroll | BCEA/NMW, leave/termination entitlement, EE, skills/SETA, COIDA, injuries and workplace controls. |
 

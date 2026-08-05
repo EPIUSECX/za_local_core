@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="za_local_core/public/images/za_local_core_logo.svg" height="128" alt="SA Localisation Core logo">
+<img src="za_local_core/public/images/za_local_core_logo.svg" height="128" alt="SA Localisation Finance and Compliance logo">
 
-# SA Localisation Core
+# SA Localisation Finance &amp; Compliance
 
-**The governance foundation for South African localisation on Frappe and ERPNext**
+**South African VAT, tax documents and the statutory governance foundation for Frappe and ERPNext**
 
 [![CI](https://github.com/EPIUSECX/za_local_core/actions/workflows/ci.yml/badge.svg)](https://github.com/EPIUSECX/za_local_core/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](license.txt)
@@ -14,9 +14,18 @@
 
 ## What this app is
 
-SA Localisation Core is the shared foundation of the South African localisation
-suite. It does not calculate tax. It answers the questions every South African
-compliance feature depends on:
+This app does two jobs. It makes ERPNext behave like a South African VAT vendor,
+and it is the governance foundation the rest of the suite depends on. VAT arrived
+here from the separate `za_local_finance` app, which is retired from 2.0.0; every
+localisation site needs the foundation, and in practice every one of them settles
+a ledger too.
+
+As the VAT vendor it classifies supplies, applies the VAT Act's tax-invoice
+particulars to commercial documents, and builds a VAT201 working paper that
+reconciles back to the ledger entries that produced it.
+
+As the foundation it answers the questions every South African compliance feature
+depends on:
 
 - Which statutory rule applies to this company, on this date, and who approved it?
 - Is this capability ready for production use, or does it still need a human?
@@ -60,6 +69,26 @@ transaction date is known.
 - **Shared Desk shell** — one SA Localisation app tile and workspace switcher
   across every installed domain.
 
+### VAT
+
+- **South Africa VAT Settings** — company-scoped VAT registration, category and
+  account mapping, with posting accounts validated as enabled tax ledgers.
+- **Supply classification** — standard-rated, zero-rated and exempt supplies,
+  capital and non-capital inputs, and local versus imported input tax.
+- **Tax-invoice controls** — full tax invoice, abridged tax invoice and
+  no-invoice-required thresholds resolved from an approved rate pack, with a
+  readiness check that lists exactly which VAT Act particulars are missing.
+- **Commercial print formats** — SA sales invoice, full and abridged tax invoice,
+  credit and debit note, purchase invoice, quotation, sales and purchase order,
+  delivery note and payment entry.
+- **VAT201 Return** — period-scoped working paper with source-to-ledger
+  reconciliation, an immutable snapshot on submission, and maker-checker review
+  before filing.
+- **Reports** — VAT 201 Linked Transactions, VAT 201 Account Classifications and
+  a VAT Audit Report, all permission-filtered.
+- **Chart of Accounts augmentation** — South African VAT ledgers created without
+  overwriting a company's existing accounting configuration.
+
 ## Country scope
 
 Every statutory rule in this suite is gated on the company's country. A site may
@@ -71,12 +100,30 @@ they cannot complete.
 decision. A blank or unknown company is treated as out of scope, so an incomplete
 document is reported by its own DocType rather than by a localisation error.
 
+VAT is additionally opt-in per company: the features stay inert until a company
+has South Africa VAT Settings, the customer VAT-number check fires only for tax
+IDs explicitly marked as South African VAT registrations, and the item and invoice
+hooks return early otherwise. A company that is not a VAT vendor is unaffected by
+this app's presence.
+
 ## Capability status
 
 | Capability | Status | What that means |
 | --- | --- | --- |
 | Statutory source, rate and filing governance | Controlled Manual | A designated reviewer approves source evidence, effective dates and each production feature |
 | POPIA and PAIA registers | Controlled Manual | The app records controls and evidence; regulator submissions, legal interpretation and incident-notification decisions remain accountable-person duties |
+| VAT201 working paper | Controlled Manual | Prepared, reconciled and approved in-app; submitted to SARS eFiling by a person, with the receipt captured as evidence |
+| Tax invoices and credit/debit notes | Preview | Controls are implemented and tested; company-specific supply treatment still needs practitioner sign-off |
+| Corporate and provisional tax | Preview | Catalogue entry only — no working papers or filing integration are implemented |
+| CIPC annual returns and beneficial ownership | Controlled Manual | The portal process remains entirely external |
+
+### VAT scenarios not implemented
+
+Specialist VAT scenarios are out of scope in this release and need practitioner
+handling: apportionment of mixed taxable and exempt supplies, imported services,
+customs added-tax value, second-hand goods and notional input tax, fixed
+property, change in use, bad-debt timing, the gold reverse charge, diesel refunds
+and payments-basis vendors.
 
 Read the live values in the Desk under **SA Overview → Feature Readiness**. No
 capability in this suite ships as Production until an authorised reviewer sets it.
@@ -87,15 +134,15 @@ capability in this suite ships as Production until an authorised reviewer sets i
   permissions, background jobs and Desk UI this app is built on.
 - [ERPNext](https://erpnext.com) — supplies the Company model the compliance
   profile hangs off.
-- **No HRMS dependency.** A site that never runs payroll can install this app and
-  `za_local_finance` alone.
+- **No HRMS dependency.** A site that never runs payroll installs this app alone
+  and gets VAT plus the governance foundation.
 
 ## The suite
 
 ```
 ERPNext
-└── za_local_core            governance, sources, rate packs, filings, POPIA/PAIA
-    ├── za_local_finance     VAT, tax invoices, VAT201
+└── za_local_core            VAT, tax invoices, VAT201, and the governance
+    │                        foundation: sources, rate packs, filings, POPIA/PAIA
     └── za_local_payroll     PAYE, UIF, SDL, ETI, EMP201/501, IRP5,
                              BCEA, Employment Equity, skills, COIDA   (+ HRMS)
 ```
@@ -111,8 +158,11 @@ bench --site <your-site> install-app za_local_core
 bench --site <your-site> migrate
 ```
 
-Then create a **ZA Company Compliance Profile** for each South African company
-before configuring any domain app.
+Then create a **ZA Company Compliance Profile** for each South African company,
+and open **SA VAT → South Africa VAT Settings** for each VAT vendor to confirm the
+registration details, VAT category and account mapping before raising a document.
+Installation creates schema and defaults; it never rewrites an existing company's
+VAT mapping or Accounts Settings.
 
 Do not run this suite alongside the legacy `za_local` monolith on the same active
 site: duplicate modules and controllers create ambiguous ownership. Rehearse a
@@ -152,6 +202,7 @@ restored copy, never on a production site.
 | [MULTI_APP_MIGRATION_PROGRAMME.md](MULTI_APP_MIGRATION_PROGRAMME.md) | Cross-repository migration waves |
 | [CHANGELOG.md](CHANGELOG.md) | Release history |
 | [SECURITY.md](SECURITY.md) | Reporting a vulnerability |
+| [docs/STATUTORY_SOURCES.md](docs/STATUTORY_SOURCES.md) | The published sources behind the VAT values in use |
 | [SUPPORT.md](SUPPORT.md) | Getting help |
 
 ### On-site guides

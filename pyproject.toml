@@ -3,7 +3,7 @@ name = "za_local_core"
 authors = [
     { name = "Cohenix", email = "info@cohenix.com"}
 ]
-description = "Shared statutory sources, rate packs, compliance profiles, filing controls, and audit foundations for South Africa."
+description = "South African VAT and compliance foundation for ERPNext: statutory sources, effective-dated rate packs, filing controls, POPIA and PAIA registers, VAT201 working papers and compliant commercial documents."
 requires-python = ">=3.14,<3.15"
 readme = "README.md"
 dynamic = ["version"]
