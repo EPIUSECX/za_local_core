@@ -123,6 +123,7 @@ def ensure_number_card(module: str, spec: dict) -> str | None:
 			"show_full_number": spec.get("show_full_number", 1),
 			"module": module,
 			"is_standard": 0,
+			"currency": display_currency(),
 		}
 	)
 	card.insert(ignore_permissions=True)
@@ -157,12 +158,33 @@ def ensure_dashboard_chart(module: str, spec: dict) -> str | None:
 			"is_public": 1,
 			"module": module,
 			"is_standard": 0,
+			"currency": display_currency(),
 		}
 	)
 	for column in spec.get("y_axis") or []:
 		chart.append("y_axis", column)
 	chart.insert(ignore_permissions=True)
 	return chart.name
+
+
+def display_currency() -> str | None:
+	"""Currency these metrics are denominated in.
+
+	Number Card and Dashboard Chart store a currency on the record and fall back to
+	whatever the site default was when the record was created. Metrics seeded during
+	app installation are therefore stamped with the pre-setup default -- Frappe ships
+	INR -- and keep it after the setup wizard sets the real one, so South African
+	statutory figures render with the wrong symbol forever. Reading the default at
+	creation and again on repair keeps the symbol honest.
+	"""
+	company = frappe.defaults.get_user_default("Company")
+	if company:
+		currency = frappe.db.get_value("Company", company, "default_currency")
+		if currency:
+			return currency
+	return frappe.db.get_default("currency") or frappe.db.get_single_value(
+		"Global Defaults", "default_currency"
+	)
 
 
 def _filters_for(spec: dict) -> str:
@@ -194,10 +216,11 @@ def repair_metric_presentation(module: str, cards=(), charts=()) -> dict:
 	if not _schema_available():
 		return {"cards": [], "charts": []}
 
+	currency = display_currency()
 	repaired = {"cards": [], "charts": []}
 	for doctype, specs, key, extra in (
-		(CARD_DOCTYPE, cards, "label", {"show_full_number": 1}),
-		(CHART_DOCTYPE, charts, "chart_name", {}),
+		(CARD_DOCTYPE, cards, "label", {"show_full_number": 1, "currency": currency}),
+		(CHART_DOCTYPE, charts, "chart_name", {"currency": currency}),
 	):
 		for spec in specs:
 			name = spec[key]

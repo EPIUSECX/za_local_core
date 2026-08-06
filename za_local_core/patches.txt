@@ -10,3 +10,4 @@ za_local_core.patches.v1_0.transfer_finance_ownership
 za_local_core.patches.v1_1.reload_sa_overview_workspace
 za_local_core.patches.v1_2.repair_dashboard_filters
 za_local_core.patches.v1_3.adopt_vat_module
+za_local_core.patches.v1_3.repair_metric_currency

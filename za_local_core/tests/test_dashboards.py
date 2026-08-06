@@ -9,7 +9,13 @@ from frappe.desk.doctype.dashboard_chart.dashboard_chart import get as render_ch
 from frappe.desk.doctype.number_card.number_card import get_result as render_card
 from frappe.tests.classes import IntegrationTestCase
 
-from za_local_core.dashboards import CARD_DOCTYPE, CHART_DOCTYPE, seed_dashboards
+from za_local_core.dashboards import (
+	CARD_DOCTYPE,
+	CHART_DOCTYPE,
+	display_currency,
+	repair_metric_presentation,
+	seed_dashboards,
+)
 from za_local_core.install import CORE_CHARTS, CORE_MODULE, CORE_NUMBER_CARDS, seed_core_dashboards
 
 WORKSPACE = "SA Overview"
@@ -90,3 +96,28 @@ class TestCoreDashboards(IntegrationTestCase):
 			render_card(card.as_dict(), card.filters_json)
 		for spec in CORE_CHARTS:
 			render_chart(chart_name=spec["chart_name"], refresh=1)
+
+	def test_metrics_are_denominated_in_the_site_currency(self):
+		"""Frappe stamps a currency at creation, and the metrics are seeded during
+		app installation -- before the setup wizard has set the real one. Left alone
+		they render South African statutory figures with the installer's default."""
+		seed_core_dashboards()
+		expected = display_currency()
+		self.assertTrue(expected)
+
+		for doctype, field in ((CARD_DOCTYPE, "label"), (CHART_DOCTYPE, "chart_name")):
+			for name in frappe.get_all(doctype, filters={"module": CORE_MODULE}, pluck="name"):
+				self.assertEqual(
+					frappe.db.get_value(doctype, name, "currency"),
+					expected,
+					f"{doctype} {name} is not denominated in the site currency",
+				)
+
+	def test_repair_restamps_a_stale_currency(self):
+		seed_core_dashboards()
+		card = CORE_NUMBER_CARDS[0]["label"]
+		frappe.db.set_value(CARD_DOCTYPE, card, "currency", "INR")
+
+		repair_metric_presentation(CORE_MODULE, cards=CORE_NUMBER_CARDS, charts=CORE_CHARTS)
+
+		self.assertEqual(frappe.db.get_value(CARD_DOCTYPE, card, "currency"), display_currency())
