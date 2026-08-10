@@ -14,7 +14,7 @@ za_local_practitioner_guide_provider = "za_local_core.practitioner_guide.provide
 # Apps
 # ------------------
 
-required_apps = ["frappe", "erpnext"]
+required_apps = ["erpnext"]
 
 after_install = "za_local_core.install.after_install"
 after_migrate = "za_local_core.install.after_migrate"

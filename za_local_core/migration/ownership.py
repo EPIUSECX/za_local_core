@@ -1,11 +1,13 @@
-"""Classify every legacy source artifact by its target application."""
+"""Ownership record for the completed za_local split.
+
+The manifest is authored once and checked in; install validates it. The rules
+below are the declaration of which application each legacy artifact went to.
+"""
 
 from __future__ import annotations
 
-import hashlib
 import json
-import subprocess
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from pathlib import Path
 
 ALLOWED_OWNERS = frozenset(
@@ -23,14 +25,6 @@ TARGET_APPS = ("za_local_core", "za_local_finance", "za_local_payroll", "za_loca
 
 @dataclass(frozen=True)
 class Ownership:
-	owner: str
-	reason: str
-
-
-@dataclass(frozen=True)
-class Artifact:
-	path: str
-	sha256: str
 	owner: str
 	reason: str
 
@@ -150,52 +144,6 @@ def classify_path(path: str) -> Ownership:
 	return Ownership("za_local_compatibility", "Temporary compatibility or repository-level artifact")
 
 
-def build_manifest(legacy_repo: Path) -> dict:
-	"""Build a deterministic manifest for all tracked files in the legacy repository."""
-	paths = _tracked_paths(legacy_repo)
-	missing_paths = [relative_path for relative_path in paths if not (legacy_repo / relative_path).is_file()]
-	if missing_paths:
-		formatted_paths = "\n".join(f"- {path}" for path in missing_paths)
-		raise FileNotFoundError(
-			"The legacy worktree is missing files that are still tracked by Git. "
-			"Restore the files or stage their deletion before rebuilding the ownership manifest:\n"
-			f"{formatted_paths}"
-		)
-
-	artifacts = []
-	for relative_path in paths:
-		ownership = classify_path(relative_path)
-		artifacts.append(
-			Artifact(
-				path=relative_path,
-				sha256=_sha256(legacy_repo / relative_path),
-				owner=ownership.owner,
-				reason=ownership.reason,
-			)
-		)
-
-	owner_counts: dict[str, int] = {}
-	for artifact in artifacts:
-		owner_counts[artifact.owner] = owner_counts.get(artifact.owner, 0) + 1
-
-	return {
-		"schema_version": MANIFEST_SCHEMA_VERSION,
-		"classification_version": "2026.08",
-		"legacy_app": "za_local",
-		"target_apps": list(TARGET_APPS),
-		"artifact_count": len(artifacts),
-		"owner_counts": dict(sorted(owner_counts.items())),
-		"artifacts": [asdict(artifact) for artifact in artifacts],
-	}
-
-
-def write_manifest(legacy_repo: Path, output_path: Path) -> None:
-	"""Write the ownership manifest with stable ordering and formatting."""
-	manifest = build_manifest(legacy_repo.resolve())
-	validate_manifest(manifest)
-	output_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
-
-
 def verify_checked_manifest() -> dict:
 	"""Validate the packaged ownership declaration before install/migrate completes."""
 	path = Path(__file__).resolve().parents[2] / "ownership_manifest.json"
@@ -243,23 +191,6 @@ def validate_manifest(manifest: dict) -> None:
 		owner_counts[artifact["owner"]] = owner_counts.get(artifact["owner"], 0) + 1
 	if dict(sorted(owner_counts.items())) != manifest["owner_counts"]:
 		raise ValueError("ownership manifest owner_counts are inconsistent")
-
-
-def _tracked_paths(repo: Path) -> list[str]:
-	result = subprocess.run(
-		["git", "-C", str(repo), "ls-files", "-z"],
-		check=True,
-		capture_output=True,
-	)
-	return sorted(path for path in result.stdout.decode().split("\0") if path)
-
-
-def _sha256(path: Path) -> str:
-	hash_value = hashlib.sha256()
-	with path.open("rb") as source:
-		for block in iter(lambda: source.read(1024 * 1024), b""):
-			hash_value.update(block)
-	return hash_value.hexdigest()
 
 
 def _classify_test(path: str) -> Ownership:

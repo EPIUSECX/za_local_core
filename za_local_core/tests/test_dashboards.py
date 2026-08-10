@@ -105,7 +105,7 @@ class TestCoreDashboards(IntegrationTestCase):
 		expected = display_currency()
 		self.assertTrue(expected)
 
-		for doctype, field in ((CARD_DOCTYPE, "label"), (CHART_DOCTYPE, "chart_name")):
+		for doctype in (CARD_DOCTYPE, CHART_DOCTYPE):
 			for name in frappe.get_all(doctype, filters={"module": CORE_MODULE}, pluck="name"):
 				self.assertEqual(
 					frappe.db.get_value(doctype, name, "currency"),

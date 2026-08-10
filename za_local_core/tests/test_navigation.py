@@ -18,6 +18,13 @@ from za_local_core.navigation import (
 
 
 class TestSharedNavigationContract(UnitTestCase):
+	def test_required_runtime_apps_are_declared(self):
+		self.assertEqual(set(hooks.required_apps), {"erpnext"})
+		# frappe is always installed, so the marketplace review rejects it here.
+		self.assertNotIn("frappe", hooks.required_apps)
+		self.assertTrue(all(hooks.required_apps))
+		self.assertEqual(len(hooks.required_apps), len(set(hooks.required_apps)))
+
 	def test_core_is_the_only_apps_screen_owner(self):
 		self.assertEqual("SA Localisation", hooks.app_title)
 		self.assertEqual(APP_TITLE, hooks.add_to_apps_screen[0]["title"])

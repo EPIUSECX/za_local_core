@@ -1,13 +1,10 @@
 import json
-import subprocess
-import tempfile
 from copy import deepcopy
 from pathlib import Path
 
 from frappe.tests import UnitTestCase
 
 from za_local_core.migration.ownership import (
-	build_manifest,
 	classify_path,
 	validate_manifest,
 	verify_checked_manifest,
@@ -58,38 +55,3 @@ class TestOwnershipManifest(UnitTestCase):
 		duplicate["artifacts"][1]["path"] = duplicate["artifacts"][0]["path"]
 		with self.assertRaisesRegex(ValueError, "duplicate or empty ownership path"):
 			validate_manifest(duplicate)
-
-	def test_manifest_builder_accounts_for_tracked_files(self):
-		with tempfile.TemporaryDirectory() as directory:
-			repo = Path(directory)
-			self._initialize_repository(repo)
-			(repo / "za_local" / "sa_vat").mkdir(parents=True)
-			(repo / "za_local" / "sa_vat" / "example.py").write_text("VAT_RATE = 15\n")
-			(repo / "README.md").write_text("# Legacy app\n")
-			self._git(repo, "add", ".")
-
-			manifest = build_manifest(repo)
-
-		self.assertEqual(manifest["artifact_count"], 2)
-		self.assertEqual(manifest["owner_counts"]["za_local_finance"], 1)
-		self.assertEqual(manifest["owner_counts"]["za_local_compatibility"], 1)
-
-	def test_manifest_builder_explains_missing_tracked_files(self):
-		with tempfile.TemporaryDirectory() as directory:
-			repo = Path(directory)
-			self._initialize_repository(repo)
-			tracked_file = repo / "README.md"
-			tracked_file.write_text("# Legacy app\n")
-			self._git(repo, "add", "README.md")
-			tracked_file.unlink()
-
-			with self.assertRaisesRegex(FileNotFoundError, "(?s)stage their deletion.*README.md"):
-				build_manifest(repo)
-
-	@staticmethod
-	def _initialize_repository(repo: Path) -> None:
-		TestOwnershipManifest._git(repo, "init", "--quiet")
-
-	@staticmethod
-	def _git(repo: Path, *arguments: str) -> None:
-		subprocess.run(["git", "-C", str(repo), *arguments], check=True, capture_output=True)
