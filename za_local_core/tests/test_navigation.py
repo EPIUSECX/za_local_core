@@ -16,6 +16,11 @@ from za_local_core.navigation import (
 	sync_shared_navigation,
 )
 
+# The apps the suite currently ships. LOCALISATION_APPS is deliberately wider: it is
+# a cleanup allow-list that still names the retired apps, so it cannot be used to
+# assert that a workspace points at a live one.
+CURRENT_SUITE_APPS = frozenset({"za_local_core", "za_local_payroll"})
+
 
 class TestSharedNavigationContract(UnitTestCase):
 	def test_required_runtime_apps_are_declared(self):
@@ -49,8 +54,16 @@ class TestSharedNavigationContract(UnitTestCase):
 		"""
 		bench_apps = Path(frappe.get_app_path(APP_NAME)).resolve().parents[1]
 		for spec in WORKSPACE_SPECS:
+			# A retired or misspelt app name must fail even on a bench that does not
+			# carry it, so check the name against the suite before touching the disk.
+			self.assertIn(
+				spec.app, CURRENT_SUITE_APPS, f"{spec.label} names an app outside the suite: {spec.app}"
+			)
 			modules = bench_apps / spec.app / spec.app / "modules.txt"
-			self.assertTrue(modules.is_file(), f"{spec.label} names a non-existent app: {spec.app}")
+			if not modules.is_file():
+				# Each app's CI clones only its own dependency chain, so a sibling is
+				# legitimately absent here. Its own CI asserts the rest.
+				continue
 			owning_module = frappe.db.get_value("Workspace", spec.label, "module")
 			if owning_module:
 				self.assertIn(

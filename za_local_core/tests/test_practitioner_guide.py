@@ -44,6 +44,12 @@ class TestPractitionerGuide(UnitTestCase):
 			targets = {
 				f"{group['key']}/{page['slug']}" for group in guide["groups"] for page in group["pages"]
 			}
+			# The guide is federated, so core's pages legitimately point into payroll's
+			# sections. On a core-only bench those groups are absent entirely, and a
+			# link into one cannot be checked here; payroll's own CI installs both and
+			# does check it. A link into a group that IS present must still resolve, so
+			# a wrong slug is still caught.
+			present_groups = {group["key"] for group in guide["groups"]}
 			for group in guide["groups"]:
 				for page in group["pages"]:
 					path = Path(
@@ -59,6 +65,8 @@ class TestPractitionerGuide(UnitTestCase):
 							)
 							continue
 						target = clean[3:] if clean.startswith("../") else f"{group['key']}/{clean}"
+						if target.split("/", 1)[0] not in present_groups:
+							continue
 						self.assertIn(target, targets, msg=f"Broken guide link in {path.name}: {link}")
 
 	def test_the_first_declared_page_is_start_here(self):
