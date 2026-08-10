@@ -66,17 +66,32 @@ def stage_approved_test_vat_governance(
 			source.submit()
 		source_name = source.name
 
-	pack_name = frappe.db.get_value(
+	# Look for any live pack in this window, not just a submitted one. Install seeds a
+	# draft across exactly this period, and packs may not overlap, so a fixture that
+	# only recognised its own submitted pack would be unable to insert at all.
+	# Adopting the seeded draft is also what a practitioner actually does.
+	existing = frappe.db.get_value(
 		"ZA Statutory Rate Pack",
 		{
 			"domain": "VAT",
 			"effective_from": effective_from,
 			"effective_to": effective_to,
-			"docstatus": 1,
+			"docstatus": ("<", 2),
 		},
-		"name",
+		["name", "docstatus"],
+		as_dict=True,
 	)
-	if not pack_name:
+	pack_name = existing.name if existing else None
+	if existing and existing.docstatus == 0:
+		pack = frappe.get_doc("ZA Statutory Rate Pack", existing.name)
+		# Repoint at the reviewed test source: the seeded source carries no evidence
+		# and therefore cannot be approved, which would block this submit.
+		pack.source = source_name
+		pack.reviewed_by = reviewer
+		pack.save()
+		with _acting_as(reviewer):
+			pack.submit()
+	elif not pack_name:
 		values = CURRENT_APPROVED_SOURCE_METADATA["expected_current_values"]
 		pack = frappe.get_doc(
 			{

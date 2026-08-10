@@ -1,0 +1,41 @@
+{
+ "allow_roles": [
+  {
+   "role": "ZA Compliance Manager"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "creation": "2026-08-10 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2026-08-10 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "SA Localisation Core",
+ "name": "SA Localisation Onboarding",
+ "owner": "Administrator",
+ "steps": [
+  {
+   "step": "Confirm Company Registration Details"
+  },
+  {
+   "step": "Assign the ZA Compliance Roles"
+  },
+  {
+   "step": "Approve the Statutory Sources"
+  },
+  {
+   "step": "Approve the Statutory Rate Packs"
+  },
+  {
+   "step": "Review the Company Compliance Profile"
+  },
+  {
+   "step": "Publish the Practitioner Guides"
+  }
+ ],
+ "title": "South African Localisation Setup"
+}

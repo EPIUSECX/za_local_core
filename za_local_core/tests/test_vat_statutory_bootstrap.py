@@ -79,8 +79,9 @@ class TestVATStatutoryBootstrap(IntegrationTestCase):
 		self.assertIn("still a draft", guidance)
 		self.assertIn("Reviewed By", guidance)
 		self.assertIn("ZA Compliance Reviewer", guidance)
-		self.assertIn("/app/za-statutory-rate-pack/", guidance)
-		self.assertIn("/app/za-statutory-source/", guidance)
+		# v16 redirects /app/* to /desk/*, so the canonical route avoids a round trip.
+		self.assertIn("/desk/za-statutory-rate-pack/", guidance)
+		self.assertIn("/desk/za-statutory-source/", guidance)
 
 	def test_the_gap_message_lists_the_windows_that_do_exist(self):
 		"""A date outside every window is the mistake the shipped date invites."""

@@ -248,14 +248,14 @@ def _pack_state(pack) -> str:
 
 
 def _pack_link(name: str) -> str:
-	route = f"/app/za-statutory-rate-pack/{frappe.utils.quoted(name)}"
+	route = f"/desk/za-statutory-rate-pack/{frappe.utils.quoted(name)}"
 	return f'<a href="{route}">{frappe.utils.escape_html(name)}</a>'
 
 
 def _source_link(name: str | None) -> str:
 	if not name:
 		return _("(none linked)")
-	route = f"/app/za-statutory-source/{frappe.utils.quoted(name)}"
+	route = f"/desk/za-statutory-source/{frappe.utils.quoted(name)}"
 	return f'<a href="{route}">{frappe.utils.escape_html(name)}</a>'
 
 

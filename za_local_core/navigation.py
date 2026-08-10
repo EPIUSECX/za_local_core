@@ -37,6 +37,7 @@ class WorkspaceSpec:
 	app: str
 	icon: str
 	asset_name: str
+	onboarding: str
 
 	@property
 	def logo_url(self) -> str:
@@ -44,11 +45,13 @@ class WorkspaceSpec:
 
 
 WORKSPACE_SPECS = (
-	WorkspaceSpec("SA Overview", "za_local_core", "shield-check", "sa_overview.svg"),
-	WorkspaceSpec("SA Payroll", "za_local_payroll", "accounting", "sa_payroll.svg"),
-	WorkspaceSpec("SA VAT", "za_local_core", "sell", "sa_vat.svg"),
-	WorkspaceSpec("SA Labour", "za_local_payroll", "hr", "sa_labour.svg"),
-	WorkspaceSpec("SA COIDA", "za_local_payroll", "support", "sa_coida.svg"),
+	WorkspaceSpec(
+		"SA Overview", "za_local_core", "shield-check", "sa_overview.svg", "SA Localisation Onboarding"
+	),
+	WorkspaceSpec("SA Payroll", "za_local_payroll", "accounting", "sa_payroll.svg", "SA Payroll Onboarding"),
+	WorkspaceSpec("SA VAT", "za_local_core", "sell", "sa_vat.svg", "SA VAT Onboarding"),
+	WorkspaceSpec("SA Labour", "za_local_payroll", "hr", "sa_labour.svg", "SA Labour Onboarding"),
+	WorkspaceSpec("SA COIDA", "za_local_payroll", "support", "sa_coida.svg", "SA COIDA Onboarding"),
 )
 
 
@@ -118,6 +121,13 @@ def _sync_workspace_sidebar(spec: WorkspaceSpec) -> None:
 	sidebar.module = workspace.module
 	sidebar.header_icon = workspace.icon or spec.icon
 	sidebar.standard = 0
+	# The sidebar is what surfaces a module's onboarding checklist in v16. Nothing
+	# ever set the link, so every checklist these apps ship was unreachable from the
+	# Desk. Clear it when the record is absent rather than point at a missing name.
+	if sidebar.meta.has_field("module_onboarding"):
+		sidebar.module_onboarding = (
+			spec.onboarding if frappe.db.exists("Module Onboarding", spec.onboarding) else None
+		)
 	sidebar.set("items", [])
 	for row in _build_sidebar_rows(workspace):
 		sidebar.append("items", row)

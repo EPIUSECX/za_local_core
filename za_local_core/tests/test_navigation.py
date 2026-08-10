@@ -115,3 +115,49 @@ class TestSharedNavigationSync(IntegrationTestCase):
 			"SA Localisation Workplace",
 		):
 			self.assertFalse(frappe.db.exists("Desktop Icon", stale_label))
+
+
+class TestWorkspaceOnboarding(IntegrationTestCase):
+	"""The sidebar is what surfaces a module's onboarding checklist in v16.
+
+	Nothing set ``module_onboarding``, so every checklist these apps ship was
+	unreachable from the Desk while still appearing in the Module Onboarding list.
+	"""
+
+	def test_every_installed_workspace_links_its_onboarding(self):
+		sync_shared_navigation()
+		for spec in get_available_workspaces():
+			self.assertTrue(spec.onboarding, f"{spec.label} declares no onboarding")
+			self.assertTrue(
+				frappe.db.exists("Module Onboarding", spec.onboarding),
+				f"{spec.label} names a Module Onboarding that is not installed: {spec.onboarding}",
+			)
+			self.assertEqual(
+				spec.onboarding,
+				frappe.db.get_value("Workspace Sidebar", spec.label, "module_onboarding"),
+				f"{spec.label} sidebar does not link its onboarding",
+			)
+
+	def test_onboarding_steps_use_the_canonical_desk_route(self):
+		"""v16 redirects /app/* to /desk/*, so a shipped /app/ path costs a round trip."""
+		modules = [spec.onboarding for spec in get_available_workspaces()]
+		steps = frappe.get_all(
+			"Onboarding Step Map", filters={"parent": ("in", modules)}, pluck="step"
+		)
+		self.assertTrue(steps)
+		for step in steps:
+			path = frappe.db.get_value("Onboarding Step", step, "path") or ""
+			self.assertFalse(path.startswith("/app/"), f"{step} uses the legacy /app/ route")
+
+	def test_every_shipped_step_explains_itself(self):
+		"""A checklist of bare titles is a list, not guidance."""
+		modules = [spec.onboarding for spec in get_available_workspaces()]
+		steps = frappe.get_all(
+			"Onboarding Step Map", filters={"parent": ("in", modules)}, pluck="step"
+		)
+		undescribed = [
+			step
+			for step in steps
+			if not (frappe.db.get_value("Onboarding Step", step, "description") or "").strip()
+		]
+		self.assertEqual([], undescribed)

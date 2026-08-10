@@ -1,0 +1,22 @@
+{
+ "action": "Go to Page",
+ "action_label": "Open Statutory Rate Packs",
+ "creation": "2026-08-10 00:00:00.000000",
+ "description": "The draft pack for 1 April 2026 to 31 March 2027 already holds the five VAT control keys. Check every value against the approved evidence, set Reviewed By and submit. VAT Settings cannot be saved until this is approved.",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2026-08-10 12:00:00.000000",
+ "modified_by": "Administrator",
+ "name": "Approve the VAT Rate Pack",
+ "owner": "Administrator",
+ "path": "/desk/za-statutory-rate-pack",
+ "reference_document": "ZA Statutory Rate Pack",
+ "show_form_tour": 0,
+ "show_full_form": 0,
+ "title": "Approve the VAT Rate Pack",
+ "validate_action": 0
+}

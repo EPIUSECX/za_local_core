@@ -1,0 +1,21 @@
+{
+ "action": "Go to Page",
+ "action_label": "Open Publish Localisation Guides",
+ "creation": "2026-08-10 00:00:00.000000",
+ "description": "With Frappe Wiki installed, publish the packaged practitioner and end-user guides onto this site. The same content ships as Markdown in each app repository either way.",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2026-08-10 12:00:00.000000",
+ "modified_by": "Administrator",
+ "name": "Publish the Practitioner Guides",
+ "owner": "Administrator",
+ "path": "/desk/sa-localisation-guides",
+ "show_form_tour": 0,
+ "show_full_form": 0,
+ "title": "Publish the Practitioner Guides",
+ "validate_action": 0
+}
