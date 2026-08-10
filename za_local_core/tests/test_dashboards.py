@@ -121,3 +121,40 @@ class TestCoreDashboards(IntegrationTestCase):
 		repair_metric_presentation(CORE_MODULE, cards=CORE_NUMBER_CARDS, charts=CORE_CHARTS)
 
 		self.assertEqual(frappe.db.get_value(CARD_DOCTYPE, card, "currency"), display_currency())
+
+	def test_the_repair_is_reachable_on_a_fresh_install(self):
+		"""The repair itself was correct; nothing ever called it.
+
+		``install_app`` marks every patch complete before it runs ``after_install``,
+		so the repair patch could not execute on a fresh install, and
+		``seed_dashboards`` skips records that already exist. The currency stamped
+		during install was therefore permanent. Both call sites are asserted here
+		because the defect was the wiring, not the repair.
+		"""
+		from za_local_core import hooks
+		from za_local_core.install import after_migrate, repair_core_metrics
+
+		self.assertEqual("za_local_core.install.repair_core_metrics", hooks.setup_wizard_complete)
+		self.assertIs(frappe.get_attr(hooks.setup_wizard_complete), repair_core_metrics)
+		self.assertIn("repair_core_metrics", after_migrate.__code__.co_names)
+
+	def test_the_repair_covers_every_module_this_app_owns(self):
+		"""A module left out of the repair keeps the installer's currency forever."""
+		from za_local_core.install import repair_core_metrics
+		from za_local_core.sa_vat.install import VAT_NUMBER_CARDS, seed_vat_dashboards
+
+		seed_core_dashboards()
+		seed_vat_dashboards()
+		stale = [CORE_NUMBER_CARDS[0]["label"], VAT_NUMBER_CARDS[0]["label"]]
+		for card in stale:
+			frappe.db.set_value(CARD_DOCTYPE, card, "currency", "INR")
+
+		# The setup wizard passes its payload positionally; it must be optional.
+		repair_core_metrics(None)
+
+		for card in stale:
+			self.assertEqual(
+				frappe.db.get_value(CARD_DOCTYPE, card, "currency"),
+				display_currency(),
+				f"{card} was not restamped",
+			)

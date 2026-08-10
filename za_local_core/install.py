@@ -2,12 +2,15 @@
 
 import frappe
 
-from za_local_core.dashboards import seed_dashboards
+from za_local_core.dashboards import repair_metric_presentation, seed_dashboards
 from za_local_core.migration.backfill import run as run_core_backfill
 from za_local_core.migration.ownership import verify_checked_manifest
 from za_local_core.navigation import sync_shared_navigation
 from za_local_core.practitioner_guide.stage import unpublish_guides
 from za_local_core.sa_vat.install import (
+	VAT_CHARTS,
+	VAT_MODULE,
+	VAT_NUMBER_CARDS,
 	apply_vat_setup,
 	seed_vat_dashboards,
 	seed_vat_readiness,
@@ -51,8 +54,31 @@ def after_migrate() -> None:
 	ensure_core_roles()
 	seed_core_readiness()
 	seed_core_dashboards()
+	repair_core_metrics()
 	_setup_vat_module()
 	sync_shared_navigation()
+
+
+def repair_core_metrics(user_input: dict | None = None) -> dict:
+	"""Restamp metric presentation from the currency in force now.
+
+	Number Card and Dashboard Chart persist a currency on the record. Nothing
+	corrected a wrong one on a fresh install: ``install_app`` marks every patch
+	complete before it runs ``after_install``, so the repair patch could never
+	execute, and ``seed_dashboards`` skips records that already exist. Whatever
+	currency was resolvable during install was therefore permanent, and Frappe
+	ships INR, so South African statutory figures rendered in rupees forever.
+
+	Called from ``after_migrate`` and from ``setup_wizard_complete``, which is the
+	first moment the real company currency is known. ``user_input`` is the setup
+	wizard payload and is unused.
+	"""
+	return {
+		CORE_MODULE: repair_metric_presentation(
+			CORE_MODULE, cards=CORE_NUMBER_CARDS, charts=CORE_CHARTS
+		),
+		VAT_MODULE: repair_metric_presentation(VAT_MODULE, cards=VAT_NUMBER_CARDS, charts=VAT_CHARTS),
+	}
 
 
 def _setup_vat_module() -> None:

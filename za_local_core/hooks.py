@@ -19,6 +19,10 @@ required_apps = ["erpnext"]
 after_install = "za_local_core.install.after_install"
 after_migrate = "za_local_core.install.after_migrate"
 
+# The wizard is the first point at which the real company currency exists, and
+# metrics seeded during install carry whatever default preceded it.
+setup_wizard_complete = "za_local_core.install.repair_core_metrics"
+
 scheduler_events = {
 	"daily_long": ["za_local_core.tasks.daily"],
 }
