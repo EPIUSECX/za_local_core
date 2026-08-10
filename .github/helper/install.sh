@@ -57,7 +57,7 @@ bench get-app erpnext https://github.com/frappe/erpnext --branch "$ERPNEXT_BRANC
 
 install_apps=(erpnext)
 build_apps=(frappe erpnext)
-if [[ "$APP_NAME" == "za_local_payroll" || "$APP_NAME" == "za_local_workplace" ]]; then
+if [[ "$APP_NAME" == "za_local_payroll" ]]; then
 	bench get-app hrms https://github.com/frappe/hrms --branch "$HRMS_BRANCH"
 	install_apps+=(hrms)
 	build_apps+=(hrms)
@@ -66,11 +66,6 @@ if [[ "$APP_NAME" != "za_local_core" ]]; then
 	get_localisation_dependency za_local_core "${ZA_LOCAL_CORE_REF:-main}"
 	install_apps+=(za_local_core)
 	build_apps+=(za_local_core)
-fi
-if [[ "$APP_NAME" == "za_local_workplace" ]]; then
-	get_localisation_dependency za_local_payroll "${ZA_LOCAL_PAYROLL_REF:-main}"
-	install_apps+=(za_local_payroll)
-	build_apps+=(za_local_payroll)
 fi
 
 bench get-app --overwrite "$APP_NAME" "$GITHUB_WORKSPACE"
