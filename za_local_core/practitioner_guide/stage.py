@@ -171,7 +171,10 @@ def stage_space() -> str:
 	for guide in get_guides():
 		space = _get_or_create_space(guide["space"])
 		page_count = 0
-		for group_index, group in enumerate(guide["groups"]):
+		# Order from 1, not 0. Wiki Document.set_sort_order_for_new_document treats a
+		# sort_order of 0 as "not set" and moves the record to the end of its siblings,
+		# so a newly declared first page silently sorted last in an existing group.
+		for group_index, group in enumerate(guide["groups"], start=1):
 			group_route = f"{guide['space']['route']}/{group['key']}"
 			group_name = _upsert_document(
 				route=group_route,
@@ -180,7 +183,7 @@ def stage_space() -> str:
 				is_group=True,
 				sort_order=group_index,
 			)
-			for page_index, page in enumerate(group["pages"]):
+			for page_index, page in enumerate(group["pages"], start=1):
 				_upsert_document(
 					route=f"{group_route}/{page['slug']}",
 					title=page["title"],

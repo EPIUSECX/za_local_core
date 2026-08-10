@@ -180,17 +180,18 @@ def describe_resolution_gap(domain: str, date_value: str | Any) -> str:
 		order_by="effective_from",
 	)
 	if not packs:
-		return _paragraph(
-			_(
-				"No {0} rate pack exists on this site yet. Run <b>bench migrate</b> to seed the "
-				"draft pack this app prepares, then approve it."
-			).format(domain)
-		) + _guide_hint()
+		return (
+			_paragraph(
+				_(
+					"No {0} rate pack exists on this site yet. Run <b>bench migrate</b> to seed the "
+					"draft pack this app prepares, then approve it."
+				).format(domain)
+			)
+			+ _guide_hint()
+		)
 
 	covering = [
-		pack
-		for pack in packs
-		if getdate(pack.effective_from) <= on_date <= getdate(pack.effective_to)
+		pack for pack in packs if getdate(pack.effective_from) <= on_date <= getdate(pack.effective_to)
 	]
 	if not covering:
 		windows = "".join(
@@ -213,12 +214,15 @@ def describe_resolution_gap(domain: str, date_value: str | Any) -> str:
 	pack = covering[0]
 	if pack.docstatus == 1:
 		# Submitted but still unresolvable: the pack is fine, its source is not.
-		return _paragraph(
-			_(
-				"Rate pack {0} covers {1} but did not resolve. Confirm it holds every required "
-				"rule key and that its statutory source {2} is submitted and Approved."
-			).format(_pack_link(pack.name), on_date, frappe.utils.escape_html(pack.source or "-"))
-		) + _guide_hint()
+		return (
+			_paragraph(
+				_(
+					"Rate pack {0} covers {1} but did not resolve. Confirm it holds every required "
+					"rule key and that its statutory source {2} is submitted and Approved."
+				).format(_pack_link(pack.name), on_date, frappe.utils.escape_html(pack.source or "-"))
+			)
+			+ _guide_hint()
+		)
 
 	return (
 		_paragraph(

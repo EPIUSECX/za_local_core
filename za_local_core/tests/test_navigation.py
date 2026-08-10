@@ -141,9 +141,7 @@ class TestWorkspaceOnboarding(IntegrationTestCase):
 	def test_onboarding_steps_use_the_canonical_desk_route(self):
 		"""v16 redirects /app/* to /desk/*, so a shipped /app/ path costs a round trip."""
 		modules = [spec.onboarding for spec in get_available_workspaces()]
-		steps = frappe.get_all(
-			"Onboarding Step Map", filters={"parent": ("in", modules)}, pluck="step"
-		)
+		steps = frappe.get_all("Onboarding Step Map", filters={"parent": ("in", modules)}, pluck="step")
 		self.assertTrue(steps)
 		for step in steps:
 			path = frappe.db.get_value("Onboarding Step", step, "path") or ""
@@ -152,9 +150,7 @@ class TestWorkspaceOnboarding(IntegrationTestCase):
 	def test_every_shipped_step_explains_itself(self):
 		"""A checklist of bare titles is a list, not guidance."""
 		modules = [spec.onboarding for spec in get_available_workspaces()]
-		steps = frappe.get_all(
-			"Onboarding Step Map", filters={"parent": ("in", modules)}, pluck="step"
-		)
+		steps = frappe.get_all("Onboarding Step Map", filters={"parent": ("in", modules)}, pluck="step")
 		undescribed = [
 			step
 			for step in steps

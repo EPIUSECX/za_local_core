@@ -1,5 +1,8 @@
 # Installation and migration
 
+Installing is not configuring. Once the apps are on the site, work through
+[Start Here: First-Run Setup](start-here) in order; this page covers only the bench and migration mechanics.
+
 Install on Frappe v16 in dependency order. ERPNext is required by `za_local_core`. HRMS is required before
 `za_local_payroll`. For the full suite, install ERPNext, HRMS, `za_local_core`, then `za_local_payroll`.
 `za_local_core` installs without HRMS when payroll is not required, and gives VAT plus the governance foundation.

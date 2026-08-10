@@ -60,3 +60,28 @@ class TestPractitionerGuide(UnitTestCase):
 							continue
 						target = clean[3:] if clean.startswith("../") else f"{group['key']}/{clean}"
 						self.assertIn(target, targets, msg=f"Broken guide link in {path.name}: {link}")
+
+	def test_the_first_declared_page_is_start_here(self):
+		"""A guided path is only guided if the reader meets it first."""
+		practitioner = next(g for g in get_guides() if g["space"]["route"] == "sa-guide")
+		first_group = practitioner["groups"][0]
+		self.assertEqual("getting-started", first_group["key"])
+		self.assertEqual("start-here", first_group["pages"][0]["slug"])
+
+	def test_published_order_never_uses_the_sort_order_wiki_treats_as_unset(self):
+		"""Wiki Document.set_sort_order_for_new_document moves a record whose
+		sort_order is 0 to the end of its siblings, treating 0 as "not set". A newly
+		declared first page therefore sorted last in an already published group.
+
+		Asserted against the source because the alternative is a live publish: the
+		numbering is a property of the staging loop, and every value it can emit has
+		to be non-zero, not just the ones a given site happens to exercise.
+		"""
+		from za_local_core.practitioner_guide import stage
+
+		source = Path(stage.__file__).read_text(encoding="utf-8")
+		enumerations = re.findall(r"enumerate\((?:guide\[\"groups\"\]|group\[\"pages\"\])[^)]*\)", source)
+
+		self.assertEqual(2, len(enumerations), f"staging loop changed shape: {enumerations}")
+		for enumeration in enumerations:
+			self.assertIn("start=1", enumeration)

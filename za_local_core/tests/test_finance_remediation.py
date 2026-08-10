@@ -29,6 +29,7 @@ from za_local_core.tests.e2e_setup import stage_approved_test_vat_governance
 from za_local_core.tests.vat_fixtures import get_configured_vat_company
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
+VAT_CATALOG_KEY = "SARS-VAT-CONTROLS-2026-04-01"
 TEST_VAT_CONTROLS = {
 	"values": {NO_INVOICE_THRESHOLD: 50, FULL_INVOICE_THRESHOLD: 5000},
 	"source": "ZA-SRC-TEST",
@@ -221,6 +222,10 @@ class TestFinanceRemediation(UnitTestCase):
 
 class TestFinanceInstallMetadata(IntegrationTestCase):
 	def test_production_install_stages_only_unapproved_vat_source_metadata(self):
+		# Asserts install-time state, which a site whose reviewer has approved the
+		# source has moved past. See test_vat_statutory_bootstrap for the same guard.
+		if frappe.db.exists("ZA Statutory Source", {"catalog_key": VAT_CATALOG_KEY, "docstatus": 1}):
+			self.skipTest(f"{VAT_CATALOG_KEY} is already approved; install-time state is gone")
 		pack_count = frappe.db.count("ZA Statutory Rate Pack", {"domain": "VAT", "docstatus": 1})
 		source_name = seed_vat_statutory_source_catalog()
 		source = frappe.db.get_value(

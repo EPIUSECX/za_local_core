@@ -74,9 +74,7 @@ def repair_core_metrics(user_input: dict | None = None) -> dict:
 	wizard payload and is unused.
 	"""
 	return {
-		CORE_MODULE: repair_metric_presentation(
-			CORE_MODULE, cards=CORE_NUMBER_CARDS, charts=CORE_CHARTS
-		),
+		CORE_MODULE: repair_metric_presentation(CORE_MODULE, cards=CORE_NUMBER_CARDS, charts=CORE_CHARTS),
 		VAT_MODULE: repair_metric_presentation(VAT_MODULE, cards=VAT_NUMBER_CARDS, charts=VAT_CHARTS),
 	}
 

@@ -10,6 +10,11 @@ def get_guide_sections() -> dict:
 				"order": 10,
 				"pages": [
 					{
+						"slug": "start-here",
+						"title": "Start Here: First-Run Setup",
+						"file": "00_start_here.md",
+					},
+					{
 						"slug": "overview",
 						"title": "Overview and Capability Boundaries",
 						"file": "01_overview.md",

@@ -1,6 +1,7 @@
 # Post-install verification
 
-Confirm:
+This checks the end state, not the steps that produce it. Work through
+[Start Here: First-Run Setup](start-here) first, then confirm:
 
 - all required apps appear in Installed Applications;
 - each South African company has exactly one submitted, enabled Approved compliance profile for the date under test;
