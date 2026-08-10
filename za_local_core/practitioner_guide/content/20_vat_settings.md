@@ -12,9 +12,18 @@ The standard rate and all registration and tax-invoice thresholds are read-only.
 - `vat.invoice.no_invoice_max` (`Amount`)
 - `vat.invoice.full_invoice_threshold` (`Amount`)
 
-For dates from 1 April 2026, the reviewed pack should contain 15%, R2,300,000, R120,000, R50 and R5,000
-respectively. Earlier documents require the approved historical pack; never extend these thresholds backwards.
-Attach and checksum the retrieved SARS evidence before approving it. Official references:
+Installing the app prepares a **draft** rate pack for 1 April 2026 to 31 March 2027 holding 15%, R2,300,000,
+R120,000, R50 and R5,000, together with the draft SARS source it cites. Neither is approved and neither resolves
+until a reviewer approves it, so **the first save on a new site will fail until you do**. The
+[Statutory Source Governance](../reference-operations/statutory-source-governance) page walks through it once; the
+short version is attach the SARS evidence privately with its SHA-256, submit the source, check the five values,
+submit the pack.
+
+Those seeded numbers are a transcription aid so nobody hand-types five rule keys or invents one. They are not a
+legal opinion. Verify each against the retrieved evidence before approving.
+
+Earlier documents require the approved historical pack; never extend these thresholds backwards. A control date
+outside every approved window is rejected, and the error lists the windows that do exist. Official references:
 
 - [SARS Budget 2026 VAT threshold FAQ](https://www.sars.gov.za/about/sars-tax-and-customs-system/budget/budget-2026-frequently-asked-questions/)
 - [SARS tax-invoice requirements](https://www.sars.gov.za/businesses-and-employers/government/tax-invoices/)

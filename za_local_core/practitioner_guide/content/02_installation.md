@@ -24,5 +24,12 @@ Core seeds official-source catalog metadata and disabled company profiles as Dra
 private source/evidence files, verify their checksums and complete maker/checker approval before downstream apps
 use a rate pack or company profile. Never convert Draft catalog rows to Approved merely to unblock a test.
 
+Core also prepares a Draft `ZA Statutory Rate Pack` for VAT so nobody has to hand-enter five rule keys. This is the
+first configuration task on a new site: **South Africa VAT Settings cannot be saved until that pack and its source
+are approved**, because there is no fallback rate. See
+[Statutory Source Governance](../reference-operations/statutory-source-governance). Approval needs ZA Compliance
+Reviewer or ZA Compliance Manager, and cannot be done by the account that installed the app, so plan for a named
+reviewer rather than Administrator.
+
 The old `za_local` app is a rollback source, not a compatibility runtime for the extracted apps. Do not archive or
 uninstall it until the populated migration rehearsal, cutover boundary and separate rollback environment are approved.

@@ -16,7 +16,17 @@ from za_local_core.sa_vat.setup import (
 	migrate_legacy_vat_account_rows,
 	seed_vat_vendor_types,
 )
-from za_local_core.sa_vat.statutory import CURRENT_APPROVED_SOURCE_METADATA
+from za_local_core.sa_vat.statutory import (
+	CURRENT_APPROVED_SOURCE_METADATA,
+	VAT_CONTROL_RULE_KEYS,
+	VAT_CONTROL_UNITS,
+	VAT_DOMAIN,
+)
+
+# The catalogued SARS window. A pack must be closed-ended, so the year it was
+# published for is the honest boundary; the next period gets its own reviewed pack.
+VAT_PACK_EFFECTIVE_FROM = "2026-04-01"
+VAT_PACK_EFFECTIVE_TO = "2027-03-31"
 
 VAT_MODULES = ("SA VAT",)
 
@@ -66,7 +76,7 @@ def apply_vat_setup() -> None:
 	backfill_vat201_filing_categories()
 	backfill_vat201_active_period_keys()
 	seed_vat_vendor_types()
-	seed_vat_statutory_source_catalog()
+	seed_vat_statutory_rate_pack(seed_vat_statutory_source_catalog())
 	migrate_legacy_vat_account_rows()
 	seed_vat_readiness()
 
@@ -100,6 +110,86 @@ def seed_vat_statutory_source_catalog() -> str:
 		}
 	).insert(ignore_permissions=True)
 	return doc.name
+
+
+def seed_vat_statutory_rate_pack(source: str | None) -> str | None:
+	"""Pre-populate the rate pack the reviewer approves, as an unapproved draft.
+
+	VAT cannot be configured until one approved pack answers all five control keys,
+	and hand-entering them is where a practitioner either gives up or invents a
+	number. Shipping the draft moves the work from transcription to review while
+	leaving every part of the control intact: the pack stays ``docstatus=0``, it
+	cannot be submitted until its source is approved, and the source cannot be
+	approved without privately attached SARS evidence whose SHA-256 matches.
+	"""
+	if not source or not frappe.db.exists("DocType", "ZA Statutory Rate Pack"):
+		return None
+
+	existing = frappe.db.get_value(
+		"ZA Statutory Rate Pack",
+		{
+			"domain": VAT_DOMAIN,
+			"effective_from": VAT_PACK_EFFECTIVE_FROM,
+			"docstatus": ("<", 2),
+		},
+		"name",
+	)
+	if existing:
+		return existing
+
+	# A practitioner may already own a pack across this window. Overlapping packs are
+	# rejected on validate, and an install is the wrong place to raise that.
+	if _overlapping_vat_pack_exists():
+		return None
+
+	values = CURRENT_APPROVED_SOURCE_METADATA["expected_current_values"]
+	return (
+		frappe.get_doc(
+			{
+				"doctype": "ZA Statutory Rate Pack",
+				"domain": VAT_DOMAIN,
+				"title": "SARS VAT controls 1 April 2026 to 31 March 2027",
+				"source": source,
+				"effective_from": VAT_PACK_EFFECTIVE_FROM,
+				"effective_to": VAT_PACK_EFFECTIVE_TO,
+				"notes": (
+					"DRAFT PREPARED BY za_local_core. Not approved, and not usable until it is.\n\n"
+					"Check every value below against the SARS evidence attached to the linked "
+					"statutory source, set Reviewed By to yourself and submit. Approval must come "
+					"from a user holding ZA Compliance Reviewer or ZA Compliance Manager who did "
+					"not create this document.\n\n"
+					"The window ends 31 March 2027 deliberately: a later period needs its own "
+					"reviewed pack, never an extended end date."
+				),
+				"items": [
+					{
+						"rule_key": rule_key,
+						"numeric_value": values[rule_key],
+						"unit": VAT_CONTROL_UNITS[rule_key],
+						"precision": 2,
+					}
+					for rule_key in VAT_CONTROL_RULE_KEYS
+				],
+			}
+		)
+		.insert(ignore_permissions=True)
+		.name
+	)
+
+
+def _overlapping_vat_pack_exists() -> bool:
+	pack = frappe.qb.DocType("ZA Statutory Rate Pack")
+	return bool(
+		(
+			frappe.qb.from_(pack)
+			.select(pack.name)
+			.where(pack.domain == VAT_DOMAIN)
+			.where(pack.docstatus < 2)
+			.where(pack.effective_from <= VAT_PACK_EFFECTIVE_TO)
+			.where(pack.effective_to >= VAT_PACK_EFFECTIVE_FROM)
+			.limit(1)
+		).run(pluck=True)
+	)
 
 
 def claim_vat_module_ownership() -> None:

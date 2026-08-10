@@ -15,7 +15,15 @@ frappe.pages["sa-localisation-guides"].on_page_load = function (wrapper) {
 		single_column: true,
 	});
 
-	const container = $('<div class="za-guides"></div>').appendTo(page.main);
+	// page.main carries no gutter of its own, so the content would otherwise sit
+	// flush against both edges. Desk spacing tokens keep it aligned with the rest
+	// of the shell instead of inventing a width.
+	const container = $('<div class="za-guides"></div>')
+		.css({
+			padding: "0 var(--padding-lg, 20px) var(--padding-lg, 20px)",
+			"max-width": "var(--page-max-width, 1200px)",
+		})
+		.appendTo(page.main);
 
 	page.set_secondary_action(__("Refresh"), () => render(page, container));
 

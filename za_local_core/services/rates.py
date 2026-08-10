@@ -124,7 +124,8 @@ def resolve_rates(
 			frappe.throw(
 				_("No approved {0} statutory value for {1} applies on {2}.").format(
 					domain, rule_key, date_value
-				),
+				)
+				+ describe_resolution_gap(domain, date_value),
 				title=_("Missing Statutory Rate"),
 			)
 		if len(matching_rows) > 1:
@@ -160,6 +161,112 @@ def resolve_rates(
 			"effective_to": str(row.effective_to),
 		}
 	return resolutions
+
+
+def describe_resolution_gap(domain: str, date_value: str | Any) -> str:
+	"""Explain why resolution failed and what the reviewer has to do next.
+
+	Refusing to calculate is the intended control, but on its own it is a dead end:
+	the reader learns a rule key is missing and not that a rate pack is waiting to
+	be approved. This reports the packs that exist for the domain and names the one
+	action that will clear the block.
+	"""
+	# Callers pass either a date or its string form; compare as dates either way.
+	on_date = getdate(date_value)
+	packs = frappe.get_all(
+		"ZA Statutory Rate Pack",
+		filters={"domain": domain, "docstatus": ("<", 2)},
+		fields=["name", "status", "docstatus", "source", "effective_from", "effective_to"],
+		order_by="effective_from",
+	)
+	if not packs:
+		return _paragraph(
+			_(
+				"No {0} rate pack exists on this site yet. Run <b>bench migrate</b> to seed the "
+				"draft pack this app prepares, then approve it."
+			).format(domain)
+		) + _guide_hint()
+
+	covering = [
+		pack
+		for pack in packs
+		if getdate(pack.effective_from) <= on_date <= getdate(pack.effective_to)
+	]
+	if not covering:
+		windows = "".join(
+			f"<li>{frappe.utils.escape_html(pack.name)}: "
+			f"{pack.effective_from} &rarr; {pack.effective_to} ({_pack_state(pack)})</li>"
+			for pack in packs
+		)
+		return (
+			_paragraph(
+				_(
+					"No {0} rate pack covers {1}. Either set a Statutory Control Date inside an "
+					"approved window below, or have a reviewer approve a pack for the period you "
+					"need. Never widen an existing window to reach an earlier date."
+				).format(domain, on_date)
+			)
+			+ f"<ul>{windows}</ul>"
+			+ _guide_hint()
+		)
+
+	pack = covering[0]
+	if pack.docstatus == 1:
+		# Submitted but still unresolvable: the pack is fine, its source is not.
+		return _paragraph(
+			_(
+				"Rate pack {0} covers {1} but did not resolve. Confirm it holds every required "
+				"rule key and that its statutory source {2} is submitted and Approved."
+			).format(_pack_link(pack.name), on_date, frappe.utils.escape_html(pack.source or "-"))
+		) + _guide_hint()
+
+	return (
+		_paragraph(
+			_("Rate pack {0} covers {1} and is still a draft. To approve it:").format(
+				_pack_link(pack.name), on_date
+			)
+		)
+		+ "<ol>"
+		+ f"<li>{_('Open its statutory source {0} and attach the official SARS document as a private file, with its SHA-256 checksum.').format(_source_link(pack.source))}</li>"
+		+ f"<li>{_('Set Reviewed By on the source to yourself and submit it.')}</li>"
+		+ f"<li>{_('Open the rate pack, check every value against that evidence, set Reviewed By and submit.')}</li>"
+		+ "</ol>"
+		+ _paragraph(
+			_(
+				"Approval needs the <b>ZA Compliance Reviewer</b> or <b>ZA Compliance Manager</b> "
+				"role, and the approver cannot be the user who created the record. A pack this app "
+				"prepared is owned by the installing account, so approve it as a named user rather "
+				"than as Administrator."
+			)
+		)
+		+ _guide_hint()
+	)
+
+
+def _pack_state(pack) -> str:
+	return _("approved") if pack.docstatus == 1 else _("draft, awaiting approval")
+
+
+def _pack_link(name: str) -> str:
+	route = f"/app/za-statutory-rate-pack/{frappe.utils.quoted(name)}"
+	return f'<a href="{route}">{frappe.utils.escape_html(name)}</a>'
+
+
+def _source_link(name: str | None) -> str:
+	if not name:
+		return _("(none linked)")
+	route = f"/app/za-statutory-source/{frappe.utils.quoted(name)}"
+	return f'<a href="{route}">{frappe.utils.escape_html(name)}</a>'
+
+
+def _guide_hint() -> str:
+	return _paragraph(
+		_("The Statutory Source Governance page of the SA Practitioner Guide walks through this once.")
+	)
+
+
+def _paragraph(text: str) -> str:
+	return f"<p>{text}</p>"
 
 
 def _non_empty_string(value: object, label: str) -> str:

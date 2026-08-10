@@ -5,6 +5,34 @@ Record the authority, exact title/version, publication and effective dates, offi
 file, SHA-256 checksum, independent reviewer and impacted capabilities. A catalog entry is only a preparation aid:
 it is not approved merely because the app seeded it.
 
+## Approve the VAT controls before first use
+
+South Africa VAT Settings cannot be saved until one approved rate pack answers all five VAT control keys. There is
+no fallback rate, so this is the first task on a new site. Installing the app prepares both records as **drafts**
+and nothing more; approving them is a human step, and deliberately so.
+
+1. Open **ZA Statutory Source** `SARS-VAT-CONTROLS-2026-04-01`. Follow the recorded URL, retrieve the official SARS
+   document yourself, and attach it in **Retrieved Source File** as a *private* file. Public attachments are
+   rejected.
+2. Compute the SHA-256 of the exact file you attached and paste it into **SHA-256 Checksum**. Submitting verifies
+   the digest against the stored bytes, so a mismatch or a re-downloaded file will fail.
+3. Set **Reviewed By** to yourself and submit. Approval needs **ZA Compliance Reviewer** or **ZA Compliance
+   Manager**, and the approver may not be the user who created the record. Records the installer prepared are owned
+   by the installing account, so approve them as a named user, not as Administrator.
+4. Open **ZA Statutory Rate Pack** for domain `VAT`, effective 1 April 2026 to 31 March 2027. Check every value
+   against the evidence you just attached, set **Reviewed By** and submit. The pack cannot be submitted until its
+   source is approved.
+5. Return to South Africa VAT Settings. Set a **Statutory Control Date** inside the approved window and save. The
+   standard rate, both registration thresholds, both tax-invoice thresholds and the VAT Rates table populate
+   themselves, along with the pack and source checksums that prove where they came from.
+
+The seeded values are a transcription aid, not a legal opinion. Verify each one against the retrieved evidence
+before you approve; the pack is only trustworthy because a named reviewer checked it.
+
+If a save still fails, the error names the pack covering that date and what is missing. A date outside every
+approved window lists the windows that do exist: change the control date, or approve a pack for the period you
+actually need. Never widen an existing window to reach an earlier date.
+
 The packaged 2026/27 catalog contains these official references:
 
 - [SARS Guide for Employers in respect of Employees' Tax (2027)](https://www.sars.gov.za/guide-for-employers-in-respect-of-employees-tax-2027/).
