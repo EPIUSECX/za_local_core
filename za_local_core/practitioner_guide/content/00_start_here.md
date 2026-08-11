@@ -15,7 +15,7 @@ created the record, and the records this app prepares are owned by the account t
 Administrator login cannot complete the setup.** Create at least one named user holding **ZA Compliance Reviewer**
 or **ZA Compliance Manager** and approve as that user.
 
-Roles are at *SA Overview → Configuration → Users*, or `/desk/user`.
+Roles are at `/desk/user`. User is a Frappe master, so no South African workspace links it.
 
 ## 1. Complete the ERPNext setup wizard
 
@@ -27,7 +27,7 @@ running the wizard and see foreign symbols on the number cards, run `bench --sit
 
 ## 2. Confirm the company
 
-*SA Overview → Configuration → Company*, or `/desk/company`.
+*SA VAT → Organisation → Company*, or `/desk/company`.
 
 Confirm the 10-digit VAT registration number, the PAYE and SDL reference numbers and the default currency.
 Everything downstream is company-scoped, so a wrong abbreviation or currency here is expensive to unwind. Detail:
@@ -70,7 +70,7 @@ an approved **Labour** pack, and COIDA assessable earnings need a **COIDA** pack
 
 ## 5. Record the company compliance profile
 
-*SA Overview → Change governance → Company Compliance Profiles*, or `/desk/za-company-compliance-profile`.
+*SA Overview → Configuration → Company Compliance Profiles*, or `/desk/za-company-compliance-profile`.
 
 One submitted, enabled profile per South African company, recording which capabilities are approved for production
 and which stay controlled manual. Feature Readiness must not claim Production for a submission channel that is
