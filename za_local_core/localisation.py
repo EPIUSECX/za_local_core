@@ -28,3 +28,15 @@ def is_south_african_company(company: str | None) -> bool:
 def get_south_african_companies() -> list[str]:
 	"""Return every company on this site configured for South Africa."""
 	return frappe.get_all("Company", filters={"country": COUNTRY}, pluck="name")
+
+
+def resolve_south_african_companies(company: str | None = None) -> list[str]:
+	"""Return the companies one seeding pass should cover.
+
+	Install and migrate sweep the whole site and pass nothing. A Company insert
+	hook passes the company it just created, and gets an empty list back when that
+	company is not South African.
+	"""
+	if company is None:
+		return get_south_african_companies()
+	return [company] if is_south_african_company(company) else []

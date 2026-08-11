@@ -301,6 +301,9 @@ extend_doctype_class = {
 }
 
 doc_events = {
+	"Company": {
+		"after_insert": "za_local_core.custom.company.seed_readiness_for_new_company",
+	},
 	"Customer": {
 		"validate": "za_local_core.custom.customer.validate",
 	},

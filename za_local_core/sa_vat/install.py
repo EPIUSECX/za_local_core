@@ -8,6 +8,7 @@ which orchestrates them.
 import frappe
 
 from za_local_core.dashboards import seed_dashboards
+from za_local_core.localisation import resolve_south_african_companies
 from za_local_core.sa_vat.setup import (
 	backfill_vat201_active_period_keys,
 	backfill_vat201_filing_categories,
@@ -217,20 +218,19 @@ def claim_vat_module_ownership() -> None:
 		)
 
 
-def seed_vat_readiness() -> None:
+def seed_vat_readiness(company: str | None = None) -> None:
 	"""Advertise finance capabilities conservatively without overwriting sign-off."""
 	if not frappe.db.exists("DocType", "ZA Feature Readiness"):
 		return
-	companies = frappe.get_all("Company", filters={"country": "South Africa"}, pluck="name")
-	for company in companies:
+	for company_name in resolve_south_african_companies(company):
 		for feature_code, feature_name, domain, status, limitation in VAT_FEATURES:
-			key = f"{company}|{feature_code}"
+			key = f"{company_name}|{feature_code}"
 			if frappe.db.exists("ZA Feature Readiness", key):
 				continue
 			frappe.get_doc(
 				{
 					"doctype": "ZA Feature Readiness",
-					"company": company,
+					"company": company_name,
 					"feature_code": feature_code,
 					"feature_name": feature_name,
 					"domain": domain,

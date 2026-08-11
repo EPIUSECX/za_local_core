@@ -3,6 +3,7 @@
 import frappe
 
 from za_local_core.dashboards import repair_metric_presentation, seed_dashboards
+from za_local_core.localisation import resolve_south_african_companies
 from za_local_core.migration.backfill import run as run_core_backfill
 from za_local_core.migration.ownership import verify_checked_manifest
 from za_local_core.navigation import sync_shared_navigation
@@ -123,20 +124,19 @@ def remove_core_roles() -> None:
 			frappe.delete_doc("Role", role_name, force=True, ignore_permissions=True)
 
 
-def seed_core_readiness() -> None:
+def seed_core_readiness(company: str | None = None) -> None:
 	"""Create conservative core capability records for South African companies."""
 	if not frappe.db.exists("DocType", "ZA Feature Readiness"):
 		return
-	companies = frappe.get_all("Company", filters={"country": "South Africa"}, pluck="name")
-	for company in companies:
+	for company_name in resolve_south_african_companies(company):
 		for feature_code, feature_name, domain, status, limitation in CORE_FEATURES:
-			key = f"{company}|{feature_code}"
+			key = f"{company_name}|{feature_code}"
 			if frappe.db.exists("ZA Feature Readiness", key):
 				continue
 			frappe.get_doc(
 				{
 					"doctype": "ZA Feature Readiness",
-					"company": company,
+					"company": company_name,
 					"feature_code": feature_code,
 					"feature_name": feature_name,
 					"domain": domain,
