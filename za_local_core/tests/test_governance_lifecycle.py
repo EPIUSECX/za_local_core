@@ -93,8 +93,18 @@ class TestGovernanceLifecycle(IntegrationTestCase):
 		with self.set_user(self.reviewer), self.assertRaises(frappe.ValidationError):
 			public_source.submit()
 
-		changed_url, _ = self._evidence("source-changed", b"changed source")
-		changed_source = self._source(changed_url, "f" * 64, self.reviewer).insert()
+		# A mistyped digest is no longer reachable: the field is read-only and stamped
+		# from the attachment while the record is a draft. What is still reachable is
+		# the attachment being swapped after the digest was recorded, so approval
+		# re-hashes the stored bytes. Repointed straight at the column to bypass the
+		# stamping, which is the only way a live site could drift.
+		changed_url, changed_checksum = self._evidence("source-changed", b"the approved document")
+		changed_source = self._source(changed_url, changed_checksum, self.reviewer).insert()
+		substitute_url, _ = self._evidence("source-substitute", b"a different document altogether")
+		frappe.db.set_value(
+			"ZA Statutory Source", changed_source.name, "source_file", substitute_url, update_modified=False
+		)
+		changed_source.reload()
 		with self.set_user(self.reviewer), self.assertRaises(frappe.ValidationError):
 			changed_source.submit()
 

@@ -7,6 +7,7 @@ from za_local_core.governance import (
 	APPROVAL_ROLES,
 	REVIEW_ROLES,
 	canonical_sha256,
+	stamp_evidence_checksum,
 	validate_accountable_actor,
 	validate_private_evidence,
 )
@@ -20,6 +21,7 @@ class ZAFiling(Document):
 			(self.company, self.obligation, str(self.period_start), str(self.period_end))
 		)
 		self.capability = frappe.db.get_value("ZA Compliance Obligation", self.obligation, "capability")
+		stamp_evidence_checksum(self, "working_paper", "working_paper_sha256")
 		self.unexplained_difference = flt(self.declared_amount) - flt(self.ledger_amount)
 
 	@frappe.whitelist(methods=["POST"])

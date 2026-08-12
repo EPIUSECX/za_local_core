@@ -58,6 +58,63 @@ def normalize_sha256(value: str | None, label: str = "SHA-256 Checksum") -> str:
 	return digest
 
 
+def stamp_evidence_checksum(doc, fieldname: str, checksum_field: str) -> str | None:
+	"""Record the digest of the attached evidence, replacing whatever is stored.
+
+	The digest is computed, never typed. A hand-entered value only ever proved that
+	the uploader pasted the hash of the file they had just uploaded, which is the one
+	thing the server can already see for itself. Computing it gives the same tamper
+	evidence -- a recorded digest that detects a later substitution of the file --
+	without the friction, and it cannot be mistyped or invented.
+
+	Only drafts are stamped. Approval re-hashes the stored bytes and compares them to
+	what was recorded, so stamping during submit would repair a substituted file
+	instead of refusing it, and that comparison would never be able to fail.
+
+	Returns the digest, or None when nothing is attached yet or the record is no
+	longer a draft.
+	"""
+	if doc.docstatus != 0:
+		return doc.get(checksum_field)
+
+	file_url = (doc.get(fieldname) or "").strip()
+	if not file_url:
+		doc.set(checksum_field, None)
+		return None
+
+	file_name = frappe.db.get_value("File", {"file_url": file_url, "is_folder": 0}, "name")
+	if not file_name:
+		# The attachment is unresolved. before_submit reports that properly; leaving
+		# any stale digest in place here would let it describe a different file.
+		doc.set(checksum_field, None)
+		return None
+
+	content = frappe.get_doc("File", file_name).get_content()
+	if isinstance(content, str):
+		content = content.encode()
+	digest = hashlib.sha256(content).hexdigest()
+
+	# Where the digest is unique, attaching one document to two records now collides
+	# every time rather than only when someone typed the same value. Name the record
+	# holding it: a raw unique-constraint error quotes 64 hex characters and tells
+	# the practitioner nothing.
+	field = doc.meta.get_field(checksum_field)
+	if field and field.unique:
+		clash = frappe.db.get_value(
+			doc.doctype, {checksum_field: digest, "name": ["!=", doc.name or ""]}, "name"
+		)
+		if clash:
+			frappe.throw(
+				_(
+					"{0} is already recorded as the evidence on {1} {2}. Each one needs its own document."
+				).format(doc.meta.get_label(fieldname), doc.doctype, clash),
+				title=_("Evidence Already Recorded"),
+			)
+
+	doc.set(checksum_field, digest)
+	return digest
+
+
 def validate_private_evidence(
 	doc,
 	fieldname: str,

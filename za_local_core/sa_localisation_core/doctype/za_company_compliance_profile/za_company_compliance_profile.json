@@ -6,43 +6,206 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "profile_key", "company", "enabled", "status", "section_registrations", "vat_registered",
-  "paye_registered", "uif_registered", "sdl_registered", "coida_registered",
-  "employment_equity_designated", "column_break_1", "seta", "bargaining_council",
-  "coida_industry_class", "filing_contact", "section_governance", "effective_from", "effective_to",
-  "reviewed_by", "reviewed_on", "review_checksum", "column_break_2", "approved_by", "approved_on",
-  "approval_evidence", "approval_evidence_sha256", "notes", "amended_from"
+  "profile_key",
+  "company",
+  "enabled",
+  "status",
+  "section_registrations",
+  "vat_registered",
+  "paye_registered",
+  "uif_registered",
+  "sdl_registered",
+  "coida_registered",
+  "employment_equity_designated",
+  "column_break_1",
+  "seta",
+  "bargaining_council",
+  "coida_industry_class",
+  "filing_contact",
+  "section_governance",
+  "effective_from",
+  "effective_to",
+  "reviewed_by",
+  "reviewed_on",
+  "review_checksum",
+  "column_break_2",
+  "approved_by",
+  "approved_on",
+  "approval_evidence",
+  "approval_evidence_sha256",
+  "notes",
+  "amended_from"
  ],
  "fields": [
-  {"fieldname": "profile_key", "fieldtype": "Data", "label": "Profile Key", "read_only": 1, "unique": 1, "no_copy": 1},
-  {"fieldname": "company", "fieldtype": "Link", "label": "Company", "options": "Company", "reqd": 1, "in_list_view": 1},
-  {"default": "0", "fieldname": "enabled", "fieldtype": "Check", "label": "Enabled"},
-  {"default": "Draft", "fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Draft\nReviewed\nApproved\nCancelled", "read_only": 1, "in_list_view": 1},
-  {"fieldname": "section_registrations", "fieldtype": "Section Break", "label": "Applicable Registrations"},
-  {"fieldname": "vat_registered", "fieldtype": "Check", "label": "VAT Registered"},
-  {"fieldname": "paye_registered", "fieldtype": "Check", "label": "PAYE Registered"},
-  {"fieldname": "uif_registered", "fieldtype": "Check", "label": "UIF Registered"},
-  {"fieldname": "sdl_registered", "fieldtype": "Check", "label": "SDL Registered"},
-  {"fieldname": "coida_registered", "fieldtype": "Check", "label": "COIDA Registered"},
-  {"fieldname": "employment_equity_designated", "fieldtype": "Check", "label": "Employment Equity Designated Employer"},
-  {"fieldname": "column_break_1", "fieldtype": "Column Break"},
-  {"fieldname": "seta", "fieldtype": "Data", "label": "SETA"},
-  {"fieldname": "bargaining_council", "fieldtype": "Data", "label": "Bargaining Council"},
-  {"fieldname": "coida_industry_class", "fieldtype": "Data", "label": "COIDA Industry Class"},
-  {"fieldname": "filing_contact", "fieldtype": "Link", "label": "Filing Contact", "options": "User"},
-  {"fieldname": "section_governance", "fieldtype": "Section Break", "label": "Governance"},
-  {"fieldname": "effective_from", "fieldtype": "Date", "label": "Effective From", "reqd": 1},
-  {"fieldname": "effective_to", "fieldtype": "Date", "label": "Effective To"},
-  {"fieldname": "reviewed_by", "fieldtype": "Link", "label": "Reviewed By", "options": "User", "read_only": 1},
-  {"fieldname": "reviewed_on", "fieldtype": "Datetime", "label": "Reviewed On", "read_only": 1},
-  {"fieldname": "review_checksum", "fieldtype": "Data", "label": "Review SHA-256", "read_only": 1, "no_copy": 1},
-  {"fieldname": "column_break_2", "fieldtype": "Column Break"},
-  {"fieldname": "approved_by", "fieldtype": "Link", "label": "Approved By", "options": "User"},
-  {"fieldname": "approved_on", "fieldtype": "Datetime", "label": "Approved On", "read_only": 1},
-  {"fieldname": "approval_evidence", "fieldtype": "Attach", "label": "Approval Evidence"},
-  {"fieldname": "approval_evidence_sha256", "fieldtype": "Data", "label": "Approval Evidence SHA-256"},
-  {"fieldname": "notes", "fieldtype": "Small Text", "label": "Notes"},
-  {"fieldname": "amended_from", "fieldtype": "Link", "label": "Amended From", "options": "ZA Company Compliance Profile", "read_only": 1, "no_copy": 1}
+  {
+   "fieldname": "profile_key",
+   "fieldtype": "Data",
+   "label": "Profile Key",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nReviewed\nApproved\nCancelled",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_registrations",
+   "fieldtype": "Section Break",
+   "label": "Applicable Registrations"
+  },
+  {
+   "fieldname": "vat_registered",
+   "fieldtype": "Check",
+   "label": "VAT Registered"
+  },
+  {
+   "fieldname": "paye_registered",
+   "fieldtype": "Check",
+   "label": "PAYE Registered"
+  },
+  {
+   "fieldname": "uif_registered",
+   "fieldtype": "Check",
+   "label": "UIF Registered"
+  },
+  {
+   "fieldname": "sdl_registered",
+   "fieldtype": "Check",
+   "label": "SDL Registered"
+  },
+  {
+   "fieldname": "coida_registered",
+   "fieldtype": "Check",
+   "label": "COIDA Registered"
+  },
+  {
+   "fieldname": "employment_equity_designated",
+   "fieldtype": "Check",
+   "label": "Employment Equity Designated Employer"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "seta",
+   "fieldtype": "Data",
+   "label": "SETA"
+  },
+  {
+   "fieldname": "bargaining_council",
+   "fieldtype": "Data",
+   "label": "Bargaining Council"
+  },
+  {
+   "fieldname": "coida_industry_class",
+   "fieldtype": "Data",
+   "label": "COIDA Industry Class"
+  },
+  {
+   "fieldname": "filing_contact",
+   "fieldtype": "Link",
+   "label": "Filing Contact",
+   "options": "User"
+  },
+  {
+   "fieldname": "section_governance",
+   "fieldtype": "Section Break",
+   "label": "Governance"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "reviewed_by",
+   "fieldtype": "Link",
+   "label": "Reviewed By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reviewed_on",
+   "fieldtype": "Datetime",
+   "label": "Reviewed On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "review_checksum",
+   "fieldtype": "Data",
+   "label": "Review SHA-256",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User"
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_evidence",
+   "fieldtype": "Attach",
+   "label": "Approval Evidence",
+   "description": "Attach the official document you retrieved yourself. It must be a private file; public attachments are refused on approval."
+  },
+  {
+   "fieldname": "approval_evidence_sha256",
+   "fieldtype": "Data",
+   "label": "Approval Evidence SHA-256",
+   "read_only": 1,
+   "description": "Recorded automatically from the attached file when you save. It is the tamper-evidence record: if the attachment is ever replaced, the stored digest no longer matches and approval is refused."
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "ZA Company Compliance Profile",
+   "read_only": 1,
+   "no_copy": 1
+  }
  ],
  "index_web_pages_for_search": 0,
  "is_submittable": 1,
@@ -54,10 +217,37 @@
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
-  {"role": "ZA Compliance User", "read": 1, "write": 1, "create": 1},
-  {"role": "ZA Compliance Reviewer", "read": 1, "write": 1},
-  {"role": "ZA Compliance Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "delete": 1, "amend": 1},
-  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "delete": 1, "amend": 1}
+  {
+   "role": "ZA Compliance User",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "ZA Compliance Reviewer",
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "ZA Compliance Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "delete": 1,
+   "amend": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "delete": 1,
+   "amend": 1
+  }
  ],
  "sort_field": "effective_from",
  "sort_order": "DESC",

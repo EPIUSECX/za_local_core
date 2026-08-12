@@ -5,7 +5,7 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.utils import cint, flt, formatdate, getdate, today
 
-from za_local_core.governance import validate_private_evidence
+from za_local_core.governance import stamp_evidence_checksum, validate_private_evidence
 from za_local_core.sa_vat.filing import create_filing, record_submission_receipt
 from za_local_core.sa_vat.periods import (
 	LEGACY_PERIOD_BY_CATEGORY,
@@ -76,6 +76,7 @@ class VAT201Return(Document):
 		self.prevent_duplicate_open_return()
 		self.set_submission_period()
 		self.set_vat_registration_number()
+		stamp_evidence_checksum(self, "adjustment_evidence", "adjustment_evidence_sha256")
 		self.validate_manual_adjustments()
 		self.calculate_totals()
 		self.set_review_summary()

@@ -14,8 +14,8 @@ and nothing more; approving them is a human step, and deliberately so.
 1. Open **ZA Statutory Source** `SARS-VAT-CONTROLS-2026-04-01`. Follow the recorded URL, retrieve the official SARS
    document yourself, and attach it in **Retrieved Source File** as a *private* file. Public attachments are
    rejected.
-2. Compute the SHA-256 of the exact file you attached and paste it into **SHA-256 Checksum**. Submitting verifies
-   the digest against the stored bytes, so a mismatch or a re-downloaded file will fail.
+2. **SHA-256 Checksum** is recorded for you from the attached file on save, and cannot be edited. Submitting
+   verifies it against the stored bytes again, so an attachment swapped after the fact will fail.
 3. Set **Reviewed By** to yourself and submit. Approval needs **ZA Compliance Reviewer** or **ZA Compliance
    Manager**, and the approver may not be the user who created the record. Records the installer prepared are owned
    by the installing account, so approve them as a named user, not as Administrator.

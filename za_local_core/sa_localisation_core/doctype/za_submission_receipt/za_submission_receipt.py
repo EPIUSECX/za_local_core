@@ -5,7 +5,7 @@ from frappe.utils import flt
 
 from za_local_core.governance import (
 	APPROVAL_ROLES,
-	normalize_sha256,
+	stamp_evidence_checksum,
 	validate_accountable_actor,
 	validate_private_evidence,
 )
@@ -13,7 +13,7 @@ from za_local_core.governance import (
 
 class ZASubmissionReceipt(Document):
 	def validate(self) -> None:
-		self.sha256_checksum = normalize_sha256(self.sha256_checksum)
+		stamp_evidence_checksum(self, "evidence_file", "sha256_checksum")
 
 	def before_submit(self) -> None:
 		validate_accountable_actor(self, "submitted_by", APPROVAL_ROLES, "record the external response")

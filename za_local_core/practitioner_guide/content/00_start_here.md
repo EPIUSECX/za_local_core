@@ -42,9 +42,12 @@ resolves nothing. For each one you intend to rely on:
 
 1. Follow the recorded URL and retrieve the official document yourself.
 2. Attach it in **Retrieved Source File** as a **private** file. Public attachments are rejected.
-3. Paste the SHA-256 of that exact file into **SHA-256 Checksum**. Submitting re-hashes the stored bytes, so a
-   re-downloaded or edited file will fail.
+3. **SHA-256 Checksum** fills itself in from the file when you save, and is read-only. It is the tamper-evidence
+   record: replace the attachment later and the stored digest no longer matches, so approval is refused.
 4. Set **Reviewed By** to a named reviewer and submit.
+
+If the recorded URL is a web page rather than a document, print it to PDF and attach that. The evidence is
+whatever you actually retrieved, and the digest covers exactly those bytes.
 
 ## 4. Approve the statutory rate packs
 

@@ -7,7 +7,7 @@ from za_local_core.governance import (
 	APPROVAL_ROLES,
 	REVIEW_ROLES,
 	canonical_sha256,
-	normalize_sha256,
+	stamp_evidence_checksum,
 	validate_accountable_actor,
 	validate_private_evidence,
 )
@@ -24,8 +24,7 @@ class ZACompanyComplianceProfile(Document):
 		if self.effective_to and getdate(self.effective_to) < getdate(self.effective_from):
 			frappe.throw(_("Effective To cannot be before Effective From."))
 		self.profile_key = self.profile_key or _profile_key(self.company, self.effective_from)
-		if self.approval_evidence_sha256:
-			self.approval_evidence_sha256 = normalize_sha256(self.approval_evidence_sha256)
+		stamp_evidence_checksum(self, "approval_evidence", "approval_evidence_sha256")
 		if self.status == "Reviewed" and self.review_checksum != self._configuration_checksum():
 			self.status = "Draft"
 			self.reviewed_by = None

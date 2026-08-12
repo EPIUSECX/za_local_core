@@ -5,7 +5,7 @@ from frappe.utils import getdate, now_datetime
 
 from za_local_core.governance import (
 	REVIEW_ROLES,
-	normalize_sha256,
+	stamp_evidence_checksum,
 	validate_accountable_actor,
 	validate_private_evidence,
 )
@@ -13,8 +13,7 @@ from za_local_core.governance import (
 
 class ZAStatutorySource(Document):
 	def validate(self) -> None:
-		if self.sha256_checksum:
-			self.sha256_checksum = normalize_sha256(self.sha256_checksum)
+		stamp_evidence_checksum(self, "source_file", "sha256_checksum")
 		if self.effective_to and getdate(self.effective_to) < getdate(self.effective_from):
 			frappe.throw(_("Effective To cannot be before Effective From."))
 		if not self.source_url and not self.source_file:

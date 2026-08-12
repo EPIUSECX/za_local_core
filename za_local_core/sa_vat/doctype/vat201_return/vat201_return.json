@@ -360,7 +360,9 @@
   {
    "fieldname": "adjustment_evidence_sha256",
    "fieldtype": "Data",
-   "label": "Adjustment Evidence SHA-256"
+   "label": "Adjustment Evidence SHA-256",
+   "read_only": 1,
+   "description": "Recorded automatically from the attached file when you save. It is the tamper-evidence record: if the attachment is ever replaced, the stored digest no longer matches and approval is refused."
   },
   {
    "fieldname": "column_break_19",

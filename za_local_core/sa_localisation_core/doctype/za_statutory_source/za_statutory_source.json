@@ -26,25 +26,125 @@
   "amended_from"
  ],
  "fields": [
-  {"fieldname": "catalog_key", "fieldtype": "Data", "label": "Catalog Key", "read_only": 1, "unique": 1, "no_copy": 1},
-  {"fieldname": "authority", "fieldtype": "Select", "label": "Authority", "options": "SARS\nDepartment of Employment and Labour\nCompensation Fund\nCIPC\nInformation Regulator\nNational Treasury\nOther", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "title", "fieldtype": "Data", "label": "Title", "reqd": 1, "in_list_view": 1},
-  {"fieldname": "document_type", "fieldtype": "Data", "label": "Document Type", "reqd": 1},
-  {"fieldname": "version", "fieldtype": "Data", "label": "Version or Issue", "reqd": 1},
-  {"fieldname": "section_dates", "fieldtype": "Section Break", "label": "Publication and Effective Dates"},
-  {"fieldname": "publication_date", "fieldtype": "Date", "label": "Publication Date", "reqd": 1},
-  {"fieldname": "effective_from", "fieldtype": "Date", "label": "Effective From", "reqd": 1},
-  {"fieldname": "effective_to", "fieldtype": "Date", "label": "Effective To"},
-  {"fieldname": "column_break_1", "fieldtype": "Column Break"},
-  {"fieldname": "source_url", "fieldtype": "Small Text", "label": "Official Source URL"},
-  {"fieldname": "source_file", "fieldtype": "Attach", "label": "Retrieved Source File"},
-  {"fieldname": "sha256_checksum", "fieldtype": "Data", "label": "SHA-256 Checksum", "unique": 1},
-  {"fieldname": "section_approval", "fieldtype": "Section Break", "label": "Approval"},
-  {"default": "Draft", "fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Draft\nApproved\nSuperseded\nCancelled", "read_only": 1, "in_list_view": 1},
-  {"fieldname": "reviewed_by", "fieldtype": "Link", "label": "Reviewed By", "options": "User"},
-  {"fieldname": "approved_on", "fieldtype": "Datetime", "label": "Approved On", "read_only": 1},
-  {"fieldname": "notes", "fieldtype": "Text", "label": "Scope and Notes"},
-  {"fieldname": "amended_from", "fieldtype": "Link", "label": "Amended From", "options": "ZA Statutory Source", "read_only": 1, "no_copy": 1}
+  {
+   "fieldname": "catalog_key",
+   "fieldtype": "Data",
+   "label": "Catalog Key",
+   "read_only": 1,
+   "unique": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "authority",
+   "fieldtype": "Select",
+   "label": "Authority",
+   "options": "SARS\nDepartment of Employment and Labour\nCompensation Fund\nCIPC\nInformation Regulator\nNational Treasury\nOther",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Data",
+   "label": "Document Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Data",
+   "label": "Version or Issue",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_dates",
+   "fieldtype": "Section Break",
+   "label": "Publication and Effective Dates"
+  },
+  {
+   "fieldname": "publication_date",
+   "fieldtype": "Date",
+   "label": "Publication Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_url",
+   "fieldtype": "Small Text",
+   "label": "Official Source URL"
+  },
+  {
+   "fieldname": "source_file",
+   "fieldtype": "Attach",
+   "label": "Retrieved Source File",
+   "description": "Attach the official document you retrieved yourself. It must be a private file; public attachments are refused on approval."
+  },
+  {
+   "fieldname": "sha256_checksum",
+   "fieldtype": "Data",
+   "label": "SHA-256 Checksum",
+   "unique": 1,
+   "read_only": 1,
+   "description": "Recorded automatically from the attached file when you save. It is the tamper-evidence record: if the attachment is ever replaced, the stored digest no longer matches and approval is refused."
+  },
+  {
+   "fieldname": "section_approval",
+   "fieldtype": "Section Break",
+   "label": "Approval"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nApproved\nSuperseded\nCancelled",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reviewed_by",
+   "fieldtype": "Link",
+   "label": "Reviewed By",
+   "options": "User"
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Scope and Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "ZA Statutory Source",
+   "read_only": 1,
+   "no_copy": 1
+  }
  ],
  "index_web_pages_for_search": 0,
  "is_submittable": 1,
@@ -56,10 +156,41 @@
  "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
-  {"role": "ZA Compliance User", "read": 1, "create": 1, "write": 1},
-  {"role": "ZA Compliance Reviewer", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "amend": 1},
-  {"role": "ZA Compliance Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "delete": 1, "amend": 1},
-  {"role": "System Manager", "read": 1, "write": 1, "create": 1, "submit": 1, "cancel": 1, "delete": 1, "amend": 1}
+  {
+   "role": "ZA Compliance User",
+   "read": 1,
+   "create": 1,
+   "write": 1
+  },
+  {
+   "role": "ZA Compliance Reviewer",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "ZA Compliance Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "delete": 1,
+   "amend": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "delete": 1,
+   "amend": 1
+  }
  ],
  "sort_field": "publication_date",
  "sort_order": "DESC",
