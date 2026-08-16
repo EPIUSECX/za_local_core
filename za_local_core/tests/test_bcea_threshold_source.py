@@ -108,3 +108,43 @@ class TestCorrectionPatch(IntegrationTestCase):
 			before,
 			"an approved record holding the wrong threshold was neither fixed nor reported",
 		)
+
+
+class TestVatControlsSource(UnitTestCase):
+	"""The VAT source cites SARS's standing page rather than a budget-cycle FAQ."""
+
+	def _metadata(self) -> dict:
+		from za_local_core.sa_vat.statutory import CURRENT_APPROVED_SOURCE_METADATA
+
+		return CURRENT_APPROVED_SOURCE_METADATA
+
+	def test_the_primary_source_is_the_page_sars_maintains(self):
+		"""A Budget FAQ is archived once the next budget lands, taking the evidence."""
+		url = self._metadata()["registration_source_url"]
+		self.assertNotIn("budget-2026-frequently-asked-questions", url)
+		self.assertIn("sars.gov.za", url)
+
+	def test_the_budget_announcement_is_kept_for_provenance(self):
+		"""Dropping it would lose when and how the thresholds changed."""
+		self.assertIn("budget-2026", self._metadata()["announcement_source_url"])
+
+	def test_the_recorded_control_values_are_the_gazetted_ones(self):
+		"""Budget 2026 raised both registration thresholds with effect from 1 April.
+
+		Asserted because they look wrong against the figures that stood for the
+		previous seventeen years, and someone will eventually "correct" them back.
+		"""
+		from za_local_core.sa_vat.statutory import (
+			COMPULSORY_REGISTRATION_THRESHOLD,
+			FULL_INVOICE_THRESHOLD,
+			NO_INVOICE_THRESHOLD,
+			STANDARD_RATE,
+			VOLUNTARY_REGISTRATION_THRESHOLD,
+		)
+
+		values = self._metadata()["expected_current_values"]
+		self.assertEqual(15, values[STANDARD_RATE])
+		self.assertEqual(2_300_000, values[COMPULSORY_REGISTRATION_THRESHOLD])
+		self.assertEqual(120_000, values[VOLUNTARY_REGISTRATION_THRESHOLD])
+		self.assertEqual(50, values[NO_INVOICE_THRESHOLD])
+		self.assertEqual(5_000, values[FULL_INVOICE_THRESHOLD])

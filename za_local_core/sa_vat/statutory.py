@@ -46,7 +46,12 @@ VAT_CONTROL_UNITS = {
 CURRENT_APPROVED_SOURCE_METADATA = {
 	"authority": "SARS",
 	"effective_from": "2026-04-01",
-	"registration_source_url": (
+	# SARS's standing VAT page, which carries both registration thresholds and the
+	# standard rate. The Budget FAQ that announced the increase is kept in the notes
+	# for provenance, but it belongs to one budget cycle and gets archived; this page
+	# is the one SARS maintains.
+	"registration_source_url": "https://www.sars.gov.za/types-of-tax/value-added-tax/",
+	"announcement_source_url": (
 		"https://www.sars.gov.za/about/sars-tax-and-customs-system/budget/"
 		"budget-2026-frequently-asked-questions/"
 	),

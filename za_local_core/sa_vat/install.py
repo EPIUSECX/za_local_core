@@ -103,7 +103,15 @@ def seed_vat_statutory_source_catalog() -> str:
 			"source_url": metadata["registration_source_url"],
 			"notes": (
 				"DRAFT CATALOGUE METADATA ONLY. Retrieve the official SARS evidence privately, "
-				"verify its SHA-256 digest, obtain independent review and approve a matching rate pack.\n"
+				"obtain independent review and approve a matching rate pack.\n"
+				"Records the 15% standard rate, compulsory registration at R2,300,000 and "
+				"voluntary registration at R120,000, all effective 1 April 2026. The two "
+				"registration thresholds were raised from R1,000,000 and R50,000 by the Budget "
+				"of 25 February 2026, amending section 23 of the Value-Added Tax Act 89 of 1991. "
+				"Confirm the amending Act against the Government Gazette: SARS states the amounts "
+				"but cites no legal instrument.\n"
+				f"Registration source: {metadata['registration_source_url']}\n"
+				f"Budget announcement: {metadata['announcement_source_url']}\n"
 				f"Tax invoice source: {metadata['invoice_source_url']}\n"
 				f"VAT rate source: {metadata['rate_source_url']}"
 			),
