@@ -13,6 +13,9 @@ APPROVAL_ROLES = frozenset({"ZA Compliance Manager", "System Manager"})
 SHA256_PATTERN = re.compile(r"[0-9a-f]{64}")
 
 
+SEGREGATION_OVERRIDE_ROLE = "System Manager"
+
+
 def validate_accountable_actor(
 	doc,
 	actor_field: str,
@@ -20,24 +23,45 @@ def validate_accountable_actor(
 	action: str,
 	additional_excluded_users: Iterable[str | None] = (),
 ) -> str:
-	"""Require the signed-in user to be the recorded, authorised independent actor."""
+	"""Require the signed-in user to be the recorded, authorised independent actor.
+
+	A System Manager may proceed regardless. Without that a single-administrator site
+	deadlocks: the person who prepares a record is barred from approving it, and on a
+	compliance profile a third person is needed again to review it. The override is
+	never silent -- what was skipped, and who skipped it, is recorded on the document.
+	"""
 	actor = frappe.session.user
 	recorded_actor = doc.get(actor_field)
 	label = doc.meta.get_label(actor_field)
 	if not recorded_actor:
 		frappe.throw(_("{0} is required before {1}.").format(label, action))
+
+	may_override = SEGREGATION_OVERRIDE_ROLE in frappe.get_roles(actor)
+	overridden = []
+
 	if actor != recorded_actor:
-		frappe.throw(
-			_("Only the recorded {0}, {1}, may {2} this document.").format(label, recorded_actor, action),
-			frappe.PermissionError,
-		)
+		if not may_override:
+			frappe.throw(
+				_("Only the recorded {0}, {1}, may {2} this document.").format(label, recorded_actor, action),
+				frappe.PermissionError,
+			)
+		overridden.append(_("acted in place of the recorded {0}, {1}").format(label, recorded_actor))
+
 	excluded_users = {doc.owner, *additional_excluded_users}
 	excluded_users.discard(None)
 	if actor in excluded_users:
-		frappe.throw(
-			_("The document creator or responsible preparer cannot {0} the same document.").format(action),
-			frappe.PermissionError,
-		)
+		if not may_override:
+			frappe.throw(
+				_("The document creator or responsible preparer cannot {0} the same document.").format(
+					action
+				),
+				frappe.PermissionError,
+			)
+		overridden.append(_("chose to {0} a document they prepared or reviewed").format(action))
+
+	if overridden:
+		record_segregation_override(doc, actor, action, overridden)
+
 	actor_roles = set(frappe.get_roles(actor))
 	required_roles = set(allowed_roles)
 	if actor_roles.isdisjoint(required_roles):
@@ -48,6 +72,21 @@ def validate_accountable_actor(
 			frappe.PermissionError,
 		)
 	return actor
+
+
+def record_segregation_override(doc, actor: str, action: str, overridden: Iterable[str]) -> None:
+	"""Leave evidence on the document that separation of duties was overridden.
+
+	An auditor has to be able to tell an independently approved record from one a
+	System Manager pushed through, so this is written where they will look: a comment
+	on the document itself, plus the site log.
+	"""
+	detail = _("Separation of duties overridden by {0}, who {1}.").format(actor, _(" and ").join(overridden))
+	if doc.get("name") and not doc.get("__islocal"):
+		doc.add_comment("Comment", detail)
+	frappe.logger("za_local_core").warning(
+		"segregation override: %s on %s %s (%s)", actor, doc.doctype, doc.name, action
+	)
 
 
 def normalize_sha256(value: str | None, label: str = "SHA-256 Checksum") -> str:

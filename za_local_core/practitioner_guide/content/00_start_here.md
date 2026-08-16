@@ -11,9 +11,15 @@ page cover the same ground, so use whichever you prefer.
 ## Before you start: who does what
 
 One thing decided here saves rework later. Approving a statutory source or rate pack is blocked for the user who
-created the record, and the records this app prepares are owned by the account that installed it. **A single
-Administrator login cannot complete the setup.** Create at least one named user holding **ZA Compliance Reviewer**
-or **ZA Compliance Manager** and approve as that user.
+created the record, and a company compliance profile needs three people: one to create it, a second to review it
+and a third to approve it. The records this app prepares are owned by the account that installed it.
+
+**Create named users and approve as them.** Give at least one **ZA Compliance Reviewer** and one **ZA Compliance
+Manager**. That is what an auditor expects to see, and it is the only way the approval evidences anything.
+
+A **System Manager** may approve regardless, so a single-administrator site is never deadlocked. It is not a free
+pass: every time the rule is bypassed, a comment naming the user and what was skipped is written on the document,
+and an auditor reading that record will see it. Use it to get a site moving, not as the standing arrangement.
 
 Roles are at `/desk/user`. User is a Frappe master, so no South African workspace links it.
 

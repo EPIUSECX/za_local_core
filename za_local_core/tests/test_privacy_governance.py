@@ -18,7 +18,9 @@ class TestPrivacyGovernance(IntegrationTestCase):
 	def test_information_officer_registration_requires_independent_review_and_evidence(self):
 		registration = self._information_officer_registration(reviewed_by="Administrator")
 		registration.insert()
-		with self.assertRaises(frappe.PermissionError):
+		# Driven by a user without System Manager: Administrator now overrides the rule
+		# and records that it did, so it can no longer demonstrate the refusal.
+		with self.set_user(self.reviewer), self.assertRaises(frappe.PermissionError):
 			registration.submit()
 
 		approved = self._information_officer_registration(reviewed_by=self.reviewer)

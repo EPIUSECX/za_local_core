@@ -18,7 +18,8 @@ and nothing more; approving them is a human step, and deliberately so.
    verifies it against the stored bytes again, so an attachment swapped after the fact will fail.
 3. Set **Reviewed By** to yourself and submit. Approval needs **ZA Compliance Reviewer** or **ZA Compliance
    Manager**, and the approver may not be the user who created the record. Records the installer prepared are owned
-   by the installing account, so approve them as a named user, not as Administrator.
+   by the installing account, so approve them as a named user. A System Manager may approve regardless, which
+   keeps a single-administrator site moving, but the bypass is recorded as a comment on the document.
 4. Open **ZA Statutory Rate Pack** for domain `VAT`, effective 1 April 2026 to 31 March 2027. Check every value
    against the evidence you just attached, set **Reviewed By** and submit. The pack cannot be submitted until its
    source is approved.

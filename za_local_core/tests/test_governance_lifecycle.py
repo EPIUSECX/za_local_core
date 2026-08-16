@@ -85,7 +85,9 @@ class TestGovernanceLifecycle(IntegrationTestCase):
 	def test_source_rejects_spoofed_reviewer_and_public_or_changed_evidence(self):
 		private_url, private_checksum = self._evidence("source-private", b"authoritative source")
 		source = self._source(private_url, private_checksum, self.reviewer).insert()
-		with self.assertRaises(frappe.PermissionError):
+		# self.approver holds ZA Compliance Manager but not System Manager, so the
+		# recorded-actor rule still binds them. Administrator would now override it.
+		with self.set_user(self.approver), self.assertRaises(frappe.PermissionError):
 			source.submit()
 
 		public_url, public_checksum = self._evidence("source-public", b"public source", is_private=0)
@@ -117,7 +119,7 @@ class TestGovernanceLifecycle(IntegrationTestCase):
 
 	def test_only_recorded_reviewer_can_cancel_approved_source(self):
 		source = self._approved_source("cancel")
-		with self.assertRaises(frappe.PermissionError):
+		with self.set_user(self.approver), self.assertRaises(frappe.PermissionError):
 			source.cancel()
 		source.reload()
 		with self.set_user(self.reviewer):
