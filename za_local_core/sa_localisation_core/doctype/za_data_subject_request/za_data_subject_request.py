@@ -2,8 +2,11 @@ from typing import ClassVar
 
 import frappe
 from frappe import _
+from frappe.utils import add_days, getdate, today
 
 from za_local_core.sa_localisation_core.doctype._privacy import OperationalPrivacyDocument
+
+CLOSED_STATUSES = ("Fulfilled", "Refused", "Withdrawn", "Closed")
 
 
 class ZADataSubjectRequest(OperationalPrivacyDocument):
@@ -21,10 +24,28 @@ class ZADataSubjectRequest(OperationalPrivacyDocument):
 	}
 
 	def validate(self) -> None:
+		self._set_statutory_due_date()
 		super().validate()
 		self._validate_identity_control()
 		self._validate_extension()
 		self._validate_terminal_status()
+
+	def _set_statutory_due_date(self) -> None:
+		"""PAIA s25: decide within 30 days of receipt; s26: one extension of up to 30 days."""
+		if not self.received_on:
+			return
+		limit = add_days(self.received_on, 60 if self.status == "Extended" or self.extension_reason else 30)
+		if not self.due_date:
+			self.due_date = add_days(self.received_on, 30)
+		if getdate(self.due_date) > getdate(limit):
+			frappe.throw(
+				_(
+					"Due Date cannot be later than {0}: 30 days after receipt, or 60 with a recorded extension."
+				).format(frappe.format(limit, {"fieldtype": "Date"}))
+			)
+		self.is_overdue = int(
+			self.status not in CLOSED_STATUSES and getdate(self.due_date) < getdate(today())
+		)
 
 	def _validate_identity_control(self) -> None:
 		if self.status not in {"In Progress", "Extended", "Fulfilled"}:
@@ -48,3 +69,12 @@ class ZADataSubjectRequest(OperationalPrivacyDocument):
 		if self.status == "Refused" and not (self.refusal_reason or "").strip():
 			frappe.throw(_("Refusal Reason is required for a refused request."))
 		self._validate_closure_review("final_response_evidence", "completed_on")
+
+
+def refresh_overdue_requests() -> None:
+	"""Daily: flag open requests whose due date has passed."""
+	frappe.db.sql(
+		"""update `tabZA Data Subject Request`
+		set is_overdue = (status not in %(closed)s and due_date < %(today)s)""",
+		{"closed": CLOSED_STATUSES, "today": today()},
+	)

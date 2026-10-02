@@ -202,3 +202,45 @@ class TestVATDocumentRegressions(IntegrationTestCase):
 			patch("frappe.db.get_value", side_effect=["VAT-SET", "Input VAT - ZA"]),
 		):
 			ZAPurchaseInvoice.validate_blocked_input_vat(doc)
+
+
+class TestDataSubjectRequestDeadline(IntegrationTestCase):
+	"""PRIV-1: the PAIA due date was typed by hand and nothing flagged a late request."""
+
+	def _request(self, **values):
+		doc = frappe.new_doc("ZA Data Subject Request")
+		doc.update({"received_on": "2026-01-05", "status": "Received", **values})
+		return doc
+
+	def test_due_date_defaults_to_thirty_days_after_receipt(self):
+		doc = self._request()
+		doc._set_statutory_due_date()
+		self.assertEqual("2026-02-04", str(doc.due_date))
+		self.assertEqual(1, doc.is_overdue)
+
+	def test_due_date_beyond_thirty_days_needs_an_extension(self):
+		doc = self._request(due_date="2026-02-20")
+		with self.assertRaisesRegex(frappe.ValidationError, "30 days after receipt"):
+			doc._set_statutory_due_date()
+		doc.extension_reason = "Records held at an off-site archive"
+		doc._set_statutory_due_date()
+		with self.assertRaises(frappe.ValidationError):
+			self._request(due_date="2026-03-10", extension_reason="x")._set_statutory_due_date()
+
+	def test_closed_requests_are_never_overdue(self):
+		doc = self._request(status="Closed")
+		doc._set_statutory_due_date()
+		self.assertEqual(0, doc.is_overdue)
+
+	def test_daily_task_refreshes_overdue_flags(self):
+		from za_local_core import tasks
+
+		with (
+			patch.object(tasks, "mark_overdue_entries", return_value=0),
+			patch(
+				"za_local_core.sa_localisation_core.doctype.za_data_subject_request."
+				"za_data_subject_request.refresh_overdue_requests"
+			) as refresh,
+		):
+			tasks.daily()
+		refresh.assert_called_once()

@@ -13,3 +13,9 @@ def daily() -> None:
 	except Exception:
 		frappe.log_error(title="ZA compliance calendar update failed", message=frappe.get_traceback())
 		raise
+
+	from za_local_core.sa_localisation_core.doctype.za_data_subject_request.za_data_subject_request import (
+		refresh_overdue_requests,
+	)
+
+	refresh_overdue_requests()
