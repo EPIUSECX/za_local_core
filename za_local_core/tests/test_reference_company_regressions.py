@@ -467,3 +467,47 @@ class TestVatTemplateDescriptions(IntegrationTestCase):
 		for call in ensure.call_args_list:
 			self.assertIn("Acme (Pty) Ltd", call.kwargs["title"])
 			self.assertNotIn("Acme", call.kwargs["description"])
+
+
+class TestLineVatCategory(IntegrationTestCase):
+	"""VAT-3: the VAT category was fixed per item, so one item could not be sold locally and exported."""
+
+	def _validate(self, line_category, reason=None):
+		from za_local_core.overrides.vat_invoices import validate_line_vat_categories
+
+		doc = frappe._dict(
+			company="ZA Co",
+			items=[
+				frappe._dict(
+					idx=1,
+					item_code="WIDGET",
+					custom_sa_vat_category=line_category,
+					za_vat_category_reason=reason,
+				)
+			],
+		)
+		with (
+			patch("za_local_core.overrides.vat_invoices.is_south_african_company", return_value=True),
+			patch("frappe.get_cached_value", return_value="Zero Rated"),
+		):
+			validate_line_vat_categories(doc)
+
+	def test_line_may_differ_from_the_item_only_with_a_reason(self):
+		self._validate("Zero Rated")
+		with self.assertRaisesRegex(frappe.ValidationError, "VAT Category Reason"):
+			self._validate("Export Zero Rated")
+		self._validate("Export Zero Rated", "Direct export, bill of entry SYN-EXP-001")
+
+	def test_invoice_line_category_is_editable_and_defaults_from_the_item(self):
+		from za_local_core.sa_vat import setup
+
+		with patch.object(setup, "create_custom_fields") as create:
+			setup.ensure_vat_custom_fields()
+		fields = create.call_args.args[0]
+		for doctype in ("Sales Invoice Item", "Purchase Invoice Item"):
+			by_name = {f["fieldname"]: f for f in fields[doctype]}
+			category = by_name["custom_sa_vat_category"]
+			self.assertEqual(
+				(0, 1, "Select"), (category["read_only"], category["fetch_if_empty"], category["fieldtype"])
+			)
+			self.assertIn("za_vat_category_reason", by_name)

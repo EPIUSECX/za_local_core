@@ -322,13 +322,28 @@ def ensure_vat_custom_fields():
 					"print_hide": 1,
 				},
 				{
+					# VAT-3: defaults from the item, but one item can be supplied locally on
+					# one invoice and exported on another.
 					"fieldname": "custom_sa_vat_category",
-					"fieldtype": "Data",
+					"fieldtype": "Select",
+					"options": ITEM_VAT_CATEGORY_OPTIONS,
 					"label": "South Africa VAT Category",
 					"insert_after": "is_zero_rated",
 					"fetch_from": "item_code.custom_sa_vat_category",
-					"read_only": 1,
+					"fetch_if_empty": 1,
+					"read_only": 0,
 					"print_hide": 1,
+					"description": "Defaults from the item. Change it only where this line is treated "
+					"differently, such as a direct export, and record why in VAT Category Reason.",
+				},
+				{
+					"fieldname": "za_vat_category_reason",
+					"fieldtype": "Data",
+					"label": "VAT Category Reason",
+					"insert_after": "custom_sa_vat_category",
+					"print_hide": 1,
+					"description": "Required when the line's VAT category differs from the item's, "
+					"for example the export documents supporting zero rating.",
 				},
 			],
 			"Purchase Invoice Item": [
@@ -342,19 +357,34 @@ def ensure_vat_custom_fields():
 					"print_hide": 1,
 				},
 				{
+					# VAT-3: defaults from the item, but one item can be supplied locally on
+					# one invoice and exported on another.
 					"fieldname": "custom_sa_vat_category",
-					"fieldtype": "Data",
+					"fieldtype": "Select",
+					"options": ITEM_VAT_CATEGORY_OPTIONS,
 					"label": "South Africa VAT Category",
 					"insert_after": "is_zero_rated",
 					"fetch_from": "item_code.custom_sa_vat_category",
-					"read_only": 1,
+					"fetch_if_empty": 1,
+					"read_only": 0,
 					"print_hide": 1,
+					"description": "Defaults from the item. Change it only where this line is treated "
+					"differently, such as a direct export, and record why in VAT Category Reason.",
+				},
+				{
+					"fieldname": "za_vat_category_reason",
+					"fieldtype": "Data",
+					"label": "VAT Category Reason",
+					"insert_after": "custom_sa_vat_category",
+					"print_hide": 1,
+					"description": "Required when the line's VAT category differs from the item's, "
+					"for example the export documents supporting zero rating.",
 				},
 				{
 					"fieldname": "za_vat_input_treatment",
 					"fieldtype": "Select",
 					"label": "SA VAT Input Treatment",
-					"insert_after": "custom_sa_vat_category",
+					"insert_after": "za_vat_category_reason",
 					"options": INPUT_TREATMENT_OPTIONS,
 					"default": "Fully Deductible",
 					"description": (

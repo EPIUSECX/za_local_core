@@ -7,8 +7,32 @@ from frappe.utils import flt
 from za_local_core.localisation import is_south_african_company
 
 
+def validate_line_vat_categories(doc) -> None:
+	"""VAT-3: a line may differ from its item's VAT category only with a recorded reason."""
+	if not is_south_african_company(doc.get("company")):
+		return
+	for item in doc.get("items") or []:
+		if not item.get("item_code") or not item.get("custom_sa_vat_category"):
+			continue
+		item_category = frappe.get_cached_value("Item", item.item_code, "custom_sa_vat_category")
+		if not item_category or item_category == item.custom_sa_vat_category:
+			continue
+		if not (item.get("za_vat_category_reason") or "").strip():
+			frappe.throw(
+				_(
+					"Row {0}: the VAT category {1} differs from item {2}'s category {3}. Record the "
+					"reason, such as the export documents, in VAT Category Reason."
+				).format(item.idx, item.custom_sa_vat_category, item.item_code, item_category),
+				title=_("VAT Category Reason Required"),
+			)
+
+
 class ZASalesInvoice:
 	"""Sales Invoice extension using ZA VAT tax calculation."""
+
+	def validate(self):
+		super().validate()
+		validate_line_vat_categories(self)
 
 	def calculate_taxes_and_totals(self):
 		# Other countries keep ERPNext item-tax-template semantics (item rate replaces row rate).
@@ -55,6 +79,7 @@ class ZAPurchaseInvoice:
 	def validate(self):
 		super().validate()
 		self.validate_blocked_input_vat()
+		validate_line_vat_categories(self)
 
 	def validate_blocked_input_vat(self):
 		"""Blocked input tax (section 17(2)) must not reach the Input VAT account.
