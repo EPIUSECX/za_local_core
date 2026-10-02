@@ -125,3 +125,80 @@ def _company_values(country, vat_number):
 		return None
 
 	return get_value
+
+
+class TestVATDocumentRegressions(IntegrationTestCase):
+	"""Second validation round: VAT-4, VAT-1/VAT-10, VAT-8."""
+
+	def test_exempt_only_invoice_is_not_a_tax_invoice(self):
+		"""VAT-4: an exempt residential letting was printed "FULL TAX INVOICE"."""
+		from za_local_core.sa_vat.statutory import FULL_INVOICE_THRESHOLD, NO_INVOICE_THRESHOLD
+		from za_local_core.sa_vat.tax_invoice import build_sales_invoice_print_profile, is_exempt_only_invoice
+
+		controls = {
+			"values": {NO_INVOICE_THRESHOLD: 50, FULL_INVOICE_THRESHOLD: 5000},
+			"source": "S",
+			"source_sha256": "x",
+			"rate_pack": "P",
+			"rate_pack_sha256": "y",
+			"effective_from": "2026-04-01",
+			"effective_to": None,
+		}
+		profile = build_sales_invoice_print_profile(
+			company=None,
+			posting_date="2026-08-01",
+			base_grand_total=8_000,
+			is_exempt_only=1,
+			company_currency="ZAR",
+			statutory_controls=controls,
+		)
+		self.assertEqual("exempt_supply_invoice", profile["invoice_type"])
+		self.assertIsNone(profile["print_format"])
+		exempt = SimpleNamespace(
+			total_taxes_and_charges=0, items=[frappe._dict(custom_sa_vat_category="Exempt")]
+		)
+		mixed = SimpleNamespace(
+			total_taxes_and_charges=0,
+			items=[
+				frappe._dict(custom_sa_vat_category="Exempt"),
+				frappe._dict(custom_sa_vat_category="Zero Rated"),
+			],
+		)
+		self.assertTrue(is_exempt_only_invoice(exempt))
+		self.assertFalse(is_exempt_only_invoice(mixed))
+
+	def test_vat_credit_note_requires_a_reason(self):
+		"""VAT-1/VAT-10: credit notes carried no section 21(3) explanation."""
+		from za_local_core.overrides.vat_invoices import ZASalesInvoice
+
+		doc = frappe._dict(is_return=1, company="ZA Co", za_adjustment_reason="")
+		with (
+			patch("za_local_core.overrides.vat_invoices.is_south_african_company", return_value=True),
+			patch("frappe.db.get_value", return_value="4900000017"),
+		):
+			with self.assertRaisesRegex(frappe.ValidationError, "Reason for Adjustment"):
+				ZASalesInvoice.validate_sa_credit_note_particulars(doc)
+			doc.za_adjustment_reason = "Two days of the service were not delivered."
+			ZASalesInvoice.validate_sa_credit_note_particulars(doc)
+
+	def test_blocked_input_vat_may_not_reach_the_input_vat_account(self):
+		"""VAT-8: blocked entertainment VAT sat in Input VAT and left an unexplained R300."""
+		from za_local_core.overrides.vat_invoices import ZAPurchaseInvoice
+
+		doc = frappe._dict(
+			company="ZA Co",
+			items=[frappe._dict(za_vat_input_treatment="Blocked")],
+			taxes=[frappe._dict(account_head="Input VAT - ZA", tax_amount=300)],
+		)
+		with (
+			patch("za_local_core.overrides.vat_invoices.is_south_african_company", return_value=True),
+			patch("frappe.db.get_value", side_effect=["VAT-SET", "Input VAT - ZA"]),
+		):
+			with self.assertRaisesRegex(frappe.ValidationError, "Blocked"):
+				ZAPurchaseInvoice.validate_blocked_input_vat(doc)
+		doc.taxes = []
+		with (
+			patch("za_local_core.overrides.vat_invoices.is_south_african_company", return_value=True),
+			patch("frappe.db.get_value", side_effect=["VAT-SET", "Input VAT - ZA"]),
+		):
+			ZAPurchaseInvoice.validate_blocked_input_vat(doc)

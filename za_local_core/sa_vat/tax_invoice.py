@@ -30,9 +30,10 @@ def check_tax_invoice_readiness(sales_invoice: str):
 		is_return=getattr(doc, "is_return", 0),
 		company_currency=company_currency,
 		is_zero_rated_only=is_zero_rated_only_invoice(doc),
+		is_exempt_only=is_exempt_only_invoice(doc),
 	)
 	full_invoice = profile["invoice_type"] == "full_tax_invoice"
-	tax_invoice_required = profile["invoice_type"] != "no_tax_invoice_required"
+	tax_invoice_required = profile["invoice_type"] not in {"no_tax_invoice_required", "exempt_supply_invoice"}
 
 	checks = [
 		check(
@@ -131,12 +132,30 @@ def check_tax_invoice_readiness(sales_invoice: str):
 		),
 	]
 
+	if profile["invoice_type"] == "credit_note":
+		# Section 21(3): a credit note must identify the original tax invoice and
+		# briefly explain the circumstances that gave rise to it.
+		checks += [
+			check(
+				"original_tax_invoice",
+				_("Original tax invoice reference"),
+				bool(getattr(doc, "return_against", None)),
+				getattr(doc, "return_against", None) or _("Missing the invoice this note adjusts"),
+			),
+			check(
+				"adjustment_reason",
+				_("Reason for the adjustment"),
+				bool((getattr(doc, "za_adjustment_reason", None) or "").strip()),
+				_("Missing the reason for the credit note"),
+			),
+		]
+
 	missing = [item["label"] for item in checks if item["required"] and not item["ok"]]
 	return {
 		"sales_invoice": doc.name,
 		"status": (
 			"not_required"
-			if profile["invoice_type"] == "no_tax_invoice_required"
+			if profile["invoice_type"] in {"no_tax_invoice_required", "exempt_supply_invoice"}
 			else ("ready" if not missing else "attention")
 		),
 		"invoice_type": profile["invoice_type"],
@@ -166,6 +185,7 @@ def get_sales_invoice_print_profile(
 	is_pos: int = 0,
 	is_return: int = 0,
 	is_zero_rated_only: int = 0,
+	is_exempt_only: int = 0,
 ):
 	frappe.has_permission("Sales Invoice", "read", throw=True)
 	if company:
@@ -178,6 +198,7 @@ def get_sales_invoice_print_profile(
 		is_pos=is_pos,
 		is_return=is_return,
 		is_zero_rated_only=is_zero_rated_only,
+		is_exempt_only=is_exempt_only,
 		company_currency=get_company_currency(company),
 	)
 
@@ -192,6 +213,7 @@ def build_sales_invoice_print_profile(
 	company_currency: str | None = None,
 	is_zero_rated_only: int = 0,
 	statutory_controls: dict | None = None,
+	is_exempt_only: int = 0,
 ):
 	if not posting_date:
 		frappe.throw(
@@ -206,6 +228,11 @@ def build_sales_invoice_print_profile(
 	threshold_basis = "base_grand_total_zar"
 	if cint(is_return):
 		invoice_type = "credit_note"
+	elif cint(is_exempt_only):
+		# Section 20 tax invoices are issued for taxable supplies only. A document for
+		# exempt supplies alone is an ordinary invoice and must not be headed "tax invoice".
+		invoice_type = "exempt_supply_invoice"
+		threshold_basis = "exempt_supply"
 	elif company_currency and company_currency != "ZAR":
 		# The statutory thresholds are rand amounts. Without a ZAR company-currency
 		# amount, use the stricter format instead of understating invoice requirements.
@@ -253,6 +280,13 @@ def is_zero_rated_only_invoice(doc) -> bool:
 		or cint(getattr(item, "is_zero_rated", 0))
 		for item in doc.items
 	)
+
+
+def is_exempt_only_invoice(doc) -> bool:
+	"""Return true only when every line is explicitly classified as an exempt supply."""
+	if flt(getattr(doc, "total_taxes_and_charges", 0)) != 0 or not getattr(doc, "items", None):
+		return False
+	return all(getattr(item, "custom_sa_vat_category", None) == "Exempt" for item in doc.items)
 
 
 def get_invoice_type(consideration, *, no_invoice_threshold, full_invoice_threshold):

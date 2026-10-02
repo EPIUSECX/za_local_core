@@ -157,6 +157,7 @@
 				is_pos: frm.doc.is_pos,
 				is_return: frm.doc.is_return,
 				is_zero_rated_only: is_zero_rated_only(frm.doc),
+				is_exempt_only: is_exempt_only(frm.doc),
 			},
 			callback: ({ message }) => {
 				if (!message) return;
@@ -178,6 +179,11 @@
 				["Zero Rated", "Export Zero Rated"].includes(item.custom_sa_vat_category) ||
 				cint(item.is_zero_rated),
 		);
+	}
+
+	function is_exempt_only(doc) {
+		if (flt(doc.total_taxes_and_charges) !== 0 || !(doc.items || []).length) return false;
+		return doc.items.every((item) => item.custom_sa_vat_category === "Exempt");
 	}
 
 	function cache_original_default_print_format(frm) {

@@ -280,6 +280,7 @@
 				<tr>
 					<td>
 						{% if doc.get("return_against") %}<span class="heading">{{ _("Adjusts Document") }}:</span> {{ doc.get("return_against") | e }}{% endif %}
+						{% if doc.get("za_adjustment_reason") %}<br><span class="heading">{{ _("Reason for Adjustment") }}:</span> {{ doc.get("za_adjustment_reason") | e }}{% endif %}
 					</td>
 					<td>
 						{% if doc.get("amended_from") %}<span class="heading">{{ _("Amended From") }}:</span> {{ doc.get("amended_from") | e }}{% endif %}

@@ -234,6 +234,19 @@ def ensure_vat_custom_fields():
 					"module": "SA VAT",
 				},
 			],
+			"Sales Invoice": [
+				{
+					"fieldname": "za_adjustment_reason",
+					"fieldtype": "Small Text",
+					"label": "Reason for Adjustment",
+					"insert_after": "return_against",
+					"depends_on": "eval:doc.is_return",
+					"allow_on_submit": 0,
+					"description": "Brief explanation of the circumstances giving rise to this credit note "
+					"(VAT Act section 21(3)). Printed on the credit note.",
+					"module": "SA VAT",
+				},
+			],
 			"Item Group": [
 				{
 					"fieldname": "is_capital_goods",
