@@ -123,7 +123,7 @@ def ensure_number_card(module: str, spec: dict) -> str | None:
 			"show_full_number": spec.get("show_full_number", 1),
 			"module": module,
 			"is_standard": 0,
-			"currency": display_currency(),
+			"currency": metric_currency(spec),
 		}
 	)
 	card.insert(ignore_permissions=True)
@@ -150,6 +150,7 @@ def ensure_dashboard_chart(module: str, spec: dict) -> str | None:
 			"group_by_type": spec.get("group_by_type"),
 			"group_by_based_on": spec.get("group_by_based_on"),
 			"aggregate_function_based_on": spec.get("aggregate_function_based_on"),
+			"value_based_on": chart_value_field(spec),
 			"based_on": spec.get("based_on"),
 			"time_interval": spec.get("time_interval", "Monthly"),
 			"timespan": spec.get("timespan", "Last Year"),
@@ -158,13 +159,44 @@ def ensure_dashboard_chart(module: str, spec: dict) -> str | None:
 			"is_public": 1,
 			"module": module,
 			"is_standard": 0,
-			"currency": display_currency(),
+			"currency": metric_currency(spec),
 		}
 	)
 	for column in spec.get("y_axis") or []:
 		chart.append("y_axis", column)
 	chart.insert(ignore_permissions=True)
 	return chart.name
+
+
+def chart_value_field(spec: dict) -> str | None:
+	"""Field a Sum or Average time-series chart totals.
+
+	Frappe reads ``value_based_on`` for these chart types and falls back to the
+	literal ``1`` when it is empty, so a chart declared with only
+	``aggregate_function_based_on`` (the Group By field) silently counted
+	documents: "PAYE Payable by Month" showed 1 per month instead of the rand
+	amount. Specs may declare either name.
+	"""
+	if spec.get("chart_type") not in ("Sum", "Average"):
+		return None
+	return spec.get("value_based_on") or spec.get("aggregate_function_based_on")
+
+
+def is_amount_metric(spec: dict) -> bool:
+	"""Whether the metric's value is money rather than a count of documents.
+
+	A currency on a count makes Frappe print "R 2.00" for two filings.
+	"""
+	if "label" in spec:
+		return spec.get("function") in ("Sum", "Average")
+	if spec.get("chart_type") == "Report":
+		return True
+	return spec.get("chart_type") in ("Sum", "Average") or spec.get("group_by_type") in ("Sum", "Average")
+
+
+def metric_currency(spec: dict) -> str | None:
+	"""Currency an amount metric is denominated in; counts carry none."""
+	return display_currency() if is_amount_metric(spec) else None
 
 
 def display_currency() -> str | None:
@@ -209,24 +241,27 @@ def repair_metric_presentation(module: str, cards=(), charts=()) -> dict:
 	"""Bring metrics created by an earlier release up to the current contract.
 
 	``ensure_*`` never overwrites an existing record, so a site that installed
-	before this fix keeps the broken filter shape until something repairs it. Only
-	the fields that were wrong are written, so a deliberate edit elsewhere on the
-	card survives, and only records this module owns are touched.
+	before a fix keeps the broken definition until something repairs it. Only the
+	fields earlier releases got wrong are written -- filters, currency, and the
+	summed and dated fields of a Sum chart -- so a deliberate edit elsewhere on the
+	metric survives, and only records this module owns are touched.
 	"""
 	if not _schema_available():
 		return {"cards": [], "charts": []}
 
-	currency = display_currency()
 	repaired = {"cards": [], "charts": []}
-	for doctype, specs, key, extra in (
-		(CARD_DOCTYPE, cards, "label", {"show_full_number": 1, "currency": currency}),
-		(CHART_DOCTYPE, charts, "chart_name", {"currency": currency}),
-	):
+	for doctype, specs, key in ((CARD_DOCTYPE, cards, "label"), (CHART_DOCTYPE, charts, "chart_name")):
 		for spec in specs:
 			name = spec[key]
 			if frappe.db.get_value(doctype, name, "module") != module:
 				continue
-			frappe.db.set_value(doctype, name, {"filters_json": _filters_for(spec), **extra})
+			values = {"filters_json": _filters_for(spec), "currency": metric_currency(spec)}
+			if doctype == CARD_DOCTYPE:
+				values["show_full_number"] = 1
+			elif spec.get("chart_type") in ("Sum", "Average"):
+				values["value_based_on"] = chart_value_field(spec)
+				values["based_on"] = spec.get("based_on")
+			frappe.db.set_value(doctype, name, values)
 			repaired["cards" if doctype == CARD_DOCTYPE else "charts"].append(name)
 	return repaired
 
@@ -250,6 +285,7 @@ def _inputs_available(spec: dict) -> bool:
 	meta = frappe.get_meta(doctype)
 	fields = [
 		spec.get("aggregate_function_based_on"),
+		spec.get("value_based_on"),
 		spec.get("based_on"),
 		spec.get("group_by_based_on"),
 		spec.get("x_field"),

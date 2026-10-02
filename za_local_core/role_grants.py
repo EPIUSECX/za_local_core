@@ -12,6 +12,11 @@ from frappe.permissions import add_permission, update_permission_property
 CORE_GRANTS = (
 	# EE-PERM-1: the reviewer of EE plans, filings and readiness evidence resolves the company.
 	("Company", "ZA Compliance Reviewer", ("read",)),
+	("Company", "ZA Compliance Manager", ("read",)),
+	# The SA VAT setup checklist sends the Accounts Manager to confirm the VAT
+	# source and rate pack are approved. Approval stays with the compliance roles.
+	("ZA Statutory Source", "Accounts Manager", ("read",)),
+	("ZA Statutory Rate Pack", "Accounts Manager", ("read",)),
 )
 
 

@@ -1,6 +1,6 @@
 {
  "action": "Go to Page",
- "action_label": "Open VAT Settings",
+ "action_label": "Review South Africa VAT Settings",
  "creation": "2026-08-10 00:00:00.000000",
  "description": "Set the Statutory Control Date inside the approved window, pick the VAT vendor type, SARS filing category, filing day and the Output and Input VAT accounts. The standard rate and thresholds resolve themselves from the approved pack.",
  "docstatus": 0,
@@ -9,7 +9,7 @@
  "is_complete": 0,
  "is_single": 0,
  "is_skipped": 0,
- "modified": "2026-08-10 12:00:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "modified_by": "Administrator",
  "name": "Review South Africa VAT Settings",
  "owner": "Administrator",

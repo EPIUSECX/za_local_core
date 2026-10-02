@@ -1,6 +1,6 @@
 {
  "action": "Go to Page",
- "action_label": "Open Publish Localisation Guides",
+ "action_label": "Publish the Practitioner Guides",
  "creation": "2026-08-10 00:00:00.000000",
  "description": "With Frappe Wiki installed, publish the packaged practitioner and end-user guides onto this site. The same content ships as Markdown in each app repository either way.",
  "docstatus": 0,
@@ -9,7 +9,7 @@
  "is_complete": 0,
  "is_single": 0,
  "is_skipped": 0,
- "modified": "2026-08-10 12:00:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "modified_by": "Administrator",
  "name": "Publish the Practitioner Guides",
  "owner": "Administrator",

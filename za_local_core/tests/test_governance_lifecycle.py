@@ -179,6 +179,7 @@ class TestGovernanceLifecycle(IntegrationTestCase):
 				"approved_by": self.approver,
 			}
 		).insert()
+		self.assertEqual(self._calendar(filing), {"filing": filing.name, "status": "In Progress"})
 		working_paper, working_paper_checksum = self._evidence(
 			"filing-working-paper", b"approved filing working paper"
 		)
@@ -199,6 +200,7 @@ class TestGovernanceLifecycle(IntegrationTestCase):
 		with self.set_user(self.approver):
 			filing.submit()
 		self.assertEqual(filing.status, "Approved")
+		self.assertEqual(self._calendar(filing), {"filing": filing.name, "status": "Approved"})
 
 		receipt_file, receipt_checksum = self._evidence("receipt", b"authority receipt")
 		receipt = frappe.get_doc(
@@ -217,10 +219,25 @@ class TestGovernanceLifecycle(IntegrationTestCase):
 		with self.set_user(self.approver):
 			receipt.submit()
 		self.assertEqual(frappe.db.get_value("ZA Filing", filing.name, "status"), "Accepted")
+		self.assertEqual(self._calendar(filing), {"filing": filing.name, "status": "Accepted"})
 		self.assertEqual(
 			file_error_count,
 			frappe.db.count("Error Log", {"error": ["like", "%_test-receipt%"]}),
 		)
+
+		# Cancelling releases the period: past its due date it is overdue again
+		# until an amended filing links itself.
+		with self.set_user(self.approver):
+			receipt.cancel()
+		self.assertEqual(self._calendar(filing), {"filing": filing.name, "status": "Approved"})
+		filing.reload()
+		with self.set_user(self.approver):
+			filing.cancel()
+		self.assertEqual(self._calendar(filing), {"filing": None, "status": "Overdue"})
+
+	def _calendar(self, filing):
+		key = "|".join((filing.company, filing.obligation, str(filing.period_start), str(filing.period_end)))
+		return frappe.db.get_value("ZA Compliance Calendar Entry", key, ["filing", "status"], as_dict=True)
 
 	def test_evidence_fixture_creates_a_real_private_file(self):
 		file_url, checksum = self._evidence("real-private-file", b"real private evidence")

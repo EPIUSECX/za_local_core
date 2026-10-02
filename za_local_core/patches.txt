@@ -16,3 +16,5 @@ za_local_core.patches.v1_4.correct_vat_controls_source
 za_local_core.patches.v1_5.release_cancelled_filing_keys
 za_local_core.patches.v1_5.grant_reviewer_company_read
 za_local_core.patches.v1_5.strip_company_from_vat_tax_descriptions
+za_local_core.patches.v1_5.link_filings_to_calendar
+za_local_core.patches.v1_5.grant_checklist_access

@@ -12,7 +12,10 @@ from frappe.tests.classes import IntegrationTestCase
 from za_local_core.dashboards import (
 	CARD_DOCTYPE,
 	CHART_DOCTYPE,
+	chart_value_field,
 	display_currency,
+	is_amount_metric,
+	metric_currency,
 	repair_metric_presentation,
 	seed_dashboards,
 )
@@ -97,21 +100,64 @@ class TestCoreDashboards(IntegrationTestCase):
 		for spec in CORE_CHARTS:
 			render_chart(chart_name=spec["chart_name"], refresh=1)
 
-	def test_metrics_are_denominated_in_the_site_currency(self):
+	def test_amount_metrics_are_denominated_in_the_site_currency(self):
 		"""Frappe stamps a currency at creation, and the metrics are seeded during
 		app installation -- before the setup wizard has set the real one. Left alone
-		they render South African statutory figures with the installer's default."""
+		they render South African statutory figures with the installer's default.
+		A count carries no currency: with one, two filings render as "R 2.00"."""
+		from za_local_core.sa_vat.install import VAT_CHARTS, VAT_NUMBER_CARDS, seed_vat_dashboards
+
 		seed_core_dashboards()
+		seed_vat_dashboards()
 		expected = display_currency()
 		self.assertTrue(expected)
 
-		for doctype in (CARD_DOCTYPE, CHART_DOCTYPE):
-			for name in frappe.get_all(doctype, filters={"module": CORE_MODULE}, pluck="name"):
+		for doctype, specs, key in (
+			(CARD_DOCTYPE, CORE_NUMBER_CARDS + VAT_NUMBER_CARDS, "label"),
+			(CHART_DOCTYPE, CORE_CHARTS + VAT_CHARTS, "chart_name"),
+		):
+			for spec in specs:
+				want = expected if is_amount_metric(spec) else None
 				self.assertEqual(
-					frappe.db.get_value(doctype, name, "currency"),
-					expected,
-					f"{doctype} {name} is not denominated in the site currency",
+					frappe.db.get_value(doctype, spec[key], "currency"),
+					want,
+					f"{doctype} {spec[key]}",
 				)
+
+	def test_sum_charts_total_their_field_rather_than_counting_documents(self):
+		"""Frappe totals ``value_based_on`` and falls back to ``1`` when it is empty."""
+		from za_local_core.sa_vat.install import VAT_CHARTS, seed_vat_dashboards
+
+		seed_vat_dashboards()
+		sum_charts = [spec for spec in VAT_CHARTS if spec.get("chart_type") == "Sum"]
+		self.assertTrue(sum_charts)
+		for spec in sum_charts:
+			self.assertTrue(chart_value_field(spec), spec["chart_name"])
+			self.assertEqual(
+				frappe.db.get_value(CHART_DOCTYPE, spec["chart_name"], "value_based_on"),
+				chart_value_field(spec),
+				spec["chart_name"],
+			)
+
+	def test_repair_corrects_a_sum_chart_that_counts(self):
+		from za_local_core.sa_vat.install import VAT_CHARTS, VAT_MODULE, VAT_NUMBER_CARDS, seed_vat_dashboards
+
+		seed_vat_dashboards()
+		chart = next(spec for spec in VAT_CHARTS if spec.get("chart_type") == "Sum")
+		frappe.db.set_value(CHART_DOCTYPE, chart["chart_name"], {"value_based_on": None, "currency": "INR"})
+		count_chart = next(spec for spec in VAT_CHARTS if spec.get("group_by_type") == "Count")
+		frappe.db.set_value(CHART_DOCTYPE, count_chart["chart_name"], "currency", "INR")
+
+		repair_metric_presentation(VAT_MODULE, cards=VAT_NUMBER_CARDS, charts=VAT_CHARTS)
+
+		self.assertEqual(
+			frappe.db.get_value(CHART_DOCTYPE, chart["chart_name"], "value_based_on"),
+			chart_value_field(chart),
+		)
+		self.assertEqual(
+			frappe.db.get_value(CHART_DOCTYPE, chart["chart_name"], "currency"), display_currency()
+		)
+		self.assertIsNone(frappe.db.get_value(CHART_DOCTYPE, count_chart["chart_name"], "currency"))
 
 	def test_repair_restamps_a_stale_currency(self):
 		seed_core_dashboards()
@@ -120,7 +166,9 @@ class TestCoreDashboards(IntegrationTestCase):
 
 		repair_metric_presentation(CORE_MODULE, cards=CORE_NUMBER_CARDS, charts=CORE_CHARTS)
 
-		self.assertEqual(frappe.db.get_value(CARD_DOCTYPE, card, "currency"), display_currency())
+		self.assertEqual(
+			frappe.db.get_value(CARD_DOCTYPE, card, "currency"), metric_currency(CORE_NUMBER_CARDS[0])
+		)
 
 	def test_the_repair_is_reachable_on_a_fresh_install(self):
 		"""The repair itself was correct; nothing ever called it.
@@ -145,16 +193,16 @@ class TestCoreDashboards(IntegrationTestCase):
 
 		seed_core_dashboards()
 		seed_vat_dashboards()
-		stale = [CORE_NUMBER_CARDS[0]["label"], VAT_NUMBER_CARDS[0]["label"]]
-		for card in stale:
-			frappe.db.set_value(CARD_DOCTYPE, card, "currency", "INR")
+		stale = [CORE_NUMBER_CARDS[0], VAT_NUMBER_CARDS[0]]
+		for spec in stale:
+			frappe.db.set_value(CARD_DOCTYPE, spec["label"], "currency", "INR")
 
 		# The setup wizard passes its payload positionally; it must be optional.
 		repair_core_metrics(None)
 
-		for card in stale:
+		for spec in stale:
 			self.assertEqual(
-				frappe.db.get_value(CARD_DOCTYPE, card, "currency"),
-				display_currency(),
-				f"{card} was not restamped",
+				frappe.db.get_value(CARD_DOCTYPE, spec["label"], "currency"),
+				metric_currency(spec),
+				f"{spec['label']} was not restamped",
 			)

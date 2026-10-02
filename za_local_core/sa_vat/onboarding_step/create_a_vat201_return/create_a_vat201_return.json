@@ -1,6 +1,6 @@
 {
  "action": "Create Entry",
- "action_label": "New VAT201 Return",
+ "action_label": "Create a VAT201 Return",
  "creation": "2026-08-10 00:00:00.000000",
  "description": "Prepare a VAT201 working paper for a completed tax period. Reconciliation and eFiling submission remain controlled manual steps.",
  "docstatus": 0,
@@ -9,7 +9,7 @@
  "is_complete": 0,
  "is_single": 0,
  "is_skipped": 0,
- "modified": "2026-08-10 12:00:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "modified_by": "Administrator",
  "name": "Create a VAT201 Return",
  "owner": "Administrator",

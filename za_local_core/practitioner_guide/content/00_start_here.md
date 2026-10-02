@@ -4,9 +4,11 @@ An ordered path from an installed site to a working South African configuration.
 the Desk, because knowing which DocType to open is not the same as knowing where to find it. Work top to bottom:
 each step assumes the ones above it are done.
 
-The Desk also carries this as a checklist. Open **SA Overview** and the sidebar shows *South African Localisation
-Setup*; **SA VAT**, **SA Payroll**, **SA Labour** and **SA COIDA** each carry their own. Those checklists and this
-page cover the same ground, so use whichever you prefer.
+The Desk also carries this as a checklist, under **Getting Started** in each workspace's sidebar: *South African
+Localisation Setup* on **SA Overview**, and one each on **SA VAT** (Accounts Manager), **SA Payroll** (Payroll
+Manager), **SA Labour** and **SA COIDA** (HR Manager). The checklists appear only once the setup wizard has been
+completed in the browser. A "Create" step ticks itself once its record exists; a "Review" or "Confirm" step ticks
+when you open it. Those checklists and this page cover the same ground, so use whichever you prefer.
 
 ## Before you start: who does what
 

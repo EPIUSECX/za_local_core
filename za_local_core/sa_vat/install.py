@@ -293,7 +293,7 @@ VAT_CHARTS = (
 		"chart_type": "Sum",
 		"document_type": "VAT201 Return",
 		"based_on": "to_date",
-		"aggregate_function_based_on": "total_amount_payable",
+		"value_based_on": "total_amount_payable",
 		"time_interval": "Monthly",
 		"timespan": "Last Year",
 		"type": "Bar",

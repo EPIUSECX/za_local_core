@@ -1,6 +1,6 @@
 {
  "action": "Go to Page",
- "action_label": "Open Statutory Sources",
+ "action_label": "Approve the Statutory Sources",
  "creation": "2026-08-10 00:00:00.000000",
  "description": "The app seeds SARS, COIDA, BCEA and NMW catalogue metadata as drafts. Retrieve each official document, attach it privately with its SHA-256 checksum and have a reviewer submit it.",
  "docstatus": 0,
@@ -9,7 +9,7 @@
  "is_complete": 0,
  "is_single": 0,
  "is_skipped": 0,
- "modified": "2026-08-10 12:00:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "modified_by": "Administrator",
  "name": "Approve the Statutory Sources",
  "owner": "Administrator",

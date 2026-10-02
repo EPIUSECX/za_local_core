@@ -1,6 +1,6 @@
 {
  "action": "Go to Page",
- "action_label": "Open Company",
+ "action_label": "Confirm Company Registration Details",
  "creation": "2026-08-10 00:00:00.000000",
  "description": "Confirm the South African company, its 10-digit VAT registration number, PAYE and SDL reference numbers and the default currency. Everything downstream is company-scoped.",
  "docstatus": 0,
@@ -9,7 +9,7 @@
  "is_complete": 0,
  "is_single": 0,
  "is_skipped": 0,
- "modified": "2026-08-10 12:00:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "modified_by": "Administrator",
  "name": "Confirm Company Registration Details",
  "owner": "Administrator",

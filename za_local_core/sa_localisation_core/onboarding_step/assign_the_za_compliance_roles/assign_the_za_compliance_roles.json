@@ -1,6 +1,6 @@
 {
  "action": "Go to Page",
- "action_label": "Open Users",
+ "action_label": "Assign the ZA Compliance Roles",
  "creation": "2026-08-10 00:00:00.000000",
  "description": "Assign ZA Compliance User, ZA Compliance Reviewer and ZA Compliance Manager to different people. Approval of a statutory source or rate pack is blocked for the user who created it, so a single Administrator account cannot complete the governance workflow.",
  "docstatus": 0,
@@ -9,7 +9,7 @@
  "is_complete": 0,
  "is_single": 0,
  "is_skipped": 0,
- "modified": "2026-08-10 12:00:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "modified_by": "Administrator",
  "name": "Assign the ZA Compliance Roles",
  "owner": "Administrator",

@@ -7,6 +7,7 @@ from za_local_core.localisation import resolve_south_african_companies
 from za_local_core.migration.backfill import run as run_core_backfill
 from za_local_core.migration.ownership import verify_checked_manifest
 from za_local_core.navigation import sync_shared_navigation
+from za_local_core.onboarding import refresh_step_presentation, sync_onboarding_progress
 from za_local_core.practitioner_guide.stage import unpublish_guides
 from za_local_core.role_grants import grant_core_permissions
 from za_local_core.sa_vat.install import (
@@ -60,6 +61,8 @@ def after_migrate() -> None:
 	repair_core_metrics()
 	_setup_vat_module()
 	sync_shared_navigation()
+	refresh_step_presentation()
+	sync_onboarding_progress()
 
 
 def repair_core_metrics(user_input: dict | None = None) -> dict:

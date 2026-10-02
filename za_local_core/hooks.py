@@ -301,6 +301,10 @@ extend_doctype_class = {
 }
 
 doc_events = {
+	# A record created anywhere completes the setup-checklist step that asks for it.
+	"*": {
+		"after_insert": "za_local_core.onboarding.mark_created",
+	},
 	"Company": {
 		"after_insert": "za_local_core.custom.company.seed_readiness_for_new_company",
 	},
@@ -311,11 +315,23 @@ doc_events = {
 		"validate": "za_local_core.sa_vat.item_sync.sync_item_zero_rated_flag",
 	},
 	"ZA Submission Receipt": {
-		"on_submit": "za_local_core.sa_vat.events.sync_vat201_from_receipt",
-		"on_cancel": "za_local_core.sa_vat.events.sync_vat201_from_receipt",
+		"on_submit": [
+			"za_local_core.sa_vat.events.sync_vat201_from_receipt",
+			"za_local_core.services.calendar.sync_filing_event",
+		],
+		"on_cancel": [
+			"za_local_core.sa_vat.events.sync_vat201_from_receipt",
+			"za_local_core.services.calendar.sync_filing_event",
+		],
 	},
+	# Every filing shows on the compliance calendar for its period.
 	"ZA Filing": {
-		"on_cancel": "za_local_core.sa_vat.events.sync_vat201_from_filing",
+		"on_update": "za_local_core.services.calendar.sync_filing_event",
+		"on_submit": "za_local_core.services.calendar.sync_filing_event",
+		"on_cancel": [
+			"za_local_core.sa_vat.events.sync_vat201_from_filing",
+			"za_local_core.services.calendar.sync_filing_event",
+		],
 	},
 }
 

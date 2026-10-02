@@ -1,6 +1,6 @@
 {
  "action": "Go to Page",
- "action_label": "Open Item Tax Templates",
+ "action_label": "Review VAT Tax Templates",
  "creation": "2026-08-10 00:00:00.000000",
  "description": "Apply Recommended VAT Setup builds the Sales, Purchase and Item tax templates from the approved rate. Review them before transacting.",
  "docstatus": 0,
@@ -9,7 +9,7 @@
  "is_complete": 0,
  "is_single": 0,
  "is_skipped": 0,
- "modified": "2026-08-10 12:00:00.000000",
+ "modified": "2026-10-02 12:00:00.000000",
  "modified_by": "Administrator",
  "name": "Review VAT Tax Templates",
  "owner": "Administrator",
