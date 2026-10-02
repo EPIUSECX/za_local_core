@@ -9,4 +9,7 @@ All installed domains appear under one **SA Localisation** desktop icon and in t
 same workspace switcher. The domain code remains independently versioned, but
 users do not need to leave the localisation shell when moving between workspaces.
 
+Each workspace's sidebar shows a **Getting Started** setup checklist to the role that owns it. It disappears once
+every step is done.
+
 Available links depend on your role and company permissions. If sensitive information is visible outside your job scope, stop and report the access issue to the System Manager or Information Officer.

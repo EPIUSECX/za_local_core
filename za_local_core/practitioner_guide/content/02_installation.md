@@ -3,6 +3,12 @@
 Installing is not configuring. Once the apps are on the site, work through
 [Start Here: First-Run Setup](start-here) in order; this page covers only the bench and migration mechanics.
 
+Then sign in and complete the **setup wizard in the browser** (country South Africa, time zone
+Africa/Johannesburg, currency ZAR, financial year from 1 March). Do not script around it: completing the wizard
+switches on the **Getting Started** setup checklists and runs the suite's setup hooks, which denominate the
+workspace figures in rand. A site set up by script shows no checklists and keeps the installer's currency on its
+workspace cards.
+
 Install on Frappe v16 in dependency order. ERPNext is required by `za_local_core`. HRMS is required before
 `za_local_payroll`. For the full suite, install ERPNext, HRMS, `za_local_core`, then `za_local_payroll`.
 `za_local_core` installs without HRMS when payroll is not required, and gives VAT plus the governance foundation.

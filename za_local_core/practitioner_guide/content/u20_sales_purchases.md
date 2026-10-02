@@ -1,6 +1,9 @@
 # Sales and purchase VAT
 
-Select the approved company tax template and verify each item’s South African VAT category before submitting. For zero-rated or exempt treatment, retain the evidence required by company policy and practitioner guidance.
+Select the approved company tax template and verify each item’s South African VAT category before submitting.
+Each line takes its category from the item. If one line is genuinely treated differently (for example a zero-rated
+food item exported), change that line's **SA VAT Category** and record a **VAT Category Reason**; a changed line
+without a reason is refused. For zero-rated or exempt treatment, retain the evidence required by company policy and practitioner guidance.
 
 On purchases, confirm that input VAT is legally claimable and belongs to the correct period. Ask Finance to review imports, mixed-use, entertainment, passenger vehicles, second-hand goods and adjustments.
 

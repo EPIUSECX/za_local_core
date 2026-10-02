@@ -8,7 +8,10 @@ and the organisation's advisers.
 
 - Register the Information Officer and retain independent review evidence.
 - Maintain processing activities, lawful purpose, retention, operators and cross-border safeguards.
-- Verify identity before responding to a data-subject request.
+- Verify identity before responding to a data-subject request. The due date defaults to 30 days after receipt
+  (PAIA section 25) and can be extended to 60 days only with a recorded reason and evidence (section 26). A daily
+  task marks open requests past their due date **Overdue**. An independent reviewer closes fulfilment with private
+  response evidence; Accounts, HR and Payroll Managers cannot read requests.
 - Restrict payroll, tax IDs, bank details, disability, injury and medical information by role, company and purpose.
 - Record incident containment, notification assessment, regulator/data-subject communication and remediation evidence.
 - Maintain and approve the PAIA manual and publication evidence.
