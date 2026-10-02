@@ -1,10 +1,16 @@
 """Extend invoice controllers to use ZA VAT tax calculation."""
 
+from za_local_core.localisation import is_south_african_company
+
 
 class ZASalesInvoice:
 	"""Sales Invoice extension using ZA VAT tax calculation."""
 
 	def calculate_taxes_and_totals(self):
+		# Other countries keep ERPNext item-tax-template semantics (item rate replaces row rate).
+		if not is_south_african_company(self.get("company")):
+			return super().calculate_taxes_and_totals()
+
 		from za_local_core.sa_vat.vat_tax_calculation import ZACalculateTaxesAndTotals
 
 		ZACalculateTaxesAndTotals(self)
@@ -23,6 +29,9 @@ class ZAPurchaseInvoice:
 	"""Purchase Invoice extension using ZA VAT tax calculation."""
 
 	def calculate_taxes_and_totals(self):
+		if not is_south_african_company(self.get("company")):
+			return super().calculate_taxes_and_totals()
+
 		from za_local_core.sa_vat.vat_tax_calculation import ZACalculateTaxesAndTotals
 
 		ZACalculateTaxesAndTotals(self)

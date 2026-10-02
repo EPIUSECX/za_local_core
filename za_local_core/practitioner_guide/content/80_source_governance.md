@@ -39,7 +39,7 @@ The packaged 2026/27 catalog contains these official references:
 - [SARS Guide for Employers in respect of Employees' Tax (2027)](https://www.sars.gov.za/guide-for-employers-in-respect-of-employees-tax-2027/).
 - [SARS PAYE Employer Reconciliation BRS version 25.3.0](https://www.sars.gov.za/wp-content/uploads/Docs/PAYE/BRS/SARS_PAYE_BRS-PAYE-Employer-Reconciliation_V25-3-0.pdf), applicable from 1 March 2026 until replaced.
 - [Government Gazette 54577, General Notice 3910](https://www.gov.za/sites/default/files/gcis_document/202604/54577gen3910.pdf): COIDA maximum annual earnings of R668,000 per employee from 1 March 2026.
-- [Department of Employment and Labour BCEA earnings-threshold notice](https://www.labour.gov.za/Media-Desk/Media-Statements/Pages/Department-of-Employment-and-Labour-sets-a-new-threshold-in-the-protection-of-employees-.aspx): R269,900.90 per year from 1 May 2026.
+- [Department of Employment and Labour BCEA earnings-threshold notice](https://www.labour.gov.za/Media-Desk/Media-Statements/Pages/Department-of-Employment-and-Labour-sets-a-new-threshold-in-the-protection-of-employees-.aspx): R269,600.90 per year from 1 May 2026 (Government Gazette 54544, GN 7384).
 - [Government Gazette 54075, Notice 7083](https://www.gov.za/sites/default/files/gcis_document/202602/54075rg11941gon7083.pdf): general National Minimum Wage of R30.23 per ordinary hour from 1 March 2026.
 
 These references do not by themselves prove automated coverage. In particular, a BRS entry does not mean an

@@ -125,3 +125,15 @@ employer is conditional on the human gates above and the employer's master data.
 backup and rollback procedure until those gates pass. The old `za_local` repository may then be archived; do not
 run it beside the extracted apps on the same active site because duplicate modules/controllers create ambiguous
 ownership.
+
+## Addendum, 1 October 2026: reference-company end-to-end validation
+
+The counts above are those of the original sign-off and are kept as recorded. The suite is now two apps
+(`za_local_core` 2.0.0, `za_local_payroll` 2.1.0). On a clean site with Frappe 16.35.0, ERPNext 16.36.1 and
+HRMS 16.20.0, after the fixes from the synthetic reference-company validation (see that validation's
+acceptance report and gap register):
+
+- `za_local_core`: 186 tests, all passing (14 skipped);
+- `za_local_payroll`: 240 tests, all passing (2 skipped).
+
+These counts include the new `test_reference_company_regressions` modules, one test per defect fixed.

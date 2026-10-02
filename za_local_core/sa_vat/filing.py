@@ -61,7 +61,7 @@ def create_filing(vat_return, settings) -> str:
 	)
 	try:
 		filing.insert()
-	except frappe.DuplicateEntryError:
+	except (frappe.DuplicateEntryError, frappe.UniqueValidationError):
 		filing_name = frappe.db.get_value(
 			"ZA Filing",
 			{
@@ -69,6 +69,7 @@ def create_filing(vat_return, settings) -> str:
 				"obligation": settings.vat201_compliance_obligation,
 				"period_start": vat_return.from_date,
 				"period_end": vat_return.to_date,
+				"docstatus": ("<", 2),
 			},
 			"name",
 		)

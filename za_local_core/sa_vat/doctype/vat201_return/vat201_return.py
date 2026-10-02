@@ -6,6 +6,7 @@ from frappe.model.document import Document
 from frappe.utils import cint, flt, formatdate, getdate, today
 
 from za_local_core.governance import stamp_evidence_checksum, validate_private_evidence
+from za_local_core.localisation import is_south_african_company
 from za_local_core.sa_vat.filing import create_filing, record_submission_receipt
 from za_local_core.sa_vat.periods import (
 	LEGACY_PERIOD_BY_CATEGORY,
@@ -68,6 +69,7 @@ class VAT201Return(Document):
 			self.set(fieldname, None)
 
 	def validate(self):
+		self.validate_company_scope()
 		self.validate_dates()
 		self.ensure_period_dates()
 		self.set_filing_category()
@@ -154,6 +156,19 @@ class VAT201Return(Document):
 			)
 		else:
 			self.submission_period = None
+
+	def validate_company_scope(self):
+		"""A VAT201 belongs only to a South African company with a VAT registration number."""
+		if not self.company:
+			return
+		if not is_south_african_company(self.company):
+			frappe.throw(_("VAT201 Returns apply only to companies with Country set to South Africa."))
+		if not frappe.db.get_value("Company", self.company, "za_vat_number"):
+			frappe.throw(
+				_(
+					"Company {0} has no VAT Registration Number; VAT201 Returns apply only to VAT vendors."
+				).format(self.company)
+			)
 
 	def set_vat_registration_number(self):
 		if self.company:
@@ -671,7 +686,10 @@ class VAT201Return(Document):
 				"voucher_type": "Journal Entry",
 				"posting_date": ["between", [self.from_date, self.to_date]],
 				"account": ["in", list(tax_accounts | classified_accounts)],
-				"is_cancelled": ["in", [0, 1]],
+				# A cancelled journal and its reversal net to nil and never enter the
+				# return. Linking them would also fail: the row's voucher link points
+				# at a cancelled document, which Frappe refuses on save.
+				"is_cancelled": 0,
 			},
 			fields=[
 				"name",

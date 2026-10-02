@@ -67,7 +67,9 @@ class ZAFiling(Document):
 		self.approved_on = now_datetime()
 
 	def on_cancel(self) -> None:
-		self.db_set("status", "Cancelled", update_modified=False)
+		# Release the unique period key, as VAT201 Return does with its active-period
+		# key, so the amended working paper can create its replacement filing.
+		self.db_set({"status": "Cancelled", "filing_key": None}, update_modified=False)
 
 	def before_cancel(self) -> None:
 		validate_accountable_actor(
