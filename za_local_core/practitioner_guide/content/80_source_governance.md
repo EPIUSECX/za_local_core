@@ -22,7 +22,8 @@ and nothing more; approving them is a human step, and deliberately so.
    keeps a single-administrator site moving, but the bypass is recorded as a comment on the document.
 4. Open **ZA Statutory Rate Pack** for domain `VAT`, effective 1 April 2026 to 31 March 2027. Check every value
    against the evidence you just attached, set **Reviewed By** and submit. The pack cannot be submitted until its
-   source is approved.
+   source is approved, and its effective window must sit inside the source's own effective dates: a pack cannot
+   outlive or predate the document that authorises it.
 5. Return to South Africa VAT Settings. Set a **Statutory Control Date** inside the approved window and save. The
    standard rate, both registration thresholds, both tax-invoice thresholds and the VAT Rates table populate
    themselves, along with the pack and source checksums that prove where they came from.

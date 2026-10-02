@@ -2,6 +2,11 @@
 
 Create one company-scoped settings record for each South African VAT vendor. Confirm the 10-digit VAT registration number, SARS-allocated filing category and every output/input VAT account.
 
+Input VAT uses three ledgers: the general **Input VAT Account**, the **Capital Goods Input VAT Account** and the
+**Import VAT Account**. Each must differ from the others and from the output account. The recommended
+capital and import purchase templates post to their own ledger, and the VAT201 reconciles each ledger separately, so
+a capital purchase posted to the general input ledger is flagged as a mismatch.
+
 ## Approved statutory controls
 
 The standard rate and all registration and tax-invoice thresholds are read-only. Select an explicit **Statutory Control Date** and save. The app resolves all five controls from one submitted `ZA Statutory Rate Pack` and one submitted private `ZA Statutory Source`; it does not fall back to today's date or a hard-coded value:

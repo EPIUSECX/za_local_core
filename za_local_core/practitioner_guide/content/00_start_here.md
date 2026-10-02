@@ -85,12 +85,18 @@ One submitted, enabled profile per South African company, recording which capabi
 and which stay controlled manual. Feature Readiness must not claim Production for a submission channel that is
 still manual.
 
+Feature Readiness can be lowered freely, but never raised directly. Record the higher status in **Proposed Status**
+with private approval evidence and a named approver; that approver, who cannot be the proposer, selects **Approve
+Proposed Status**. A new readiness record cannot start at Production.
+
 ## 6. Configure VAT
 
 *SA VAT → Configuration → South Africa VAT Settings*, or `/desk/south-africa-vat-settings`.
 
 Set the **Statutory Control Date** inside the window you approved in step 4, then the VAT vendor type, SARS filing
-category, filing day, and the company's Output and Input VAT control accounts.
+category, filing day, and the company's Output and Input VAT control accounts. Set the **Capital Goods Input VAT Account**
+and **Import VAT Account** as well: capital and import input tax post to their own ledgers, and each must be
+different from the general input and output accounts.
 
 Do not type a VAT rate. The standard rate, all four thresholds and the VAT Rates table populate themselves from the
 approved pack, along with the pack and source checksums that prove where they came from. A rate typed by hand has

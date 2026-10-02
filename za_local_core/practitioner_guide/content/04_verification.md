@@ -8,7 +8,9 @@ This checks the end state, not the steps that produce it. Work through
 - current statutory sources and rate packs are approved and effective;
 - Payroll Periods and submitted Income Tax Slabs exist per payroll company;
 - VAT accounts and templates point to enabled, company-scoped tax ledgers;
-- Feature Readiness does not claim Production for unsupported external submission channels;
+- Feature Readiness does not claim Production for unsupported external submission channels, and every raised status
+  carries private approval evidence and an approver other than the proposer;
+- capital and import input VAT post to their own ledgers, distinct from the general input and output accounts;
 - `ZA Compliance User`, `ZA Compliance Reviewer` and `ZA Compliance Manager` are assigned to accountable users,
   with distinct people selected for preparation, review and approval where the workflow requires it;
 - low-privilege users cannot read payroll, banking, injury or medical records outside their scope;
