@@ -530,9 +530,33 @@ def backfill_vat_settings_filing_categories():
 	return {"updated": updated, "unresolved": unresolved}
 
 
+INPUT_VAT_ACCOUNT_FIELDS = ("input_vat_account", "capital_input_vat_account", "import_input_vat_account")
+IMPORT_TEMPLATE_FIELDS = {"input_capital_import", "input_goods_import"}
+CAPITAL_TEMPLATE_FIELDS = {"input_capital_local", "input_capital_import"}
+
+
+def get_input_vat_accounts(settings) -> list[str]:
+	"""VAT-2: the Input VAT Account plus any separate capital-goods or import VAT ledger."""
+	accounts = []
+	for fieldname in INPUT_VAT_ACCOUNT_FIELDS:
+		account = getattr(settings, fieldname, None)
+		if account and account not in accounts:
+			accounts.append(account)
+	return accounts
+
+
+def get_purchase_template_account(settings, field_name: str) -> str:
+	"""Import VAT to the import ledger, capital goods to the capital ledger, else Input VAT."""
+	if field_name in IMPORT_TEMPLATE_FIELDS and getattr(settings, "import_input_vat_account", None):
+		return settings.import_input_vat_account
+	if field_name in CAPITAL_TEMPLATE_FIELDS and getattr(settings, "capital_input_vat_account", None):
+		return settings.capital_input_vat_account
+	return settings.input_vat_account
+
+
 def sync_vat_accounts(settings):
 	tracked = []
-	for account in [settings.output_vat_account, settings.input_vat_account]:
+	for account in [settings.output_vat_account, *get_input_vat_accounts(settings)]:
 		if account and account not in tracked:
 			tracked.append(account)
 
@@ -577,6 +601,12 @@ def ensure_default_tax_templates(settings):
 		frappe.throw(_("Select a company before applying recommended VAT templates."))
 	validate_vat_posting_account(settings.output_vat_account, company, _("Output VAT Account"))
 	validate_vat_posting_account(settings.input_vat_account, company, _("Input VAT Account"))
+	for fieldname, label in (
+		("capital_input_vat_account", _("Capital Goods Input VAT Account")),
+		("import_input_vat_account", _("Import VAT Account")),
+	):
+		if getattr(settings, fieldname, None):
+			validate_vat_posting_account(getattr(settings, fieldname), company, label)
 	standard_rate = frappe.utils.flt(settings.standard_vat_rate)
 	if standard_rate <= 0:
 		frappe.throw(_("Standard VAT Rate must be greater than zero."))
@@ -590,6 +620,7 @@ def ensure_default_tax_templates(settings):
 			company=company,
 			account=settings.output_vat_account,
 			rate=rate,
+			description=spec["title"].format(rate=rate),
 		)
 	for spec in DEFAULT_TEMPLATE_SPECS["purchase"]:
 		rate = standard_rate if spec["rate"] is None else spec["rate"]
@@ -597,8 +628,9 @@ def ensure_default_tax_templates(settings):
 			doctype="Purchase Taxes and Charges Template",
 			title=f"{spec['title'].format(rate=rate)} - {company}",
 			company=company,
-			account=settings.input_vat_account,
+			account=get_purchase_template_account(settings, spec["field_name"]),
 			rate=rate,
+			description=spec["title"].format(rate=rate),
 		)
 
 	for fieldname, template in created.items():
@@ -645,7 +677,7 @@ def ensure_item_tax_templates(settings, company):
 			doc.insert()
 
 
-def ensure_tax_template(doctype, title, company, account, rate):
+def ensure_tax_template(doctype, title, company, account, rate, description=None):
 	existing_name = frappe.db.get_value(doctype, {"title": title, "company": company}, "name")
 	if existing_name:
 		doc = frappe.get_doc(doctype, existing_name)
@@ -661,7 +693,9 @@ def ensure_tax_template(doctype, title, company, account, rate):
 			"charge_type": "On Net Total",
 			"account_head": account,
 			"rate": rate,
-			"description": title,
+			# VAT-9: the description prints on the invoice tax line; the title carries the
+			# company only to keep template names unique per company.
+			"description": description or title,
 		},
 	)
 	doc.flags.ignore_permissions = True

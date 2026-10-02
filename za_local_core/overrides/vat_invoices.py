@@ -72,8 +72,15 @@ class ZAPurchaseInvoice:
 		settings_name = frappe.db.get_value("South Africa VAT Settings", {"company": self.company}, "name")
 		if not settings_name:
 			return
-		input_account = frappe.db.get_value("South Africa VAT Settings", settings_name, "input_vat_account")
-		if any(row.account_head == input_account and flt(row.tax_amount) for row in self.get("taxes") or []):
+		from za_local_core.sa_vat.setup import INPUT_VAT_ACCOUNT_FIELDS
+
+		input_accounts = set(
+			frappe.db.get_value(
+				"South Africa VAT Settings", settings_name, list(INPUT_VAT_ACCOUNT_FIELDS), as_dict=True
+			).values()
+		)
+		input_accounts.discard(None)
+		if any(row.account_head in input_accounts and flt(row.tax_amount) for row in self.get("taxes") or []):
 			frappe.throw(
 				_(
 					"Lines marked Blocked carry input VAT that may not be deducted (section 17(2)). "

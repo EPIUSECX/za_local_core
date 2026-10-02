@@ -22,7 +22,7 @@ from za_local_core.sa_vat.reconciliation import (
 	verify_live_ledger,
 	verify_snapshots,
 )
-from za_local_core.sa_vat.setup import VAT_RETURN_SETTING_FIELD_MAP, get_vat_settings
+from za_local_core.sa_vat.setup import VAT_RETURN_SETTING_FIELD_MAP, get_input_vat_accounts, get_vat_settings
 
 OUTPUT_STANDARD_NON_CAPITAL = "Output - A Standard rate (excl capital goods)"
 OUTPUT_STANDARD_CAPITAL = "Output - B Standard rate (only capital goods)"
@@ -44,6 +44,48 @@ PURCHASE_INPUT_CLASSIFICATIONS = {
 	INPUT_OTHER_LOCAL,
 	INPUT_OTHER_IMPORTED,
 }
+
+
+CAPITAL_INPUT_CLASSIFICATIONS = {INPUT_CAPITAL_LOCAL, INPUT_CAPITAL_IMPORTED}
+IMPORTED_INPUT_CLASSIFICATIONS = {INPUT_CAPITAL_IMPORTED, INPUT_OTHER_IMPORTED}
+
+
+def flag_input_vat_ledger_mismatch(rows, taxes, settings) -> None:
+	"""VAT-2: a separate capital or import VAT ledger must agree with the row classification.
+
+	When a company keeps capital-goods or import VAT in its own account, VAT posted to
+	that account but classified otherwise (or the reverse) is sent for review instead of
+	being reported under the wrong VAT201 field.
+	"""
+	posted = {tax.account_head for tax in taxes if flt(tax.get("tax_amount"))}
+	checks = (
+		(
+			getattr(settings, "capital_input_vat_account", None),
+			CAPITAL_INPUT_CLASSIFICATIONS,
+			_("capital goods"),
+		),
+		(getattr(settings, "import_input_vat_account", None), IMPORTED_INPUT_CLASSIFICATIONS, _("import")),
+	)
+	for account, classifications, kind in checks:
+		if not account:
+			continue
+		for row in rows:
+			if row.get("classification_status") != CLASSIFIED or not flt(row.get("tax_amount")):
+				continue
+			in_ledger = account in posted
+			classified = row.get("classification") in classifications
+			if in_ledger == classified:
+				continue
+			row["classification_status"] = NEEDS_REVIEW
+			row["classification_issue"] = (
+				_("VAT is posted to the {0} VAT account {1}, but the line is classified {2}.").format(
+					kind, account, row.get("classification")
+				)
+				if in_ledger
+				else _(
+					"The line is classified {0}, but its VAT is not posted to the {1} VAT account {2}."
+				).format(row.get("classification"), kind, account)
+			)
 
 
 class VAT201Return(Document):
@@ -637,11 +679,13 @@ class VAT201Return(Document):
 				default_classification,
 				sign,
 			)
+			input_accounts = get_input_vat_accounts(settings)
 			taxes = frappe.get_all(
 				"Purchase Taxes and Charges",
-				filters={"parent": invoice.name, "account_head": settings.input_vat_account},
+				filters={"parent": invoice.name, "account_head": ["in", input_accounts]},
 				fields=[
 					"name",
+					"account_head",
 					"rate",
 					"tax_amount as source_tax_amount",
 					"base_tax_amount as tax_amount",
@@ -660,7 +704,9 @@ class VAT201Return(Document):
 			# Call through the current controller class so tests and long-lived workers
 			# cannot dispatch to a stale pre-migrate controller instance.
 			VAT201Return.apply_purchase_input_treatment(self, invoice, invoice_rows)
-			enrich_invoice_rows(invoice_rows, invoice, taxes, settings.input_vat_account, "Purchase Invoice")
+			flag_input_vat_ledger_mismatch(invoice_rows, taxes, settings)
+			posted_accounts = sorted({tax.account_head for tax in taxes}) or [settings.input_vat_account]
+			enrich_invoice_rows(invoice_rows, invoice, taxes, posted_accounts, "Purchase Invoice")
 			rows.extend(invoice_rows)
 		return rows
 
@@ -668,6 +714,8 @@ class VAT201Return(Document):
 		rows = []
 		vat_account_rows = getattr(settings, "vat_accounts", None) or getattr(settings, "tax_accounts", [])
 		tax_accounts = {row.account for row in vat_account_rows if row.account}
+		tax_accounts.update(get_input_vat_accounts(settings))
+		tax_accounts.discard(None)
 		classified_accounts = set(
 			frappe.get_all(
 				"Account",

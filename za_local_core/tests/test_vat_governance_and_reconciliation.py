@@ -282,6 +282,7 @@ class TestAppAPISecurity(UnitTestCase):
 		{
 			# Governance foundation
 			"mark_reviewed",
+			"approve_proposed_status",
 			"publish_practitioner_guide",
 			# SA VAT
 			"bootstrap_company_vat_setup",

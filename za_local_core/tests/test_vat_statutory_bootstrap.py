@@ -139,7 +139,9 @@ class TestVATStatutoryBootstrapAroundAPractitionerPack(IntegrationTestCase):
 				"domain": VAT_DOMAIN,
 				"title": "Practitioner owned window",
 				"source": source,
-				"effective_from": "2026-01-01",
+				# Inside the source's own window (GOV-3), overlapping the seeded pack's window
+				# without starting on the same day.
+				"effective_from": "2026-04-02",
 				"effective_to": "2027-12-31",
 				"items": [{"rule_key": "vat.standard_rate", "numeric_value": 15, "unit": "Percentage"}],
 			}

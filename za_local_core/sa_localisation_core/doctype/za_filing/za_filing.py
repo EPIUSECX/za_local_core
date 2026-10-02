@@ -12,6 +12,8 @@ from za_local_core.governance import (
 	validate_private_evidence,
 )
 
+MIN_EXPLANATION_LENGTH = 30
+
 
 class ZAFiling(Document):
 	def validate(self) -> None:
@@ -59,8 +61,7 @@ class ZAFiling(Document):
 		self._validate_working_paper()
 		if self.review_checksum != self._calculate_review_checksum():
 			frappe.throw(_("The filing changed after review. Complete Mark Reviewed again before approval."))
-		if flt(self.unexplained_difference, 2) and not (self.notes or "").strip():
-			frappe.throw(_("Explain the reconciliation difference before approving this filing."))
+		self._validate_difference_explanation()
 		if self.capability == "Unsupported":
 			frappe.throw(_("Unsupported obligations cannot be approved for filing."))
 		self.status = "Approved"
@@ -80,6 +81,24 @@ class ZAFiling(Document):
 			additional_excluded_users=(self.reviewed_by,),
 		)
 
+	def _validate_difference_explanation(self) -> None:
+		"""GOV-7: a difference needs its own explanation, seen by the reviewer; any note no longer does."""
+		if not flt(self.unexplained_difference, 2):
+			return
+		explanation = " ".join((self.difference_explanation or "").split())
+		if len(explanation) < MIN_EXPLANATION_LENGTH:
+			frappe.throw(
+				_(
+					"Explain the reconciliation difference of {0} in Difference Explanation (at least {1} "
+					"characters) and have it reviewed before approving this filing."
+				).format(
+					frappe.format(
+						self.unexplained_difference, {"fieldtype": "Currency", "options": "currency"}, self
+					),
+					MIN_EXPLANATION_LENGTH,
+				)
+			)
+
 	def _validate_working_paper(self) -> None:
 		validate_private_evidence(
 			self,
@@ -96,6 +115,7 @@ class ZAFiling(Document):
 				"company": self.company,
 				"currency": self.currency,
 				"declared_amount": flt(self.declared_amount, 9),
+				"difference_explanation": (self.difference_explanation or "").strip(),
 				"due_date": str(self.due_date),
 				"ledger_amount": flt(self.ledger_amount, 9),
 				"notes": (self.notes or "").strip(),

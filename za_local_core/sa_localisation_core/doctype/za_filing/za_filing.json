@@ -20,6 +20,7 @@
   "declared_amount",
   "paid_amount",
   "unexplained_difference",
+  "difference_explanation",
   "column_break_1",
   "reviewed_by",
   "reviewed_on",
@@ -133,6 +134,13 @@
    "label": "Unexplained Difference",
    "options": "currency",
    "read_only": 1
+  },
+  {
+   "fieldname": "difference_explanation",
+   "fieldtype": "Small Text",
+   "label": "Difference Explanation",
+   "depends_on": "eval:doc.unexplained_difference",
+   "description": "Required when Declared Amount differs from Ledger Amount: what makes up the difference and why it is correct. Recorded before review."
   },
   {
    "fieldname": "column_break_1",

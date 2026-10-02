@@ -261,10 +261,22 @@ class SouthAfricaVATSettings(Document):
 		for account_field, label in (
 			("input_vat_account", _("Input VAT Account")),
 			("output_vat_account", _("Output VAT Account")),
+			("capital_input_vat_account", _("Capital Goods Input VAT Account")),
+			("import_input_vat_account", _("Import VAT Account")),
 		):
 			account = getattr(self, account_field)
 			if account:
 				validate_vat_posting_account(account, self.company, label)
+		# VAT-2: a separate capital or import ledger must not double as the output account.
+		for account_field in ("capital_input_vat_account", "import_input_vat_account"):
+			account = self.get(account_field)
+			if account and account in (self.output_vat_account, self.input_vat_account):
+				frappe.throw(
+					_(
+						"{0} must be its own ledger account, not the Input or Output VAT Account. Leave it "
+						"blank to keep that VAT in the Input VAT Account."
+					).format(self.meta.get_label(account_field))
+				)
 
 	def validate_item_tax_template_account(self):
 		if not self.item_tax_template_account:

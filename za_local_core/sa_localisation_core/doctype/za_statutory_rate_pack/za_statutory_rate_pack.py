@@ -21,6 +21,7 @@ class ZAStatutoryRatePack(Document):
 			frappe.throw(
 				_("Statutory Source {0} must be approved before this rate pack.").format(self.source)
 			)
+		self._validate_within_source_window()
 		validate_accountable_actor(self, "reviewed_by", REVIEW_ROLES, "approve")
 		self.status = "Approved"
 		self.approved_on = now_datetime()
@@ -34,6 +35,29 @@ class ZAStatutoryRatePack(Document):
 	def _validate_dates(self) -> None:
 		if getdate(self.effective_to) < getdate(self.effective_from):
 			frappe.throw(_("Effective To cannot be before Effective From."))
+		self._validate_within_source_window()
+
+	def _validate_within_source_window(self) -> None:
+		"""GOV-3: a pack cannot apply a source before, or after, the source itself is in force."""
+		if not self.source:
+			return
+		source = frappe.db.get_value(
+			"ZA Statutory Source", self.source, ["effective_from", "effective_to"], as_dict=True
+		)
+		if not source:
+			return
+		if source.effective_from and getdate(self.effective_from) < getdate(source.effective_from):
+			frappe.throw(
+				_("Effective From {0} is before Statutory Source {1} takes effect on {2}.").format(
+					self.effective_from, self.source, source.effective_from
+				)
+			)
+		if source.effective_to and getdate(self.effective_to) > getdate(source.effective_to):
+			frappe.throw(
+				_("Effective To {0} is after Statutory Source {1} ceases on {2}.").format(
+					self.effective_to, self.source, source.effective_to
+				)
+			)
 
 	def _validate_items(self) -> None:
 		if not self.items:

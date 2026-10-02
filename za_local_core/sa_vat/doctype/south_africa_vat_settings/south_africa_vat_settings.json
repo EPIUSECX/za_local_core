@@ -40,6 +40,8 @@
   "output_vat_account",
   "column_break_16",
   "input_vat_account",
+  "capital_input_vat_account",
+  "import_input_vat_account",
   "item_tax_template_account",
   "vat_accounts",
   "classification_settings_section",
@@ -280,6 +282,20 @@
    "label": "Input VAT Account",
    "options": "Account",
    "reqd": 1
+  },
+  {
+   "description": "Optional. Input VAT on capital goods and services (VAT201 field 14) when it is kept in its own ledger account. Leave blank to use the Input VAT Account.",
+   "fieldname": "capital_input_vat_account",
+   "fieldtype": "Link",
+   "label": "Capital Goods Input VAT Account",
+   "options": "Account"
+  },
+  {
+   "description": "Optional. VAT paid on imports to SARS Customs (VAT201 fields 14A and 15A) when it is kept in its own ledger account. Leave blank to use the Input VAT Account.",
+   "fieldname": "import_input_vat_account",
+   "fieldtype": "Link",
+   "label": "Import VAT Account",
+   "options": "Account"
   },
   {
    "description": "Optional ERPNext tax account used when generating Item Tax Templates automatically. This is separate from the VAT control accounts used for VAT201 and reporting.",

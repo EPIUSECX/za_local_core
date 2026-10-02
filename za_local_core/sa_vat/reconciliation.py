@@ -7,6 +7,7 @@ from frappe import _
 from frappe.utils import flt, now_datetime
 
 from za_local_core.governance import canonical_sha256
+from za_local_core.sa_vat.setup import get_input_vat_accounts
 
 RECONCILIATION_TOLERANCE = 0.01
 RECONCILED = "Reconciled"
@@ -14,15 +15,20 @@ NEEDS_REVIEW = "Needs Review"
 EXCLUDED = "Excluded"
 
 
-def enrich_invoice_rows(rows, invoice, taxes, tax_account: str, voucher_type: str) -> None:
-	"""Attach a deterministic source and GL allocation to classified invoice rows."""
+def enrich_invoice_rows(rows, invoice, taxes, tax_account, voucher_type: str) -> None:
+	"""Attach a deterministic source and GL allocation to classified invoice rows.
+
+	``tax_account`` is one VAT account, or the accounts the invoice's VAT is posted to
+	where capital or import VAT has its own ledger (VAT-2).
+	"""
 	if not rows:
 		return
+	tax_accounts = [tax_account] if isinstance(tax_account, str) else list(tax_account)
 	is_purchase = voucher_type == "Purchase Invoice"
 	sign = -1 if int(invoice.is_return or 0) and flt(invoice.base_net_total) > 0 else 1
 	source_tax = sum(flt(row.source_tax_amount) for row in taxes) * sign
 	source_base_tax = sum(flt(row.base_tax_amount) for row in taxes) * sign
-	gl_entries = get_invoice_gl_entries(voucher_type, invoice.name, tax_account)
+	gl_entries = get_invoice_gl_entries(voucher_type, invoice.name, tax_accounts)
 	gl_total = sum(
 		(flt(entry.debit) - flt(entry.credit)) if is_purchase else (flt(entry.credit) - flt(entry.debit))
 		for entry in gl_entries
@@ -67,7 +73,7 @@ def enrich_invoice_rows(rows, invoice, taxes, tax_account: str, voucher_type: st
 				"exchange_rate": flt(invoice.conversion_rate, 9),
 				"source_tax_amount": source_tax_allocations[index],
 				"source_base_tax_amount": source_base_allocations[index],
-				"tax_account": tax_account,
+				"tax_account": tax_accounts[0] if len(tax_accounts) == 1 else None,
 				"gl_entries_json": gl_rows,
 				"gl_tax_amount": gl_allocations[index],
 			}
@@ -187,7 +193,7 @@ def calculate_live_ledger_sha256(vat_return, settings) -> str:
 				}
 			)
 
-	vat_accounts = {settings.output_vat_account, settings.input_vat_account}
+	vat_accounts = {settings.output_vat_account, *get_input_vat_accounts(settings)}
 	vat_accounts.update(row.account for row in (settings.vat_accounts or []) if row.account)
 	classified_accounts = frappe.get_all(
 		"Account",
@@ -247,13 +253,14 @@ def verify_live_ledger(vat_return, settings) -> None:
 		frappe.throw(_("VAT source documents or GL entries changed after the snapshot; refresh the return."))
 
 
-def get_invoice_gl_entries(voucher_type: str, voucher_no: str, account: str):
+def get_invoice_gl_entries(voucher_type: str, voucher_no: str, account):
+	accounts = [account] if isinstance(account, str) else list(account)
 	return frappe.get_all(
 		"GL Entry",
 		filters={
 			"voucher_type": voucher_type,
 			"voucher_no": voucher_no,
-			"account": account,
+			"account": ["in", accounts],
 			"is_cancelled": 0,
 		},
 		fields=["name", "account", "debit", "credit"],

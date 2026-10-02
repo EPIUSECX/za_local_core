@@ -8,6 +8,7 @@ from za_local_core.migration.backfill import run as run_core_backfill
 from za_local_core.migration.ownership import verify_checked_manifest
 from za_local_core.navigation import sync_shared_navigation
 from za_local_core.practitioner_guide.stage import unpublish_guides
+from za_local_core.role_grants import grant_core_permissions
 from za_local_core.sa_vat.install import (
 	VAT_CHARTS,
 	VAT_MODULE,
@@ -43,6 +44,7 @@ CORE_FEATURES = (
 
 def after_install() -> None:
 	ensure_core_roles()
+	grant_core_permissions()
 	run_core_backfill()
 	seed_core_readiness()
 	seed_core_dashboards()

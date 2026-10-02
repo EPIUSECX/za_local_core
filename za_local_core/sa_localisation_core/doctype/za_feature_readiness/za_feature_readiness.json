@@ -4,7 +4,7 @@
  "creation": "2026-08-01 00:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
- "field_order": ["readiness_key", "company", "feature_code", "feature_name", "domain", "status", "source", "checked_on", "checked_by", "blocking_reason", "remediation_route"],
+ "field_order": ["readiness_key", "company", "feature_code", "feature_name", "domain", "status", "source", "checked_on", "checked_by", "blocking_reason", "remediation_route", "approval_section", "proposed_status", "proposed_by", "approval_evidence", "approval_evidence_sha256", "column_break_approval", "approver", "approved_by", "approved_on"],
  "fields": [
   {"fieldname": "readiness_key", "fieldtype": "Data", "label": "Readiness Key", "read_only": 1, "unique": 1, "no_copy": 1},
   {"fieldname": "company", "fieldtype": "Link", "label": "Company", "options": "Company", "reqd": 1, "in_list_view": 1},
@@ -16,7 +16,16 @@
   {"fieldname": "checked_on", "fieldtype": "Datetime", "label": "Checked On", "read_only": 1},
   {"fieldname": "checked_by", "fieldtype": "Link", "label": "Checked By", "options": "User", "read_only": 1},
   {"fieldname": "blocking_reason", "fieldtype": "Text", "label": "Blocking Reason or Limitations"},
-  {"fieldname": "remediation_route", "fieldtype": "Data", "label": "Remediation Route"}
+  {"fieldname": "remediation_route", "fieldtype": "Data", "label": "Remediation Route"},
+  {"fieldname": "approval_section", "fieldtype": "Section Break", "label": "Status Approval", "description": "Readiness can be lowered directly. Raising it needs a proposed status, private evidence and approval by the recorded approver, who is not the proposer."},
+  {"fieldname": "proposed_status", "fieldtype": "Select", "label": "Proposed Status", "options": "\nProduction\nControlled Manual\nPreview\nUnsupported\nBlocked", "no_copy": 1},
+  {"fieldname": "proposed_by", "fieldtype": "Link", "label": "Proposed By", "options": "User", "read_only": 1, "no_copy": 1},
+  {"fieldname": "approval_evidence", "fieldtype": "Attach", "label": "Approval Evidence", "no_copy": 1},
+  {"fieldname": "approval_evidence_sha256", "fieldtype": "Data", "label": "Approval Evidence SHA-256", "read_only": 1, "no_copy": 1},
+  {"fieldname": "column_break_approval", "fieldtype": "Column Break"},
+  {"fieldname": "approver", "fieldtype": "Link", "label": "Approver", "options": "User", "no_copy": 1},
+  {"fieldname": "approved_by", "fieldtype": "Link", "label": "Approved By", "options": "User", "read_only": 1, "no_copy": 1},
+  {"fieldname": "approved_on", "fieldtype": "Datetime", "label": "Approved On", "read_only": 1, "no_copy": 1}
  ],
  "index_web_pages_for_search": 0,
  "links": [],

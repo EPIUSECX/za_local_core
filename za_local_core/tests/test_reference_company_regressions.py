@@ -185,23 +185,26 @@ class TestVATDocumentRegressions(IntegrationTestCase):
 		"""VAT-8: blocked entertainment VAT sat in Input VAT and left an unexplained R300."""
 		from za_local_core.overrides.vat_invoices import ZAPurchaseInvoice
 
-		doc = frappe._dict(
-			company="ZA Co",
-			items=[frappe._dict(za_vat_input_treatment="Blocked")],
-			taxes=[frappe._dict(account_head="Input VAT - ZA", tax_amount=300)],
+		accounts = frappe._dict(
+			input_vat_account="Input VAT - ZA",
+			capital_input_vat_account="Capital VAT - ZA",
+			import_input_vat_account=None,
 		)
-		with (
-			patch("za_local_core.overrides.vat_invoices.is_south_african_company", return_value=True),
-			patch("frappe.db.get_value", side_effect=["VAT-SET", "Input VAT - ZA"]),
-		):
-			with self.assertRaisesRegex(frappe.ValidationError, "Blocked"):
+
+		def validate(taxes):
+			doc = frappe._dict(
+				company="ZA Co", items=[frappe._dict(za_vat_input_treatment="Blocked")], taxes=taxes
+			)
+			with (
+				patch("za_local_core.overrides.vat_invoices.is_south_african_company", return_value=True),
+				patch("frappe.db.get_value", side_effect=["VAT-SET", accounts]),
+			):
 				ZAPurchaseInvoice.validate_blocked_input_vat(doc)
-		doc.taxes = []
-		with (
-			patch("za_local_core.overrides.vat_invoices.is_south_african_company", return_value=True),
-			patch("frappe.db.get_value", side_effect=["VAT-SET", "Input VAT - ZA"]),
-		):
-			ZAPurchaseInvoice.validate_blocked_input_vat(doc)
+
+		for account in ("Input VAT - ZA", "Capital VAT - ZA"):
+			with self.assertRaisesRegex(frappe.ValidationError, "Blocked"):
+				validate([frappe._dict(account_head=account, tax_amount=300)])
+		validate([])
 
 
 class TestDataSubjectRequestDeadline(IntegrationTestCase):
@@ -244,3 +247,223 @@ class TestDataSubjectRequestDeadline(IntegrationTestCase):
 		):
 			tasks.daily()
 		refresh.assert_called_once()
+
+
+class TestFeatureReadinessApproval(IntegrationTestCase):
+	"""GOV-2: a manager could set Production directly, with no evidence or second person."""
+
+	@classmethod
+	def setUpClass(cls):
+		super().setUpClass()
+		from za_local_core.tests.test_governance_lifecycle import TestGovernanceLifecycle
+
+		cls.company = ensure_south_african_company()
+		cls.proposer = TestGovernanceLifecycle._ensure_user(
+			"_test.za.readiness.proposer@example.com", "Readiness Proposer", "ZA Compliance Manager"
+		)
+		cls.approver = TestGovernanceLifecycle._ensure_user(
+			"_test.za.readiness.approver@example.com", "Readiness Approver", "ZA Compliance Manager"
+		)
+
+	def _feature(self, code, status="Preview"):
+		return frappe.get_doc(
+			{
+				"doctype": "ZA Feature Readiness",
+				"company": self.company,
+				"feature_code": code,
+				"feature_name": code,
+				"domain": "Core",
+				"status": status,
+				"blocking_reason": "_Test limitation",
+			}
+		)
+
+	def test_production_cannot_be_declared_directly(self):
+		with self.assertRaisesRegex(frappe.ValidationError, "Production directly"):
+			self._feature("_TEST-GOV2-NEW", "Production").insert(ignore_permissions=True)
+		doc = self._feature("_TEST-GOV2-RAISE").insert(ignore_permissions=True)
+		doc.status = "Controlled Manual"
+		with self.assertRaisesRegex(frappe.ValidationError, "needs approval"):
+			doc.save(ignore_permissions=True)
+		doc.reload()
+		doc.status = "Blocked"
+		doc.save(ignore_permissions=True)
+		self.assertEqual("Blocked", doc.reload().status)
+
+	def test_raise_needs_private_evidence_and_an_independent_approver(self):
+		from frappe.utils.file_manager import save_file
+
+		doc = self._feature("_TEST-GOV2-APPROVE").insert(ignore_permissions=True)
+		with self.set_user(self.proposer):
+			doc = frappe.get_doc("ZA Feature Readiness", doc.name)
+			doc.proposed_status = "Controlled Manual"
+			doc.approver = self.proposer
+			doc.save()
+			with self.assertRaisesRegex(frappe.ValidationError, "Approval Evidence"):
+				doc.approve_proposed_status()
+			doc.approval_evidence = save_file(
+				"_test-gov2.txt", b"parallel run sign-off", doc.doctype, doc.name, is_private=1
+			).file_url
+			doc.save()
+			with self.assertRaises(frappe.PermissionError):
+				frappe.get_doc("ZA Feature Readiness", doc.name).approve_proposed_status()
+			doc.approver = self.approver
+			doc.save()
+		with self.set_user(self.approver):
+			frappe.get_doc("ZA Feature Readiness", doc.name).approve_proposed_status()
+		doc.reload()
+		self.assertEqual(
+			("Controlled Manual", self.approver, None), (doc.status, doc.approved_by, doc.proposed_status)
+		)
+
+
+class TestRatePackSourceWindow(IntegrationTestCase):
+	"""GOV-3: a rate pack's effective window was not checked against its source's dates."""
+
+	SOURCE_MODULE = "za_local_core.sa_localisation_core.doctype.za_statutory_rate_pack.za_statutory_rate_pack"
+
+	def _check(self, effective_from, effective_to, source):
+		doc = frappe.new_doc("ZA Statutory Rate Pack")
+		doc.update({"source": "SRC", "effective_from": effective_from, "effective_to": effective_to})
+		with patch(f"{self.SOURCE_MODULE}.frappe.db.get_value", return_value=frappe._dict(source)):
+			doc._validate_dates()
+
+	def test_pack_must_sit_inside_the_source_window(self):
+		source = {"effective_from": "2026-03-01", "effective_to": "2027-02-28"}
+		self._check("2026-03-01", "2027-02-28", source)
+		with self.assertRaisesRegex(frappe.ValidationError, "before Statutory Source"):
+			self._check("2026-02-01", "2027-02-28", source)
+		with self.assertRaisesRegex(frappe.ValidationError, "after Statutory Source"):
+			self._check("2026-03-01", "2027-03-31", source)
+
+	def test_open_ended_source_allows_any_later_end(self):
+		self._check("2026-04-01", "2030-02-28", {"effective_from": "2026-03-01", "effective_to": None})
+
+
+class TestFilingDifferenceExplanation(IntegrationTestCase):
+	"""GOV-7: any text in Notes satisfied "explain the reconciliation difference"."""
+
+	def _filing(self, **values):
+		doc = frappe.new_doc("ZA Filing")
+		doc.update({"currency": "ZAR", "declared_amount": 1300, "ledger_amount": 1000, **values})
+		doc.unexplained_difference = doc.declared_amount - doc.ledger_amount
+		return doc
+
+	def test_notes_no_longer_explain_a_difference(self):
+		with self.assertRaisesRegex(frappe.ValidationError, "Difference Explanation"):
+			self._filing(notes="ok")._validate_difference_explanation()
+		with self.assertRaisesRegex(frappe.ValidationError, "at least 30"):
+			self._filing(difference_explanation="see file")._validate_difference_explanation()
+		self._filing(
+			difference_explanation="R300 blocked input VAT on entertainment, journalled to expense on 31 August."
+		)._validate_difference_explanation()
+
+	def test_explanation_is_part_of_what_the_reviewer_saw(self):
+		doc = self._filing(difference_explanation="first explanation of the R300 difference in full")
+		before = doc._calculate_review_checksum()
+		doc.difference_explanation = "a different explanation of the R300 difference in full"
+		self.assertNotEqual(before, doc._calculate_review_checksum())
+
+	def test_no_explanation_needed_without_a_difference(self):
+		self._filing(declared_amount=1000)._validate_difference_explanation()
+
+
+class TestSeparateInputVatLedgers(IntegrationTestCase):
+	"""VAT-2: capital-goods and import VAT kept in their own accounts were ignored by VAT201."""
+
+	def _settings(self, **values):
+		return frappe._dict(
+			{
+				"input_vat_account": "VAT Input",
+				"output_vat_account": "VAT Output",
+				"capital_input_vat_account": None,
+				"import_input_vat_account": None,
+				**values,
+			}
+		)
+
+	def test_all_input_ledgers_are_read_and_templates_post_to_them(self):
+		from za_local_core.sa_vat.setup import get_input_vat_accounts, get_purchase_template_account
+
+		settings = self._settings(
+			capital_input_vat_account="VAT Capital", import_input_vat_account="VAT Import"
+		)
+		self.assertEqual(["VAT Input", "VAT Capital", "VAT Import"], get_input_vat_accounts(settings))
+		self.assertEqual("VAT Capital", get_purchase_template_account(settings, "input_capital_local"))
+		self.assertEqual("VAT Import", get_purchase_template_account(settings, "input_capital_import"))
+		self.assertEqual("VAT Import", get_purchase_template_account(settings, "input_goods_import"))
+		self.assertEqual("VAT Input", get_purchase_template_account(settings, "input_goods_local"))
+		self.assertEqual("VAT Input", get_purchase_template_account(self._settings(), "input_capital_import"))
+
+	def test_ledger_and_classification_must_agree(self):
+		from za_local_core.sa_vat.doctype.vat201_return.vat201_return import (
+			INPUT_CAPITAL_LOCAL,
+			INPUT_OTHER_LOCAL,
+			flag_input_vat_ledger_mismatch,
+		)
+
+		settings = self._settings(capital_input_vat_account="VAT Capital")
+		on_capital = [frappe._dict(account_head="VAT Capital", tax_amount=150)]
+		on_input = [frappe._dict(account_head="VAT Input", tax_amount=150)]
+
+		def row(classification):
+			return {
+				"classification": classification,
+				"classification_status": "Classified",
+				"tax_amount": 150,
+			}
+
+		agreed = [row(INPUT_CAPITAL_LOCAL)]
+		flag_input_vat_ledger_mismatch(agreed, on_capital, settings)
+		self.assertEqual("Classified", agreed[0]["classification_status"])
+		for rows, taxes in (([row(INPUT_OTHER_LOCAL)], on_capital), ([row(INPUT_CAPITAL_LOCAL)], on_input)):
+			flag_input_vat_ledger_mismatch(rows, taxes, settings)
+			self.assertEqual("Needs Review", rows[0]["classification_status"])
+			self.assertIn("VAT Capital", rows[0]["classification_issue"])
+
+	def test_separate_ledger_cannot_reuse_the_main_accounts(self):
+		doc = frappe.new_doc("South Africa VAT Settings")
+		doc.update(
+			{
+				"input_vat_account": "VAT Input",
+				"output_vat_account": "VAT Output",
+				"capital_input_vat_account": "VAT Input",
+			}
+		)
+		with (
+			patch(
+				"za_local_core.sa_vat.doctype.south_africa_vat_settings.south_africa_vat_settings.validate_vat_posting_account"
+			),
+			self.assertRaisesRegex(frappe.ValidationError, "its own ledger account"),
+		):
+			doc.validate_vat_accounts()
+
+	def test_gl_entries_are_read_from_every_posted_vat_account(self):
+		from za_local_core.sa_vat import reconciliation
+
+		with patch.object(reconciliation.frappe, "get_all", return_value=[]) as get_all:
+			reconciliation.get_invoice_gl_entries("Purchase Invoice", "PINV-1", ["VAT Input", "VAT Capital"])
+		self.assertEqual(["in", ["VAT Input", "VAT Capital"]], get_all.call_args.kwargs["filters"]["account"])
+
+
+class TestVatTemplateDescriptions(IntegrationTestCase):
+	"""VAT-9: the company name printed on every invoice VAT line."""
+
+	def test_template_description_omits_the_company(self):
+		from za_local_core.sa_vat import setup
+
+		settings = frappe._dict(
+			company="Acme (Pty) Ltd",
+			output_vat_account="VAT Output",
+			input_vat_account="VAT Input",
+			standard_vat_rate=15,
+		)
+		with (
+			patch.object(setup, "validate_vat_posting_account"),
+			patch.object(setup, "ensure_item_tax_templates"),
+			patch.object(setup, "ensure_tax_template", return_value="T") as ensure,
+		):
+			setup.ensure_default_tax_templates(settings)
+		for call in ensure.call_args_list:
+			self.assertIn("Acme (Pty) Ltd", call.kwargs["title"])
+			self.assertNotIn("Acme", call.kwargs["description"])
