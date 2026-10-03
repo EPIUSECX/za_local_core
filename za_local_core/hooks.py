@@ -39,17 +39,6 @@ add_to_apps_screen = [
 	}
 ]
 
-# Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "za_local_core",
-# 		"logo": "/assets/za_local_core/logo.png",
-# 		"title": "SA Localisation Core",
-# 		"route": "/za_local_core",
-# 		"has_permission": "za_local_core.api.permission.has_app_permission"
-# 	}
-# ]
-
 # Includes in <head>
 # ------------------
 
