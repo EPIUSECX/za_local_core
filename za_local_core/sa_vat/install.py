@@ -216,7 +216,8 @@ def claim_vat_module_ownership() -> None:
 				update_modified=False,
 			)
 
-	if frappe.db.exists("Workspace", "SA VAT"):
+	# Frappe 16.50 dropped Workspace.app (a workspace's app now follows its module, set above).
+	if frappe.db.has_column("Workspace", "app") and frappe.db.exists("Workspace", "SA VAT"):
 		frappe.db.set_value(
 			"Workspace",
 			"SA VAT",
