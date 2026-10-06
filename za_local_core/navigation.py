@@ -10,7 +10,7 @@ import frappe
 APP_NAME = "za_local_core"
 APP_TITLE = "SA Localisation"
 APP_ROUTE = "/desk/sa-overview"
-APP_LOGO = "/assets/za_local_core/images/sa_map_icon.png"
+APP_LOGO = "/assets/za_local_core/images/za_local_core_logo.svg"
 
 # Every app name the suite has ever shipped under, including retired ones. This is
 # a cleanup allow-list, not a dependency list: a site that once had a retired app
@@ -48,10 +48,10 @@ WORKSPACE_SPECS = (
 	WorkspaceSpec(
 		"SA Overview", "za_local_core", "shield-check", "sa_overview.svg", "SA Localisation Onboarding"
 	),
-	WorkspaceSpec("SA Payroll", "za_local_payroll", "accounting", "sa_payroll.svg", "SA Payroll Onboarding"),
-	WorkspaceSpec("SA VAT", "za_local_core", "sell", "sa_vat.svg", "SA VAT Onboarding"),
-	WorkspaceSpec("SA Labour", "za_local_payroll", "hr", "sa_labour.svg", "SA Labour Onboarding"),
-	WorkspaceSpec("SA COIDA", "za_local_payroll", "support", "sa_coida.svg", "SA COIDA Onboarding"),
+	WorkspaceSpec("SA Payroll", "za_local_payroll", "calculator", "sa_payroll.svg", "SA Payroll Onboarding"),
+	WorkspaceSpec("SA VAT", "za_local_core", "receipt", "sa_vat.svg", "SA VAT Onboarding"),
+	WorkspaceSpec("SA Labour", "za_local_payroll", "users", "sa_labour.svg", "SA Labour Onboarding"),
+	WorkspaceSpec("SA COIDA", "za_local_payroll", "shield-plus", "sa_coida.svg", "SA COIDA Onboarding"),
 )
 
 
