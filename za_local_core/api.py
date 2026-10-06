@@ -24,6 +24,10 @@ def has_app_permission() -> bool:
 		"Business Trip",
 		"Workplace Injury",
 		"COIDA Annual Return",
+		# za_local_bma mounts its areas on this app's rail
+		"BMA Hiring Pipeline",
+		"BMA Preboarding Profile",
+		"BMA Person Identity",
 	):
 		if frappe.db.exists("DocType", doctype) and frappe.has_permission(doctype, "read"):
 			return True

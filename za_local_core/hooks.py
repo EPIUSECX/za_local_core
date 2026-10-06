@@ -29,11 +29,14 @@ scheduler_events = {
 
 app_include_js = "/assets/za_local_core/js/za_local_feedback.js"
 
+# The suite has one Apps-screen tile and one rail: za_local_core ships the Dock
+# (dock/za_local_core/), and za_local_payroll and za_local_bma mount their entries on it.
 add_to_apps_screen = [
 	{
 		"name": "za_local_core",
-		"title": "SA Localisation",
-		"logo": "/assets/za_local_core/images/sa_map_icon.png",
+		# Short enough for the Apps screen tile, which truncates past about 12 characters
+		"title": "Localisation",
+		"logo": "/assets/za_local_core/images/za_local_core_logo.svg",
 		"route": "/desk/sa-overview",
 		"has_permission": "za_local_core.api.has_app_permission",
 	}
@@ -69,7 +72,8 @@ add_to_apps_screen = [
 # Svg Icons
 # ------------------
 # include app icons in desk
-# app_include_icons = "za_local_core/public/icons.svg"
+# Dual-tone module icons used by the dock and the sidebar headers
+app_include_icons = ["/assets/za_local_core/icons/module-icons.svg"]
 
 # Home Pages
 # ----------
