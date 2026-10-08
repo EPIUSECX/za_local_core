@@ -128,6 +128,15 @@ NAVY, RED, H1, TEXT, MUTED, LINE, BAND = (
 	"#F3F5F9",
 )
 GREEN = "#41AD49"
+PLAIN = {
+	"Preview": "Sign-off needed",
+	"Manual": "Filed outside app",
+	"Integration": "Set up per client",
+	"Data": "Reference data",
+	"Extends": "Adds controls",
+	"Uses": "Uses core",
+	"Report": "Report",
+}
 W, LABEL_X, COL_W = 1080, 28, 170
 COL_X = [540 + i * (COL_W + 6) for i in range(3)]
 ROW_H, SEC_H, HEAD_H = 30, 46, 92
@@ -151,7 +160,7 @@ def cross(cx: float, cy: float) -> str:
 
 
 def build() -> str:
-	total = HEAD_H + sum(SEC_H + len(rows) * ROW_H + 10 for _, rows in ROWS) + 96
+	total = HEAD_H + sum(SEC_H + len(rows) * ROW_H + 10 for _, rows in ROWS) + 128
 	out = [
 		f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{total}" viewBox="0 0 {W} {total}" '
 		f'font-family="{FONT}" role="img" aria-label="South African compliance coverage matrix for the za_local packages">',
@@ -179,10 +188,9 @@ def build() -> str:
 			)
 			for x, cell in zip(COL_X, cells, strict=True):
 				if cell:
-					colour = GREEN if cell == "Report" else NAVY
-					out.append(tick(x + 16, cy, colour))
+					out.append(tick(x + 16, cy, GREEN))
 					out.append(
-						f'<text x="{x + 32}" y="{cy + 4}" font-size="11" fill="{TEXT}">{escape(cell)}</text>'
+						f'<text x="{x + 32}" y="{cy + 4}" font-size="11" fill="{TEXT}">{escape(PLAIN[cell])}</text>'
 					)
 				else:
 					out.append(cross(x + 16, cy))
@@ -192,9 +200,11 @@ def build() -> str:
 			y += ROW_H
 		y += 10
 	lines = (
-		"Preview: implemented and tested, practitioner sign-off needed.   Manual: prepared and approved in the app, filed or paid outside it.",
-		"Integration: needs separate approval per client.   Data: reference records only.   Extends: adds controls to a feature another package owns.",
-		"Uses: relies on the package that owns it.   Report: a report is included.   Cross: not included.",
+		"Green tick: included in the package. The words beside it say what is still yours to do.",
+		"Sign-off needed: implemented and tested; a practitioner approves client-specific treatment (Preview status).",
+		"Filed outside app: prepared and approved in the app, filed or paid elsewhere (Controlled Manual status).",
+		"Set up per client: needs separate approval per client.   Reference data: records only.   Report: a report is included.",
+		"Adds controls: extends a feature another package owns.   Uses core: relies on the package that owns it.   Cross: not included.",
 		"No capability ships as Production. A status describes software readiness, not legal certification.",
 	)
 	for n, line in enumerate(lines):

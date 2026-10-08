@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2406" viewBox="0 0 1080 2406" font-family="Verdana, 'DejaVu Sans', Arial, sans-serif" role="img" aria-label="South African compliance coverage matrix for the za_local packages">
-<rect width="1080" height="2406" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="2438" viewBox="0 0 1080 2438" font-family="Verdana, 'DejaVu Sans', Arial, sans-serif" role="img" aria-label="South African compliance coverage matrix for the za_local packages">
+<rect width="1080" height="2438" fill="#FFFFFF"/>
 <rect width="1080" height="6" fill="#CE181E"/>
 <text x="28" y="46" font-family="'Century Gothic', Verdana, 'DejaVu Sans', sans-serif" font-size="22" font-weight="700" fill="#24356A">South African compliance coverage</text>
 <text x="28" y="68" font-size="11" fill="#8A93A6">What each za_local package covers, how far, and what no package covers. Reviewed 8 October 2026.</text>
@@ -10,53 +10,53 @@
 <text x="900" y="113" font-size="10.5" font-weight="700" fill="#1B2750">za_local_bma</text>
 <text x="28" y="157.0" font-size="11.5" fill="#333333">PAYE: cumulative method, rebates, medical credits</text>
 <path d="M552 149.0 L560 157.0 M560 149.0 L552 157.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="153.0" r="8" fill="#1B2750"/><path d="M728.4 153.2 L731 155.8 L736 150.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="157.0" font-size="11" fill="#333333">Preview</text>
-<circle cx="908" cy="153.0" r="8" fill="#1B2750"/><path d="M904.4 153.2 L907 155.8 L912 150.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="157.0" font-size="11" fill="#333333">Extends</text>
+<circle cx="732" cy="153.0" r="8" fill="#41AD49"/><path d="M728.4 153.2 L731 155.8 L736 150.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="157.0" font-size="11" fill="#333333">Sign-off needed</text>
+<circle cx="908" cy="153.0" r="8" fill="#41AD49"/><path d="M904.4 153.2 L907 155.8 L912 150.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="157.0" font-size="11" fill="#333333">Adds controls</text>
 <line x1="28" y1="168" x2="1052" y2="168" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="187.0" font-size="11.5" fill="#333333">UIF contributions</text>
 <path d="M552 179.0 L560 187.0 M560 179.0 L552 187.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="183.0" r="8" fill="#1B2750"/><path d="M728.4 183.2 L731 185.8 L736 180.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="187.0" font-size="11" fill="#333333">Preview</text>
-<circle cx="908" cy="183.0" r="8" fill="#1B2750"/><path d="M904.4 183.2 L907 185.8 L912 180.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="187.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="183.0" r="8" fill="#41AD49"/><path d="M728.4 183.2 L731 185.8 L736 180.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="187.0" font-size="11" fill="#333333">Sign-off needed</text>
+<circle cx="908" cy="183.0" r="8" fill="#41AD49"/><path d="M904.4 183.2 L907 185.8 L912 180.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="187.0" font-size="11" fill="#333333">Sign-off needed</text>
 <line x1="28" y1="198" x2="1052" y2="198" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="217.0" font-size="11.5" fill="#333333">Skills Development Levy (SDL)</text>
 <path d="M552 209.0 L560 217.0 M560 209.0 L552 217.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="213.0" r="8" fill="#1B2750"/><path d="M728.4 213.2 L731 215.8 L736 210.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="217.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="213.0" r="8" fill="#41AD49"/><path d="M728.4 213.2 L731 215.8 L736 210.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="217.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M904 209.0 L912 217.0 M912 209.0 L904 217.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="228" x2="1052" y2="228" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="247.0" font-size="11.5" fill="#333333">Employment Tax Incentive (ETI)</text>
 <path d="M552 239.0 L560 247.0 M560 239.0 L552 247.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="243.0" r="8" fill="#1B2750"/><path d="M728.4 243.2 L731 245.8 L736 240.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="247.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="243.0" r="8" fill="#41AD49"/><path d="M728.4 243.2 L731 245.8 L736 240.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="247.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M904 239.0 L912 247.0 M912 239.0 L904 247.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="258" x2="1052" y2="258" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="277.0" font-size="11.5" fill="#333333">Retirement fund deductions and cap</text>
 <path d="M552 269.0 L560 277.0 M560 269.0 L552 277.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="273.0" r="8" fill="#1B2750"/><path d="M728.4 273.2 L731 275.8 L736 270.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="277.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="273.0" r="8" fill="#41AD49"/><path d="M728.4 273.2 L731 275.8 L736 270.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="277.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M904 269.0 L912 277.0 M912 269.0 L904 277.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="288" x2="1052" y2="288" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="307.0" font-size="11.5" fill="#333333">Fringe benefits: company car, accommodation, loans</text>
 <path d="M552 299.0 L560 307.0 M560 299.0 L552 307.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="303.0" r="8" fill="#1B2750"/><path d="M728.4 303.2 L731 305.8 L736 300.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="307.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="303.0" r="8" fill="#41AD49"/><path d="M728.4 303.2 L731 305.8 L736 300.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="307.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M904 299.0 L912 307.0 M912 299.0 L904 307.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="318" x2="1052" y2="318" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="337.0" font-size="11.5" fill="#333333">Tax directives, lump sums and severance tax</text>
 <path d="M552 329.0 L560 337.0 M560 329.0 L552 337.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="333.0" r="8" fill="#1B2750"/><path d="M728.4 333.2 L731 335.8 L736 330.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="337.0" font-size="11" fill="#333333">Preview</text>
-<circle cx="908" cy="333.0" r="8" fill="#1B2750"/><path d="M904.4 333.2 L907 335.8 L912 330.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="337.0" font-size="11" fill="#333333">Extends</text>
+<circle cx="732" cy="333.0" r="8" fill="#41AD49"/><path d="M728.4 333.2 L731 335.8 L736 330.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="337.0" font-size="11" fill="#333333">Sign-off needed</text>
+<circle cx="908" cy="333.0" r="8" fill="#41AD49"/><path d="M904.4 333.2 L907 335.8 L912 330.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="337.0" font-size="11" fill="#333333">Adds controls</text>
 <line x1="28" y1="348" x2="1052" y2="348" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="367.0" font-size="11.5" fill="#333333">Travel allowance, subsistence and business trips</text>
 <path d="M552 359.0 L560 367.0 M560 359.0 L552 367.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="363.0" r="8" fill="#1B2750"/><path d="M728.4 363.2 L731 365.8 L736 360.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="367.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="363.0" r="8" fill="#41AD49"/><path d="M728.4 363.2 L731 365.8 L736 360.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="367.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M904 359.0 L912 367.0 M912 359.0 L904 367.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="378" x2="1052" y2="378" stroke="#E3E6EC" stroke-width="1"/>
 <rect x="0" y="388" width="1080" height="36" fill="#F3F5F9"/>
@@ -66,48 +66,48 @@
 <text x="900" y="409" font-size="10.5" font-weight="700" fill="#1B2750">za_local_bma</text>
 <text x="28" y="453.0" font-size="11.5" fill="#333333">EMP201 monthly working paper</text>
 <path d="M552 445.0 L560 453.0 M560 445.0 L552 453.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="449.0" r="8" fill="#1B2750"/><path d="M728.4 449.2 L731 451.8 L736 446.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="453.0" font-size="11" fill="#333333">Manual</text>
-<circle cx="908" cy="449.0" r="8" fill="#1B2750"/><path d="M904.4 449.2 L907 451.8 L912 446.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="453.0" font-size="11" fill="#333333">Extends</text>
+<circle cx="732" cy="449.0" r="8" fill="#41AD49"/><path d="M728.4 449.2 L731 451.8 L736 446.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="453.0" font-size="11" fill="#333333">Filed outside app</text>
+<circle cx="908" cy="449.0" r="8" fill="#41AD49"/><path d="M904.4 449.2 L907 451.8 L912 446.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="453.0" font-size="11" fill="#333333">Adds controls</text>
 <line x1="28" y1="464" x2="1052" y2="464" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="483.0" font-size="11.5" fill="#333333">EMP501 reconciliation</text>
 <path d="M552 475.0 L560 483.0 M560 475.0 L552 483.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="479.0" r="8" fill="#1B2750"/><path d="M728.4 479.2 L731 481.8 L736 476.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="483.0" font-size="11" fill="#333333">Manual</text>
-<circle cx="908" cy="479.0" r="8" fill="#1B2750"/><path d="M904.4 479.2 L907 481.8 L912 476.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="483.0" font-size="11" fill="#333333">Extends</text>
+<circle cx="732" cy="479.0" r="8" fill="#41AD49"/><path d="M728.4 479.2 L731 481.8 L736 476.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="483.0" font-size="11" fill="#333333">Filed outside app</text>
+<circle cx="908" cy="479.0" r="8" fill="#41AD49"/><path d="M904.4 479.2 L907 481.8 L912 476.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="483.0" font-size="11" fill="#333333">Adds controls</text>
 <line x1="28" y1="494" x2="1052" y2="494" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="513.0" font-size="11.5" fill="#333333">IRP5 / IT3(a) certificates</text>
 <path d="M552 505.0 L560 513.0 M560 505.0 L552 513.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="509.0" r="8" fill="#1B2750"/><path d="M728.4 509.2 L731 511.8 L736 506.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="513.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="732" cy="509.0" r="8" fill="#41AD49"/><path d="M728.4 509.2 L731 511.8 L736 506.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="513.0" font-size="11" fill="#333333">Filed outside app</text>
 <path d="M904 505.0 L912 513.0 M912 505.0 L904 513.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="524" x2="1052" y2="524" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="543.0" font-size="11.5" fill="#333333">VAT201 return</text>
-<circle cx="556" cy="539.0" r="8" fill="#1B2750"/><path d="M552.4 539.2 L555 541.8 L560 536.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="572" y="543.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="556" cy="539.0" r="8" fill="#41AD49"/><path d="M552.4 539.2 L555 541.8 L560 536.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="572" y="543.0" font-size="11" fill="#333333">Filed outside app</text>
 <path d="M728 535.0 L736 543.0 M736 535.0 L728 543.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M904 535.0 L912 543.0 M912 535.0 L904 543.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="554" x2="1052" y2="554" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="573.0" font-size="11.5" fill="#333333">COIDA Return of Earnings</text>
 <path d="M552 565.0 L560 573.0 M560 565.0 L552 573.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="569.0" r="8" fill="#1B2750"/><path d="M728.4 569.2 L731 571.8 L736 566.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="573.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="732" cy="569.0" r="8" fill="#41AD49"/><path d="M728.4 569.2 L731 571.8 L736 566.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="573.0" font-size="11" fill="#333333">Filed outside app</text>
 <path d="M904 565.0 L912 573.0 M912 565.0 L904 573.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="584" x2="1052" y2="584" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="603.0" font-size="11.5" fill="#333333">Skills development: WSP and ATR</text>
 <path d="M552 595.0 L560 603.0 M560 595.0 L552 603.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="599.0" r="8" fill="#1B2750"/><path d="M728.4 599.2 L731 601.8 L736 596.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="603.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="732" cy="599.0" r="8" fill="#41AD49"/><path d="M728.4 599.2 L731 601.8 L736 596.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="603.0" font-size="11" fill="#333333">Filed outside app</text>
 <path d="M904 595.0 L912 603.0 M912 595.0 L904 603.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="614" x2="1052" y2="614" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="633.0" font-size="11.5" fill="#333333">Employment Equity working papers</text>
 <path d="M552 625.0 L560 633.0 M560 625.0 L552 633.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="629.0" r="8" fill="#1B2750"/><path d="M728.4 629.2 L731 631.8 L736 626.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="633.0" font-size="11" fill="#333333">Manual</text>
-<circle cx="908" cy="629.0" r="8" fill="#1B2750"/><path d="M904.4 629.2 L907 631.8 L912 626.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="633.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="629.0" r="8" fill="#41AD49"/><path d="M728.4 629.2 L731 631.8 L736 626.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="633.0" font-size="11" fill="#333333">Filed outside app</text>
+<circle cx="908" cy="629.0" r="8" fill="#41AD49"/><path d="M904.4 629.2 L907 631.8 L912 626.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="633.0" font-size="11" fill="#333333">Sign-off needed</text>
 <line x1="28" y1="644" x2="1052" y2="644" stroke="#E3E6EC" stroke-width="1"/>
 <rect x="0" y="654" width="1080" height="36" fill="#F3F5F9"/>
 <text x="28" y="675" font-family="'Century Gothic', Verdana, 'DejaVu Sans', sans-serif" font-size="14" font-weight="700" fill="#1B2750">BCEA and labour</text>
@@ -116,52 +116,52 @@
 <text x="900" y="675" font-size="10.5" font-weight="700" fill="#1B2750">za_local_bma</text>
 <text x="28" y="719.0" font-size="11.5" fill="#333333">Annual leave: 12-month cycle, accrual, 6-month expiry</text>
 <path d="M552 711.0 L560 719.0 M560 711.0 L552 719.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="715.0" r="8" fill="#1B2750"/><path d="M728.4 715.2 L731 717.8 L736 712.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="719.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="715.0" r="8" fill="#41AD49"/><path d="M728.4 715.2 L731 717.8 L736 712.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="719.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M904 711.0 L912 719.0 M912 711.0 L904 719.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="730" x2="1052" y2="730" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="749.0" font-size="11.5" fill="#333333">Sick leave: 36-month cycle, medical certificates</text>
 <path d="M552 741.0 L560 749.0 M560 741.0 L552 749.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="745.0" r="8" fill="#1B2750"/><path d="M728.4 745.2 L731 747.8 L736 742.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="749.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="745.0" r="8" fill="#41AD49"/><path d="M728.4 745.2 L731 747.8 L736 742.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="749.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M904 741.0 L912 749.0 M912 741.0 L904 749.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="760" x2="1052" y2="760" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="779.0" font-size="11.5" fill="#333333">Family responsibility leave</text>
 <path d="M552 771.0 L560 779.0 M560 771.0 L552 779.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="775.0" r="8" fill="#1B2750"/><path d="M728.4 775.2 L731 777.8 L736 772.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="779.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="775.0" r="8" fill="#41AD49"/><path d="M728.4 775.2 L731 777.8 L736 772.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="779.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M904 771.0 L912 779.0 M912 771.0 L904 779.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="790" x2="1052" y2="790" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="809.0" font-size="11.5" fill="#333333">Maternity, parental, adoption leave types</text>
 <path d="M552 801.0 L560 809.0 M560 801.0 L552 809.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="805.0" r="8" fill="#1B2750"/><path d="M728.4 805.2 L731 807.8 L736 802.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="809.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="805.0" r="8" fill="#41AD49"/><path d="M728.4 805.2 L731 807.8 L736 802.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="809.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M904 801.0 L912 809.0 M912 801.0 L904 809.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="820" x2="1052" y2="820" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="839.0" font-size="11.5" fill="#333333">Notice, severance and leave payout on termination</text>
 <path d="M552 831.0 L560 839.0 M560 831.0 L552 839.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="835.0" r="8" fill="#1B2750"/><path d="M728.4 835.2 L731 837.8 L736 832.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="839.0" font-size="11" fill="#333333">Preview</text>
-<circle cx="908" cy="835.0" r="8" fill="#1B2750"/><path d="M904.4 835.2 L907 837.8 L912 832.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="839.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="732" cy="835.0" r="8" fill="#41AD49"/><path d="M728.4 835.2 L731 837.8 L736 832.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="839.0" font-size="11" fill="#333333">Sign-off needed</text>
+<circle cx="908" cy="835.0" r="8" fill="#41AD49"/><path d="M904.4 835.2 L907 837.8 L912 832.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="839.0" font-size="11" fill="#333333">Filed outside app</text>
 <line x1="28" y1="850" x2="1052" y2="850" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="869.0" font-size="11.5" fill="#333333">Certificate of Service</text>
 <path d="M552 861.0 L560 869.0 M560 861.0 L552 869.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M728 861.0 L736 869.0 M736 861.0 L728 869.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="908" cy="865.0" r="8" fill="#1B2750"/><path d="M904.4 865.2 L907 867.8 L912 862.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="869.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="908" cy="865.0" r="8" fill="#41AD49"/><path d="M904.4 865.2 L907 867.8 L912 862.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="869.0" font-size="11" fill="#333333">Filed outside app</text>
 <line x1="28" y1="880" x2="1052" y2="880" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="899.0" font-size="11.5" fill="#333333">Sectoral minimum wages and bargaining councils</text>
-<circle cx="556" cy="895.0" r="8" fill="#1B2750"/><path d="M552.4 895.2 L555 897.8 L560 892.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="572" y="899.0" font-size="11" fill="#333333">Data</text>
-<circle cx="732" cy="895.0" r="8" fill="#1B2750"/><path d="M728.4 895.2 L731 897.8 L736 892.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="899.0" font-size="11" fill="#333333">Data</text>
+<circle cx="556" cy="895.0" r="8" fill="#41AD49"/><path d="M552.4 895.2 L555 897.8 L560 892.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="572" y="899.0" font-size="11" fill="#333333">Reference data</text>
+<circle cx="732" cy="895.0" r="8" fill="#41AD49"/><path d="M728.4 895.2 L731 897.8 L736 892.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="899.0" font-size="11" fill="#333333">Reference data</text>
 <path d="M904 891.0 L912 899.0 M912 891.0 L904 899.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="910" x2="1052" y2="910" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="929.0" font-size="11.5" fill="#333333">Workplace injury and OID claims</text>
 <path d="M552 921.0 L560 929.0 M560 921.0 L552 929.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="925.0" r="8" fill="#1B2750"/><path d="M728.4 925.2 L731 927.8 L736 922.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="929.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="925.0" r="8" fill="#41AD49"/><path d="M728.4 925.2 L731 927.8 L736 922.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="929.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M904 921.0 L912 929.0 M912 921.0 L904 929.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="940" x2="1052" y2="940" stroke="#E3E6EC" stroke-width="1"/>
 <rect x="0" y="950" width="1080" height="36" fill="#F3F5F9"/>
@@ -170,20 +170,20 @@
 <text x="724" y="971" font-size="10.5" font-weight="700" fill="#1B2750">za_local_payroll</text>
 <text x="900" y="971" font-size="10.5" font-weight="700" fill="#1B2750">za_local_bma</text>
 <text x="28" y="1015.0" font-size="11.5" fill="#333333">VAT registration and supply classification</text>
-<circle cx="556" cy="1011.0" r="8" fill="#1B2750"/><path d="M552.4 1011.2 L555 1013.8 L560 1008.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="572" y="1015.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="556" cy="1011.0" r="8" fill="#41AD49"/><path d="M552.4 1011.2 L555 1013.8 L560 1008.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="572" y="1015.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M728 1007.0 L736 1015.0 M736 1007.0 L728 1015.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M904 1007.0 L912 1015.0 M912 1007.0 L904 1015.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="1026" x2="1052" y2="1026" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1045.0" font-size="11.5" fill="#333333">Tax invoices, credit and debit notes</text>
-<circle cx="556" cy="1041.0" r="8" fill="#1B2750"/><path d="M552.4 1041.2 L555 1043.8 L560 1038.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="572" y="1045.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="556" cy="1041.0" r="8" fill="#41AD49"/><path d="M552.4 1041.2 L555 1043.8 L560 1038.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="572" y="1045.0" font-size="11" fill="#333333">Sign-off needed</text>
 <path d="M728 1037.0 L736 1045.0 M736 1037.0 L728 1045.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M904 1037.0 L912 1045.0 M912 1037.0 L904 1045.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="1056" x2="1052" y2="1056" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1075.0" font-size="11.5" fill="#333333">CIPC returns and beneficial ownership</text>
-<circle cx="556" cy="1071.0" r="8" fill="#1B2750"/><path d="M552.4 1071.2 L555 1073.8 L560 1068.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="572" y="1075.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="556" cy="1071.0" r="8" fill="#41AD49"/><path d="M552.4 1071.2 L555 1073.8 L560 1068.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="572" y="1075.0" font-size="11" fill="#333333">Filed outside app</text>
 <path d="M728 1067.0 L736 1075.0 M736 1067.0 L728 1075.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M904 1067.0 L912 1075.0 M912 1067.0 L904 1075.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="1086" x2="1052" y2="1086" stroke="#E3E6EC" stroke-width="1"/>
@@ -194,39 +194,39 @@
 <text x="900" y="1117" font-size="10.5" font-weight="700" fill="#1B2750">za_local_bma</text>
 <text x="28" y="1161.0" font-size="11.5" fill="#333333">FNB Online Banking payment file</text>
 <path d="M552 1153.0 L560 1161.0 M560 1153.0 L552 1161.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="1157.0" r="8" fill="#1B2750"/><path d="M728.4 1157.2 L731 1159.8 L736 1154.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="1161.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="732" cy="1157.0" r="8" fill="#41AD49"/><path d="M728.4 1157.2 L731 1159.8 L736 1154.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="1161.0" font-size="11" fill="#333333">Filed outside app</text>
 <path d="M904 1153.0 L912 1161.0 M912 1153.0 L904 1161.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="1172" x2="1052" y2="1172" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1191.0" font-size="11.5" fill="#333333">Other bank layouts and split pay</text>
 <path d="M552 1183.0 L560 1191.0 M560 1183.0 L552 1191.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M728 1183.0 L736 1191.0 M736 1183.0 L728 1191.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="908" cy="1187.0" r="8" fill="#1B2750"/><path d="M904.4 1187.2 L907 1189.8 L912 1184.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1191.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="908" cy="1187.0" r="8" fill="#41AD49"/><path d="M904.4 1187.2 L907 1189.8 L912 1184.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1191.0" font-size="11" fill="#333333">Filed outside app</text>
 <line x1="28" y1="1202" x2="1052" y2="1202" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1221.0" font-size="11.5" fill="#333333">Corrections, off-cycle runs and back pay</text>
 <path d="M552 1213.0 L560 1221.0 M560 1213.0 L552 1221.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M728 1213.0 L736 1221.0 M736 1213.0 L728 1221.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="908" cy="1217.0" r="8" fill="#1B2750"/><path d="M904.4 1217.2 L907 1219.8 L912 1214.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1221.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="908" cy="1217.0" r="8" fill="#41AD49"/><path d="M904.4 1217.2 L907 1219.8 L912 1214.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1221.0" font-size="11" fill="#333333">Sign-off needed</text>
 <line x1="28" y1="1232" x2="1052" y2="1232" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1251.0" font-size="11.5" fill="#333333">Deduction orders: garnishees, maintenance, loans</text>
 <path d="M552 1243.0 L560 1251.0 M560 1243.0 L552 1251.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M728 1243.0 L736 1251.0 M736 1243.0 L728 1251.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="908" cy="1247.0" r="8" fill="#1B2750"/><path d="M904.4 1247.2 L907 1249.8 L912 1244.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1251.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="908" cy="1247.0" r="8" fill="#41AD49"/><path d="M904.4 1247.2 L907 1249.8 L912 1244.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1251.0" font-size="11" fill="#333333">Sign-off needed</text>
 <line x1="28" y1="1262" x2="1052" y2="1262" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1281.0" font-size="11.5" fill="#333333">Mid-year take-on and parallel runs</text>
 <path d="M552 1273.0 L560 1281.0 M560 1273.0 L552 1281.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M728 1273.0 L736 1281.0 M736 1273.0 L728 1281.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="908" cy="1277.0" r="8" fill="#1B2750"/><path d="M904.4 1277.2 L907 1279.8 L912 1274.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1281.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="908" cy="1277.0" r="8" fill="#41AD49"/><path d="M904.4 1277.2 L907 1279.8 L912 1274.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1281.0" font-size="11" fill="#333333">Filed outside app</text>
 <line x1="28" y1="1292" x2="1052" y2="1292" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1311.0" font-size="11.5" fill="#333333">Leave liability, bonus accruals, cost allocation</text>
 <path d="M552 1303.0 L560 1311.0 M560 1303.0 L552 1311.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M728 1303.0 L736 1311.0 M736 1303.0 L728 1311.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="908" cy="1307.0" r="8" fill="#1B2750"/><path d="M904.4 1307.2 L907 1309.8 L912 1304.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1311.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="908" cy="1307.0" r="8" fill="#41AD49"/><path d="M904.4 1307.2 L907 1309.8 L912 1304.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1311.0" font-size="11" fill="#333333">Sign-off needed</text>
 <line x1="28" y1="1322" x2="1052" y2="1322" stroke="#E3E6EC" stroke-width="1"/>
 <rect x="0" y="1332" width="1080" height="36" fill="#F3F5F9"/>
 <text x="28" y="1353" font-family="'Century Gothic', Verdana, 'DejaVu Sans', sans-serif" font-size="14" font-weight="700" fill="#1B2750">Privacy, governance and people</text>
@@ -234,57 +234,57 @@
 <text x="724" y="1353" font-size="10.5" font-weight="700" fill="#1B2750">za_local_payroll</text>
 <text x="900" y="1353" font-size="10.5" font-weight="700" fill="#1B2750">za_local_bma</text>
 <text x="28" y="1397.0" font-size="11.5" fill="#333333">Statutory sources and approved rate packs</text>
-<circle cx="556" cy="1393.0" r="8" fill="#1B2750"/><path d="M552.4 1393.2 L555 1395.8 L560 1390.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="572" y="1397.0" font-size="11" fill="#333333">Manual</text>
-<circle cx="732" cy="1393.0" r="8" fill="#1B2750"/><path d="M728.4 1393.2 L731 1395.8 L736 1390.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="1397.0" font-size="11" fill="#333333">Uses</text>
+<circle cx="556" cy="1393.0" r="8" fill="#41AD49"/><path d="M552.4 1393.2 L555 1395.8 L560 1390.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="572" y="1397.0" font-size="11" fill="#333333">Filed outside app</text>
+<circle cx="732" cy="1393.0" r="8" fill="#41AD49"/><path d="M728.4 1393.2 L731 1395.8 L736 1390.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="1397.0" font-size="11" fill="#333333">Uses core</text>
 <path d="M904 1389.0 L912 1397.0 M912 1389.0 L904 1397.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="1408" x2="1052" y2="1408" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1427.0" font-size="11.5" fill="#333333">Filings, compliance calendar and receipts</text>
-<circle cx="556" cy="1423.0" r="8" fill="#1B2750"/><path d="M552.4 1423.2 L555 1425.8 L560 1420.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="572" y="1427.0" font-size="11" fill="#333333">Manual</text>
-<circle cx="732" cy="1423.0" r="8" fill="#1B2750"/><path d="M728.4 1423.2 L731 1425.8 L736 1420.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="1427.0" font-size="11" fill="#333333">Uses</text>
+<circle cx="556" cy="1423.0" r="8" fill="#41AD49"/><path d="M552.4 1423.2 L555 1425.8 L560 1420.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="572" y="1427.0" font-size="11" fill="#333333">Filed outside app</text>
+<circle cx="732" cy="1423.0" r="8" fill="#41AD49"/><path d="M728.4 1423.2 L731 1425.8 L736 1420.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="1427.0" font-size="11" fill="#333333">Uses core</text>
 <path d="M904 1419.0 L912 1427.0 M912 1419.0 L904 1427.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="1438" x2="1052" y2="1438" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1457.0" font-size="11.5" fill="#333333">POPIA and PAIA registers</text>
-<circle cx="556" cy="1453.0" r="8" fill="#1B2750"/><path d="M552.4 1453.2 L555 1455.8 L560 1450.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="572" y="1457.0" font-size="11" fill="#333333">Manual</text>
-<circle cx="732" cy="1453.0" r="8" fill="#1B2750"/><path d="M728.4 1453.2 L731 1455.8 L736 1450.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="1457.0" font-size="11" fill="#333333">Uses</text>
-<circle cx="908" cy="1453.0" r="8" fill="#1B2750"/><path d="M904.4 1453.2 L907 1455.8 L912 1450.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1457.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="556" cy="1453.0" r="8" fill="#41AD49"/><path d="M552.4 1453.2 L555 1455.8 L560 1450.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="572" y="1457.0" font-size="11" fill="#333333">Filed outside app</text>
+<circle cx="732" cy="1453.0" r="8" fill="#41AD49"/><path d="M728.4 1453.2 L731 1455.8 L736 1450.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="1457.0" font-size="11" fill="#333333">Uses core</text>
+<circle cx="908" cy="1453.0" r="8" fill="#41AD49"/><path d="M904.4 1453.2 L907 1455.8 L912 1450.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1457.0" font-size="11" fill="#333333">Sign-off needed</text>
 <line x1="28" y1="1468" x2="1052" y2="1468" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1487.0" font-size="11.5" fill="#333333">SA ID, tax number and work-permit checks</text>
 <path d="M552 1479.0 L560 1487.0 M560 1479.0 L552 1487.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M728 1479.0 L736 1487.0 M736 1479.0 L728 1487.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="908" cy="1483.0" r="8" fill="#1B2750"/><path d="M904.4 1483.2 L907 1485.8 L912 1480.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1487.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="908" cy="1483.0" r="8" fill="#41AD49"/><path d="M904.4 1483.2 L907 1485.8 L912 1480.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1487.0" font-size="11" fill="#333333">Sign-off needed</text>
 <line x1="28" y1="1498" x2="1052" y2="1498" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1517.0" font-size="11.5" fill="#333333">Recruitment and candidate portal</text>
 <path d="M552 1509.0 L560 1517.0 M560 1509.0 L552 1517.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M728 1509.0 L736 1517.0 M736 1509.0 L728 1517.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="908" cy="1513.0" r="8" fill="#1B2750"/><path d="M904.4 1513.2 L907 1515.8 L912 1510.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1517.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="908" cy="1513.0" r="8" fill="#41AD49"/><path d="M904.4 1513.2 L907 1515.8 L912 1510.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1517.0" font-size="11" fill="#333333">Sign-off needed</text>
 <line x1="28" y1="1528" x2="1052" y2="1528" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1547.0" font-size="11.5" fill="#333333">Payroll readiness gate for new employees</text>
 <path d="M552 1539.0 L560 1547.0 M560 1539.0 L552 1547.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="732" cy="1543.0" r="8" fill="#1B2750"/><path d="M728.4 1543.2 L731 1545.8 L736 1540.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="748" y="1547.0" font-size="11" fill="#333333">Preview</text>
-<circle cx="908" cy="1543.0" r="8" fill="#1B2750"/><path d="M904.4 1543.2 L907 1545.8 L912 1540.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1547.0" font-size="11" fill="#333333">Preview</text>
+<circle cx="732" cy="1543.0" r="8" fill="#41AD49"/><path d="M728.4 1543.2 L731 1545.8 L736 1540.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="748" y="1547.0" font-size="11" fill="#333333">Sign-off needed</text>
+<circle cx="908" cy="1543.0" r="8" fill="#41AD49"/><path d="M904.4 1543.2 L907 1545.8 L912 1540.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1547.0" font-size="11" fill="#333333">Sign-off needed</text>
 <line x1="28" y1="1558" x2="1052" y2="1558" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1577.0" font-size="11.5" fill="#333333">Offboarding, clearance and access removal</text>
 <path d="M552 1569.0 L560 1577.0 M560 1569.0 L552 1577.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M728 1569.0 L736 1577.0 M736 1569.0 L728 1577.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="908" cy="1573.0" r="8" fill="#1B2750"/><path d="M904.4 1573.2 L907 1575.8 L912 1570.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1577.0" font-size="11" fill="#333333">Manual</text>
+<circle cx="908" cy="1573.0" r="8" fill="#41AD49"/><path d="M904.4 1573.2 L907 1575.8 L912 1570.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1577.0" font-size="11" fill="#333333">Filed outside app</text>
 <line x1="28" y1="1588" x2="1052" y2="1588" stroke="#E3E6EC" stroke-width="1"/>
 <text x="28" y="1607.0" font-size="11.5" fill="#333333">Sage 300 People handoff</text>
 <path d="M552 1599.0 L560 1607.0 M560 1599.0 L552 1607.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M728 1599.0 L736 1607.0 M736 1599.0 L728 1607.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-<circle cx="908" cy="1603.0" r="8" fill="#1B2750"/><path d="M904.4 1603.2 L907 1605.8 L912 1600.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="924" y="1607.0" font-size="11" fill="#333333">Integration</text>
+<circle cx="908" cy="1603.0" r="8" fill="#41AD49"/><path d="M904.4 1603.2 L907 1605.8 L912 1600.4" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="924" y="1607.0" font-size="11" fill="#333333">Set up per client</text>
 <line x1="28" y1="1618" x2="1052" y2="1618" stroke="#E3E6EC" stroke-width="1"/>
 <rect x="0" y="1628" width="1080" height="36" fill="#F3F5F9"/>
 <text x="28" y="1649" font-family="'Century Gothic', Verdana, 'DejaVu Sans', sans-serif" font-size="14" font-weight="700" fill="#1B2750">Reports</text>
@@ -398,8 +398,10 @@
 <path d="M728 2281.0 L736 2289.0 M736 2281.0 L728 2289.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <path d="M904 2281.0 L912 2289.0 M912 2281.0 L904 2289.0" stroke="#B8BECB" stroke-width="1.6" stroke-linecap="round" fill="none"/>
 <line x1="28" y1="2300" x2="1052" y2="2300" stroke="#E3E6EC" stroke-width="1"/>
-<text x="28" y="2332" font-size="10" fill="#8A93A6">Preview: implemented and tested, practitioner sign-off needed.   Manual: prepared and approved in the app, filed or paid outside it.</text>
-<text x="28" y="2348" font-size="10" fill="#8A93A6">Integration: needs separate approval per client.   Data: reference records only.   Extends: adds controls to a feature another package owns.</text>
-<text x="28" y="2364" font-size="10" fill="#8A93A6">Uses: relies on the package that owns it.   Report: a report is included.   Cross: not included.</text>
-<text x="28" y="2380" font-size="10" fill="#8A93A6">No capability ships as Production. A status describes software readiness, not legal certification.</text>
+<text x="28" y="2332" font-size="10" fill="#8A93A6">Green tick: included in the package. The words beside it say what is still yours to do.</text>
+<text x="28" y="2348" font-size="10" fill="#8A93A6">Sign-off needed: implemented and tested; a practitioner approves client-specific treatment (Preview status).</text>
+<text x="28" y="2364" font-size="10" fill="#8A93A6">Filed outside app: prepared and approved in the app, filed or paid elsewhere (Controlled Manual status).</text>
+<text x="28" y="2380" font-size="10" fill="#8A93A6">Set up per client: needs separate approval per client.   Reference data: records only.   Report: a report is included.</text>
+<text x="28" y="2396" font-size="10" fill="#8A93A6">Adds controls: extends a feature another package owns.   Uses core: relies on the package that owns it.   Cross: not included.</text>
+<text x="28" y="2412" font-size="10" fill="#8A93A6">No capability ships as Production. A status describes software readiness, not legal certification.</text>
 </svg>

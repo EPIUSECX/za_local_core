@@ -137,6 +137,8 @@ the Desk under **SA Overview → Feature Readiness**.
 
 ![South African compliance coverage matrix: what each za_local package covers, how far, and what no package covers](docs/coverage-matrix.svg)
 
+A green tick means the capability is included in that package. The words beside it say what is still yours to do: **Sign-off needed** is the Preview status, **Filed outside app** is Controlled Manual.
+
 | Package | What it adds |
 | --- | --- |
 | `za_local_core` | VAT, tax invoices, VAT201, and the shared governance foundation: statutory sources, rate packs, filings, POPIA and PAIA registers |
