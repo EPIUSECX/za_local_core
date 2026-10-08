@@ -128,6 +128,100 @@ and payments-basis vendors.
 Read the live values in the Desk under **SA Overview → Feature Readiness**. No
 capability in this suite ships as Production until an authorised reviewer sets it.
 
+<!-- za-local-coverage-matrix:start -->
+## South African compliance coverage
+
+This matrix is the same in every package of the suite. It shows what each package
+covers, how far the app goes, and what stays outside it. Read the live values in
+the Desk under **SA Overview → Feature Readiness**.
+
+| Package | What it adds |
+| --- | --- |
+| `za_local_core` | VAT, tax invoices, VAT201, and the shared governance foundation: statutory sources, rate packs, filings, POPIA and PAIA registers |
+| `za_local_payroll` | Payroll and statutory payroll returns, BCEA leave and termination, Employment Equity, skills development and COIDA |
+| `za_local_bma` | Recruitment, employee lifecycle and Payroll Operations around the payroll engine |
+
+**Reading the matrix**
+
+| Mark | Meaning |
+| --- | --- |
+| Preview | Implemented and tested. A practitioner must sign off client-specific treatment before production use |
+| Controlled Manual | The app prepares, reconciles and approves. The filing, payment or decision happens outside the app, and a person records the receipt |
+| Controlled Integration | A flow exists, but every endpoint, mapping and credential needs separate approval |
+| Data only | Reference records the app stores or uses. It does not calculate or decide |
+| Extends | Adds controls around a feature that another package owns |
+| — | Not part of this package |
+
+No capability ships as Production. A status describes the software's readiness, not
+legal certification. Rates are only as current as the approved rate packs.
+
+### Payroll tax and statutory returns
+
+| Obligation | core | payroll | bma | Stays outside the app |
+| --- | --- | --- | --- | --- |
+| PAYE (Income Tax Act, Fourth Schedule): cumulative year-to-date method, age rebates, medical credits, retirement cap, annual payments such as bonuses | — | Preview | Extends: corrections, off-cycle runs, back pay | Annual approval of rates; PAYE is declared through EMP201 |
+| UIF contributions | — | Preview | Preview: UIF declaration data | Declarations and payments to the Fund |
+| Skills Development Levy | — | Preview | — | Payment through EMP201 |
+| Employment Tax Incentive | — | Preview | — | Claim through EMP201 |
+| Retirement funds and medical scheme credits | — | Preview | — | Fund returns |
+| Fringe benefits (Seventh Schedule): company car, accommodation, low-interest loan | — | Preview | — | Other benefits need practitioner evidence for valuation |
+| Tax directives, lump sums and severance tax | — | Preview | Extends: termination pay waits for the directive | Obtaining the directive from SARS |
+| Travel allowance, subsistence and business trips | — | Preview | — | Practitioner review of reimbursive rates |
+| EMP201 monthly declaration | — | Controlled Manual | Extends: period locks after EMP201 | Submission and payment on SARS eFiling |
+| IRP5 / IT3(a) and EMP501 reconciliation | — | Controlled Manual | Extends: Year-End Readiness report | No SARS BRS import file and no e@syFile submission |
+| Payroll bank files | — | Controlled Manual: FNB Online Banking CSV | Controlled Manual: further bank layouts, split pay | Bank acceptance test and portal authorisation |
+| Deduction orders: maintenance, garnishees, staff loans | — | — | Preview | Court orders, caps and consent are the client's decision |
+| Mid-year take-on and parallel runs | — | — | Controlled Manual | Review of each source export |
+| Leave liability, bonus accruals, cost allocation | — | — | Preview | Valuation basis agreed with the client and auditor |
+
+### Labour and workplace
+
+| Obligation | core | payroll | bma | Stays outside the app |
+| --- | --- | --- | --- | --- |
+| BCEA leave: annual, sick (36-month cycle), family responsibility, maternity, parental, adoption | — | Preview: Leave Types, draft policies, cycle assignment, sick-leave allocator | — | Part-time and variable hours, collective agreements, shared parental-leave pool |
+| BCEA termination: notice, severance, leave payout | — | Preview | Controlled Manual: resignation notice is the greater of contract and BCEA notice | Hours-of-work rules, earnings-threshold effects, case law |
+| Certificate of Service | — | — | Controlled Manual | Legal review of wording |
+| Sectoral minimum wages and bargaining councils | Data only: rate pack | Data only | — | Council agreements and determinations |
+| Employment Equity (EEA) | — | Controlled Manual: working papers, not certified EEA forms | Preview: voluntary EE declaration, applicant EE mix | Nothing is filed with the Department |
+| Skills development: WSP, ATR, SETA records | — | Controlled Manual | — | SETA portal, grants, B-BBEE scoring |
+| COIDA Return of Earnings | — | Controlled Manual | — | eCOID submission and assessment response |
+| Workplace injury and OID claims | — | Preview | — | Choosing the applicable report, deadline and disease process |
+
+### VAT and corporate compliance
+
+| Obligation | core | payroll | bma | Stays outside the app |
+| --- | --- | --- | --- | --- |
+| VAT registration, supply classification, tax-invoice controls | Preview | — | — | Company-specific supply treatment |
+| Tax invoices, credit and debit notes | Preview | — | — | Practitioner sign-off |
+| VAT201 return | Controlled Manual | — | — | Submission on SARS eFiling |
+| Specialist VAT: mixed supplies, imported services, customs, second-hand goods, fixed property, bad debts, gold, diesel refunds, payments basis | Not implemented | — | — | Practitioner handling |
+| Corporate and provisional tax | Catalogue entry only | — | — | Everything |
+| CIPC annual returns and beneficial ownership | Controlled Manual | — | — | The portal process |
+
+### Privacy, governance and people lifecycle
+
+| Obligation | core | payroll | bma | Stays outside the app |
+| --- | --- | --- | --- | --- |
+| Statutory sources and effective-dated rate packs with independent approval | Controlled Manual | Uses it | — | Obtaining and reviewing the publications |
+| Compliance obligations, calendar, filings and submission receipts | Controlled Manual | Uses it for EMP201 and EMP501 | — | The authority's acknowledgement |
+| POPIA and PAIA registers | Controlled Manual | Restricted access to health and EE data | Preview: candidate consent, retention schedule, de-identification (off by default) | Regulator submissions and incident-notification decisions |
+| Recruitment, candidate portal, SA ID and tax-number checks, work permits | — | — | Preview | Client approval matrix, notice wording, POPIA review |
+| Preboarding and payroll readiness (identity, bank, tax, UIF) | — | Employee SA fields | Preview | First-payslip reconciliation |
+| Offboarding, clearance and access removal | — | — | Controlled Manual | External-system revocation |
+| Sage 300 People handoff | — | — | Controlled Integration | Each client endpoint and credential |
+
+### Not covered by any package
+
+SARS BRS and e@syFile transmission, eFiling submission, eCOID and CF-2A transmission,
+certified Employment Equity forms and filing, SETA portal submission and grant
+eligibility, B-BBEE scoring, corporate and provisional tax, the specialist VAT
+scenarios above, UIF benefit claims, bargaining-council determinations, and tracking
+of the shared maternity and parental-leave pool.
+
+*Reviewed 8 October 2026 against `za_local_core` 2.0.0, `za_local_payroll` 2.1.0 and
+`za_local_bma` 0.1.0. Update this section in all three READMEs together.*
+<!-- za-local-coverage-matrix:end -->
+
 ## Under the hood
 
 - [Frappe Framework](https://frappeframework.com) — the DocType model,
