@@ -131,9 +131,11 @@ capability in this suite ships as Production until an authorised reviewer sets i
 <!-- za-local-coverage-matrix:start -->
 ## South African compliance coverage
 
-This matrix is the same in every package of the suite. It shows what each package
-covers, how far the app goes, and what stays outside it. Read the live values in
+This matrix is the same in every package of the suite. The graphic gives the answer at a
+glance; the tables below it give the detail and what stays outside the app. Read the live values in
 the Desk under **SA Overview → Feature Readiness**.
+
+![South African compliance coverage matrix: what each za_local package covers, how far, and what no package covers](docs/coverage-matrix.svg)
 
 | Package | What it adds |
 | --- | --- |
