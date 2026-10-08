@@ -20,85 +20,84 @@ ROWS = [
 	(
 		"Payroll tax",
 		[
-			("PAYE: cumulative method, rebates, medical credits", None, "Preview", "Extends"),
-			("UIF contributions", None, "Preview", "Preview"),
-			("Skills Development Levy (SDL)", None, "Preview", None),
-			("Employment Tax Incentive (ETI)", None, "Preview", None),
-			("Retirement fund deductions and cap", None, "Preview", None),
-			("Fringe benefits: company car, accommodation, loans", None, "Preview", None),
-			("Tax directives, lump sums and severance tax", None, "Preview", "Extends"),
-			("Travel allowance, subsistence and business trips", None, "Preview", None),
+			("PAYE: cumulative method, rebates, medical credits", None, "Calculation", "Controls added"),
+			("UIF contributions", None, "Calculation", "Declaration data"),
+			("Skills Development Levy (SDL)", None, "Calculation", None),
+			("Employment Tax Incentive (ETI)", None, "Calculation", None),
+			("Retirement fund deductions and cap", None, "Calculation", None),
+			("Fringe benefits: company car, accommodation, loans", None, "Calculation", None),
+			("Tax directives, lump sums and severance tax", None, "Calculation", "Controls added"),
+			("Travel allowance, subsistence and business trips", None, "Calculation", None),
 		],
 	),
 	(
 		"Statutory returns",
 		[
-			("EMP201 monthly working paper", None, "Manual", "Extends"),
-			("EMP501 reconciliation", None, "Manual", "Extends"),
-			("IRP5 / IT3(a) certificates", None, "Manual", None),
-			("VAT201 return", "Manual", None, None),
-			("COIDA Return of Earnings", None, "Manual", None),
-			("Skills development: WSP and ATR", None, "Manual", None),
-			("Employment Equity working papers", None, "Manual", "Preview"),
+			("EMP201 monthly working paper", None, "Working paper", "Controls added"),
+			("EMP501 reconciliation", None, "Working paper", "Controls added"),
+			("IRP5 / IT3(a) certificates", None, "Certificates", None),
+			("VAT201 return", "Working paper", None, None),
+			("COIDA Return of Earnings", None, "Working paper", None),
+			("Skills development: WSP and ATR", None, "Working paper", None),
+			("Employment Equity", None, "Working papers", "Declaration"),
 		],
 	),
 	(
 		"BCEA and labour",
 		[
-			("Annual leave: 12-month cycle, accrual, 6-month expiry", None, "Preview", None),
-			("Sick leave: 36-month cycle, medical certificates", None, "Preview", None),
-			("Family responsibility leave", None, "Preview", None),
-			("Maternity, parental, adoption leave types", None, "Preview", None),
-			("Notice, severance and leave payout on termination", None, "Preview", "Manual"),
-			("Certificate of Service", None, None, "Manual"),
-			("Sectoral minimum wages and bargaining councils", "Data", "Data", None),
-			("Workplace injury and OID claims", None, "Preview", None),
+			("Annual leave: 12-month cycle, accrual, 6-month expiry", None, "Policy and accrual", None),
+			("Sick leave: 36-month cycle, medical certificates", None, "Cycle and certificates", None),
+			("Family responsibility leave", None, "Cap and eligibility", None),
+			("Maternity, parental, adoption leave types", None, "Leave types", None),
+			("Notice, severance and leave payout on termination", None, "Calculation", "Workflow"),
+			("Certificate of Service", None, None, "Print format"),
+			("Sectoral minimum wages and bargaining councils", "Reference data", "Reference data", None),
+			("Workplace injury and OID claims", None, "Workflow", None),
 		],
 	),
 	(
-		"VAT and corporate",
+		"VAT",
 		[
-			("VAT registration and supply classification", "Preview", None, None),
-			("Tax invoices, credit and debit notes", "Preview", None, None),
-			("CIPC returns and beneficial ownership", "Manual", None, None),
+			("VAT registration and supply classification", "Controls", None, None),
+			("Tax invoices, credit and debit notes", "Controls", None, None),
 		],
 	),
 	(
 		"Payments, corrections and take-on",
 		[
-			("FNB Online Banking payment file", None, "Manual", None),
-			("Other bank layouts and split pay", None, None, "Manual"),
-			("Corrections, off-cycle runs and back pay", None, None, "Preview"),
-			("Deduction orders: garnishees, maintenance, loans", None, None, "Preview"),
-			("Mid-year take-on and parallel runs", None, None, "Manual"),
-			("Leave liability, bonus accruals, cost allocation", None, None, "Preview"),
+			("FNB Online Banking payment file", None, "File output", None),
+			("Other bank layouts and split pay", None, None, "Layouts"),
+			("Corrections, off-cycle runs and back pay", None, None, "Calculation"),
+			("Deduction orders: garnishees, maintenance, loans", None, None, "Calculation"),
+			("Mid-year take-on and parallel runs", None, None, "Import and checks"),
+			("Leave liability, bonus accruals, cost allocation", None, None, "Journals"),
 		],
 	),
 	(
 		"Privacy, governance and people",
 		[
-			("Statutory sources and approved rate packs", "Manual", "Uses", None),
-			("Filings, compliance calendar and receipts", "Manual", "Uses", None),
-			("POPIA and PAIA registers", "Manual", "Uses", "Preview"),
-			("SA ID, tax number and work-permit checks", None, None, "Preview"),
-			("Recruitment and candidate portal", None, None, "Preview"),
-			("Payroll readiness gate for new employees", None, "Preview", "Preview"),
-			("Offboarding, clearance and access removal", None, None, "Manual"),
+			("Statutory sources and approved rate packs", "Registers", "Uses core", None),
+			("Filings, compliance calendar and receipts", "Registers", "Uses core", None),
+			("POPIA and PAIA registers", "Registers", "Uses core", "Controls added"),
+			("SA ID, tax number and work-permit checks", None, None, "Validation"),
+			("Recruitment and candidate portal", None, None, "Workflow"),
+			("Payroll readiness gate for new employees", None, "Employee SA fields", "Controls added"),
+			("Offboarding, clearance and access removal", None, None, "Workflow"),
 			("Sage 300 People handoff", None, None, "Integration"),
 		],
 	),
 	(
 		"Reports",
 		[
-			("Payroll and salary registers, department cost", None, "Report", None),
-			("Income tax computation and deductions", None, "Report", None),
+			("Payroll register and department cost", None, "Report", None),
+			("Retirement fund deductions", None, "Report", None),
 			("EMP201 report and statutory submissions summary", None, "Report", None),
 			("Employment Equity workforce, movement, plan progress", None, "Report", "Report"),
-			("VAT 201 linked transactions, classifications, audit", "Report", None, None),
+			("VAT 201 linked transactions, classifications, analysis", "Report", None, None),
 			("Hiring funnel, cost per hire, onboarding compliance", None, None, "Report"),
 			("Attrition, lifecycle timeline, payroll readiness", None, None, "Report"),
-			("Variance review and year-end readiness", None, None, "Report"),
-			("Feature readiness and compliance calendar", "Report", None, None),
+			("Year-end readiness, integration health, retention", None, None, "Report"),
+			("Feature readiness and compliance calendar", "Register", None, None),
 		],
 	),
 	(
@@ -109,7 +108,8 @@ ROWS = [
 			("Certified Employment Equity forms and filing", None, None, None),
 			("SETA portal submission and grant claims", None, None, None),
 			("B-BBEE scoring", None, None, None),
-			("Corporate and provisional tax returns", None, None, None),
+			("Corporate and provisional tax returns (calendar entry only)", None, None, None),
+			("CIPC returns and beneficial ownership (calendar entry only)", None, None, None),
 			("Specialist VAT: mixed supplies, imports, customs, property", None, None, None),
 			("UIF benefit claims", None, None, None),
 			("Shared parental-leave pool tracking", None, None, None),
@@ -128,15 +128,6 @@ NAVY, RED, H1, TEXT, MUTED, LINE, BAND = (
 	"#F3F5F9",
 )
 GREEN = "#41AD49"
-PLAIN = {
-	"Preview": "Sign-off needed",
-	"Manual": "Filed outside app",
-	"Integration": "Set up per client",
-	"Data": "Reference data",
-	"Extends": "Adds controls",
-	"Uses": "Uses core",
-	"Report": "Report",
-}
 W, LABEL_X, COL_W = 1080, 28, 170
 COL_X = [540 + i * (COL_W + 6) for i in range(3)]
 ROW_H, SEC_H, HEAD_H = 30, 46, 92
@@ -167,7 +158,7 @@ def build() -> str:
 		f'<rect width="{W}" height="{total}" fill="#FFFFFF"/>',
 		f'<rect width="{W}" height="6" fill="{RED}"/>',
 		f'<text x="{LABEL_X}" y="46" font-family="{HEAD_FONT}" font-size="22" font-weight="700" fill="{H1}">South African compliance coverage</text>',
-		f'<text x="{LABEL_X}" y="68" font-size="11" fill="{MUTED}">What each za_local package covers, how far, and what no package covers. Reviewed 8 October 2026.</text>',
+		f'<text x="{LABEL_X}" y="68" font-size="11" fill="{MUTED}">Developed and included in each za_local package, and what no package covers. Reviewed 8 October 2026.</text>',
 	]
 	y = HEAD_H
 	for title, rows in ROWS:
@@ -190,7 +181,7 @@ def build() -> str:
 				if cell:
 					out.append(tick(x + 16, cy, GREEN))
 					out.append(
-						f'<text x="{x + 32}" y="{cy + 4}" font-size="11" fill="{TEXT}">{escape(PLAIN[cell])}</text>'
+						f'<text x="{x + 32}" y="{cy + 4}" font-size="11" fill="{TEXT}">{escape(cell)}</text>'
 					)
 				else:
 					out.append(cross(x + 16, cy))
@@ -200,12 +191,10 @@ def build() -> str:
 			y += ROW_H
 		y += 10
 	lines = (
-		"Green tick: included in the package. The words beside it say what is still yours to do.",
-		"Sign-off needed: implemented and tested; a practitioner approves client-specific treatment (Preview status).",
-		"Filed outside app: prepared and approved in the app, filed or paid elsewhere (Controlled Manual status).",
-		"Set up per client: needs separate approval per client.   Reference data: records only.   Report: a report is included.",
-		"Adds controls: extends a feature another package owns.   Uses core: relies on the package that owns it.   Cross: not included.",
-		"No capability ships as Production. A status describes software readiness, not legal certification.",
+		"Green tick: the capability is developed and included in the package. The words beside it say what the software provides.",
+		"A tick does not certify any client's implementation. Rates, configuration, imports, filing and review stay with the practitioner.",
+		"Whether a feature has been run against real data is recorded separately, in the validation status table in the README.",
+		"Cross: not included. Reference data: records only. Uses core: relies on the package that owns it. Controls added: extends a feature another package owns.",
 	)
 	for n, line in enumerate(lines):
 		out.append(
